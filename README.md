@@ -31,10 +31,10 @@
 
 ### System requirements
 > HTML5 지원 브라우저 환경
->> * Google Chrome
->> * Mozilla Firefox
->> * Apple Safari
->> * Opera
+> * Google Chrome
+> * Mozilla Firefox
+> * Apple Safari
+> * Opera
 
 ### Documentation
 > http://api.xdmap.com/Manual
