@@ -2,7 +2,6 @@
 function init() {
 
 	// 엔진 초기화 API 호출(필수)
-	Module.SetAPIKey("767B7ADF-10BA-3D86-AB7E-02816B5B92E9");	// 이 곳에 배포된 브이월드 API 키를 입력하세요.
 	Module.Start(window.innerWidth, window.innerHeight);
 }
 
