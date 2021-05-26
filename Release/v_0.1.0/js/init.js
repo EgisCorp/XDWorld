@@ -23,6 +23,11 @@ var Module = {
 		canvas.style.top = "0px";
 		canvas.style.left = "0px";
 
+		// contextmenu disabled
+		canvas.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+		});
+	
 		// 생성한 Canvas 엘리먼트를 body에 추가합니다.
 		document.body.appendChild(canvas);
 		return canvas;
@@ -70,3 +75,11 @@ var Module = {
 		xhr.send(null);
 	}
 )();
+
+window.onresize = function() {
+
+	if (typeof Module == "object") {
+		Module.Resize(window.innerWidth, window.innerHeight);
+		Module.XDRenderData();
+	}
+};
