@@ -1,6 +1,6 @@
 ### Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
-<img src="http://meta.dtwincloud.com/images/pd_3_img.png">
+<img src="http://meta.dtwincloud.com/images/pd_3.png">
 
 ### 특징
 > * 웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
