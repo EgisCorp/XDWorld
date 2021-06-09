@@ -1,0 +1,10 @@
+태풍 API 추가
+	-  Module.createTypoon("Typoon").createbyJson(json)
+		- 태풍 생성 모듈(Json)
+
+고스트 심볼(3ds) API 추가
+	- Module.getGhostSymbolMap().addGhostSymbolBy3DSbyJson(json)
+		- 고스트 심불 3DS 요청 모듈 변경(Json)
+
+공통 사항
+	- complete Tag를 통한 작업 완료 후 이벤트 처리 완료
