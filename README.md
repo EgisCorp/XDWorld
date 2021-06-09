@@ -46,7 +46,7 @@
 > http://www.egiskorea.com/
 
 ### Demos & Sandbox
-> http://sandbox.dtwincloud.com/code/main.do?id=start
+> http://www.dtwincloud.com:8080/dt_reference/code/main.do?id=start
 
 ### Get Started
 
