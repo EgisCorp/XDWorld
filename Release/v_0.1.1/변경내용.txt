@@ -15,3 +15,16 @@
 
 LineString
 	- 지형결합 모듈 기능 보완
+
+20210617 수정 사항
+- 면적 거리 측정
+	- CallBack 처리
+		-  Module.getOption().callBackAddPoint( [함수 명칭] )
+		-  Module.getOption().callBackCompletePoint( [함수 명칭] )
+	- CallBack 미 선언 시 기존 JSEvent 사용
+- Camera 오류 처리
+	- ZoomIn, ZoomOut 처리 완료
+- 태양광 오류 목록 제거
+	- Emscripten 제공 함수 미지원으로 생기는 문제 컴파일 옵션 추가 
+
+
