@@ -27,7 +27,12 @@ LineString
 - 태양광 오류 목록 제거
 	- Emscripten 제공 함수 미지원으로 생기는 문제 컴파일 옵션 추가 
 
-20210621 수정 사항
+20210621 수정 사항(YHB)
 - 라인 생성 기능 추가 
 	- createbyJson 기능추가
 		- Json 형태로 기존 라인 생성 API 통합 완료
+
+20210623 수정 사항(YHB)
+- 마우스 모드 변경 시 콜백 추가
+	- Module.getOption().callMouseModeChange( ["개발자 함수"] );
+		- Module.XDSetMouseState(["option"]) 시 동작
