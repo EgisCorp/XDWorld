@@ -41,3 +41,11 @@ LineString
 - VideoTexture 기능 추가
 	- let polygon = Module.createPolygon("videoObj");
 		- polygon.videoTexturebyJSONScreen(json);
+
+20210719 수정 사항(YHB)
+- emscripten::val 변수 parser를 위한 기능 구현( ConvertVal Class 추가 )
+- 스크린 좌표 기준으로 Rect 반환
+	- CJSMath screenToBoundBox( CJSVector2(), number);
+- 곡선 라인 생성 기능 추가
+	- CJSMath convertBeZierLine( [json file] )
+	- 상세 내용은 샌드박스 업로드 예정
