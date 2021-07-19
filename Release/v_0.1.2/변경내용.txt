@@ -49,6 +49,8 @@ LineString
 - 곡선 라인 생성 기능 추가
 	- CJSMath convertBeZierLine( [json file] )
 	- 상세 내용은 샌드박스 업로드 예정
+- return 시 명령어 반환 변경
+- 라인 애니메이션 소스 변경
 -3ds 모델의 모델 중심 원점 로드 (JSPolygon::loadFile의 옵션 추가)
             - positionmode :  [ 모델의 원점 사용 여부, 기본값 false (모델 좌표 지정필요), true (모델 좌표 무시) ]
             - projectioncode : [ 모델원점의 좌표계 설정,  JSProjection::getCoordName의 코드번호 사용 ]
