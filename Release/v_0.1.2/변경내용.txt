@@ -55,3 +55,5 @@ LineString
             - positionmode :  [ 모델의 원점 사용 여부, 기본값 false (모델 좌표 지정필요), true (모델 좌표 무시) ]
             - projectioncode : [ 모델원점의 좌표계 설정,  JSProjection::getCoordName의 코드번호 사용 ]
 
+20210722 수정 사항(YSM)
+- 성절토 색상 설정 API 추가
