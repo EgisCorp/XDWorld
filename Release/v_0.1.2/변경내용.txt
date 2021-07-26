@@ -57,3 +57,7 @@ LineString
 
 20210722 수정 사항(YSM)
 - 성절토 색상 설정 API 추가
+
+20210722 수정 사항(YHB)
+- 태풍, 태풍물판 비동기 예외처리 추가
+- 태풍 createbyJson 반환 값 string -> object 변경
