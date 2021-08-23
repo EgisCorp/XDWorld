@@ -81,4 +81,6 @@ LineString
 
 20210820 수정사항 (LHS)
 - JSGridAnal의 3D 평면 애니메이션용 시간 설정/반환 API 변경 및 추가
-- JSGridAnal의 3D 화살표 크기 설정추가 (기본값 2.0)
+void setTime(float _ftime) 파라메터를 float으로 수정, float getTime() 으로 반환으로 한쌍작업.
+- JSGridAnal의 3D 화살표 크기 설정추가 
+void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필요 (기본값 2.0)
