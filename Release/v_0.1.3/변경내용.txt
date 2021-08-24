@@ -1,0 +1,90 @@
+태풍 API 추가
+	-  Module.createTypoon("Typoon").createbyJson(json)
+		- 태풍 생성 모듈(Json)
+
+고스트 심볼(3ds) API 추가
+	- Module.getGhostSymbolMap().addGhostSymbolBy3DSbyJson(json)
+		- 고스트 심불 3DS 요청 모듈 변경(Json)
+
+카메라 이동 API 추가
+	- Module.getViewCamera().moveLonLatBoundarybyJson(json)
+		- 카메라 이동 완료 모듈(Json)
+
+공통 사항
+	- complete Tag를 통한 작업 완료 후 이벤트 처리 완료
+
+LineString
+	- 지형결합 모듈 기능 보완
+
+20210617 수정 사항
+- 면적 거리 측정
+	- CallBack 처리
+		-  Module.getOption().callBackAddPoint( [함수 명칭] )
+		-  Module.getOption().callBackCompletePoint( [함수 명칭] )
+	- CallBack 미 선언 시 기존 JSEvent 사용
+- Camera 오류 처리
+	- ZoomIn, ZoomOut 처리 완료
+- 태양광 오류 목록 제거
+	- Emscripten 제공 함수 미지원으로 생기는 문제 컴파일 옵션 추가 
+
+20210621 수정 사항(YHB)
+- 라인 생성 기능 추가 
+	- createbyJson 기능추가
+		- Json 형태로 기존 라인 생성 API 통합 완료
+
+20210623 수정 사항(YHB)
+- 마우스 모드 변경 시 콜백 추가
+	- Module.getOption().callMouseModeChange( ["개발자 함수"] );
+		- Module.XDSetMouseState(["option"]) 시 동작
+
+20210707 수정 사항(CSR)
+- VideoTexture 기능 추가
+	- let polygon = Module.createPolygon("videoObj");
+		- polygon.videoTexturebyJSONScreen(json);
+
+20210719 수정 사항(YHB)
+- emscripten::val 변수 parser를 위한 기능 구현( ConvertVal Class 추가 )
+- 스크린 좌표 기준으로 Rect 반환
+	- CJSMath screenToBoundBox( CJSVector2(), number);
+- 곡선 라인 생성 기능 추가
+	- CJSMath convertBeZierLine( [json file] )
+	- 상세 내용은 샌드박스 업로드 예정
+- return 시 명령어 반환 변경
+- 라인 애니메이션 소스 변경
+-3ds 모델의 모델 중심 원점 로드 (JSPolygon::loadFile의 옵션 추가)
+            - positionmode :  [ 모델의 원점 사용 여부, 기본값 false (모델 좌표 지정필요), true (모델 좌표 무시) ]
+            - projectioncode : [ 모델원점의 좌표계 설정,  JSProjection::getCoordName의 코드번호 사용 ]
+
+20210722 수정 사항(YSM)
+- 성절토 색상 설정 API 추가
+
+20210722 수정 사항(YHB)
+- 태풍, 태풍물판 비동기 예외처리 추가
+- 태풍 createbyJson 반환 값 string -> object 변경
+
+20210722 수정 사항(YSM)
+- WFS 레이어 삭제 후 icon 재설정 오류 수정
+
+20210722 수정 사항(YHB)
+- 유저 레이어 JSON 파일 요청 후 오브젝트 생성 관련 모듈 변경
+- 랜더링 시 특정 갯수 만큼 오브젝트 생성
+
+20210813 수정 사항(YHB)
+- WMS 태그 명칭 및 기본 디볼트 값 변경
+- 영상 레이어, WMS 가시화 시 WMS 가시화 안되는 문제 수정
+
+20210817 수정사항
+- 엔진 업데이트
+
+20210820 수정사항
+- 폴리헤드론 투명값 조
+
+20210820 수정사항 (LHS)
+- JSGridAnal의 3D 평면 애니메이션용 시간 설정/반환 API 변경 및 추가
+void setTime(float _ftime) 파라메터를 float으로 수정, float getTime() 으로 반환으로 한쌍작업.
+- JSGridAnal의 3D 화살표 크기 설정추가 
+void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필요 (기본값 2.0)
+
+20210824 수정사항
+- 1인칭 모드 기능 보완
+- 지형 결합 모드 추가
