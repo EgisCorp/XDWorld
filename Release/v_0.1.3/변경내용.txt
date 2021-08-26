@@ -98,3 +98,7 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 - 경사 분석 
 	- 이미지 사이즈 증가
 	- 이미지 생성 옵션 조정
+
+20210826 수정사항 (LHS)
+- JSCamere API 추가
+	-getLookPosition(float _distance) 현재 카메라 위치에서 보는 방향으로 주어진 거리 만큼 진행한 위치 좌표 반환
