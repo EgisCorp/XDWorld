@@ -102,3 +102,7 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 20210826 수정사항 (LHS)
 - JSCamere API 추가
 	-getLookPosition(float _distance) 현재 카메라 위치에서 보는 방향으로 주어진 거리 만큼 진행한 위치 좌표 반환
+
+20210824 수정사항 (YHB)
+- 폴리곤 CreateByJson 수정
+- 사용자가 생성한 CSV 타일레이어 오브젝트 생성 부분에서 발생되는 인코딩 문제 수정 및 보안
