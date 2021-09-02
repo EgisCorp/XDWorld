@@ -106,3 +106,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 20210824 수정사항 (YHB)
 - 폴리곤 CreateByJson 수정
 - 사용자가 생성한 CSV 타일레이어 오브젝트 생성 부분에서 발생되는 인코딩 문제 수정 및 보안
+
+20210902 수정사항 (YSM)
+- DEM 고도에 따른 범례 색상 출력 기능 추가
