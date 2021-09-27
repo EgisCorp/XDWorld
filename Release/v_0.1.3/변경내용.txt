@@ -109,3 +109,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20210902 수정사항 (YSM)
 - DEM 고도에 따른 범례 색상 출력 기능 추가
+
+20210927 수정사항 (YSM)
+- 실내 이동 모듈 추가
