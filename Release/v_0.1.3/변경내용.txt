@@ -116,3 +116,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 20211006 수정사항 (YHB)
 - 해양 심사 관련 기능 업로드
 	- 회전 오브젝트 기능 추가
+
+20211007 수정사항 (YHB)
+- 유저 건물 레이어 URL NULL이 포함되는 문제 수정
