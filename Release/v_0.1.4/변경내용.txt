@@ -133,3 +133,8 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20211102 수정사항 (CSR)
 - CCTV 카메라 조작 기능 추가
+
+20211104 수정사항 (YHB)
+- Line 기능 변경
+	- stroke Line 기능 적용
+	- Arrow Line 기능 적용
