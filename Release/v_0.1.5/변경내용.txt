@@ -143,3 +143,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 - WMTS Provider 기능 추가
 - 카메라 Roll 조작 기능 추가
 - 라인 샘플 삭제
+
+20211105 수정사항 (YSM)
+- 3DS 고스트심볼 모델 로드 API 개편
