@@ -138,3 +138,7 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 - Line 기능 변경
 	- stroke Line 기능 적용
 	- Arrow Line 기능 적용
+
+20211105 수정사항 (CSR)
+- WMTS Provider 기능 추가
+- 라인 샘플 삭제
