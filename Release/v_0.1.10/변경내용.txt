@@ -166,3 +166,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20211112 수정사항 (HJH)
 - 그림자 오류 수정
+
+20211119 수정사항 (LHS)
+- DEM 데이터 로딩 무시 기능 추가, Flow JSON 데이터로 로더, Water Depth JSON 데이터로 로더 추가
