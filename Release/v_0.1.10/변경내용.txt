@@ -169,3 +169,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20211119 수정사항 (LHS)
 - DEM 데이터 로딩 무시 기능 추가, Flow JSON 데이터로 로더, Water Depth JSON 데이터로 로더 추가
+
+20211119 수정사항 (YHB)
+- TimeSeriesObject 레이어 옵션 미적용 문제 수정
