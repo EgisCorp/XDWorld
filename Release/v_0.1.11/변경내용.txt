@@ -175,3 +175,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20211122 수정사항 (YSM)
 - 흐름 폴리곤 색상 설정 옵션 추가
+
+20211123 수정사항 (YHB)
+- HTML OBJECT 기능 추가 완료
