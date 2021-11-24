@@ -178,3 +178,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20211123 수정사항 (YHB)
 - HTML OBJECT 기능 추가 완료
+
+20211124 수정사항 (CSR)
+- 레이어 삭제시 선택된 전체 객체 해제되는 현상 수정
