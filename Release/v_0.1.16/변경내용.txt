@@ -200,3 +200,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 20211213 수정사항 (CSR)
 - 이미지 오버랩 기능 보완
 - moveLonLatBoundarybyJson callback 오류 수정
+
+20211216 수정사항 (YSM)
+- 드론 LOD 타일 레이어 투명도, 고도 오프셋 조정 프로퍼티 추가
