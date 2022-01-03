@@ -218,3 +218,6 @@ void set3DArrowSizeRatio(float _fratio) 화살표 생성전에 미리 설정 필
 
 20220103 수정사항 (YSM)
 - 고스트 심볼 박스 위치 조정
+
+20220103 수정사항 (YSM)
+- figure 객체 동적 처리
