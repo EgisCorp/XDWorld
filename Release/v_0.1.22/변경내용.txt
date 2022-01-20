@@ -21,3 +21,7 @@
 
 20220119 수정사항 (LHS)
 - VWorld의 실사 3D 건물중 텍스쳐가 검게 나오는 현상 수정
+
+20220120 수정사항 (YHB)
+- Protocol (http, https) 지형 영상 url 내부 체크 후 변경 모듈 수정
+- Protocol 확인 모듈 수정
