@@ -54,3 +54,7 @@
 20220211 수정사항 (CSR)
 - BaseMap 해상도, offset 예외처리
 - BaseMap Provider 보완
+
+20220211 수정사항 (YSM)
+- JSReal3D 프로퍼티 추가
+- 고스트심볼의 그림자 분석 기능 추가
