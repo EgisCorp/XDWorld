@@ -1,6 +1,3 @@
-### Architecture
-> <img src="http://meta.dtwincloud.com/images/xd_arc.PNG">
-
 ### Lastest release
 > * v_0.1.35 Released (2022-03-23)
 
