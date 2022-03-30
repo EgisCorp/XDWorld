@@ -2,7 +2,10 @@
 > 아래 클래스 API는 더 이상 활용되지 않는 관계로 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * 클래스 JSLibraryObject 전 API
 > * 클래스 JSBuildingManager 전 API
-
+> 
+> ### 업데이트 내역(March 28th, 2022)
+> * 개발로그 확인(링크)
+> 
 ### Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
 
