@@ -3,10 +3,13 @@
 > * 클래스 JSLibraryObject 전 API
 > * 클래스 JSBuildingManager 전 API
 
+### Latest Release(v.1.36)
+> https://github.com/EgisCorp/XDWorld/tree/main/Release/v_1.36.1
+
 ### Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
 
-<img src="http://www.dtwincloud.com/images/pd_3_img.png">
+![pd_3_img](https://user-images.githubusercontent.com/82925313/160986727-f473c308-7881-4342-8c08-e31566d93a3b.png)
 
 ### 특징
 > * 웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
@@ -30,10 +33,7 @@
 > GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ### Architecture
-> <img src="http://meta.dtwincloud.com/images/xd_arc.PNG">
-
-### Lastest release
-> * v_0.1.0 Released (2021-05-20)
+> ![xd_arc](https://user-images.githubusercontent.com/82925313/160986787-39d8de63-0117-4e8d-a551-7d1cc11a38e6.png)
 
 ### System requirements
 > HTML5 지원 브라우저 환경
@@ -46,8 +46,7 @@
 > http://api.xdmap.com/Manual
 
 ### Developers
-<img src="http://www.egiskorea.com/images/company_egis_logo.svg">
-
+> ![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)
 > http://www.egiskorea.com/
 
 ### Demos & Sandbox
@@ -63,11 +62,11 @@
 > 
 > 엔진 파일의 로드 순서는 다음과 같습니다.
 > 
-> <img src="http://api.xdmap.com/Manual/custom/img/initEnvironment/01.png" align="center"></img>
+> ![image](https://user-images.githubusercontent.com/82925313/160987104-ca2f2552-aeee-491e-8ed3-637161ac862b.png)
 > 
 > 엔진 파일이 모두 로드 되면 API 호출이 가능한 전역 변수 Module을 사용하실 수 있습니다.
 > 
-> <img src="http://api.xdmap.com/Manual/custom/img/initEnvironment/02.png" align="center"></img>
+> ![image](https://user-images.githubusercontent.com/82925313/160987124-b92d32a0-2920-44fd-9cf9-c11577b4a7aa.png)
 
 
 #### Step 2. Canvas 연결하기
@@ -131,7 +130,7 @@
 > ```
 > 
 > 초기화 함수가 실행되는 시점은 엔진 파일이 모두 로드된 후 엔진 메인 루프가 실행되기 이전 입니다.
-> <img src="http://api.xdmap.com/Manual/custom/img/initEnvironment/03.png" align="center"></img>
+> ![image](https://user-images.githubusercontent.com/82925313/160987157-8a9f3b11-befc-4eb3-bfde-bd26636bdf3e.png)
 
 
 #### Step 4. 엔진 구동
@@ -143,11 +142,11 @@
 >	Module.Start(window.innerWidth, window.innerHeight);
 >}
 > ```
-> <img src="http://api.xdmap.com/Manual/custom/img/initEnvironment/04.png" align="center"></img>
+> ![image](https://user-images.githubusercontent.com/82925313/160987181-35ea9263-a757-46c7-937c-e9503681d78a.png)
 
 
 #### 배포 엔진 파일 구성
-> <img src="http://api.xdmap.com/Manual/custom/img/initEnvironment_sample/00.png" align="center"></img>
+> ![image](https://user-images.githubusercontent.com/82925313/160987202-6190fbe5-7a3e-48c6-88fb-58da95fa49c5.png)
 > 
 > 엔진 파일은 버전 별로 엔진파일 / 실행 스크립트 / 기본 HTML 페이지를 함께 배포합니다.
 > 
