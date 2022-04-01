@@ -1,3 +1,12 @@
+### Notice(April 1th, 2022)
+> 아래 JSMap 클래스의 API는 property로 대체하여 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
+> * setBaseMapOption API
+> * getBaseMapOption API
+> 
+> 2022년 04월 25일 업데이트 이후 대체될 property는 아래와 같습니다.
+> * Module.getMap().quality
+> * Module.getMap().zerolevelOffset
+
 ### Notice(March 25th, 2022)
 > 아래 클래스 API는 더 이상 활용되지 않는 관계로 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * 클래스 JSLibraryObject 전 API
