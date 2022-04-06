@@ -3,14 +3,14 @@
 > * SetPlanetImageryType API
 >
 >> 2022년 05월 01일 업데이트 이후 변경될 세부 클래스 API는 아래와 같습니다.
-> * Module.GoogleMap();
-> * Module.ArcMap();
-> * Module.BingMap();
-> * Module.DaumMap();
-> * Module.MapBox();
-> * Module.NaverMap();
-> * Module.OpenStreetMap();
-> * Module.SKYMap();
+>> * Module.GoogleMap();
+>> * Module.ArcMap();
+>> * Module.BingMap();
+>> * Module.DaumMap();
+>> * Module.MapBox();
+>> * Module.NaverMap();
+>> * Module.OpenStreetMap();
+>> * Module.SKYMap();
 >
 >
 >
@@ -18,9 +18,9 @@
 > * setBaseMapOption API
 > * getBaseMapOption API
 > 
-> 2022년 05월 01일 업데이트 이후 변경될 property는 아래와 같습니다.
-> * Module.getMap().quality
-> * Module.getMap().zerolevelOffset
+>> 2022년 05월 01일 업데이트 이후 변경될 property는 아래와 같습니다.
+>> * Module.getMap().quality
+>> * Module.getMap().zerolevelOffset
 > 
 
 ### Notice(March 25th, 2022)
