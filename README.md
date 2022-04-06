@@ -12,7 +12,7 @@
 > * Module.OpenStreetMap();
 > * Module.SKYMap();
 >
->==============================================
+>
 >
 > 아래 JSMap 클래스의 API는 property로 변경되어 2022년 05월 01일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * setBaseMapOption API
