@@ -2,7 +2,7 @@
 > 아래 API는 세부 클래스 API로 변경되어 2022년 05월 01일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * SetPlanetImageryType API
 >
-> 2022년 05월 01일 업데이트 이후 변경될 세부 클래스 API는 아래와 같습니다.
+>> 2022년 05월 01일 업데이트 이후 변경될 세부 클래스 API는 아래와 같습니다.
 > * Module.GoogleMap();
 > * Module.ArcMap();
 > * Module.BingMap();
