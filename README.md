@@ -15,6 +15,7 @@
 > 
 > * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 
+
 > 아래 JSMap 클래스의 API는 JSImageryProvider 클래스로 변경되어 2023년 01월 01일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * changeBaseMap API
 > * clearBaseMap API
@@ -23,6 +24,7 @@
 > 
 > 2023년 01월 01일 업데이트 이후 샌드박스를 참고해주시면 감사하겠습니다.
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
+
 
 ### Notice(March 25th, 2022)
 > 아래 클래스 API는 더 이상 활용되지 않는 관계로 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
