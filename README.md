@@ -1,12 +1,11 @@
-### Developers
-> [![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
-> ### http://www.egiskorea.com/
+[![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
+### Developers  -  http://www.egiskorea.com/
 
-### Documentation : http://api.xdmap.com/Manual
+### Documentation  -  http://api.xdmap.com/Manual
 
-### Demos & Sandbox : http://sandbox.dtwincloud.com/code/main.do?id=start
+### Demos & Sandbox  -  http://sandbox.dtwincloud.com/code/main.do?id=start
 
-### Latest Release(v.1.36) : [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.36.6)
+### Latest Release(v.1.36)  -  [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.36.6)
 
 # Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
@@ -33,8 +32,6 @@
 
 ## 적용분야
 > GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
-
-----------------------------------------------------------------------------------------------
 
 ## Notice(April 11th, 2022)
 > 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
