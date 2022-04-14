@@ -1,24 +1,19 @@
-### Latest Release(v.1.36)
-> [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.36.6)
-
-### Documentation
-> http://api.xdmap.com/Manual
-
 ### Developers
-> ![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)
-> 
-> http://www.egiskorea.com/
+> [![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
+> ### http://www.egiskorea.com/
 
-### Demos & Sandbox
-> http://sandbox.dtwincloud.com/code/main.do?id=start
+### Documentation : http://api.xdmap.com/Manual
 
+### Demos & Sandbox : http://sandbox.dtwincloud.com/code/main.do?id=start
 
-### Introduction
+### Latest Release(v.1.36) : [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.36.6)
+
+# Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
 
 ![pd_3_img](https://user-images.githubusercontent.com/82925313/160986727-f473c308-7881-4342-8c08-e31566d93a3b.png)
 
-### 특징
+## 특징
 > * 웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
 > * 멀티 OS(Windows, Android, IOS), 멀티 브라우저(IE11, Windows Edge, FireFox, Chrome, Safari), No-Plugin 지원
 > * 3차원 공간데이터 웹 개발자를 위한 다양한 Javascript 웹 API 지원
@@ -26,7 +21,7 @@
 > * 다양한 도시계획 시뮬레이션 및 분석 기능 제공
 > * 공간정보 오픈플랫폼(V World) 데이터 서비스 가능
 
-### 기능
+## 기능
 > * 대규모 3차원 공간데이터 로딩 및 사용자 시점에 따른 레벨 별 출력 기능
 > * 다양한 형태의 3차원 데이터 조망과 자유로운 시야 컨트롤 기능
 > * 좌표계 설정변환, 레이어 제어 등 편리한 공간 객체 관리 기능
@@ -36,7 +31,7 @@
 > * KML, KMZ, GML 등 표준 포맷 지원
 > * 지구본 단위 V World 서비스에 다양한 MashUP 기능 제공
 
-### 적용분야
+## 적용분야
 > GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ### Notice(April 11th, 2022)
