@@ -1,5 +1,5 @@
 ## Notice
-### April 11th, 2022
+### 2022년 4월 11일
 > 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
 > * SetPlanetImageryType API 
 > * changeBaseMap API
@@ -22,7 +22,7 @@
 > * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 > 
-### March 25th, 2022
+### 2022년 3월 25일
 > 아래 클래스 API는 더 이상 활용되지 않는 관계로 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
 > * 클래스 JSLibraryObject 전 API
 > * 클래스 JSBuildingManager 전 API
