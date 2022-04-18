@@ -1,4 +1,4 @@
-## Notice(April 11th, 2022)
+### Notice(April 11th, 2022)
 > 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
 > * SetPlanetImageryType API 
 > * changeBaseMap API
