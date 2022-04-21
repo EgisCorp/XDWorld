@@ -5,7 +5,7 @@
 
 ### Demos & Sandbox  -  http://sandbox.dtwincloud.com/code/main.do?id=start
 
-### Latest Release(v.1.36)  -  [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.36.6)
+### Latest Release(v.1.37)  -  [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.37.0)
 
 # Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
@@ -19,16 +19,6 @@
 > * 거리, 면적 체적 계산 등 기본적인 3차원 분석기능 제공
 > * 다양한 도시계획 시뮬레이션 및 분석 기능 제공
 > * 공간정보 오픈플랫폼(V World) 데이터 서비스 가능
-
-## 기능
-> * 대규모 3차원 공간데이터 로딩 및 사용자 시점에 따른 레벨 별 출력 기능
-> * 다양한 형태의 3차원 데이터 조망과 자유로운 시야 컨트롤 기능
-> * 좌표계 설정변환, 레이어 제어 등 편리한 공간 객체 관리 기능
-> * 행성규모의 대용량 지형 및 위성, 항공영상 지형 Mapping 지원
-> * 가시권, 일조권, 스카이라인 사선분석 등 다양한 분석 기능 제공
-> * 3DS, ASE, OBJ 등 다양한 3차원 모델링 파일 불러오기 기능
-> * KML, KMZ, GML 등 표준 포맷 지원
-> * 지구본 단위 V World 서비스에 다양한 MashUP 기능 제공
 
 ## 적용분야
 > GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
