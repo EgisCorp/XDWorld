@@ -5,7 +5,7 @@
 
 ### Demos & Sandbox  -  http://sandbox.dtwincloud.com/code/main.do?id=start
 
-### Latest Release(v.1.37)  -  [https://github.com/EgisCorp/XDWorld/tree/v_1.36.6](https://github.com/EgisCorp/XDWorld/tree/v_1.37.0)
+### Latest Release  -  [https://github.com/EgisCorp/XDWorld/tree/v_1.37.0](https://github.com/EgisCorp/XDWorld/tree/v_1.37.0)
 
 # Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
