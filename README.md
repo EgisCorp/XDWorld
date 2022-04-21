@@ -12,7 +12,7 @@
 
 ## 특징
 > * 웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
-> * 멀티 OS(Windows, Android, IOS), 멀티 브라우저(IE11, Windows Edge, FireFox, Chrome, Safari), No-Plugin 지원
+> * 멀티 OS, 브라우저, No-Plugin 지원
 > * 3차원 공간데이터 웹 개발자를 위한 다양한 Javascript 웹 API 지원
 > * 거리, 면적 체적 계산 등 기본적인 3차원 분석기능 제공
 > * 다양한 도시계획 시뮬레이션 및 분석 기능 제공
