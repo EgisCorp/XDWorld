@@ -1,7 +1,7 @@
 [![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
 ### Developers  -  http://www.egiskorea.com/
 
-### Documentation  -  http://api.xdmap.com/Manual
+### Documentation  - https://egiscorp.gitbook.io/xdworld-webgl-manual/~/revisions/5YEluzerr0syZ8t3gnTx/introduce/introduce
 
 ### Demos & Sandbox  -  http://sandbox.dtwincloud.com/code/main.do?id=start
 
