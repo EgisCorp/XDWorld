@@ -9,7 +9,7 @@
 > * Opera
 
 ### Documentation
-> http://api.xdmap.com/Manual
+> https://egiscorp.gitbook.io/xdworld-webgl-manual
 
 ### 2022년 04월 06일 개발 log
 > * SKY MAP 기능 수정.
