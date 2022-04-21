@@ -27,8 +27,8 @@
 > * 클래스 JSLibraryObject 전 API
 > * 클래스 JSBuildingManager 전 API
 
-### Latest Release(v.1.36)
-> https://github.com/EgisCorp/XDWorld/tree/v_1.36.6
+### Latest Release(v.1.37)
+> https://github.com/EgisCorp/XDWorld/tree/v_1.37.2
 
 ### Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
