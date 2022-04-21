@@ -1,6 +1,3 @@
-### Lastest release
-> * v_0.1.36 Released (2022-04-14)
-
 ### System requirements
 > HTML5 지원 브라우저 환경
 > * Google Chrome
