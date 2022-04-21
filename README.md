@@ -28,7 +28,7 @@
 > * 클래스 JSBuildingManager 전 API
 
 ### Latest Release(v.1.37)
-> https://github.com/EgisCorp/XDWorld/tree/v_1.37.2
+> https://github.com/EgisCorp/XDWorld/tree/main/Release/v_1.37.2
 
 ### Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
