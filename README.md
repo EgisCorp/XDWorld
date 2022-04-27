@@ -44,11 +44,6 @@
 > 변경된 API 샘플 소스는 샌드박스를 참조해 주시면 감사하겠습니다.
 > * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
->
-> ### 2022년 3월 25일
-> 아래 클래스 API는 더 이상 활용되지 않는 관계로 2022년 04월 25일 업데이트 이후 사용이 불가함을 알려드립니다.
-> * 클래스 JSLibraryObject 전 API
-> * 클래스 JSBuildingManager 전 API
 
 ## 업데이트
 > ### 2022년 4월 15일
@@ -59,3 +54,5 @@
 > ### 2022년 4월 22일
 > * WMTS, 배경지도 오류 수정
 > * WMTS 하이브리드 기능 추가
+> ### 2022년 4월 27일
+> * JSLibraryObject, JSBuildingManager 클래스 API 삭제
