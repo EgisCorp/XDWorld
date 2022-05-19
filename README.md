@@ -56,3 +56,5 @@
 > * WMTS 하이브리드 기능 추가
 > ### 2022년 4월 27일
 > * JSLibraryObject, JSBuildingManager 클래스 API 삭제
+> ### 2022년 5월 19일
+> * 배경지도 변경 오류 수정
