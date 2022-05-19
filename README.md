@@ -58,3 +58,5 @@
 > * JSLibraryObject, JSBuildingManager 클래스 API 삭제
 > ### 2022년 5월 19일
 > * 배경지도 변경 오류 수정
+> * 선택 기능 추가
+> * JSMap addSelectObject 기능추가
