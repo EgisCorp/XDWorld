@@ -46,17 +46,19 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
-> ### 2022년 4월 15일
-> * Real3D 3DS export 시 메시 방향 지정 오류 수정
-> ### 2022년 4월 21일
-> * Real3D 객체 페이스 색상 가시화 모듈 수정
-> * JSLineString 좌표 반환 기능 오류 수정
-> ### 2022년 4월 22일
-> * WMTS, 배경지도 오류 수정
-> * WMTS 하이브리드 기능 추가
-> ### 2022년 4월 27일
-> * JSLibraryObject, JSBuildingManager 클래스 API 삭제
 > ### 2022년 5월 19일
 > * 배경지도 변경 오류 수정
 > * 선택 기능 추가
 > * JSMap addSelectObject 기능추가
+> ### 2022년 4월 27일
+> * JSLibraryObject, JSBuildingManager 클래스 API 삭제
+> ### 2022년 4월 22일
+> * WMTS, 배경지도 오류 수정
+> * WMTS 하이브리드 기능 추가
+> ### 2022년 4월 21일
+> * Real3D 객체 페이스 색상 가시화 모듈 수정
+> * JSLineString 좌표 반환 기능 오류 수정 
+> ### 2022년 4월 15일
+> * Real3D 3DS export 시 메시 방향 지정 오류 수정
+
+
