@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 6월 8일
+> [업데이트 내용](https://github.com/EgisCorp/XDWorld/wiki/Version-1.37.6-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%97%AD)
 > ### 2022년 5월 19일
 > * 배경지도 변경 오류 수정
 > * 선택 기능 추가
