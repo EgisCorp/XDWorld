@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 6월 20일
+> * Tile LOD Object 프로토콜 예외처리 추가
 > ### 2022년 6월 8일
 > * 포인트 클라우드 실시간 높이 조절 기능 구현(Tile LOD Object와 동일)
 > * Tile LOD Object 가시화 모듈 수정
