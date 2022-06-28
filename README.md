@@ -3,7 +3,7 @@
 
 ### Documentation  - https://egiscorp.gitbook.io/xdworld-webgl-manual
 
-### Demos & Sandbox  -  https://sandbox.dtwincloud.com
+### Demos & Sandbox  -  http://sandbox.dtwincloud.com
 
 # Introduction
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
