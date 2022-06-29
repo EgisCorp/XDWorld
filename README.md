@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 6월 29일
+> * XDO 포맷 파일 기반 고스트심볼 import 및 export API 추가
 > ### 2022년 6월 20일
 > * Tile LOD Object 프로토콜 예외처리 추가
 > ### 2022년 6월 8일
