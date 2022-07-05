@@ -46,6 +46,9 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 7월 05일
+> * 리소스 URL 설정 API 추가
+> * 입력된 영역과 객체의 영역 충돌 체크 API 추가
 > ### 2022년 6월 29일
 > * XDO 포맷 파일 기반 고스트심볼 import 및 export API 추가
 > ### 2022년 6월 20일
