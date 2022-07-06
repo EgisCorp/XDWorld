@@ -46,6 +46,9 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 7월 06일
+> * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
+> * 그림자 분석, 비디오 텍스쳐 기능 오류 수정
 > ### 2022년 7월 05일
 > * 리소스 URL 설정 API 추가
 > * 맵컨트롤을 사용하기 위해서는 [리소스 다운로드](https://github.com/EgisCorp/XDWorld/tree/main/resource/MapCtrl) 해주시기 바랍니다.
