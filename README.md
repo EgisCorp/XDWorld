@@ -46,7 +46,10 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
-> ### 2022년 7월 06일
+> ### 2022년 7월 07일 (1.37.13)
+> * 텍스쳐가 없는 Real3d의 색상 변경 API SetDefineMeshColorByObjectKey 미적용 오류 수정
+> * JSGhostSymbol의 API exportFileFormat에 XDO 텍스쳐 이미지 파일 지정 기능 추가
+> ### 2022년 7월 06일 (1.37.12)
 > * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
 > * 그림자 분석, 비디오 텍스쳐 기능 오류 수정
 > ### 2022년 7월 05일
