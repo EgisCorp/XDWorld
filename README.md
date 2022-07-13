@@ -46,6 +46,13 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 7월 13일 (1.37.15)
+> * 레이어 별로 건물 심플 모드 설정이 가능한 JSLayer 프로퍼티 simple_real3d 추가
+> ```javascript
+>var layerList = new Module.JSLayerList(false);
+>layer = layerList.nameAtLayer("building_layer_name");
+>layer.simple_real3d = true;
+> ```
 > ### 2022년 7월 08일 (1.37.14)
 > * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
 > ### 2022년 7월 07일 (1.37.13)
