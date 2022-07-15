@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 7월 14일 (1.37.15)
+> * JSMap의 setSimpleMode API 오류 수정
 > ### 2022년 7월 13일 (1.37.15)
 > * 레이어 별로 건물 심플 모드 설정이 가능한 JSLayer 프로퍼티 simple_real3d 추가
 > ```javascript
