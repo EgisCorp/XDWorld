@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 02일 (1.37.18)
+> * 실시간 cctv 관제 편집기능 추가
 > ### 2022년 7월 26일 (1.37.17)
 > * 가시권 분석 이슈 처리([이슈 189](https://github.com/EgisCorp/XDWorld/issues/189))
 > ### 2022년 7월 19일 (1.37.16)
