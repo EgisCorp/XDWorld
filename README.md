@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 04일 (1.37.19)
+> * 건물 객첵 key List 기반 색상 변경 API 추가
 > ### 2022년 8월 02일 (1.37.18)
 > * 실시간 cctv 관제 편집기능 추가
 > ### 2022년 7월 26일 (1.37.17)
