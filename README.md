@@ -47,7 +47,7 @@
 
 ## 업데이트
 > ### 2022년 8월 04일 (1.37.20)
-> * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가
+> * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가([이슈 194](https://github.com/EgisCorp/XDWorld/issues/194))
 > ```javascript
 >var object = Module.createGhostSymbol("MY_OBJECT");
 >object.zBufferOff = true;
