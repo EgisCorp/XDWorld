@@ -46,6 +46,12 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 04일 (1.37.20)
+> * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가
+> ```javascript
+>var object = Module.createGhostSymbol("MY_OBJECT");
+>object.zBufferOff = true;
+> ```
 > ### 2022년 8월 04일 (1.37.19)
 > * 건물 객첵 key List 기반 색상 변경 API 추가
 > ### 2022년 8월 02일 (1.37.18)
