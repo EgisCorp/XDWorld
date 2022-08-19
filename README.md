@@ -46,6 +46,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 19일 (1.37.21)
+> * setDescription, getDescription uft16 지원([이슈 197](https://github.com/EgisCorp/XDWorld/issues/197))
 > ### 2022년 8월 04일 (1.37.20)
 > * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가([이슈 194](https://github.com/EgisCorp/XDWorld/issues/194))
 > ```javascript
