@@ -46,6 +46,19 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 23일 (1.37.22)
+> * 터치 이동/회전/줌인&아웃 사용 설정 프로퍼티 추가([이슈 200](https://github.com/EgisCorp/XDWorld/issues/200))
+> ```javascript
+>// 터치 이동 활성화(true), 비활성화(false)
+>Module.getControl().touchPanEnable = true; 
+>
+>// 터치 회전 활성화(true), 비활성화(false)
+>Module.getControl().touchRotateEnable = true; 
+>
+>// 터치 줌 인&아웃 활성화(true), 비활성화(false)
+>Module.getControl().touchZoomEnable = true; 
+>
+> ```
 > ### 2022년 8월 19일 (1.37.21)
 > * setDescription, getDescription uft16 지원([이슈 197](https://github.com/EgisCorp/XDWorld/issues/197))
 > ### 2022년 8월 04일 (1.37.20)
