@@ -22,6 +22,12 @@
 > GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ## Notice
+> ### 2022년 8월 24일
+> 아래 API에 대한 callback 함수 삭제
+> * 매 프레임마다 callback 불필요하고 API 자체에서 에러메시지 반환되기 때문에 삭제
+> * CJSAnalysis::createVideoTexture API
+> * CJSFigure::setBoardVideoTexture API
+>
 > ### 2022년 4월 11일
 > 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
 > * SetPlanetImageryType API 
@@ -46,6 +52,10 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 8월 24일 (1.37.23)
+> * 비디오 텍스쳐 메모리 누수 관련 오류 수정
+> * ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
+> * ([전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard))
 > ### 2022년 8월 23일 (1.37.22)
 > * 터치 이동/회전/줌인&아웃 사용 설정 프로퍼티 추가([이슈 200](https://github.com/EgisCorp/XDWorld/issues/200))
 > ```javascript
