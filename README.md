@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 9월 02일 (1.37.26)
+> * 이슈 #203 해결
 > ### 2022년 8월 24일 (1.37.23)
 > * 비디오 텍스쳐 메모리 누수 관련 오류 수정
 > * ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
