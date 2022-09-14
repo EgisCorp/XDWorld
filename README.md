@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 9월 14일 (1.37.27)
+> * JSColorPolygon의 마우스 피킹 기능 추가
 > ### 2022년 9월 02일 (1.37.26)
 > * ([이슈#203](https://github.com/EgisCorp/XDWorld/issues/203)) 해결
 > 
