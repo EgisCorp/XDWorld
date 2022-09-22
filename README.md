@@ -57,6 +57,14 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 9월 22일 (1.37.28)
+> * 버텍스 및 인덱스가 활용 된 JSColorPolygon의 마우스 피킹 기능 수정
+> * 3D POI 텍스트의 문자 셋 지정 프로퍼티 추가
+> ```javascript
+>var layerList = new Module.JSLayerList(false);
+>var layer = layerList.nameAtLayer("POI 텍스트 타일 레이어 이름");
+>layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
+> ```
 > ### 2022년 9월 14일 (1.37.27)
 > * JSColorPolygon의 마우스 피킹 기능 추가
 > ### 2022년 9월 02일 (1.37.26)
