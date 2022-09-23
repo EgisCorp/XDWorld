@@ -58,6 +58,7 @@
 
 ## 업데이트
 > ### 2022년 9월 22일 (1.37.29)
+> * 메뉴얼 업데이트 JSTerrain, JSMath
 > * Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
 >   * 그리드 생성 기능 
 > * Module.getMath().calculationSlopeAnalysis("parameter") 추가
