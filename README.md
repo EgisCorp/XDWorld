@@ -57,6 +57,11 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 9월 22일 (1.37.29)
+> * Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
+>   * 그리드 생성 기능 
+> * Module.getMath().calculationSlopeAnalysis("parameter") 추가
+>   * [3 * 3] 배열값을 통한 경사 분석 기능
 > ### 2022년 9월 22일 (1.37.28)
 > * 비디오 텍스쳐 Zoom In/Out 기능 추가
 >
