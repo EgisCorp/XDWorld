@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 9월 26일 (1.37.30)
+> * JSBarGraph3D 텍스트 텍스쳐 렌더링 오류 수정
 > ### 2022년 9월 23일 (1.37.29)
 > * 메뉴얼 업데이트 JSTerrain, JSMath
 > * Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
