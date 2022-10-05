@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 10월 5일 (1.37.32)
+> * JSFlowPolygon/JSPolygon 오브젝트 선택 오류 수정
 > ### 2022년 9월 30일 (1.37.31)
 > * wfs poi, poi 인코딩 문제 수정
 > ### 2022년 9월 26일 (1.37.30)
