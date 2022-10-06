@@ -57,6 +57,9 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 10월 6일 (1.37.33)
+> * JSFlowPolygon 좌표 정보 반환 프로퍼티 'coordinates' 추가
+> * 포인트-라인 간 최단 거리 계산 API getClosestPositionOnPath 추가
 > ### 2022년 10월 5일 (1.37.32)
 > * JSFlowPolygon/JSPolygon 오브젝트 선택 오류 수정
 > * 바람길 기능 수정
