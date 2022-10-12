@@ -57,6 +57,9 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 10월 12일 (1.37.35)
+> * JSLayer에 횡단면 출력 기능 사용 여부 설정 API setReal3dCutUse 추가 
+> * JSLayer에 횡단면 출력 기능 높이 설정 API setReal3dCutHeight 추가 
 > ### 2022년 10월 6일 (1.37.33)
 > * JSFlowPolygon 좌표 정보 반환 프로퍼티 'coordinates' 추가
 > * 포인트-라인 간 최단 거리 계산 API getClosestPositionOnPath 추가
