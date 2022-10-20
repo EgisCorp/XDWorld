@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 10월 20일 (1.37.36)
+> * 마우스 선택 모드에서 오브젝트가 선택되지 않는 현상 수정
 > ### 2022년 10월 12일 (1.37.35)
 > * JSLayer에 횡단면 출력 기능 사용 여부 설정 API setReal3dCutUse 추가 
 > * JSLayer에 횡단면 출력 기능 높이 설정 API setReal3dCutHeight 추가 
