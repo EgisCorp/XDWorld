@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 10월 26일 (1.37.38)
+> * 객체 Fill, Stroke 모드 오류 수정
 > ### 2022년 10월 21일 (1.37.37)
 > * RTT Line 투명값 수정되지 않는 현상 수정
 > ### 2022년 10월 20일 (1.37.36)
