@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 11월 25일 (1.37.41)
+> * 지형그리드 생성 모듈 수정
 > ### 2022년 11월 18일 (1.37.40)
 > * HTMLObject 정렬 기능에 따른 위치 조정 기능 추가
 > * Real3D 단면도 출력 API 추가
