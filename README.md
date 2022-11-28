@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 11월 28일 (1.37.42)
+> * ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
 > ### 2022년 11월 25일 (1.37.41)
 > * 지형그리드 생성 모듈 수정
 > ### 2022년 11월 18일 (1.37.40)
