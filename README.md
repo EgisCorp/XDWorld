@@ -57,6 +57,8 @@
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ## 업데이트
+> ### 2022년 12월 1일 (1.37.43)
+> * 카메라 회전 예외 처리 추가
 > ### 2022년 11월 28일 (1.37.42)
 > * ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
 > ### 2022년 11월 25일 (1.37.41)
