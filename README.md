@@ -59,39 +59,115 @@
 ## 업데이트
 > ### 2022년 12월 1일 (1.37.43)
 > * 카메라 회전 예외 처리 추가
+>
+><details><summary>1.37.42</summary>
+><p>
+>
 > ### 2022년 11월 28일 (1.37.42)
 > * ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
+></p>
+></details>
+>
+><details><summary>1.37.41</summary>
+><p>
+>
 > ### 2022년 11월 25일 (1.37.41)
 > * 지형그리드 생성 모듈 수정
+></p>
+></details>
+>
+><details><summary>1.37.40</summary>
+><p>
+>
 > ### 2022년 11월 18일 (1.37.40)
 > * HTMLObject 정렬 기능에 따른 위치 조정 기능 추가
 > * Real3D 단면도 출력 API 추가
 > * 카메라 지하 이동 시 고정 배경 색상 지정 부분 수정
 > * 2D 바 그래프 소수점 자릿수 설정 기능 추가
 > * 값이 0인 2D 바 그래프 수치 텍스트 표시 
+></p>
+></details>
+>
+><details><summary>1.37.39</summary>
+><p>
+>
 > ### 2022년 10월 31일 (1.37.39)
 > * 객체 투명도 편집 오류 수정
+></p>
+></details>
+>
+><details><summary>1.37.38</summary>
+><p>
+>
 > ### 2022년 10월 26일 (1.37.38)
 > * 객체 Fill, Stroke 모드 오류 수정
+></p>
+></details>
+>
+><details><summary>1.37.37</summary>
+><p>
+>
 > ### 2022년 10월 21일 (1.37.37)
 > * RTT Line 투명값 수정되지 않는 현상 수정
+></p>
+></details>
+>
+><details><summary>1.37.36</summary>
+><p>
+>
 > ### 2022년 10월 20일 (1.37.36)
 > * 마우스 선택 모드에서 오브젝트가 선택되지 않는 현상 수정
+></p>
+></details>
+>
+><details><summary>1.37.35</summary>
+><p>
+>
 > ### 2022년 10월 12일 (1.37.35)
 > * JSLayer에 횡단면 출력 기능 사용 여부 설정 API setReal3dCutUse 추가 
 > * JSLayer에 횡단면 출력 기능 높이 설정 API setReal3dCutHeight 추가 
+></p>
+></details>
+>
+><details><summary>1.37.33</summary>
+><p>
+>
 > ### 2022년 10월 6일 (1.37.33)
 > * JSFlowPolygon 좌표 정보 반환 프로퍼티 'coordinates' 추가
 > * 포인트-라인 간 최단 거리 계산 API getClosestPositionOnPath 추가
+></p>
+></details>
+>
+><details><summary>1.37.32</summary>
+><p>
+>
 > ### 2022년 10월 5일 (1.37.32)
 > * JSFlowPolygon/JSPolygon 오브젝트 선택 오류 수정
 > * 바람길 기능 수정
 >   * 빌딩관련 NoData 값 변경( 999 -> 0 )
 >   * 토지피복도 관련 기능 추가
+></p>
+></details>
+>
+><details><summary>1.37.31</summary>
+><p>
+>
 > ### 2022년 9월 30일 (1.37.31)
 > * wfs poi, poi 인코딩 문제 수정
+></p>
+></details>
+>
+><details><summary>1.37.30</summary>
+><p>
+>
 > ### 2022년 9월 26일 (1.37.30)
 > * JSBarGraph3D 텍스트 텍스쳐 렌더링 오류 수정
+></p>
+></details>
+>
+><details><summary>1.37.29</summary>
+><p>
+>
 > ### 2022년 9월 23일 (1.37.29)
 > * 메뉴얼 업데이트 JSTerrain, JSMath
 > * Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
@@ -99,6 +175,12 @@
 > * Module.getMath().calculationSlopeAnalysis("parameter") 추가
 >   * [3 * 3] 배열값을 통한 경사 분석 기능
 > * Module.getMap().ScreenToMapPointEX API 실행 시 피킹점이 없는 경우 null 반환하도록 루틴 추가([이슈#211](https://github.com/EgisCorp/XDWorld/issues/211))
+></p>
+></details>
+>
+><details><summary>1.37.28</summary>
+><p>
+>
 > ### 2022년 9월 22일 (1.37.28)
 > * 비디오 텍스쳐 Zoom In/Out 기능 추가
 >
@@ -109,15 +191,38 @@
 >var layer = layerList.nameAtLayer("POI 텍스트 타일 레이어 이름");
 >layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
 > ```
+></p>
+></details>
+>
+><details><summary>1.37.27</summary>
+><p>
+>
 > ### 2022년 9월 14일 (1.37.27)
 > * JSColorPolygon의 마우스 피킹 기능 추가
+></p>
+></details>
+>
+><details><summary>1.37.26</summary>
+><p>
+>
 > ### 2022년 9월 02일 (1.37.26)
 > * ([이슈#203](https://github.com/EgisCorp/XDWorld/issues/203)) 해결
-> 
+></p>
+></details>
+>
+><details><summary>1.37.23</summary>
+><p>
+>
 > ### 2022년 8월 24일 (1.37.23)
 > * 비디오 텍스쳐 메모리 누수 관련 오류 수정
 > * ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
 > * ([전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard))
+></p>
+></details>
+>
+><details><summary>1.37.22</summary>
+><p>
+>
 > ### 2022년 8월 23일 (1.37.22)
 > * 터치 이동/회전/줌인&아웃 사용 설정 프로퍼티 추가([이슈 200](https://github.com/EgisCorp/XDWorld/issues/200))
 > ```javascript
@@ -131,25 +236,68 @@
 >Module.getControl().touchZoomEnable = true; 
 >
 > ```
+></p>
+>></details>
+>
+><details><summary>1.37.21</summary>
+><p>
+>
 > ### 2022년 8월 19일 (1.37.21)
 > * setDescription, getDescription uft16 지원([이슈 197](https://github.com/EgisCorp/XDWorld/issues/197))
+></p>
+></details>
+>
+><details><summary>1.37.20</summary>
+><p>
+>
 > ### 2022년 8월 04일 (1.37.20)
 > * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가([이슈 194](https://github.com/EgisCorp/XDWorld/issues/194))
 > ```javascript
 >var object = Module.createGhostSymbol("MY_OBJECT");
 >object.zBufferOff = true;
 > ```
+></p>
+></details>
+>
+><details><summary>1.37.19</summary>
+><p>
+>
 > ### 2022년 8월 04일 (1.37.19)
 > * 건물 객첵 key List 기반 색상 변경 API 추가
+></p>
+></details>
+>
+><details><summary>1.37.18</summary>
+><p>
+>
 > ### 2022년 8월 02일 (1.37.18)
 > * 실시간 cctv 관제 편집기능 추가
+></p>
+></details>
+>
+><details><summary>1.37.17</summary>
+><p>
+>
 > ### 2022년 7월 26일 (1.37.17)
 > * 가시권 분석 이슈 처리([이슈 189](https://github.com/EgisCorp/XDWorld/issues/189))
+></p>
+></details>
+>
+><details><summary>1.37.16</summary>
+><p>
+>
 > ### 2022년 7월 19일 (1.37.16)
 > * 입력된 영역과 객체의 영역 충돌 체크 조건 추가 (완전 포함, 조금이라도 포함)
 > * 라이브맵 1차 
-> ### 2022년 7월 14일 (1.37.15)
+>
+> ### 2022년 7월 14일 (1.37.16)
 > * JSMap의 setSimpleMode API 오류 수정
+></p>
+></details>
+>
+><details><summary>1.37.15</summary>
+><p>
+>
 > ### 2022년 7월 13일 (1.37.15)
 > * 레이어 별로 건물 심플 모드 설정이 가능한 JSLayer 프로퍼티 simple_real3d 추가
 > ```javascript
@@ -157,14 +305,38 @@
 >layer = layerList.nameAtLayer("building_layer_name");
 >layer.simple_real3d = true;
 > ```
+></p>
+></details>
+>
+><details><summary>1.37.14</summary>
+><p>
+>
 > ### 2022년 7월 08일 (1.37.14)
 > * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
+></p>
+></details>
+>
+><details><summary>1.37.13</summary>
+><p>
+>
 > ### 2022년 7월 07일 (1.37.13)
 > * 텍스쳐가 없는 Real3d의 색상 변경 API SetDefineMeshColorByObjectKey 미적용 오류 수정
 > * JSGhostSymbol의 API exportFileFormat에 XDO 텍스쳐 이미지 파일 지정 기능 추가
+></p>
+></details>
+>
+><details><summary>1.37.12</summary>
+><p>
+>
 > ### 2022년 7월 06일 (1.37.12)
 > * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
 > * 그림자 분석, 비디오 텍스쳐 기능 오류 수정
+></p>
+></details>
+>
+><details><summary>이전 버전 업데이트</summary>
+><p>
+>
 > ### 2022년 7월 05일
 > * 리소스 URL 설정 API 추가
 > * 맵컨트롤을 사용하기 위해서는 [리소스 다운로드](https://github.com/EgisCorp/XDWorld/tree/main/resource/MapCtrl) 해주시기 바랍니다.
@@ -191,5 +363,5 @@
 > * JSLineString 좌표 반환 기능 오류 수정 
 > ### 2022년 4월 15일
 > * Real3D 3DS export 시 메시 방향 지정 오류 수정
-
-
+></p>
+></details>
