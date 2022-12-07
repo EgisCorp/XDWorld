@@ -56,9 +56,132 @@
 > * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
-## 업데이트
+## 1.38.0 업데이트 (2022년 12월 7일)
+>### [새로 추가 된 API]
+>**1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API**
+>>**object pick(unsinged int screenX, unsigned int screenY)**
+>>* class : JSLayer
+>>* parameter
+>>    * screenX : 화면 x 좌표
+>>    * screenY : 화면 y 좌표
+>>* return : 피킹 지점이 없는 경우 null 반환, 피킹 지점이 있는 경우 충돌한 오브젝트 키와 위치 좌표 반환함
+>>* 참고 : (https://github.com/EgisCorp/XDWorld/issues/224)
+>
+>**2. JSObject 내 오브젝트 속성 정보 저장 및 반환 기능**
+>>**bool setProperty(string name, number/string value)**
+>>* class : JSObject
+>>* parameter
+>>    * name : 속성 구분 이름
+>>    * value : 속성 값 (문자, 숫자 정보만 저장 가능)
+>>* return : 설정 성공 여부
+>>
+>>**number/string getProperty(string name)**
+>>* class : JSObject
+>>* parameter
+>>    * name : 속성 구분 이름
+>>* return : 저장한 속성 값 (속성 값이 존재하지 않는 경우 null 반환)
+>
+>**3. Round 자동이동 위치 세그먼트 설정 프로퍼티 추가**
+>>* JSCamera 클래스 내 autoMoveRoundSegment 프로퍼티가 추가됨.
+>>* 기존 setAutoMoveRoundPositions API는 500개의 고정 된 이동 경로 점을 반환하였으나, autoMoveRoundSegment 파라미터를 통해 이동 경로 지점 수를 설정 가능하도록 수정됨.
+>>* 세그먼트 수가 적을 수록 지점 간격이 넓어져 이동 속도가 빨라짐.
+>
+>**4. 3D 그리드 애니메이션 메쉬의 기준 높이 설정 API 추가**
+>>**void setBaseAltitude(float fAlt)**
+>>* 지정된 해발고도를 기준높으로 3d 그리드 표현을 시작
+>>* class : JSGridAnal
+>>* parameter
+>>    * fAlt : 기준 높이 값
+>
+>**5. 그리드 범례 절대값 설정 API 추가**
+>>**void setLegendMode(int _nMode)**
+>>* class : JSGridAnal
+>>* parameter
+>>    * _nMode : 그리드 범례 절대값
+>>        * 0 : 상대값 (%) 적용
+>>        * 1 : 절대값 (val) 적용
+>>
+>>**bool setLegendJSON(object _options)**
+>>* class : JSGridAnal    
+>>* parameter
+>>    * _options : 설정 속성 값
+>>        * 입력형식 { legendMode : Number, legend : [ { val : Number, color : { a, r, g, b ] }, { val : Number, color : { a, r, g, b ] }, ...] }
+>>* setLegendMode 및 컬러테이블 설정
+>
+>**6. JSGridAnal 클래스 내 단일 시간 다중 분석 그리드 객체에 대한 병합기능 추가**
+>>**void openMultipleGridDataURL(string szURL, unsigned int nTime, unsigned int nStripSize, unsigned int nStripStart, unsigned int nStripEnd, unsigned char nDataType, unsigned char nMultipleCnt, unsigned char nMultipleIndex)**
+>>* class : JSGridAnal
+>>* parameter
+>>    * szURL : 데이터 요청 URL 
+>>    * nTime : 시간 인덱스 (0-base)
+>>    * nStripSize :  그리드 하나의 셀의 byte 크기
+>>    * nStripStart : 그리드 셀에서 데이터 인식 offset 시작 byte (0-base)
+>>    * nStripEnd : 그리드 셀에서 데이터 인식 offset 종료 byte (0-base), nStripEnd - nStripStart가 데이터 바이트 크기
+>>    * nDataType : 데이터 자료형 (0 : int, 1 : float, 2 : double)
+>>    * nMultipleCnt : 다중 중첩 수 
+>>    * nMultipleIndex : 다중 중첩 인덱스
+>>* 그리드 필드 하나에 연결된 모든 데이터 필드를 합산하여 표현
+>
+>**7. JSGridAnal 클래스 내 마우스 클릭시 격자 정보 콜백기능 추가**
+>>**void setMouseCallback(function _callback)**
+>>* 그리드 데이터 로드후 마우스 왼쪽버튼을 통한 버튼 업에서 지정된 콜백 호출
+>>* class : JSGridAnal
+>>* parameter
+>>    * _callback : 콜백 함수
+>>        * 콜백 반환 인자 : { longitude : Number, latitude : Number, idx : Number, idy : Number, value : Number , angle : Number }
+>
+>**8. JSGridAnal 클래스 내 격자 3D 라인 출력기능 추가**
+>>**void setGridLineVisible(boolean _visible)**
+>>* 그리드 라인 표현 여부 설정
+>>* class : JSGridAnal
+>>* parameter
+>>    * _visible : 가시화 설정 값
+>>
+>>**void setGridLineBaseAlt(float _fAltitude)**
+>>* 그리드 라인의 기준 표현 해발고도 설정
+>>* class : JSGridAnal
+>>* parameter
+>>    * _fAltitude : 기준 표현 해발고도
+>>
+>>**void setGridLineMaxDistance(float _fDistance)**
+>>* 그리드 라인의 최대 표현 해발고도, 최대표현부터 기준고도까지 거리별(%)로 알파 적용
+>>* class : JSGridAnal
+>>* parameter
+>>    * _fDistance : 그리드 라인의 최대 표현 해발고도
+>
+>**9. Canvas style left, top 옵션에 따른 마우스 위치 처리 기능 추가**
+>>**void ApplyCanvasPosition()**
+>>* Canvas style 변경 시 동기화 실행
+>>* Canvas 위치 변경에 따른 HTMLObject 위치 조정 적용
+>>* class : Module
+>
+>**10. JSColorGrid 투명도 조절 API 추가**
+>>**void setOpacity(float _opacity)**
+>>* class : JSColorGrid
+>>* parameter
+>>    * _opacity : 투명도 (0.0~1.0 사이 값 적용)
+>
+>**11. JSColorPolygon 투명도 조절 API 추가**
+>>**void setOpacity(float _opacity)**
+>>* class : JSColorPolygon
+>>* parameter
+>>    * _opacity : 투명도 (0.0~1.0 사이 값 적용)
+>
+>### [개선 된 기능]
+>>* 화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/230)
+>>* JSGridAnal 클래스에 단일 시간 분석 그리드 객체에 대한 표출기능 추가
+>>* 중복키 이벤트 처리 추가(https://github.com/EgisCorp/XDWorld/issues/218)
+>> * 화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정(https://github.com/EgisCorp/XDWorld/issues/230)
+>> * 마우스 클릭지점 이격 오류 수정
+
+## 이전 버전 업데이트
+><details><summary>1.37.43</summary>
+><p>
+>
 > ### 2022년 12월 1일 (1.37.43)
 > * 카메라 회전 예외 처리 추가
+></p>
+></details>
 >
 ><details><summary>1.37.42</summary>
 ><p>
