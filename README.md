@@ -79,8 +79,8 @@
 * wmts 하이브리드 로드 오류 수정
 
 ### [샌드박스]
-* 'DEM 경사 조정' 추가(https://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
-* '카메라 경로 가시화' 추가(https://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
+* 'DEM 경사 조정' 추가(http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
+* '카메라 경로 가시화' 추가(http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
 
 ## 이전 버전 업데이트
 
