@@ -56,6 +56,37 @@
  * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
+## 1.39.0 업데이트 (2022년 12월 7일)
+### [새로 추가 된 API]
+* void moveTarget(object options)
+  * 지정한 방향으로 타겟 오브젝트를 이동시킵니다.
+  * Class : JSTraceTarget
+  * Parameter
+      * options : 오브젝트 이동 방향 (front : 전진, back : 후진, left : 왼쪽, right : 오른쪽, up : 상승, down : 하강)
+  * Example
+      ``` javascript
+          trace.moveTarget({
+                 left : 0.1,
+                 front : 0.1,
+                 up : 0.5
+          });
+      ``` 
+* void unionTargetToTerrain()
+  * 오브젝트 위치를 지형과 결합시킵니다. 
+  * Class : JSTraceTarget
+  
+### [기능 개선]
+* wmts 하이브리드 로드 오류 수정
+
+### [샌드박스]
+* 'DEM 경사 조정' 추가(https://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
+* '카메라 경로 가시화' 추가(https://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
+
+## 이전 버전 업데이트
+
+<details><summary>1.38.0</summary>
+<p>
+
 ## 1.38.0 업데이트 (2022년 12월 7일)
 ### [새로 추가 된 API]
 **1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API**
@@ -173,7 +204,10 @@
 >* 중복키 이벤트 처리 추가(https://github.com/EgisCorp/XDWorld/issues/218)
 > * 화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정(https://github.com/EgisCorp/XDWorld/issues/230)
 > * 마우스 클릭지점 이격 오류 수정
-## 이전 버전 업데이트
+
+</p>
+</details>
+
 <details><summary>1.37.43</summary>
 <p>
 
