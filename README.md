@@ -59,7 +59,7 @@
 ## 1.39.0 업데이트 (2022년 12월 14일)
 ### [새로 추가 된 API]
 * void moveTarget(object options)
-  * 지정한 방향으로 타겟 오브젝트를 이동시킵니다.
+  * 지정한 방향으로 타겟 오브젝트를 이동시킵니다. (이슈 https://github.com/EgisCorp/XDWorld/issues/236)
   * Class : JSTraceTarget
   * Parameter
       * options : 오브젝트 이동 방향 (front : 전진, back : 후진, left : 왼쪽, right : 오른쪽, up : 상승, down : 하강)
