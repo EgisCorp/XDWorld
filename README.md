@@ -56,7 +56,7 @@
  * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
-## 1.39.0 업데이트 (2022년 12월 7일)
+## 1.39.0 업데이트 (2022년 12월 14일)
 ### [새로 추가 된 API]
 * void moveTarget(object options)
   * 지정한 방향으로 타겟 오브젝트를 이동시킵니다.
@@ -87,7 +87,7 @@
 <details><summary>1.38.0</summary>
 <p>
 
-## 1.38.0 업데이트 (2022년 12월 14일)
+## 1.38.0 업데이트 (2022년 12월 7일)
 ### [새로 추가 된 API]
 **1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API**
 >**object pick(unsinged int screenX, unsigned int screenY)**
