@@ -56,6 +56,39 @@
  * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
+## 1.40.0 업데이트 (2022년 12월 21일)
+### [새로 추가 된 API]
+* bool setModelFaceReflect(string id, unsigned int face_index, float reflect)
+  * 고스트 심볼 모델 face의 반사 효과 정도를 지정합니다.
+  * Class : JSGhostSymbolMap
+  * Parameter
+      * id : 모델 ID
+      * face_index : 효과를 적용할 face 인덱스
+      * reflect : 반사 효과 정도 (0.0~1.0 사이 값) 
+  * Example
+      * http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect
+* new Module.JSColor(string _hexCode)
+  * Hex code 문자열로 색상 값을 초기화 합니다.
+  * RGB(#RRGGBB) ARGB(#AARRGGBB) 형태로 설정 가능
+  * Parameter
+      * hexCode: 색상 설정 코드 문자열
+  * Example
+       ```
+       var colorRGB = new Module.JSColor("#FFDB32");
+       var colorARGB = new Module.JSColor("#AAFFDB32");
+       ```
+
+### [기능 개선]
+* 엔진 로드 시 출력되는 콘솔 메시지 간략화
+
+### [샌드박스]
+* '반사 효과' 추가(http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect)
+
+## 이전 버전 업데이트
+
+<details><summary>1.39.0</summary>
+<p>
+
 ## 1.39.0 업데이트 (2022년 12월 14일)
 ### [새로 추가 된 API]
 * void moveTarget(object options)
@@ -81,8 +114,8 @@
 ### [샌드박스]
 * 'DEM 경사 조정' 추가(http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
 * '카메라 경로 가시화' 추가(http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
-
-## 이전 버전 업데이트
+</p>
+</details>
 
 <details><summary>1.38.0</summary>
 <p>
