@@ -56,6 +56,93 @@
  * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
+## 1.41.0 업데이트 (2022년 12월 28일)
+### [새로 추가 된 기능]
+* 색상 상수 추가
+  * Module.COLOR_{colorNames} 형식으로 색상 이름을 사용하여 값을 반환합니다.
+  ``` javascript
+  // style.setFillColor(new Module.JSColor(255, 255, 240));
+  style.setFillColor(Module.COLOR_IVORY);
+  ```
+* 레이어 리스트 반환
+  * 레이어 리스트를 매번 생성하지 않고 Module API를 통해 반환 가능
+  * true, false로 구분하던 레이어 타입 설정 방식을 API 명칭으로 구분 가능하도록 개선
+  * 타일 서비스 레이어
+    * Before
+      ``` javascript
+      var serviceLayerList = new Module.JSLayerList(false);
+      Module.XDEMapCreateLayer(...);
+      ```
+    * After
+      ``` javascript
+      Module.getTileLayerList().createXDServerLayer({...});
+      ```
+  * 오브젝트 레이어
+    * Before
+      ``` javascript
+      var objectLayerList = new Module.JSLayerList(true);
+      objectLayerList.createLayer(...);
+      ```
+    * After
+      ``` javascript
+      Module.getObjectLayerList().createObjectLayer({...});
+      ```
+* 레이어 생성 API 개선
+  * 타일 레이어 생성 XDEMapCreateLayer API의 파라미터가 많아 사용이 불편한 점 보완
+  * 레이어 생성 시 옵션 값은 선택적으로 적용할 수 있도록 보완
+  * 타일 서비스 레이어
+    * Before
+      ``` javascript
+      var serviceLayerList = new Module.JSLayerList(false);
+      Module.XDEMapCreateLayer("facility_build", "http://xdworld.vworld.kr:8080/", 8080, true, true, false, 9, 0, 15);
+      ```
+    * After
+      ``` javascript
+      Module.getTileLayerList().createXDServerLayer({
+          name : "facility_build",                  // 필수
+          url : "http://xdworld.vworld.kr:8080",    // 필수
+          type : Module.TILE_LAYER_TYPE_REAL3D,     // 필수
+          visible : false,                          // 옵션 (default : true)
+          selectable : false,                       // 옵션 (default : true)
+          minLevel : 10,                            // 옵션 (default : 0)
+          maxLevel : 14                             // 옵션 (default : 15)
+      });
+      ```
+  * 오브젝트 레이어
+    * Before
+      ``` javascript
+      var objectLayerList = new Module.JSLayerList(true);
+      var layer = objectLayerList .createLayer("layer", Module.ELT_3DPOINT);
+      layer.setMinDistance(100.0);
+      layer.setMaxDistance(10000.0);
+      ```
+    * After
+      ``` javascript
+      Module.getObjectLayerList().createObjectLayer({
+          name : "facility_build",                  // 필수
+          type : Module.ELT_3DPOINT,                // 필수
+          visible : false,                          // 옵션 (default : true)
+          selectable : false,                       // 옵션 (default : true)
+          minDistance: 100.0,                       // 옵션 (default : 0.0)
+          maxDistance: 1000.0                       // 옵션 (default : 3000.0)
+      });
+      ```
+* 타일 레이어 타입 상수 추가
+  * Module.TILE_LAYER_TYPE_{typeName} 형식으로 색상 이름을 사용하여 값을 반환합니다.
+  ``` javascript
+  Module.TILE_LAYER_TYPE_REAL3D
+  ```
+* 마우스 모드 MML_SELECT_CIRCLE 의 반경 선택 기능 추가
+### [오류 수정]
+* 오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/247)
+* 셰이더 warning 메시지 제거
+* 건물 심플 모드 렌더링 예외처리 추가
+
+## 이전 버전 업데이트
+
+<details><summary>1.40.0</summary>
+<p>
+
 ## 1.40.0 업데이트 (2022년 12월 21일)
 ### [새로 추가 된 API]
 * bool setModelFaceReflect(string id, unsigned int face_index, float reflect)
@@ -83,8 +170,8 @@
 
 ### [샌드박스]
 * '반사 효과' 추가(http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect)
-
-## 이전 버전 업데이트
+</p>
+</details>
 
 <details><summary>1.39.0</summary>
 <p>
