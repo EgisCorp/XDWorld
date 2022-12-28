@@ -134,7 +134,7 @@
   ```
 * 마우스 모드 MML_SELECT_CIRCLE 의 반경 선택 기능 추가
 ### [오류 수정]
-* 오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정
+* 오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/247)
 * 셰이더 warning 메시지 제거
 * 건물 심플 모드 렌더링 예외처리 추가
 
