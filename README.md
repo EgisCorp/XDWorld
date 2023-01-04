@@ -33,7 +33,7 @@
  * CJSAnalysis::createVideoTexture API
  * CJSFigure::setBoardVideoTexture API
 
-## 1.41.0 업데이트 (2022년 12월 28일)
+## 1.42.0 업데이트 (2023년 1월 4일)
 ### [개선 된 기능]
  * 엔진 초기 로드 시간 단축 및 경량화
  * MapBox, ArcMap 요청 URL 업데이트
