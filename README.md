@@ -33,28 +33,22 @@
  * CJSAnalysis::createVideoTexture API
  * CJSFigure::setBoardVideoTexture API
 
-### 2022년 4월 11일
-#### 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
- * SetPlanetImageryType API 
- * changeBaseMap API
- * clearBaseMap API
- * setBaseMapOption API
- * getBaseMapOption API
+## 1.41.0 업데이트 (2022년 12월 28일)
+### [개선 된 기능]
+ * 엔진 초기 로드 시간 단축 및 경량화
+ * MapBox, ArcMap 요청 URL 업데이트
+### [삭제된 API]
+* 2022년 4월 11일 Notice에 따라, 아래 API는 더 이상 활용되지 않으므로 삭제되었습니다.
+  * SetPlanetImageryType
+  * changeBaseMap
+  * clearBaseMap
+  * setBaseMapOption
+  * getBaseMapOption
+ 
+## 이전 버전 업데이트
 
-#### 사용 불가 API 대체 API 항목 정리
- * Module.GoogleMap();
- * Module.ArcMap();
- * Module.BingMap();
- * Module.DaumMap();
- * Module.MapBox();
- * Module.NaverMap();
- * Module.OpenStreetMap();
- * Module.SKYMap();
- * Module.WMTS();
-
-#### 변경된 API 샘플 소스는 샌드박스를 참조해 주시면 감사하겠습니다.
- * [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
- * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
+<details><summary>1.41.0</summary>
+<p>
 
 ## 1.41.0 업데이트 (2022년 12월 28일)
 ### [새로 추가 된 기능]
@@ -137,8 +131,8 @@
 * 오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/247)
 * 셰이더 warning 메시지 제거
 * 건물 심플 모드 렌더링 예외처리 추가
-
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.40.0</summary>
 <p>
