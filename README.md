@@ -33,6 +33,10 @@
  * CJSAnalysis::createVideoTexture API
  * CJSFigure::setBoardVideoTexture API
 
+## 1.42.1 Hotfix 업데이트 (2023년 1월 6일)
+### [오류 수정]
+ * JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
+
 ## 1.42.0 업데이트 (2023년 1월 4일)
 ### [개선 된 기능]
  * 엔진 초기 로드 시간 단축 및 경량화
