@@ -21,10 +21,82 @@
 ## 적용분야
  * GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-## Notice
+## 1.43.0 업데이트 (2023년 1월 11일)
+### [추가 된 기능]
+#### 1. 지도 생성 초기에 호출되는 초기화 API Module.Start를 Module.initialize 로 개선
+  * 기존 Start와 변경된 점
+    * 기존 Start API는 canvas를 매칭하여 canvas에 지도를 렌더링 하였으나, 개선 된 initialize API 에서는 div를 매칭하여 div 내부에 지도 canvas를 자동으로 생성하도록 변경되었습니다.
+    * div로 지도 화면을 매칭하는 경우 아래와 같은 장점이 있습니다.
+      * 별도 canvas를 만드는 과정이 생략됨.
+      * 마우스 클릭 시 이격 현상이 일어나는 것을 방지함.
+      *  HTML Div Object 관리가 용이합.
+    * 기존 Start API는 화면의 가로, 세로 크기만 설정이 가능하였으나, initialize API에서는 div 뿐만 아니라 canvas id, 지형 URL 설정 등 복합적인 옵션 적용이 가능하도록 개선되었습니다
+    * Module.Resize API 실행 시 종전에는 canvas 크기에 뷰포트를 맞추어 변경하였으나, div로 설정 시 div 크기에 맞추어 뷰포트가 설정됩니다.
+  * 기존 코드와 비교
+    * Module.Start API 사용 
+      ```javascript
+      // Module 설정
+      var Module = {
+          // 필요한 Module 옵션
+          postRun: [ function () { "기능 초기화" } ],
+          canvas: (function () {
+              var canvas = document.createElement("canvas");
+              canvas.id = "canvas";
+              canvas.width = "calc(100%)";
+              canvas.height = "100%";
+              canvas.style.position = "fixed";
+              canvas.style.top = "0px";
+              canvas.style.left = "0px";
+              canvas.addEventListener("contextmenu", function (e) {
+                  e.preventDefault();
+              });
+              document.body.appendChild(canvas);
+              return canvas;
+          })(),
+      };
+       // 지도 초기화
+      Module.Start(window.innerWidth, window.innerHeight - 200);
+      ```
+    * Module.initialize API 사용 
+      ```javascript
+      // HTML 설정
+      <div id="container" style="position: fixed; width: 100%; height: 100%; z-index: 0"></div>
+    
+      // Module 설정
+      var Module = {
+          // 필요한 Module 옵션
+          postRun: [ function () { "기능 초기화" } ],
+      };
+     
+      // 지도 초기화
+      let container = document.getElementById("container");
+      Module.initialize({
+          container: container,
+      });
+      ```
+    * initialize API의 파라미터 태그 상세 내용은 추후 메뉴얼에서 추가 예정입니다.
+
+#### 2. JSPoint 이미지 스케일 설정 프로퍼티 추가
+  * JSPoint에 이미지 스케일 설정을 위한 프로퍼티 image_scale이 추가되었습니다.
+    ```javascript
+    point.image_scale = 0.5;
+    ```
+  * 디폴트 값은 1.0 이며, 이 때 원본 이미지 크기로 렌더링 됩니다.
+    ![image](https://user-images.githubusercontent.com/82925313/211443706-287b39b8-915a-44f5-8473-dcea5b67d38a.png)
+
+## 이전 버전 업데이트
+
+<details><summary>1.42.1 (Hotfix)</summary>
+<p>
+
 ## 1.42.1 Hotfix 업데이트 (2023년 1월 6일)
 ### [오류 수정]
  * JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
+</details>
+</p>
+
+<details><summary>1.42.0</summary>
+<p>
 
 ## 1.42.0 업데이트 (2023년 1월 4일)
 ### [개선 된 기능]
@@ -37,8 +109,8 @@
   * clearBaseMap
   * setBaseMapOption
   * getBaseMapOption
- 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.41.0</summary>
 <p>
