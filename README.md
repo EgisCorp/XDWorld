@@ -29,7 +29,7 @@
     * div로 지도 화면을 매칭하는 경우 아래와 같은 장점이 있습니다.
       * 별도 canvas를 만드는 과정이 생략됨.
       * 마우스 클릭 시 이격 현상이 일어나는 것을 방지함.
-      *  HTML Div Object 관리가 용이합.
+      *  HTML Div Object 관리가 용이함.
     * 기존 Start API는 화면의 가로, 세로 크기만 설정이 가능하였으나, initialize API에서는 div 뿐만 아니라 canvas id, 지형 URL 설정 등 복합적인 옵션 적용이 가능하도록 개선되었습니다
     * Module.Resize API 실행 시 종전에는 canvas 크기에 뷰포트를 맞추어 변경하였으나, div로 설정 시 div 크기에 맞추어 뷰포트가 설정됩니다.
   * 기존 코드와 비교
