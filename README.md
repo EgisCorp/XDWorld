@@ -22,17 +22,6 @@
  * GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ## Notice
-### 2022년 8월 25일
-#### 전광판 객체 기능 보완
- * 여러개의 전광판 설치 및 culling을 통한 비디오 on/off 기능 추가
- * [샌드박스\_전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard)
-
-### 2022년 8월 24일
-#### 아래 API에 대한 callback 함수 삭제
- * 매 프레임마다 callback 불필요하고 API 자체에서 에러메시지 반환되기 때문에 삭제
- * CJSAnalysis::createVideoTexture API
- * CJSFigure::setBoardVideoTexture API
-
 ## 1.42.1 Hotfix 업데이트 (2023년 1월 6일)
 ### [오류 수정]
  * JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
