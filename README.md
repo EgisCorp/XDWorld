@@ -21,6 +21,19 @@
 ## 적용분야
  * GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
+## 1.44.0 업데이트 (2023년 1월 18일)
+### [추가 된 기능]
+#### 1. 오브젝트 선택 색상 설정
+  * 오브젝트 선택 시 출력되는 색상을 설정할 수 있도록 JSOption에 프로퍼티 가 추가되었습니다.
+    ``` javascript
+    Module.getOption().selectColor = Module.COLOR_YELLOW;
+    ```
+
+## 이전 버전 업데이트
+
+<details><summary>1.43.0</summary>
+<p>
+
 ## 1.43.0 업데이트 (2023년 1월 11일)
 ### [추가 된 기능]
 #### 1. 지도 생성 초기에 호출되는 초기화 API Module.Start를 Module.initialize 로 개선
@@ -83,8 +96,8 @@
     ```
   * 디폴트 값은 1.0 이며, 이 때 원본 이미지 크기로 렌더링 됩니다.
     ![image](https://user-images.githubusercontent.com/82925313/211443706-287b39b8-915a-44f5-8473-dcea5b67d38a.png)
-
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.42.1 (Hotfix)</summary>
 <p>
