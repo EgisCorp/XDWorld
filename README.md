@@ -33,7 +33,7 @@
 
 #### 2. 폴리곤 외각선 색상 변경 모듈 수정완료
 
-#### 3. JSObject 클래스 setSelectable API 수정
+#### 3. JSObject 클래스 setSelectable API 수정완료
 
 ### [추가 된 기능]
 
