@@ -1,101 +1,153 @@
 [![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
-### Developers  -  http://www.egiskorea.com/
 
-### Documentation  - https://egiscorp.gitbook.io/xdworld-webgl-manual
+### Developers - http://www.egiskorea.com/
 
-### Demos & Sandbox  -  http://sandbox.dtwincloud.com
+### Documentation - https://egiscorp.gitbook.io/xdworld-webgl-manual
+
+### Demos & Sandbox - http://sandbox.dtwincloud.com
 
 # Introduction
+
 > WebGL 기반 3D GIS 엔진 XDWORLD ENGINE
 
 ![pd_3_img](https://user-images.githubusercontent.com/82925313/160986727-f473c308-7881-4342-8c08-e31566d93a3b.png)
 
 ## 특징
- * 웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
- * 멀티 OS, 브라우저, No-Plugin 지원
- * 3차원 공간데이터 웹 개발자를 위한 다양한 Javascript 웹 API 지원
- * 거리, 면적 체적 계산 등 기본적인 3차원 분석기능 제공
- * 다양한 도시계획 시뮬레이션 및 분석 기능 제공
- * 공간정보 오픈플랫폼(V World) 데이터 서비스 가능
+
+-   웹 표준 기술 HTML5, WebGL 기반 3D 렌더링 지원
+-   멀티 OS, 브라우저, No-Plugin 지원
+-   3차원 공간데이터 웹 개발자를 위한 다양한 Javascript 웹 API 지원
+-   거리, 면적 체적 계산 등 기본적인 3차원 분석기능 제공
+-   다양한 도시계획 시뮬레이션 및 분석 기능 제공
+-   공간정보 오픈플랫폼(V World) 데이터 서비스 가능
 
 ## 적용분야
- * GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
+
+-   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
+
+## 1.45.0 업데이트 (2023년 2월 15일)
+
+### [오류 수정]
+
+#### 1. 모바일에서 지도가 멈추는 현상 수정완료
+
+#### 2. 폴리곤 외각선 색상 변경 모듈 수정완료
+
+#### 3. JSObject 클래스 setSelectable API 수정
+
+### [추가 된 기능]
+
+#### 1. TileObject 버전별 데이터 가시화 모듈 개발완료
+
+#### 2. 마우스 선택모드 기능 개발완료
+
+-   MML_SELECT_RECT
+-   MML_SELECT_POLY
+
+#### 3. HTMLObject 분할화면 모듈 개발완료
+
+-   HTMLObject는 HTML Element에 종속적으로 개발자가 지정된 left, top을 기준으로 출력 좌표 연산 모듈이 추가
+-   추후 샌드박스 업로드 예정
+
+## 이전 버전 업데이트
+
+<details><summary>1.44.0</summary>
+<p>
 
 ## 1.44.0 업데이트 (2023년 1월 18일)
+
 ### [추가 된 기능]
+
 #### 1. 오브젝트 선택 색상 설정
-  * 오브젝트 선택 시 출력되는 색상을 설정할 수 있도록 JSOption에 프로퍼티 가 추가되었습니다.
-    ``` javascript
+
+-   오브젝트 선택 시 출력되는 색상을 설정할 수 있도록 JSOption에 프로퍼티 가 추가되었습니다.
+    ```javascript
     Module.getOption().selectColor = Module.COLOR_YELLOW;
     ```
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.43.0</summary>
 <p>
 
 ## 1.43.0 업데이트 (2023년 1월 11일)
+
 ### [추가 된 기능]
+
 #### 1. 지도 생성 초기에 호출되는 초기화 API Module.Start를 Module.initialize 로 개선
-  * 기존 Start와 변경된 점
-    * 기존 Start API는 canvas를 매칭하여 canvas에 지도를 렌더링 하였으나, 개선 된 initialize API 에서는 div를 매칭하여 div 내부에 지도 canvas를 자동으로 생성하도록 변경되었습니다.
-    * div로 지도 화면을 매칭하는 경우 아래와 같은 장점이 있습니다.
-      * 별도 canvas를 만드는 과정이 생략됨.
-      * 마우스 클릭 시 이격 현상이 일어나는 것을 방지함.
-      *  HTML Div Object 관리가 용이함.
-    * 기존 Start API는 화면의 가로, 세로 크기만 설정이 가능하였으나, initialize API에서는 div 뿐만 아니라 canvas id, 지형 URL 설정 등 복합적인 옵션 적용이 가능하도록 개선되었습니다
-    * Module.Resize API 실행 시 종전에는 canvas 크기에 뷰포트를 맞추어 변경하였으나, div로 설정 시 div 크기에 맞추어 뷰포트가 설정됩니다.
-  * 기존 코드와 비교
-    * Module.Start API 사용 
-      ```javascript
-      // Module 설정
-      var Module = {
-          // 필요한 Module 옵션
-          postRun: [ function () { "기능 초기화" } ],
-          canvas: (function () {
-              var canvas = document.createElement("canvas");
-              canvas.id = "canvas";
-              canvas.width = "calc(100%)";
-              canvas.height = "100%";
-              canvas.style.position = "fixed";
-              canvas.style.top = "0px";
-              canvas.style.left = "0px";
-              canvas.addEventListener("contextmenu", function (e) {
-                  e.preventDefault();
-              });
-              document.body.appendChild(canvas);
-              return canvas;
-          })(),
-      };
-       // 지도 초기화
-      Module.Start(window.innerWidth, window.innerHeight - 200);
-      ```
-    * Module.initialize API 사용 
-      ```javascript
-      // HTML 설정
-      <div id="container" style="position: fixed; width: 100%; height: 100%; z-index: 0"></div>
-    
-      // Module 설정
-      var Module = {
-          // 필요한 Module 옵션
-          postRun: [ function () { "기능 초기화" } ],
-      };
-     
-      // 지도 초기화
-      let container = document.getElementById("container");
-      Module.initialize({
-          container: container,
-      });
-      ```
-    * initialize API의 파라미터 태그 상세 내용은 추후 메뉴얼에서 추가 예정입니다.
+
+-   기존 Start와 변경된 점
+    -   기존 Start API는 canvas를 매칭하여 canvas에 지도를 렌더링 하였으나, 개선 된 initialize API 에서는 div를 매칭하여 div 내부에 지도 canvas를 자동으로 생성하도록 변경되었습니다.
+    -   div로 지도 화면을 매칭하는 경우 아래와 같은 장점이 있습니다.
+        -   별도 canvas를 만드는 과정이 생략됨.
+        -   마우스 클릭 시 이격 현상이 일어나는 것을 방지함.
+        -   HTML Div Object 관리가 용이함.
+    -   기존 Start API는 화면의 가로, 세로 크기만 설정이 가능하였으나, initialize API에서는 div 뿐만 아니라 canvas id, 지형 URL 설정 등 복합적인 옵션 적용이 가능하도록 개선되었습니다
+    -   Module.Resize API 실행 시 종전에는 canvas 크기에 뷰포트를 맞추어 변경하였으나, div로 설정 시 div 크기에 맞추어 뷰포트가 설정됩니다.
+-   기존 코드와 비교
+
+    -   Module.Start API 사용
+        ```javascript
+        // Module 설정
+        var Module = {
+            // 필요한 Module 옵션
+            postRun: [
+                function () {
+                    "기능 초기화";
+                },
+            ],
+            canvas: (function () {
+                var canvas = document.createElement("canvas");
+                canvas.id = "canvas";
+                canvas.width = "calc(100%)";
+                canvas.height = "100%";
+                canvas.style.position = "fixed";
+                canvas.style.top = "0px";
+                canvas.style.left = "0px";
+                canvas.addEventListener("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+                document.body.appendChild(canvas);
+                return canvas;
+            })(),
+        };
+        // 지도 초기화
+        Module.Start(window.innerWidth, window.innerHeight - 200);
+        ```
+    -   Module.initialize API 사용
+
+        ```javascript
+        // HTML 설정
+        <div id="container" style="position: fixed; width: 100%; height: 100%; z-index: 0"></div>;
+
+        // Module 설정
+        var Module = {
+            // 필요한 Module 옵션
+            postRun: [
+                function () {
+                    "기능 초기화";
+                },
+            ],
+        };
+
+        // 지도 초기화
+        let container = document.getElementById("container");
+        Module.initialize({
+            container: container,
+        });
+        ```
+
+    -   initialize API의 파라미터 태그 상세 내용은 추후 메뉴얼에서 추가 예정입니다.
 
 #### 2. JSPoint 이미지 스케일 설정 프로퍼티 추가
-  * JSPoint에 이미지 스케일 설정을 위한 프로퍼티 image_scale이 추가되었습니다.
+
+-   JSPoint에 이미지 스케일 설정을 위한 프로퍼티 image_scale이 추가되었습니다.
     ```javascript
     point.image_scale = 0.5;
     ```
-  * 디폴트 값은 1.0 이며, 이 때 원본 이미지 크기로 렌더링 됩니다.
-    ![image](https://user-images.githubusercontent.com/82925313/211443706-287b39b8-915a-44f5-8473-dcea5b67d38a.png)
+-   디폴트 값은 1.0 이며, 이 때 원본 이미지 크기로 렌더링 됩니다.
+![image](https://user-images.githubusercontent.com/82925313/211443706-287b39b8-915a-44f5-8473-dcea5b67d38a.png)
 </details>
 </p>
 
@@ -103,8 +155,10 @@
 <p>
 
 ## 1.42.1 Hotfix 업데이트 (2023년 1월 6일)
+
 ### [오류 수정]
- * JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
+
+-   JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
 </details>
 </p>
 
@@ -112,103 +166,121 @@
 <p>
 
 ## 1.42.0 업데이트 (2023년 1월 4일)
+
 ### [개선 된 기능]
- * 엔진 초기 로드 시간 단축 및 경량화
- * MapBox, ArcMap 요청 URL 업데이트
+
+-   엔진 초기 로드 시간 단축 및 경량화
+-   MapBox, ArcMap 요청 URL 업데이트
+
 ### [삭제된 API]
-* 2022년 4월 11일 Notice에 따라, 아래 API는 더 이상 활용되지 않으므로 삭제되었습니다.
-  * SetPlanetImageryType
-  * changeBaseMap
-  * clearBaseMap
-  * setBaseMapOption
-  * getBaseMapOption
-</details>
-</p>
+
+-   2022년 4월 11일 Notice에 따라, 아래 API는 더 이상 활용되지 않으므로 삭제되었습니다.
+    -   SetPlanetImageryType
+    -   changeBaseMap
+    -   clearBaseMap
+    -   setBaseMapOption
+    -   getBaseMapOption
+    </details>
+    </p>
 
 <details><summary>1.41.0</summary>
 <p>
 
 ## 1.41.0 업데이트 (2022년 12월 28일)
+
 ### [새로 추가 된 기능]
-* 색상 상수 추가
-  * Module.COLOR_{colorNames} 형식으로 색상 이름을 사용하여 값을 반환합니다.
-  ``` javascript
-  // style.setFillColor(new Module.JSColor(255, 255, 240));
-  style.setFillColor(Module.COLOR_IVORY);
-  ```
-* 레이어 리스트 반환
-  * 레이어 리스트를 매번 생성하지 않고 Module API를 통해 반환 가능
-  * true, false로 구분하던 레이어 타입 설정 방식을 API 명칭으로 구분 가능하도록 개선
-  * 타일 서비스 레이어
-    * Before
-      ``` javascript
-      var serviceLayerList = new Module.JSLayerList(false);
-      Module.XDEMapCreateLayer(...);
-      ```
-    * After
-      ``` javascript
-      Module.getTileLayerList().createXDServerLayer({...});
-      ```
-  * 오브젝트 레이어
-    * Before
-      ``` javascript
-      var objectLayerList = new Module.JSLayerList(true);
-      objectLayerList.createLayer(...);
-      ```
-    * After
-      ``` javascript
-      Module.getObjectLayerList().createObjectLayer({...});
-      ```
-* 레이어 생성 API 개선
-  * 타일 레이어 생성 XDEMapCreateLayer API의 파라미터가 많아 사용이 불편한 점 보완
-  * 레이어 생성 시 옵션 값은 선택적으로 적용할 수 있도록 보완
-  * 타일 서비스 레이어
-    * Before
-      ``` javascript
-      var serviceLayerList = new Module.JSLayerList(false);
-      Module.XDEMapCreateLayer("facility_build", "http://xdworld.vworld.kr:8080/", 8080, true, true, false, 9, 0, 15);
-      ```
-    * After
-      ``` javascript
-      Module.getTileLayerList().createXDServerLayer({
-          name : "facility_build",                  // 필수
-          url : "http://xdworld.vworld.kr:8080",    // 필수
-          type : Module.TILE_LAYER_TYPE_REAL3D,     // 필수
-          visible : false,                          // 옵션 (default : true)
-          selectable : false,                       // 옵션 (default : true)
-          minLevel : 10,                            // 옵션 (default : 0)
-          maxLevel : 14                             // 옵션 (default : 15)
-      });
-      ```
-  * 오브젝트 레이어
-    * Before
-      ``` javascript
-      var objectLayerList = new Module.JSLayerList(true);
-      var layer = objectLayerList .createLayer("layer", Module.ELT_3DPOINT);
-      layer.setMinDistance(100.0);
-      layer.setMaxDistance(10000.0);
-      ```
-    * After
-      ``` javascript
-      Module.getObjectLayerList().createObjectLayer({
-          name : "facility_build",                  // 필수
-          type : Module.ELT_3DPOINT,                // 필수
-          visible : false,                          // 옵션 (default : true)
-          selectable : false,                       // 옵션 (default : true)
-          minDistance: 100.0,                       // 옵션 (default : 0.0)
-          maxDistance: 1000.0                       // 옵션 (default : 3000.0)
-      });
-      ```
-* 타일 레이어 타입 상수 추가
-  * Module.TILE_LAYER_TYPE_{typeName} 형식으로 색상 이름을 사용하여 값을 반환합니다.
-  ``` javascript
-  Module.TILE_LAYER_TYPE_REAL3D
-  ```
-* 마우스 모드 MML_SELECT_CIRCLE 의 반경 선택 기능 추가
+
+-   색상 상수 추가
+    -   Module.COLOR\_{colorNames} 형식으로 색상 이름을 사용하여 값을 반환합니다.
+    ```javascript
+    // style.setFillColor(new Module.JSColor(255, 255, 240));
+    style.setFillColor(Module.COLOR_IVORY);
+    ```
+-   레이어 리스트 반환
+    -   레이어 리스트를 매번 생성하지 않고 Module API를 통해 반환 가능
+    -   true, false로 구분하던 레이어 타입 설정 방식을 API 명칭으로 구분 가능하도록 개선
+    -   타일 서비스 레이어
+        -   Before
+            ```javascript
+            var serviceLayerList = new Module.JSLayerList(false);
+            Module.XDEMapCreateLayer(...);
+            ```
+        -   After
+            ```javascript
+            Module.getTileLayerList().createXDServerLayer({...});
+            ```
+    -   오브젝트 레이어
+        -   Before
+            ```javascript
+            var objectLayerList = new Module.JSLayerList(true);
+            objectLayerList.createLayer(...);
+            ```
+        -   After
+            ```javascript
+            Module.getObjectLayerList().createObjectLayer({...});
+            ```
+-   레이어 생성 API 개선
+    -   타일 레이어 생성 XDEMapCreateLayer API의 파라미터가 많아 사용이 불편한 점 보완
+    -   레이어 생성 시 옵션 값은 선택적으로 적용할 수 있도록 보완
+    -   타일 서비스 레이어
+        -   Before
+            ```javascript
+            var serviceLayerList = new Module.JSLayerList(false);
+            Module.XDEMapCreateLayer(
+                "facility_build",
+                "http://xdworld.vworld.kr:8080/",
+                8080,
+                true,
+                true,
+                false,
+                9,
+                0,
+                15
+            );
+            ```
+        -   After
+            ```javascript
+            Module.getTileLayerList().createXDServerLayer({
+                name: "facility_build", // 필수
+                url: "http://xdworld.vworld.kr:8080", // 필수
+                type: Module.TILE_LAYER_TYPE_REAL3D, // 필수
+                visible: false, // 옵션 (default : true)
+                selectable: false, // 옵션 (default : true)
+                minLevel: 10, // 옵션 (default : 0)
+                maxLevel: 14, // 옵션 (default : 15)
+            });
+            ```
+    -   오브젝트 레이어
+        -   Before
+            ```javascript
+            var objectLayerList = new Module.JSLayerList(true);
+            var layer = objectLayerList.createLayer("layer", Module.ELT_3DPOINT);
+            layer.setMinDistance(100.0);
+            layer.setMaxDistance(10000.0);
+            ```
+        -   After
+            ```javascript
+            Module.getObjectLayerList().createObjectLayer({
+                name: "facility_build", // 필수
+                type: Module.ELT_3DPOINT, // 필수
+                visible: false, // 옵션 (default : true)
+                selectable: false, // 옵션 (default : true)
+                minDistance: 100.0, // 옵션 (default : 0.0)
+                maxDistance: 1000.0, // 옵션 (default : 3000.0)
+            });
+            ```
+-   타일 레이어 타입 상수 추가
+    -   Module.TILE*LAYER_TYPE*{typeName} 형식으로 색상 이름을 사용하여 값을 반환합니다.
+    ```javascript
+    Module.TILE_LAYER_TYPE_REAL3D;
+    ```
+-   마우스 모드 MML_SELECT_CIRCLE 의 반경 선택 기능 추가
+
 ### [오류 수정]
-* 오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/247)
-* 셰이더 warning 메시지 제거
-* 건물 심플 모드 렌더링 예외처리 추가
+
+-   오브젝트 레이어에서 setMinDistance/setMaxDistnace 값이 적용되지 않는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/247)
+-   셰이더 warning 메시지 제거
+-   건물 심플 모드 렌더링 예외처리 추가
 </details>
 </p>
 
@@ -216,32 +288,36 @@
 <p>
 
 ## 1.40.0 업데이트 (2022년 12월 21일)
+
 ### [새로 추가 된 API]
-* bool setModelFaceReflect(string id, unsigned int face_index, float reflect)
-  * 고스트 심볼 모델 face의 반사 효과 정도를 지정합니다.
-  * Class : JSGhostSymbolMap
-  * Parameter
-      * id : 모델 ID
-      * face_index : 효과를 적용할 face 인덱스
-      * reflect : 반사 효과 정도 (0.0~1.0 사이 값) 
-  * Example
-      * http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect
-* new Module.JSColor(string _hexCode)
-  * Hex code 문자열로 색상 값을 초기화 합니다.
-  * RGB(#RRGGBB) ARGB(#AARRGGBB) 형태로 설정 가능
-  * Parameter
-      * hexCode: 색상 설정 코드 문자열
-  * Example
-       ```
-       var colorRGB = new Module.JSColor("#FFDB32");
-       var colorARGB = new Module.JSColor("#AAFFDB32");
-       ```
+
+-   bool setModelFaceReflect(string id, unsigned int face_index, float reflect)
+    -   고스트 심볼 모델 face의 반사 효과 정도를 지정합니다.
+    -   Class : JSGhostSymbolMap
+    -   Parameter
+        -   id : 모델 ID
+        -   face_index : 효과를 적용할 face 인덱스
+        -   reflect : 반사 효과 정도 (0.0~1.0 사이 값)
+    -   Example
+        -   http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect
+-   new Module.JSColor(string \_hexCode)
+    -   Hex code 문자열로 색상 값을 초기화 합니다.
+    -   RGB(#RRGGBB) ARGB(#AARRGGBB) 형태로 설정 가능
+    -   Parameter
+        -   hexCode: 색상 설정 코드 문자열
+    -   Example
+        ```
+        var colorRGB = new Module.JSColor("#FFDB32");
+        var colorARGB = new Module.JSColor("#AAFFDB32");
+        ```
 
 ### [기능 개선]
-* 엔진 로드 시 출력되는 콘솔 메시지 간략화
+
+-   엔진 로드 시 출력되는 콘솔 메시지 간략화
 
 ### [샌드박스]
-* '반사 효과' 추가(http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect)
+
+-   '반사 효과' 추가(http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect)
 </p>
 </details>
 
@@ -249,30 +325,34 @@
 <p>
 
 ## 1.39.0 업데이트 (2022년 12월 14일)
+
 ### [새로 추가 된 API]
-* void moveTarget(object options)
-  * 지정한 방향으로 타겟 오브젝트를 이동시킵니다. (이슈 https://github.com/EgisCorp/XDWorld/issues/236)
-  * Class : JSTraceTarget
-  * Parameter
-      * options : 오브젝트 이동 방향 (front : 전진, back : 후진, left : 왼쪽, right : 오른쪽, up : 상승, down : 하강)
-  * Example
-      ``` javascript
-          trace.moveTarget({
-                 left : 0.1,
-                 front : 0.1,
-                 up : 0.5
-          });
-      ``` 
-* void unionTargetToTerrain()
-  * 오브젝트 위치를 지형과 결합시킵니다. 
-  * Class : JSTraceTarget
-  
+
+-   void moveTarget(object options)
+    -   지정한 방향으로 타겟 오브젝트를 이동시킵니다. (이슈 https://github.com/EgisCorp/XDWorld/issues/236)
+    -   Class : JSTraceTarget
+    -   Parameter
+        -   options : 오브젝트 이동 방향 (front : 전진, back : 후진, left : 왼쪽, right : 오른쪽, up : 상승, down : 하강)
+    -   Example
+        ```javascript
+        trace.moveTarget({
+            left: 0.1,
+            front: 0.1,
+            up: 0.5,
+        });
+        ```
+-   void unionTargetToTerrain()
+    -   오브젝트 위치를 지형과 결합시킵니다.
+    -   Class : JSTraceTarget
+
 ### [기능 개선]
-* wmts 하이브리드 로드 오류 수정
+
+-   wmts 하이브리드 로드 오류 수정
 
 ### [샌드박스]
-* 'DEM 경사 조정' 추가(http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
-* '카메라 경로 가시화' 추가(http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
+
+-   'DEM 경사 조정' 추가(http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
+-   '카메라 경로 가시화' 추가(http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
 </p>
 </details>
 
@@ -280,122 +360,150 @@
 <p>
 
 ## 1.38.0 업데이트 (2022년 12월 7일)
+
 ### [새로 추가 된 API]
+
 **1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API**
->**object pick(unsinged int screenX, unsigned int screenY)**
->* class : JSLayer
->* parameter
->    * screenX : 화면 x 좌표
->    * screenY : 화면 y 좌표
->* return : 피킹 지점이 없는 경우 null 반환, 피킹 지점이 있는 경우 충돌한 오브젝트 키와 위치 좌표 반환함
->* 참고 : (https://github.com/EgisCorp/XDWorld/issues/224)
+
+> **object pick(unsinged int screenX, unsigned int screenY)**
+>
+> -   class : JSLayer
+> -   parameter
+>     -   screenX : 화면 x 좌표
+>     -   screenY : 화면 y 좌표
+> -   return : 피킹 지점이 없는 경우 null 반환, 피킹 지점이 있는 경우 충돌한 오브젝트 키와 위치 좌표 반환함
+> -   참고 : (https://github.com/EgisCorp/XDWorld/issues/224)
 
 **2. JSObject 내 오브젝트 속성 정보 저장 및 반환 기능**
->**bool setProperty(string name, number/string value)**
->* class : JSObject
->* parameter
->    * name : 속성 구분 이름
->    * value : 속성 값 (문자, 숫자 정보만 저장 가능)
->* return : 설정 성공 여부
+
+> **bool setProperty(string name, number/string value)**
 >
->**number/string getProperty(string name)**
->* class : JSObject
->* parameter
->    * name : 속성 구분 이름
->* return : 저장한 속성 값 (속성 값이 존재하지 않는 경우 null 반환)
+> -   class : JSObject
+> -   parameter
+>     -   name : 속성 구분 이름
+>     -   value : 속성 값 (문자, 숫자 정보만 저장 가능)
+> -   return : 설정 성공 여부
+>
+> **number/string getProperty(string name)**
+>
+> -   class : JSObject
+> -   parameter
+>     -   name : 속성 구분 이름
+> -   return : 저장한 속성 값 (속성 값이 존재하지 않는 경우 null 반환)
 
 **3. Round 자동이동 위치 세그먼트 설정 프로퍼티 추가**
->* JSCamera 클래스 내 autoMoveRoundSegment 프로퍼티가 추가됨.
->* 기존 setAutoMoveRoundPositions API는 500개의 고정 된 이동 경로 점을 반환하였으나, autoMoveRoundSegment 파라미터를 통해 이동 경로 지점 수를 설정 가능하도록 수정됨.
->* 세그먼트 수가 적을 수록 지점 간격이 넓어져 이동 속도가 빨라짐.
+
+> -   JSCamera 클래스 내 autoMoveRoundSegment 프로퍼티가 추가됨.
+> -   기존 setAutoMoveRoundPositions API는 500개의 고정 된 이동 경로 점을 반환하였으나, autoMoveRoundSegment 파라미터를 통해 이동 경로 지점 수를 설정 가능하도록 수정됨.
+> -   세그먼트 수가 적을 수록 지점 간격이 넓어져 이동 속도가 빨라짐.
 
 **4. 3D 그리드 애니메이션 메쉬의 기준 높이 설정 API 추가**
->**void setBaseAltitude(float fAlt)**
->* 지정된 해발고도를 기준높으로 3d 그리드 표현을 시작
->* class : JSGridAnal
->* parameter
->    * fAlt : 기준 높이 값
+
+> **void setBaseAltitude(float fAlt)**
+>
+> -   지정된 해발고도를 기준높으로 3d 그리드 표현을 시작
+> -   class : JSGridAnal
+> -   parameter
+>     -   fAlt : 기준 높이 값
 
 **5. 그리드 범례 절대값 설정 API 추가**
->**void setLegendMode(int _nMode)**
->* class : JSGridAnal
->* parameter
->    * _nMode : 그리드 범례 절대값
->        * 0 : 상대값 (%) 적용
->        * 1 : 절대값 (val) 적용
+
+> **void setLegendMode(int \_nMode)**
 >
->**bool setLegendJSON(object _options)**
->* class : JSGridAnal    
->* parameter
->    * _options : 설정 속성 값
->        * 입력형식 { legendMode : Number, legend : [ { val : Number, color : { a, r, g, b ] }, { val : Number, color : { a, r, g, b ] }, ...] }
->* setLegendMode 및 컬러테이블 설정
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_nMode : 그리드 범례 절대값
+>         -   0 : 상대값 (%) 적용
+>         -   1 : 절대값 (val) 적용
+>
+> **bool setLegendJSON(object \_options)**
+>
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_options : 설정 속성 값
+>         -   입력형식 { legendMode : Number, legend : [ { val : Number, color : { a, r, g, b ] }, { val : Number, color : { a, r, g, b ] }, ...] }
+> -   setLegendMode 및 컬러테이블 설정
 
 **6. JSGridAnal 클래스 내 단일 시간 다중 분석 그리드 객체에 대한 병합기능 추가**
->**void openMultipleGridDataURL(string szURL, unsigned int nTime, unsigned int nStripSize, unsigned int nStripStart, unsigned int nStripEnd, unsigned char nDataType, unsigned char nMultipleCnt, unsigned char nMultipleIndex)**
->* class : JSGridAnal
->* parameter
->    * szURL : 데이터 요청 URL 
->    * nTime : 시간 인덱스 (0-base)
->    * nStripSize :  그리드 하나의 셀의 byte 크기
->    * nStripStart : 그리드 셀에서 데이터 인식 offset 시작 byte (0-base)
->    * nStripEnd : 그리드 셀에서 데이터 인식 offset 종료 byte (0-base), nStripEnd - nStripStart가 데이터 바이트 크기
->    * nDataType : 데이터 자료형 (0 : int, 1 : float, 2 : double)
->    * nMultipleCnt : 다중 중첩 수 
->    * nMultipleIndex : 다중 중첩 인덱스
->* 그리드 필드 하나에 연결된 모든 데이터 필드를 합산하여 표현
+
+> **void openMultipleGridDataURL(string szURL, unsigned int nTime, unsigned int nStripSize, unsigned int nStripStart, unsigned int nStripEnd, unsigned char nDataType, unsigned char nMultipleCnt, unsigned char nMultipleIndex)**
+>
+> -   class : JSGridAnal
+> -   parameter
+>     -   szURL : 데이터 요청 URL
+>     -   nTime : 시간 인덱스 (0-base)
+>     -   nStripSize : 그리드 하나의 셀의 byte 크기
+>     -   nStripStart : 그리드 셀에서 데이터 인식 offset 시작 byte (0-base)
+>     -   nStripEnd : 그리드 셀에서 데이터 인식 offset 종료 byte (0-base), nStripEnd - nStripStart가 데이터 바이트 크기
+>     -   nDataType : 데이터 자료형 (0 : int, 1 : float, 2 : double)
+>     -   nMultipleCnt : 다중 중첩 수
+>     -   nMultipleIndex : 다중 중첩 인덱스
+> -   그리드 필드 하나에 연결된 모든 데이터 필드를 합산하여 표현
 
 **7. JSGridAnal 클래스 내 마우스 클릭시 격자 정보 콜백기능 추가**
->**void setMouseCallback(function _callback)**
->* 그리드 데이터 로드후 마우스 왼쪽버튼을 통한 버튼 업에서 지정된 콜백 호출
->* class : JSGridAnal
->* parameter
->    * _callback : 콜백 함수
->        * 콜백 반환 인자 : { longitude : Number, latitude : Number, idx : Number, idy : Number, value : Number , angle : Number }
+
+> **void setMouseCallback(function \_callback)**
+>
+> -   그리드 데이터 로드후 마우스 왼쪽버튼을 통한 버튼 업에서 지정된 콜백 호출
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_callback : 콜백 함수
+>         -   콜백 반환 인자 : { longitude : Number, latitude : Number, idx : Number, idy : Number, value : Number , angle : Number }
 
 **8. JSGridAnal 클래스 내 격자 3D 라인 출력기능 추가**
->**void setGridLineVisible(boolean _visible)**
->* 그리드 라인 표현 여부 설정
->* class : JSGridAnal
->* parameter
->    * _visible : 가시화 설정 값
+
+> **void setGridLineVisible(boolean \_visible)**
 >
->**void setGridLineBaseAlt(float _fAltitude)**
->* 그리드 라인의 기준 표현 해발고도 설정
->* class : JSGridAnal
->* parameter
->    * _fAltitude : 기준 표현 해발고도
+> -   그리드 라인 표현 여부 설정
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_visible : 가시화 설정 값
 >
->**void setGridLineMaxDistance(float _fDistance)**
->* 그리드 라인의 최대 표현 해발고도, 최대표현부터 기준고도까지 거리별(%)로 알파 적용
->* class : JSGridAnal
->* parameter
->    * _fDistance : 그리드 라인의 최대 표현 해발고도
+> **void setGridLineBaseAlt(float \_fAltitude)**
+>
+> -   그리드 라인의 기준 표현 해발고도 설정
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_fAltitude : 기준 표현 해발고도
+>
+> **void setGridLineMaxDistance(float \_fDistance)**
+>
+> -   그리드 라인의 최대 표현 해발고도, 최대표현부터 기준고도까지 거리별(%)로 알파 적용
+> -   class : JSGridAnal
+> -   parameter
+>     -   \_fDistance : 그리드 라인의 최대 표현 해발고도
 
 **9. Canvas style left, top 옵션에 따른 마우스 위치 처리 기능 추가**
->**void ApplyCanvasPosition()**
->* Canvas style 변경 시 동기화 실행
->* Canvas 위치 변경에 따른 HTMLObject 위치 조정 적용
->* class : Module
+
+> **void ApplyCanvasPosition()**
+>
+> -   Canvas style 변경 시 동기화 실행
+> -   Canvas 위치 변경에 따른 HTMLObject 위치 조정 적용
+> -   class : Module
 
 **10. JSColorGrid 투명도 조절 API 추가**
->**void setOpacity(float _opacity)**
->* class : JSColorGrid
->* parameter
->    * _opacity : 투명도 (0.0~1.0 사이 값 적용)
+
+> **void setOpacity(float \_opacity)**
+>
+> -   class : JSColorGrid
+> -   parameter
+>     -   \_opacity : 투명도 (0.0~1.0 사이 값 적용)
 
 **11. JSColorPolygon 투명도 조절 API 추가**
->**void setOpacity(float _opacity)**
->* class : JSColorPolygon
->* parameter
->    * _opacity : 투명도 (0.0~1.0 사이 값 적용)
+
+> **void setOpacity(float \_opacity)**
+>
+> -   class : JSColorPolygon
+> -   parameter
+>     -   \_opacity : 투명도 (0.0~1.0 사이 값 적용)
 
 ### [개선 된 기능]
->* 화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/230)
->* JSGridAnal 클래스에 단일 시간 분석 그리드 객체에 대한 표출기능 추가
->* 중복키 이벤트 처리 추가(https://github.com/EgisCorp/XDWorld/issues/218)
-> * 화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정(https://github.com/EgisCorp/XDWorld/issues/230)
-> * 마우스 클릭지점 이격 오류 수정
+
+> -   화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/230)
+> -   JSGridAnal 클래스에 단일 시간 분석 그리드 객체에 대한 표출기능 추가
+> -   중복키 이벤트 처리 추가(https://github.com/EgisCorp/XDWorld/issues/218)
+> -   화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정(https://github.com/EgisCorp/XDWorld/issues/230)
+> -   마우스 클릭지점 이격 오류 수정
 
 </p>
 </details>
@@ -404,7 +512,8 @@
 <p>
 
 ### 2022년 12월 1일 (1.37.43)
- * 카메라 회전 예외 처리 추가
+
+-   카메라 회전 예외 처리 추가
 </p>
 </details>
 
@@ -412,7 +521,8 @@
 <p>
 
 ### 2022년 11월 28일 (1.37.42)
- * ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
+
+-   ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
 </p>
 </details>
 
@@ -420,7 +530,8 @@
 <p>
 
 ### 2022년 11월 25일 (1.37.41)
- * 지형그리드 생성 모듈 수정
+
+-   지형그리드 생성 모듈 수정
 </p>
 </details>
 
@@ -428,11 +539,12 @@
 <p>
 
 ### 2022년 11월 18일 (1.37.40)
- * HTMLObject 정렬 기능에 따른 위치 조정 기능 추가
- * Real3D 단면도 출력 API 추가
- * 카메라 지하 이동 시 고정 배경 색상 지정 부분 수정
- * 2D 바 그래프 소수점 자릿수 설정 기능 추가
- * 값이 0인 2D 바 그래프 수치 텍스트 표시 
+
+-   HTMLObject 정렬 기능에 따른 위치 조정 기능 추가
+-   Real3D 단면도 출력 API 추가
+-   카메라 지하 이동 시 고정 배경 색상 지정 부분 수정
+-   2D 바 그래프 소수점 자릿수 설정 기능 추가
+-   값이 0인 2D 바 그래프 수치 텍스트 표시
 </p>
 </details>
 
@@ -440,7 +552,8 @@
 <p>
 
 ### 2022년 10월 31일 (1.37.39)
- * 객체 투명도 편집 오류 수정
+
+-   객체 투명도 편집 오류 수정
 </p>
 </details>
 
@@ -448,7 +561,8 @@
 <p>
 
 ### 2022년 10월 26일 (1.37.38)
- * 객체 Fill, Stroke 모드 오류 수정
+
+-   객체 Fill, Stroke 모드 오류 수정
 </p>
 </details>
 
@@ -456,7 +570,8 @@
 <p>
 
 ### 2022년 10월 21일 (1.37.37)
- * RTT Line 투명값 수정되지 않는 현상 수정
+
+-   RTT Line 투명값 수정되지 않는 현상 수정
 </p>
 </details>
 
@@ -464,7 +579,8 @@
 <p>
 
 ### 2022년 10월 20일 (1.37.36)
- * 마우스 선택 모드에서 오브젝트가 선택되지 않는 현상 수정
+
+-   마우스 선택 모드에서 오브젝트가 선택되지 않는 현상 수정
 </p>
 </details>
 
@@ -472,8 +588,9 @@
 <p>
 
 ### 2022년 10월 12일 (1.37.35)
- * JSLayer에 횡단면 출력 기능 사용 여부 설정 API setReal3dCutUse 추가 
- * JSLayer에 횡단면 출력 기능 높이 설정 API setReal3dCutHeight 추가 
+
+-   JSLayer에 횡단면 출력 기능 사용 여부 설정 API setReal3dCutUse 추가
+-   JSLayer에 횡단면 출력 기능 높이 설정 API setReal3dCutHeight 추가
 </p>
 </details>
 
@@ -481,8 +598,9 @@
 <p>
 
 ### 2022년 10월 6일 (1.37.33)
- * JSFlowPolygon 좌표 정보 반환 프로퍼티 'coordinates' 추가
- * 포인트-라인 간 최단 거리 계산 API getClosestPositionOnPath 추가
+
+-   JSFlowPolygon 좌표 정보 반환 프로퍼티 'coordinates' 추가
+-   포인트-라인 간 최단 거리 계산 API getClosestPositionOnPath 추가
 </p>
 </details>
 
@@ -490,18 +608,20 @@
 <p>
 
 ### 2022년 10월 5일 (1.37.32)
- * JSFlowPolygon/JSPolygon 오브젝트 선택 오류 수정
- * 바람길 기능 수정
-   * 빌딩관련 NoData 값 변경( 999 -> 0 )
-   * 토지피복도 관련 기능 추가
-</p>
-</details>
+
+-   JSFlowPolygon/JSPolygon 오브젝트 선택 오류 수정
+-   바람길 기능 수정
+    -   빌딩관련 NoData 값 변경( 999 -> 0 )
+    -   토지피복도 관련 기능 추가
+    </p>
+    </details>
 
 <details><summary>1.37.31</summary>
 <p>
 
- ### 2022년 9월 30일 (1.37.31)
- * wfs poi, poi 인코딩 문제 수정
+### 2022년 9월 30일 (1.37.31)
+
+-   wfs poi, poi 인코딩 문제 수정
 </p>
 </details>
 
@@ -509,7 +629,8 @@
 <p>
 
 ### 2022년 9월 26일 (1.37.30)
- * JSBarGraph3D 텍스트 텍스쳐 렌더링 오류 수정
+
+-   JSBarGraph3D 텍스트 텍스쳐 렌더링 오류 수정
 </p>
 </details>
 
@@ -517,12 +638,13 @@
 <p>
 
 ### 2022년 9월 23일 (1.37.29)
- * 메뉴얼 업데이트 JSTerrain, JSMath
- * Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
-   * 그리드 생성 기능 
- * Module.getMath().calculationSlopeAnalysis("parameter") 추가
-   * [3 * 3] 배열값을 통한 경사 분석 기능
- * Module.getMap().ScreenToMapPointEX API 실행 시 피킹점이 없는 경우 null 반환하도록 루틴 추가([이슈#211](https://github.com/EgisCorp/XDWorld/issues/211))
+
+-   메뉴얼 업데이트 JSTerrain, JSMath
+-   Module.getTerrain().makeTerrainElevationCellData("parameter") 추가
+    -   그리드 생성 기능
+-   Module.getMath().calculationSlopeAnalysis("parameter") 추가
+    -   [3 * 3] 배열값을 통한 경사 분석 기능
+-   Module.getMap().ScreenToMapPointEX API 실행 시 피킹점이 없는 경우 null 반환하도록 루틴 추가([이슈#211](https://github.com/EgisCorp/XDWorld/issues/211))
 </p>
 </details>
 
@@ -530,15 +652,18 @@
 <p>
 
 ### 2022년 9월 22일 (1.37.28)
- * 비디오 텍스쳐 Zoom In/Out 기능 추가
 
- * 버텍스 및 인덱스가 활용 된 JSColorPolygon의 마우스 피킹 기능 수정
- * 3D POI 텍스트의 문자 셋 지정 프로퍼티 추가
- ```javascript
+-   비디오 텍스쳐 Zoom In/Out 기능 추가
+
+-   버텍스 및 인덱스가 활용 된 JSColorPolygon의 마우스 피킹 기능 수정
+-   3D POI 텍스트의 문자 셋 지정 프로퍼티 추가
+
+```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = layerList.nameAtLayer("POI 텍스트 타일 레이어 이름");
-layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
- ```
+layer.text_character_set = "EUC-KR"; // 디폴트 셋은 UTF-8
+```
+
 </p>
 ></details>
 
@@ -546,7 +671,8 @@ layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
 <p>
 
 ### 2022년 9월 14일 (1.37.27)
- * JSColorPolygon의 마우스 피킹 기능 추가
+
+-   JSColorPolygon의 마우스 피킹 기능 추가
 </p>
 </details>
 
@@ -554,7 +680,8 @@ layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
 <p>
 
 ### 2022년 9월 02일 (1.37.26)
- * ([이슈#203](https://github.com/EgisCorp/XDWorld/issues/203)) 해결
+
+-   ([이슈#203](https://github.com/EgisCorp/XDWorld/issues/203)) 해결
 </p>
 </details>
 
@@ -562,9 +689,10 @@ layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
 <p>
 
 ### 2022년 8월 24일 (1.37.23)
- * 비디오 텍스쳐 메모리 누수 관련 오류 수정
- * ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
- * ([전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard))
+
+-   비디오 텍스쳐 메모리 누수 관련 오류 수정
+-   ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
+-   ([전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard))
 </p>
 </details>
 
@@ -572,18 +700,20 @@ layer.text_character_set = "EUC-KR";   // 디폴트 셋은 UTF-8
 <p>
 
 ### 2022년 8월 23일 (1.37.22)
- * 터치 이동/회전/줌인&아웃 사용 설정 프로퍼티 추가([이슈 200](https://github.com/EgisCorp/XDWorld/issues/200))
- ```javascript
+
+-   터치 이동/회전/줌인&아웃 사용 설정 프로퍼티 추가([이슈 200](https://github.com/EgisCorp/XDWorld/issues/200))
+
+```javascript
 // 터치 이동 활성화(true), 비활성화(false)
-Module.getControl().touchPanEnable = true; 
+Module.getControl().touchPanEnable = true;
 
 // 터치 회전 활성화(true), 비활성화(false)
-Module.getControl().touchRotateEnable = true; 
+Module.getControl().touchRotateEnable = true;
 
 // 터치 줌 인&아웃 활성화(true), 비활성화(false)
-Module.getControl().touchZoomEnable = true; 
+Module.getControl().touchZoomEnable = true;
+```
 
- ```
 </p>
 ></details>
 
@@ -591,7 +721,8 @@ Module.getControl().touchZoomEnable = true;
 <p>
 
 ### 2022년 8월 19일 (1.37.21)
- * setDescription, getDescription uft16 지원([이슈 197](https://github.com/EgisCorp/XDWorld/issues/197))
+
+-   setDescription, getDescription uft16 지원([이슈 197](https://github.com/EgisCorp/XDWorld/issues/197))
 </p>
 </details>
 
@@ -599,11 +730,14 @@ Module.getControl().touchZoomEnable = true;
 <p>
 
 ### 2022년 8월 04일 (1.37.20)
- * 고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가([이슈 194](https://github.com/EgisCorp/XDWorld/issues/194))
- ```javascript
+
+-   고스트심볼(JSGhostSymbol) z버퍼 off 프로퍼티 추가([이슈 194](https://github.com/EgisCorp/XDWorld/issues/194))
+
+```javascript
 var object = Module.createGhostSymbol("MY_OBJECT");
 object.zBufferOff = true;
- ```
+```
+
 </p>
 </details>
 
@@ -611,7 +745,8 @@ object.zBufferOff = true;
 <p>
 
 ### 2022년 8월 04일 (1.37.19)
- * 건물 객첵 key List 기반 색상 변경 API 추가
+
+-   건물 객첵 key List 기반 색상 변경 API 추가
 </p>
 </details>
 
@@ -619,7 +754,8 @@ object.zBufferOff = true;
 <p>
 
 ### 2022년 8월 02일 (1.37.18)
- * 실시간 cctv 관제 편집기능 추가
+
+-   실시간 cctv 관제 편집기능 추가
 </p>
 </details>
 
@@ -627,19 +763,22 @@ object.zBufferOff = true;
 <p>
 
 ### 2022년 7월 26일 (1.37.17)
- * 가시권 분석 이슈 처리([이슈 189](https://github.com/EgisCorp/XDWorld/issues/189))
+
+-   가시권 분석 이슈 처리([이슈 189](https://github.com/EgisCorp/XDWorld/issues/189))
 </p>
 </details>
 
 <details><summary>1.37.16</summary>
 <p>
 
- ### 2022년 7월 19일 (1.37.16)
- * 입력된 영역과 객체의 영역 충돌 체크 조건 추가 (완전 포함, 조금이라도 포함)
- * 라이브맵 1차 
+### 2022년 7월 19일 (1.37.16)
+
+-   입력된 영역과 객체의 영역 충돌 체크 조건 추가 (완전 포함, 조금이라도 포함)
+-   라이브맵 1차
 
 ### 2022년 7월 14일 (1.37.16)
- * JSMap의 setSimpleMode API 오류 수정
+
+-   JSMap의 setSimpleMode API 오류 수정
 </p>
 </details>
 
@@ -647,12 +786,15 @@ object.zBufferOff = true;
 <p>
 
 ### 2022년 7월 13일 (1.37.15)
- * 레이어 별로 건물 심플 모드 설정이 가능한 JSLayer 프로퍼티 simple_real3d 추가
- ```javascript
+
+-   레이어 별로 건물 심플 모드 설정이 가능한 JSLayer 프로퍼티 simple_real3d 추가
+
+```javascript
 var layerList = new Module.JSLayerList(false);
 layer = layerList.nameAtLayer("building_layer_name");
 layer.simple_real3d = true;
- ```
+```
+
 </p>
 </details>
 
@@ -660,7 +802,8 @@ layer.simple_real3d = true;
 <p>
 
 ### 2022년 7월 08일 (1.37.14)
- * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
+
+-   입력된 영역과 객체의 영역 충돌 체크 오류 수정
 </p>
 </details>
 
@@ -668,8 +811,9 @@ layer.simple_real3d = true;
 <p>
 
 ### 2022년 7월 07일 (1.37.13)
- * 텍스쳐가 없는 Real3d의 색상 변경 API SetDefineMeshColorByObjectKey 미적용 오류 수정
- * JSGhostSymbol의 API exportFileFormat에 XDO 텍스쳐 이미지 파일 지정 기능 추가
+
+-   텍스쳐가 없는 Real3d의 색상 변경 API SetDefineMeshColorByObjectKey 미적용 오류 수정
+-   JSGhostSymbol의 API exportFileFormat에 XDO 텍스쳐 이미지 파일 지정 기능 추가
 </p>
 </details>
 
@@ -677,8 +821,9 @@ layer.simple_real3d = true;
 <p>
 
 ### 2022년 7월 06일 (1.37.12)
- * 입력된 영역과 객체의 영역 충돌 체크 오류 수정
- * 그림자 분석, 비디오 텍스쳐 기능 오류 수정
+
+-   입력된 영역과 객체의 영역 충돌 체크 오류 수정
+-   그림자 분석, 비디오 텍스쳐 기능 오류 수정
 </p>
 </details>
 
@@ -686,30 +831,47 @@ layer.simple_real3d = true;
 <p>
 
 ### 2022년 7월 05일
- * 리소스 URL 설정 API 추가
- * 맵컨트롤을 사용하기 위해서는 [리소스 다운로드](https://github.com/EgisCorp/XDWorld/tree/main/resource/MapCtrl) 해주시기 바랍니다.
- * 리소스 설정 샘플 [샌드박스\_맵컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
- * 입력된 영역과 객체의 영역 충돌 체크 API 추가
+
+-   리소스 URL 설정 API 추가
+-   맵컨트롤을 사용하기 위해서는 [리소스 다운로드](https://github.com/EgisCorp/XDWorld/tree/main/resource/MapCtrl) 해주시기 바랍니다.
+-   리소스 설정 샘플 [샌드박스\_맵컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+-   입력된 영역과 객체의 영역 충돌 체크 API 추가
+
 ### 2022년 6월 29일
- * XDO 포맷 파일 기반 고스트심볼 import 및 export API 추가
- ### 2022년 6월 20일
- * Tile LOD Object 프로토콜 예외처리 추가
+
+-   XDO 포맷 파일 기반 고스트심볼 import 및 export API 추가
+
+### 2022년 6월 20일
+
+-   Tile LOD Object 프로토콜 예외처리 추가
+
 ### 2022년 6월 8일
- * 포인트 클라우드 실시간 높이 조절 기능 구현(Tile LOD Object와 동일)
- * Tile LOD Object 가시화 모듈 수정
+
+-   포인트 클라우드 실시간 높이 조절 기능 구현(Tile LOD Object와 동일)
+-   Tile LOD Object 가시화 모듈 수정
+
 ### 2022년 5월 19일
- * 배경지도 변경 오류 수정
- * 선택 기능 추가
- * JSMap addSelectObject 기능추가
+
+-   배경지도 변경 오류 수정
+-   선택 기능 추가
+-   JSMap addSelectObject 기능추가
+
 ### 2022년 4월 27일
- * JSLibraryObject, JSBuildingManager 클래스 API 삭제
+
+-   JSLibraryObject, JSBuildingManager 클래스 API 삭제
+
 ### 2022년 4월 22일
- * WMTS, 배경지도 오류 수정
- * WMTS 하이브리드 기능 추가
+
+-   WMTS, 배경지도 오류 수정
+-   WMTS 하이브리드 기능 추가
+
 ### 2022년 4월 21일
- * Real3D 객체 페이스 색상 가시화 모듈 수정
- * JSLineString 좌표 반환 기능 오류 수정 
+
+-   Real3D 객체 페이스 색상 가시화 모듈 수정
+-   JSLineString 좌표 반환 기능 오류 수정
+
 ### 2022년 4월 15일
- * Real3D 3DS export 시 메시 방향 지정 오류 수정
+
+-   Real3D 3DS export 시 메시 방향 지정 오류 수정
 </p>
 </details>
