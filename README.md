@@ -865,6 +865,28 @@ layer.simple_real3d = true;
 -   WMTS, 배경지도 오류 수정
 -   WMTS 하이브리드 기능 추가
 
+추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
+-   SetPlanetImageryType API 
+-   changeBaseMap API
+-   clearBaseMap API
+-   setBaseMapOption API
+-   getBaseMapOption API
+
+사용 불가 API 대체 API 항목 정리
+-   Module.GoogleMap();
+-   Module.ArcMap();
+-   Module.BingMap();
+-   Module.DaumMap();
+-   Module.MapBox();
+-   Module.NaverMap();
+-   Module.OpenStreetMap();
+-   Module.SKYMap();
+-   Module.WMTS();
+
+변경된 API 샘플 소스는 샌드박스를 참조해 주시면 감사하겠습니다.
+-   [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
+-   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts) 
+
 ### 2022년 4월 21일
 
 -   Real3D 객체 페이스 색상 가시화 모듈 수정
