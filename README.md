@@ -25,6 +25,19 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
+## 1.46.0 업데이트 (2023년 2월 22일)
+
+### [추가 된 기능]
+
+#### 1. JSPoint property z_index 기능 추가 완료
+
+-   그리기 순서 변경 기능
+
+## 이전 버전 업데이트
+
+<details><summary>1.45.0</summary>
+<p>
+
 ## 1.45.0 업데이트 (2023년 2월 15일)
 
 ### [오류 수정]
@@ -49,7 +62,8 @@
 -   HTMLObject는 HTML Element에 종속적으로 개발자가 지정된 left, top을 기준으로 출력 좌표 연산 모듈이 추가
 -   추후 샌드박스 업로드 예정
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.44.0</summary>
 <p>
@@ -866,13 +880,15 @@ layer.simple_real3d = true;
 -   WMTS 하이브리드 기능 추가
 
 추후 사용 불가 API 항목 정리 (2023년 01월 01일 까지 지원)
--   SetPlanetImageryType API 
+
+-   SetPlanetImageryType API
 -   changeBaseMap API
 -   clearBaseMap API
 -   setBaseMapOption API
 -   getBaseMapOption API
 
 사용 불가 API 대체 API 항목 정리
+
 -   Module.GoogleMap();
 -   Module.ArcMap();
 -   Module.BingMap();
@@ -884,8 +900,9 @@ layer.simple_real3d = true;
 -   Module.WMTS();
 
 변경된 API 샘플 소스는 샌드박스를 참조해 주시면 감사하겠습니다.
+
 -   [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
--   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts) 
+-   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
 ### 2022년 4월 21일
 
