@@ -37,7 +37,7 @@
 
 ### [추가 된 기능]
 
-#### 3. IndexedDB API 추가
+#### 1. IndexedDB API 추가
 
 -   Module.getOption().setIndexedDB(true);	// IndexedDB 사용 여부 설정
 -	Module.getOption().setMaxIndexedDB(15); // IndexedDB 활용 최고 레벨 설정
