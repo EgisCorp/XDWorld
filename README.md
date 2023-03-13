@@ -35,6 +35,8 @@
 
 -   Module.getAnalysis().setTerrainAnalysis(true);
 
+### [추가 된 기능]
+
 #### 3. IndexedDB API 추가
 
 -   Module.getOption().setIndexedDB(true);	// IndexedDB 사용 여부 설정
