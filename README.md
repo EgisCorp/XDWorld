@@ -25,6 +25,26 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
+## 1.47.0 업데이트 (2023년 3월 13일)
+
+### [오류 수정]
+
+#### 1. JSObject setPickable 기능 복구
+
+#### 2. 가시권분석3D 지형 분석 추가
+
+-   Module.getAnalysis().setTerrainAnalysis(true);
+
+#### 3. IndexedDB API 추가
+
+-   Module.getOption().setIndexedDB(true);	// IndexedDB 사용 여부 설정
+-	Module.getOption().setMaxIndexedDB(15); // IndexedDB 활용 최고 레벨 설정
+
+## 이전 버전 업데이트
+
+<details><summary>1.46.0</summary>
+<p>
+
 ## 1.46.0 업데이트 (2023년 2월 22일)
 
 ### [추가 된 기능]
@@ -33,7 +53,8 @@
 
 -   그리기 순서 변경 기능 (입력값이 클수록 상위로 작을수로 하위로 가시화)
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.45.0</summary>
 <p>
