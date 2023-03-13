@@ -33,7 +33,7 @@
 
 #### 2. 가시권분석3D 지형 분석 추가
 
--   Module.getAnalysis().setTerrainAnalysis(true);
+-   Module.getAnalysis().setTerrainAnalysis(true);  // 지형 분석 여부 설정
 
 ### [추가 된 기능]
 
