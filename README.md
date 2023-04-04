@@ -25,8 +25,91 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
+## 1.49.0 업데이트 (2023년 4월 4일)
+
+### [공지사항] (중요)
+
+#### 1. 브이월드 발급 키 입력 방식으로 변경
+
+- 이전 버전의 엔진에서는 자체적으로 고정된 브이월드 API키를 내장하여 사용하였으나, 현재 버전 이후로 내장된 브이월드 키가 아닌 발급 받으신 브이월드 키를 입력하여 엔진을 사용하시도록 정책이 변경되었습니다.
+- 발급받으신 키는 아래와 같이 Module.initialize 지도 초기화 시 지정해주시면 됩니다.
+``` javascript
+/* 엔진 로드 후 실행할 초기화 함수(Module.postRun) */
+function init() {
+
+        // 엔진 초기화 API 호출(필수)
+	Module.initialize({
+		container: document.getElementById("map"),
+		defaultKey : "발급받으신_브이월드_키"
+	});
+}
+```
+- 기존 고정으로 사용되던 키 사용이 중단되어 서비스 활용에 어려움이 없으시도록, 자체 발급한 키를 사용하는 것을 권장 드립니다.
+- 이전 버전의 엔진의 경우 Module.Start (혹은 Module.initialize) 호출 전에 Module.SetAPIKey API를 활용해주시면, 위에서 안내드린 defaultKey 설정 방식처럼 브이월드 키를 지정하실 수 있습니다.
+``` javascript
+function init() {
+
+        Module.SetAPIKey("발급받으신_브이월드_키");
+
+        // 엔진 초기화 API 호출(필수)
+	Module.initialize({
+		container: document.getElementById("map")
+	});
+}
+```
+
+### [수정 된 기능]
+
+#### 1. 시곡면 분석 각도 적요 오류 수정
+
+#### 2. 전광판 (CJSFigure) 편집 오류 수정
+
+#### 3. 파이프 애니메이션 오류 수정
+
+#### 4. 고스트심볼 편집 오류 수정
+
+### [샌드박스]
+
+#### 4. SHP 파일 파싱 예제 추가
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_ghost_symbol
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line_rtt
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_pipe
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_poi
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_rtt
+http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_solid
+
+#### 5. geojson 파일 파싱 예제 추가
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_ghost_symbol
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line_rtt
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_pipe
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_poi
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_rtt
+http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_solid
+
+#### 6. 단면 분석 예제 추가
+http://sandbox.dtwincloud.com/code/main.do?id=terrain_dem_slice
+http://sandbox.dtwincloud.com/code/main.do?id=layer_building_altitude_slice
+
+#### 7. 가로수 배치 예제 추가
+http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_line
+http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_area
+
+#### 8. 교통 흐름 표시 예제 추가
+http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
+
+## 이전 버전 업데이트
+
+<details><summary>1.48.0</summary>
+<p>
+
 ## 1.48.0 업데이트 (2023년 3월 24일)
+
 ### [기능 추가]
+
 #### 1. 마우스 피킹 방법 설정 옵션 값 반환 API가 추가되었습니다.
   ``` javascript
   // false : 공간 계산 방식, true : 그래픽 판별 방식
@@ -34,9 +117,11 @@
   ```
 
 ### [기능 수정]
+
 #### 1. xdo 모델 불러오기 중 발생하는 오류가 수정되었습니다.
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.47.0</summary>
 <p>
