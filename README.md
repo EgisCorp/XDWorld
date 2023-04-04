@@ -25,46 +25,6 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-## 1.48.0 업데이트 (2023년 3월 24일)
-### [기능 추가]
-#### 1. 마우스 피킹 방법 설정 옵션 값 반환 API가 추가되었습니다.
-  ``` javascript
-  // false : 공간 계산 방식, true : 그래픽 판별 방식
-  var pickingType = Module.getOption().getPickingCalculateType();
-  ```
-
-### [기능 수정]
-#### 1. xdo 모델 불러오기 중 발생하는 오류가 수정되었습니다.
-
-## 이전 버전 업데이트
-
-<details><summary>1.46.0</summary>
-<p>
-
-## 1.47.0 업데이트 (2023년 3월 13일)
-
-### [오류 수정]
-
-#### 1. JSObject setPickable 기능 복구
-
-#### 2. 가시권분석3D 지형 분석 추가
-
--   Module.getAnalysis().setTerrainAnalysis(true);  // 지형 분석 여부 설정
-
-### [추가 된 기능]
-
-#### 1. IndexedDB API 추가
-
--   Module.getOption().setIndexedDB(true);	// IndexedDB 사용 여부 설정
--	Module.getOption().setMaxIndexedDB(15); // IndexedDB 활용 최고 레벨 설정
-
-    
-</details>
-</p>
-
-<details><summary>1.46.0</summary>
-<p>
-
 ## 1.46.0 업데이트 (2023년 2월 22일)
 
 ### [추가 된 기능]
@@ -73,8 +33,7 @@
 
 -   그리기 순서 변경 기능 (입력값이 클수록 상위로 작을수로 하위로 가시화)
 
-</details>
-</p>
+## 이전 버전 업데이트
 
 <details><summary>1.45.0</summary>
 <p>
