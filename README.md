@@ -70,7 +70,7 @@ function init() {
 
 ### [샌드박스]
 
-#### 4. SHP 파일 파싱 예제 추가
+#### 1. SHP 파일 파싱 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_ghost_symbol
 http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line
 http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line_rtt
@@ -80,7 +80,7 @@ http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon
 http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_rtt
 http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_solid
 
-#### 5. geojson 파일 파싱 예제 추가
+#### 2. geojson 파일 파싱 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_ghost_symbol
 http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line
 http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line_rtt
@@ -90,15 +90,15 @@ http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon
 http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_rtt
 http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_solid
 
-#### 6. 단면 분석 예제 추가
+#### 3. 단면 분석 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=terrain_dem_slice
 http://sandbox.dtwincloud.com/code/main.do?id=layer_building_altitude_slice
 
-#### 7. 가로수 배치 예제 추가
+#### 4. 가로수 배치 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_line
 http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_area
 
-#### 8. 교통 흐름 표시 예제 추가
+#### 5. 교통 흐름 표시 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
 
 ## 이전 버전 업데이트
