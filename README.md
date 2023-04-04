@@ -38,7 +38,7 @@
 
 ## 이전 버전 업데이트
 
-<details><summary>1.46.0</summary>
+<details><summary>1.47.0</summary>
 <p>
 
 ## 1.47.0 업데이트 (2023년 3월 13일)
