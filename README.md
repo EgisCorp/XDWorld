@@ -25,7 +25,7 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-## 1.49.0 업데이트 (2023년 4월 4일)
+## 1.49.1 (Hotfix) 업데이트 (2023년 4월 6일)
 
 ### [공지사항] (중요)
 
@@ -57,6 +57,18 @@ function init() {
 	});
 }
 ```
+
+### [수정 된 기능]
+
+#### 1. MML_RETURN_ANALYSISPOS 마우스모드 랜더링 오류 수정
+
+
+## 이전 버전 업데이트
+
+<details><summary>1.49.0</summary>
+<p>
+
+## 1.49.0 업데이트 (2023년 4월 4일)
 
 ### [수정 된 기능]
 
@@ -101,7 +113,8 @@ http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_are
 #### 5. 교통 흐름 표시 예제 추가
 http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.48.0</summary>
 <p>
