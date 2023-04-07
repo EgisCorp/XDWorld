@@ -25,11 +25,9 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-## 1.49.1 (Hotfix) 업데이트 (2023년 4월 6일)
+## 공지사항(중요)
 
-### [공지사항] (중요)
-
-#### 1. 브이월드 발급 키 입력 방식으로 변경
+### 1. 브이월드 발급 키 입력 방식으로 변경
 
 - 이전 버전의 엔진에서는 자체적으로 고정된 브이월드 API키를 내장하여 사용하였으나, 현재 버전 이후로 내장된 브이월드 키가 아닌 발급 받으신 브이월드 키를 입력하여 엔진을 사용하시도록 정책이 변경되었습니다.
 - 발급받으신 키는 아래와 같이 Module.initialize 지도 초기화 시 지정해주시면 됩니다.
@@ -58,19 +56,24 @@ function init() {
 }
 ```
 
-### [수정 된 기능]
+### 2. 브이월드 키 적용 시 암호화 처리
+- 발급받으신 키를 적용하실 때 스트립트 상의 키 노출을 방지하기 위해 반드시 **암호처리 된 키를 적용** 부탁드립니다.
+- 암호화 처리는 Hotfix 업데이트 된 엔진 1.49.2 버전(4월 7일 배포)부터 적용됩니다.
+
+## 최근 업데이트
+### 1.49.2 (Hotfix) 업데이트 (2023년 4월 7일)
+#### 1. 엔진 실행 중 defaultKey 입력 시 반드시 암호화 된 키 사용
+- 스크립트 파일 상 키 노출이 되지 않도록 defaultKey 입력 시 반드시 암호화 된 키를 사용하도록 변경되었습니다.
+
+### 1.49.1 (Hotfix) 업데이트 (2023년 4월 6일)
+
+#### [수정 된 기능]
 
 #### 1. MML_RETURN_ANALYSISPOS 마우스모드 랜더링 오류 수정
 
+### 1.49.0 업데이트 (2023년 4월 4일)
 
-## 이전 버전 업데이트
-
-<details><summary>1.49.0</summary>
-<p>
-
-## 1.49.0 업데이트 (2023년 4월 4일)
-
-### [수정 된 기능]
+#### [수정 된 기능]
 
 #### 1. 시곡면 분석 각도 적요 오류 수정
 
@@ -80,41 +83,40 @@ function init() {
 
 #### 4. 고스트심볼 편집 오류 수정
 
-### [샌드박스]
+#### [샌드박스]
 
 #### 1. SHP 파일 파싱 예제 추가
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_ghost_symbol
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line_rtt
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_pipe
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_poi
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_rtt
-http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_solid
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_ghost_symbol
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_line_rtt
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_pipe
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_poi
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_rtt
+- http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_polygon_solid
 
 #### 2. geojson 파일 파싱 예제 추가
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_ghost_symbol
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line_rtt
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_pipe
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_poi
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_rtt
-http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_solid
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_ghost_symbol
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_line_rtt
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_pipe
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_poi
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_rtt
+- http://sandbox.dtwincloud.com/code/main.do?id=object_geojson_to_polygon_solid
 
 #### 3. 단면 분석 예제 추가
-http://sandbox.dtwincloud.com/code/main.do?id=terrain_dem_slice
-http://sandbox.dtwincloud.com/code/main.do?id=layer_building_altitude_slice
+- http://sandbox.dtwincloud.com/code/main.do?id=terrain_dem_slice
+- http://sandbox.dtwincloud.com/code/main.do?id=layer_building_altitude_slice
 
 #### 4. 가로수 배치 예제 추가
-http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_line
-http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_area
+- http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_line
+- http://sandbox.dtwincloud.com/code/main.do?id=object_ghostsymbol_positioning_area
 
 #### 5. 교통 흐름 표시 예제 추가
-http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
+- http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
 
-</details>
-</p>
+## 이전 버전 업데이트
 
 <details><summary>1.48.0</summary>
 <p>
