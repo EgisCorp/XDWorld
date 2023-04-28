@@ -61,6 +61,59 @@ function init() {
 - 암호화 처리는 Hotfix 업데이트 된 엔진 1.49.2 버전(4월 7일 배포)부터 적용됩니다.
 
 ## 최근 업데이트
+### 1.50.0 업데이트 (2023년 4월 28일)
+#### 1. JSFlow에 API 및 속성 추가 
+ * JSFlow::setJSON( _option ) - 바람장 기반 통합 생성 API 추가 합니다.
+ * JSFlow 클래스에 실시간 적용 및 반환 속성이 아래와 같이 추가됩니다.
+ ```
+ JSFlow.velocity : Number    [ 바람장의 표현 속도 스케일 증가 ] - 범위 0.00001 ~ 0.0001 (권장)
+ JSFlow.offsetHeight : Number [ 바람장의 표현 고도 설정, DEM이 없으면 해발고도, DEM이 있으면 지표면고도] - 2 ~ 20 (권장)
+ JSFlow.particleNum : Number [ 바람장의 표현하는 파티클 라인의 최대 표현수 ] - 5000 이하로 설정 (필수)
+```
+* API 사용 예시는 [해당 샌드박스 샘플]( http://sandbox.dtwincloud.com/code/main.do?id=effect_wind_path )을 참고 해주시기 바랍니다.
+#### 2. 거리측정 중 같은 지점 입력 필터링 단계 추가
+ - 거리측정 중 동일한 점을 중복 클릭하였을 경우 발생하는 예외처리 과정을 추가하였습니다.
+#### 3. JSVec3Array 좌표 리스트의 중복점 제거 API 추가
+ * JSVec3Array 내 좌표들 중 같은 지점 값을 가진 중복점을 제가하는 API가 추가되었습니다.
+   ``` javascript
+   var list = new Module.JSVec3Array();
+   list.push(new Module.JSVector3D(129.128265, 35.171834, 1000));
+   list.push(new Module.JSVector3D(129.128845, 35.171145, 1000));
+   list.push(new Module.JSVector3D(129.128845, 35.171145, 1000));  // 중복점
+   list.push(new Module.JSVector3D(129.128951, 35.170951, 1000));
+
+   var removed_count = list.removeDuplicateVectors(Number.EPSILON);
+   ```
+ * 같은 점을 판별하는 판별 값은 외부에서 설정 가능하도록 파라미터를 설정하였습니다.
+ * 판별 값의 단위는 m 단위 입니다.
+ * 위 예제에서는 부동 소수점의 오차 값(Number.EPSIOIN)을 지정하였으나, 파라미터로 0.1 값을 지정하시면 0.1m 내 거리 차가 있는 점은 같은 점으로 간주되어 제거됩니다.
+ * 위 API는 중복점 제거 실행 시 삭제된 점 수를 반환합니다.
+#### 4. 파이프 생성 시 경로 간소화 과정 삭제
+ * JSPipe오브젝트 create API 내에서 경로 간소화 과정이 제거되었습니다.
+ * 기존 create API에서는 거리가 0.1m 미만의 가까운 점은 중복점으로 간주하여 생략하는 과정이 있었으나, 이는 정밀한 좌표점 입력 시 데이터가 왜곡되는 문제가 있어 삭제되었습니다.
+ * 만약 기존과 같이 중복점 제거 후 파이프를 생성하여야 하는 경우 위 항목 4번 JSVec3Array의 removeDuplicateVectors API를 활용하실 수 있습니다.
+#### 5. 거리 측정 중 중복점 입력 감지 추가
+ * 거리 측정 중 같은 지점을 두 번 클릭하였을 경우를 감지하여 중복 입력을 방지하는 단계를 추가하였습니다.
+#### 6. 수인한도분석 기능 추가
+ * 선택한 영역에 격자를 생성(영역에 딱 맞게 or 균일하게)하여 수인한도분석을 합니다.
+ * 분석 결과는 json 형태로 반환되며, 연속 일조량, 전체 일조량이 반환됩니다.
+#### 7. JSFigure 객체 편집 기능 추가
+ * Shift키를 누른 상태에서 크기 조절시 정비율로 조절이 가능하도록 추가됐습니다.
+#### 8. JSGhostSymbol를 구성하는 property (lightColor) 추가
+ * Ghost Symbol 가시화에 적용되는 Light Color 변경합니다.
+ * 변경된 색상이 0에 근접할수록 검은색으로 표현되며 반대로 255에 근접할수록 흰색으로 표현됩니다.
+ * 알파 값은 적용되지 않습니다.
+``` javascript
+let object = Module.createGhostSymbol("오브젝트 명칭");
+// 생성 정보 코드
+object.lightColor = new Module.JSColor(255, 128, 128, 128);
+```
+
+## 이전 버전 업데이트
+
+<details><summary>1.49.0 ~ 1.49.2</summary>
+<p>
+
 ### 1.49.2 (Hotfix) 업데이트 (2023년 4월 7일)
 #### 1. 엔진 실행 중 defaultKey 입력 시 반드시 암호화 된 키 사용
 - 스크립트 파일 상 키 노출이 되지 않도록 defaultKey 입력 시 반드시 암호화 된 키를 사용하도록 변경되었습니다.
@@ -116,7 +169,8 @@ function init() {
 #### 5. 교통 흐름 표시 예제 추가
 - http://sandbox.dtwincloud.com/code/main.do?id=effect_traffic
 
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.48.0</summary>
 <p>
