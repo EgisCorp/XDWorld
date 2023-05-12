@@ -25,42 +25,81 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-## 공지사항(중요)
-
-### 1. 브이월드 발급 키 입력 방식으로 변경
-
-- 이전 버전의 엔진에서는 자체적으로 고정된 브이월드 API키를 내장하여 사용하였으나, 현재 버전 이후로 내장된 브이월드 키가 아닌 발급 받으신 브이월드 키를 입력하여 엔진을 사용하시도록 정책이 변경되었습니다.
-- 발급받으신 키는 아래와 같이 Module.initialize 지도 초기화 시 지정해주시면 됩니다.
-``` javascript
-/* 엔진 로드 후 실행할 초기화 함수(Module.postRun) */
-function init() {
-
-        // 엔진 초기화 API 호출(필수)
-	Module.initialize({
-		container: document.getElementById("map"),
-		defaultKey : "발급받으신_브이월드_키"
-	});
-}
-```
-- 기존 고정으로 사용되던 키 사용이 중단되어 서비스 활용에 어려움이 없으시도록, 자체 발급한 키를 사용하는 것을 권장 드립니다.
-- 이전 버전의 엔진의 경우 Module.Start (혹은 Module.initialize) 호출 전에 Module.SetAPIKey API를 활용해주시면, 위에서 안내드린 defaultKey 설정 방식처럼 브이월드 키를 지정하실 수 있습니다.
-``` javascript
-function init() {
-
-        Module.SetAPIKey("발급받으신_브이월드_키");
-
-        // 엔진 초기화 API 호출(필수)
-	Module.initialize({
-		container: document.getElementById("map")
-	});
-}
-```
-
-### 2. 브이월드 키 적용 시 암호화 처리
-- 발급받으신 키를 적용하실 때 스트립트 상의 키 노출을 방지하기 위해 반드시 **암호처리 된 키를 적용** 부탁드립니다.
-- 암호화 처리는 Hotfix 업데이트 된 엔진 1.49.2 버전(4월 7일 배포)부터 적용됩니다.
 
 ## 최근 업데이트
+### 1.50.1(hotfix) 업데이트 (2023년 5월 12일)
+#### 1. 브이월드 서버 URL/데이터 변경에 따른 설정법 추가
+ * 최근 브이월드 데이터 요청 부분이 변경되어, 변경된 부분 적용이 가능하도록 지형/레이어 API에 프로퍼티가 추가되었습니다.
+ * 요청 URL 변경
+   * URL에서 서버 이름이 XDServer 에서 XDServer3d로 변경되었습니다.
+   ```
+   (변경 전) http://xdworld.vworld.kr:8080/XDServer/requestLayerNode?
+   (변경 후) http://xdworld.vworld.kr:8080/XDServer3d/requestLayerNode?
+   ```
+ * 브이월드 DEM 데이터 암호화
+   * 브이월드 DEM 데이터가 암호화되어 제공됩니다.
+ * 변경 사항 적용 방법
+   * 위 변경 사항이 적용 될 수 있도록 지형, 레이어 요청 API에 프로퍼티가 추가되었습니다.
+   * 지형
+     * XDServer3d 서버 네임 설정 : Module.initialize 내 dem/image 설정 부분에 servername 옵션이 추가되었습니다. 변경된 서버 네임을 이곳에서 설정하시면 됩니다.
+     * DEM 암호화 옵션 설정 : Module.initialize 내 dem 설정 부분에 encoding 옵션이 추가되었습니다. 요청하는 DEM이 암호화 처리 된 경우 true로 설정하시면 됩니다.
+     ``` javascript
+     Module.initialize({
+          container: document.getElementById("map"),
+          terrain : {
+               dem : {
+                    url : "http://xdworld.vworld.kr:8080",
+                    name : "dem",
+                    servername : "XDServer3d",   // 요청 서버 이름
+                    encoding : true    // DEM 복호화
+               },
+               image : {
+                    url : "http://xdworld.vworld.kr:8080",
+                    name : "tile_mo_HD",
+                    servername : "XDServer3d"   // 요청 서버 이름
+               },
+          },
+          defaultKey : "ezbBD(h2eFCmDQFQd9QpdzDS#zJRdJDm4!Epe(a2EzcbEzb2"
+     });
+     ``` 
+   * 레이어
+     * XDServer3d 서버 네임 설정 : JSLayerList의 createXDServerLayer API에 servername 옵션이 추가되었습니다. 변경된 서버 네임을 이곳에서 설정하시면 됩니다.
+     ``` javascript
+     var layer = Module.getTileLayerList().createXDServerLayer({
+          url : "http://xdworld.vworld.kr:8080",
+          servername : "XDServer3d",    // 요청 서버 이름
+          name : "facility_build",
+          type : 9,
+          minLevel : 0,
+          maxLevel : 15
+     });
+     ```
+ * 변경사항 적용 부분은 샌드박스 코드에서도 확인하실 수 있습니다.
+
+#### 2. 파이프 수직 단면의 교차점 반환 기능
+ * JSPipe 오브젝트를 담는 파이프 레이어(ELT_PIPE) 의 수직 단면 교차점 반환 API가 추가되었습니다.
+    * array getPipeIntersection(path)
+      * 호출 객체 타입 : JSLayer
+      * 파라미터
+          * path (JSVec2Array) : 교차점을 계산하고자 하는 수직 평면 경로
+      * 반환 : 위치(경도, 위도, 고도)와 교차점이 발생한 파이프의 오브젝트 키 리스트를 배열로 반환
+         ![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/36fa05e3-e9a3-4907-b1c3-0c4ca26a25e1)
+     * 예시
+         ``` javascript
+         var path = new Module.JSVec2Array();
+         path.push(new Module.JSVector2D(126.92326703887365, 37.5249592425154));
+         path.push(new Module.JSVector2D(126.923563634119, 37.524387028175454));
+         path.push(new Module.JSVector2D(126.92490490575213, 37.52439598531512));
+         
+         var intersection = pipeLayer.getPipeIntersection(path);
+         console.log(intersection);
+         ```
+
+## 이전 버전 업데이트
+
+<details><summary>1.50.0</summary>
+<p>
+
 ### 1.50.0 업데이트 (2023년 4월 28일)
 #### 1. JSFlow에 API 및 속성 추가 
  * JSFlow::setJSON( _option ) - 바람장 기반 통합 생성 API 추가 합니다.
@@ -108,22 +147,35 @@ let object = Module.createGhostSymbol("오브젝트 명칭");
 // 생성 정보 코드
 object.lightColor = new Module.JSColor(255, 128, 128, 128);
 ```
-
-## 이전 버전 업데이트
-
-<details><summary>1.49.0 ~ 1.49.2</summary>
+	
+</details>
+</p>
+	
+<details><summary>1.49.2(hotfix)</summary>
 <p>
 
 ### 1.49.2 (Hotfix) 업데이트 (2023년 4월 7일)
 #### 1. 엔진 실행 중 defaultKey 입력 시 반드시 암호화 된 키 사용
 - 스크립트 파일 상 키 노출이 되지 않도록 defaultKey 입력 시 반드시 암호화 된 키를 사용하도록 변경되었습니다.
 
+</details>
+</p>
+
+<details><summary>1.49.1(hotfix)</summary>
+<p>
+	
 ### 1.49.1 (Hotfix) 업데이트 (2023년 4월 6일)
 
 #### [수정 된 기능]
 
 #### 1. MML_RETURN_ANALYSISPOS 마우스모드 랜더링 오류 수정
 
+</details>
+</p>
+	
+<details><summary>1.49.0</summary>
+<p>
+	
 ### 1.49.0 업데이트 (2023년 4월 4일)
 
 #### [수정 된 기능]
