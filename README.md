@@ -33,7 +33,7 @@
 
 ## 이전 버전 업데이트
 
-<details><summary>1.50.0</summary>
+<details><summary>1.50.1(hotfix)</summary>
 <p>
 	
 ### 1.50.1(hotfix) 업데이트 (2023년 5월 12일)
