@@ -27,6 +27,15 @@
 
 
 ## 최근 업데이트
+### 1.50.2(hotfix) 업데이트 (2023년 5월 17일)
+#### 1. 배경지도(Google, MapBox, OpenStreetMap) 오류 수정
+ * 일부 배경지도의 특정지역 누락현상이 발생하여 수정되었습니다.
+
+## 이전 버전 업데이트
+
+<details><summary>1.50.0</summary>
+<p>
+	
 ### 1.50.1(hotfix) 업데이트 (2023년 5월 12일)
 #### 1. 브이월드 서버 URL/데이터 변경에 따른 설정법 추가
  * 최근 브이월드 데이터 요청 부분이 변경되어, 변경된 부분 적용이 가능하도록 지형/레이어 API에 프로퍼티가 추가되었습니다.
@@ -94,8 +103,8 @@
          var intersection = pipeLayer.getPipeIntersection(path);
          console.log(intersection);
          ```
-
-## 이전 버전 업데이트
+</details>
+</p>
 
 <details><summary>1.50.0</summary>
 <p>
