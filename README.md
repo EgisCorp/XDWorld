@@ -66,8 +66,8 @@
        color : [
            new Module.JSColor("#FF0000"),
            new Module.JSColor("#FF0000"),
-           new Module.JSColor("#FF0000"),
-           new Module.JSColor("#FF0000")
+           new Module.JSColor("#FFFF00"),
+           new Module.JSColor("#FFFF00")
        ],
        index : [0, 1, 2, 0, 2, 3]
    });
