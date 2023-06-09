@@ -105,7 +105,7 @@
 #### 1. JSSolarManager API 업데이트
  * 태양광 패널 배치 정보 반환 API(getLayerPannelInfo)를 추가하였습니다.
  * 태양광 패널 직접 배치 가능 API(addPlannelObject)를 추가 하였습니다.
-#### 2. [#issues296](https://github.com/EgisCorp/XDWorld/issues/296#:~:text=%ED%99%94%EB%A9%B4%20%EC%98%A4%EB%A5%98%20%EB%AC%B8%EC%9D%98-,%23296,-Open) 오류 수정 완료
+#### 2. [이슈 296](https://github.com/EgisCorp/XDWorld/issues/296#:~:text=%ED%99%94%EB%A9%B4%20%EC%98%A4%EB%A5%98%20%EB%AC%B8%EC%9D%98-,%23296,-Open) 오류 수정 완료
 
 
 ## 이전 버전 업데이트
