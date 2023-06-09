@@ -101,6 +101,13 @@
    ```
  * [샌드박스](https://sandbox.dtwincloud.com/code/main.do?id=object_colorpolygon_color_gradation)에서 기능의 동작을 확인하실 수 있습니다.
 
+### 1.51.2(Hotfix) 업데이트 (2023년 6월 9일)
+#### 1. JSSolarManager API 업데이트
+ * 태양광 패널 배치 정보 반환 API(getLayerPannelInfo)를 추가하였습니다.
+ * 태양광 패널 직접 배치 가능 API(addPlannelObject)를 추가 하였습니다.
+#### 2. Issues296 오류 수정 완료
+
+
 ## 이전 버전 업데이트
 
 <details><summary>1.50.2(Hotfix)</summary>
