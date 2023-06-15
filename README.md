@@ -107,4 +107,8 @@
  * 태양광 패널 직접 배치 가능 API(addPlannelObject)를 추가 하였습니다.
 #### 2. [이슈 296](https://github.com/EgisCorp/XDWorld/issues/296#:~:text=%ED%99%94%EB%A9%B4%20%EC%98%A4%EB%A5%98%20%EB%AC%B8%EC%9D%98-,%23296,-Open) 오류 수정 완료
 
+### 1.51.3(Hotfix) 업데이트 (2023년 6월 15일)
+#### 1. WMTS API 개선
+ * 불필요한 WMTS 요청 예외처리 추가하였습니다.
+
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
