@@ -43,15 +43,18 @@
    * 정점(vertex) : 폴리곤을 구성하는 점의 위치 리스트
    * 인덱스 : 각 정점을 삼각형으로 매핑하는 정수 리스트 
 
-  ![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/15f83298-2bd8-456a-9058-372809185519)
+  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/c509a5a1-a6f1-4657-8cdc-86fae89e182d)
+
 
 * 각 정점은 1:1로 매칭되는 색상 리스트를 정의할 수도 있습니다. 
 
-  ![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/9ff23a9d-7689-4f10-860e-7d0a00e3b93d)
+  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/036694b8-4670-4f72-b868-5aa0eb71de99)
+
 
 * 버텍스만으로 폴리곤의 삼각형을 구성하는 경우 인덱스를 생략할 수도 있습니다. 단, 이 경우 중복된 점이 리스트에 추가되므로 인덱싱 방법보다 비효율적일 수 있습니다. 
 
-  ![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/0e6c3f1c-0de5-47c9-b4b4-570841913807)
+  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/b487577a-b75f-4541-8ea9-f6fce68d7259)
+
 
 * 해당 기능은 JSColorPolygon의 set API를 통해 활용하실 수 있습니다.
    ``` javascript
