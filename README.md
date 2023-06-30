@@ -28,90 +28,41 @@
 
 ## 최근 업데이트
 
-### 1.51.0 업데이트 (2023년 5월 26일)
-#### 1. 화면 분할 환경에서 오브젝트의 렌더링 오류 수정 [Issue #289](/../../issues/289)
- * 화면 분할 시 투명도가 있는 오브젝트가 지정된 화면 구분 없이 렌더링 되는 현상을 수정하였습니다.
+### 1.52.0 (2023/6/30)
 
-#### 2. 창문분석 기능 추가
- * 창문 영역(좌하단, 우상단 or 좌상단, 우하단)을 선택 후 창문 생성, 복사/붙여넣기, 층 복사하여 창문분석을 합니다.
- * 분석 결과는 json 형태로 반환되며, 연속 일조량, 전체 일조량이 반환됩니다.
- * [샌드박스(창문분석)](http://sandbox.dtwincloud.com/code/main.do?id=analysis_window_shadow)
+#### 1. 레이어의 지상/지하 렌더링 구분 프로퍼티 추가 ([이슈 297](https://github.com/EgisCorp/XDWorld/issues/297))
+ * 해당 레이어의 지상에 위치하는지, 혹은 지하에 위치하는지 구분하는 view_underground 프로퍼티가 추가되었습니다.
+ * ``` layer.view_underground = true ```
+ * 디폴트 값은 false 입니다. (Module.TILE_LAYER_TYPE_VECTOR_PIPE 타입 레이어에 한하여 디폴트 값은 true로 적용됩니다.)
 
-### 1.51.1(Hotfix) 업데이트 (2023년 6월 2일)
-#### 1. 컬러 폴리곤 생성 기능 추가
- * 다수의 정점(vertex)과 인덱싱 정보로 폴리곤 형상을 직접 정의할 수 있는 API가 추가되었습니다.
-   * 정점(vertex) : 폴리곤을 구성하는 점의 위치 리스트
-   * 인덱스 : 각 정점을 삼각형으로 매핑하는 정수 리스트 
+#### 2. 태양광 패널관련 JSSolarManager API 업데이트
+ * 태양광 패널에 배치 정보를 API 레벨로 받을 수 있는 getLayerPannelInfo 추가됩니다. 
+    * 패널의 위치, 가로너비, 세로너비, 패널 두께, 방향각, 수직각 정보가 String Json 정보로 제공하며 아래 API로 재배치 가능합니다. 
+ * 태양광 패널 정보를 바탕으로 직접 패널 배치하는 bool addPlannelObject 추가됩니다. 
+* 옥상 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_roof
+* 지상 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_terrain
+* 배란다 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_veranda
+* 벽면(BI) 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_wall
 
-  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/c509a5a1-a6f1-4657-8cdc-86fae89e182d)
+#### 3. JSVector3Array - JSVector2Array 간 변환 API 추가
+ * JSVector3Array - JSVector2Array 간 원활한 변환이 가능하도록 toJSVector3Array, toJSVector2Array API가 추가되었습니다.
+ * JSVector2Array에서 JSVector3Array로 변환하는 경우 고도 값 입력이 필요합니다.
+ * JSVector3Array에서 JSVector2Array로 변환하는 경우 고도 값은 소실됩니다.
+    ``` javascript
+    var array2D = new Module.JSVector2Array();
+    var array3D = new Module.JSVector3Array();
+    ...
+    console.log(array2D.toJSVector3Array(10.0));         // JSVector2Array에서 JSVector3Array로 변환
+    console.log(array3D.toJSVector2Array());   // JSVector3Array에서 JSVector2Array로 변환
+    ```
 
-
-* 각 정점은 1:1로 매칭되는 색상 리스트를 정의할 수도 있습니다. 
-
-  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/036694b8-4670-4f72-b868-5aa0eb71de99)
-
-
-* 버텍스만으로 폴리곤의 삼각형을 구성하는 경우 인덱스를 생략할 수도 있습니다. 단, 이 경우 중복된 점이 리스트에 추가되므로 인덱싱 방법보다 비효율적일 수 있습니다. 
-
-  ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/b487577a-b75f-4541-8ea9-f6fce68d7259)
-
-
-* 해당 기능은 JSColorPolygon의 set API를 통해 활용하실 수 있습니다.
-   ``` javascript
-   var polygon = Module.createColorPolygon("GRADATION_POLYGON");
-   polygon.set({
-       vertex : [
-           new Module.JSVector3D(129.12909050967076, 35.17110889362373, 4.22),
-           new Module.JSVector3D(129.130474460754, 35.17110084682464, 4.00),
-           new Module.JSVector3D(129.13056137846394, 35.17032570132414, 4.07),
-           new Module.JSVector3D(129.12921614563658, 35.17031032880493, 4.39)
-       ],
-       color : [
-           new Module.JSColor("#FF0000"),
-           new Module.JSColor("#FF0000"),
-           new Module.JSColor("#FFFF00"),
-           new Module.JSColor("#FFFF00")
-       ],
-       index : [0, 1, 2, 0, 2, 3]
-   });
-   ```
- * [샌드박스](https://sandbox.dtwincloud.com/code/main.do?id=object_colorpolygon_color_gradation)에서 기능의 동작을 확인하실 수 있습니다.
-
-#### 2. 라인 생성 시 각 지점 별 색상 설정 기능 추가
- * JSLineString으로 라인을 생성하였을 경우, 각 정점에 색상을 개별 지정 가능하도록 기능이 추가되었습니다.
- * 기존 API에서는 color 태그를 통해 단일 색상 지정만 가능했으나, 이번 업데이트를 통해 각 정점 별 색상 지정이 가능하도록 업데이트되었습니다.
- * 각 정점 별 색상 지정 시 color 태그에 색상값 배열을 입력하시면 됩니다.
- * 각 정점 별 색상 수가 1:1로 매칭되어야 합니다. 매칭되지 않을 시 배열의 첫번째 색상만 참조하여 단일 색상으로 적용됩니다.
-   ``` javascript
-   var line = Module.createLineString("GRADATION_LINE");
-   line.createbyJson({
-		coordinates: {
-                    style : "XYZ",
-                    coordinate : [
-                        [129.12486405043842, 35.17410008274932, 5.7],
-                        [129.12522538156702, 35.17364593649981, 5.6],
-                        [129.12563286539853, 35.17332821268188, 5.6]
-                    ]
-                },
-		type: 0,
-		color: [
-                    {a: 255, r : 255, g : 0, b : 
-                    {a: 255, r : 255, g : 127, b : 0},
-                    {a: 255, r : 255, g : 255, b : 0},
-                ],
-		width: 10.0
-	});
-   ```
- * [샌드박스](https://sandbox.dtwincloud.com/code/main.do?id=object_colorpolygon_color_gradation)에서 기능의 동작을 확인하실 수 있습니다.
-
-### 1.51.2(Hotfix) 업데이트 (2023년 6월 9일)
-#### 1. JSSolarManager API 업데이트
- * 태양광 패널 배치 정보 반환 API(getLayerPannelInfo)를 추가하였습니다.
- * 태양광 패널 직접 배치 가능 API(addPlannelObject)를 추가 하였습니다.
-#### 2. [이슈 296](https://github.com/EgisCorp/XDWorld/issues/296#:~:text=%ED%99%94%EB%A9%B4%20%EC%98%A4%EB%A5%98%20%EB%AC%B8%EC%9D%98-,%23296,-Open) 오류 수정 완료
-
-### 1.51.3(Hotfix) 업데이트 (2023년 6월 15일)
-#### 1. WMTS API 개선
- * 불필요한 WMTS 요청 예외처리 추가하였습니다.
+#### 4. JSVector3Array, JSVector2Array에 getBoundary API 추가
+ * JSVector3Array, JSVector2Array의 min, max 값이 반환 되는 getBoundary API가 각각 추가되었습니다. 
+    ``` javascript
+    var boundary = array2D.getBoundary());
+    console.log(boundary.min);
+    console.log(boundary.max);
+    ```
+ * 리스트에 값이 없어 비어있는 경우 null을 반환합니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
