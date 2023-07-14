@@ -28,41 +28,37 @@
 
 ## 최근 업데이트
 
-### 1.52.0 (2023/6/30)
+### 1.52.1 Hotfix (2023/7/14)
 
-#### 1. 레이어의 지상/지하 렌더링 구분 프로퍼티 추가 ([이슈 297](https://github.com/EgisCorp/XDWorld/issues/297))
- * 해당 레이어의 지상에 위치하는지, 혹은 지하에 위치하는지 구분하는 view_underground 프로퍼티가 추가되었습니다.
- * ``` layer.view_underground = true ```
- * 디폴트 값은 false 입니다. (Module.TILE_LAYER_TYPE_VECTOR_PIPE 타입 레이어에 한하여 디폴트 값은 true로 적용됩니다.)
+#### 1. 엔진 내 마우스 버튼 눌림 상태 프로퍼티가 추가되었습니다.
+ * JSControl 내 마우스 왼쪽 버튼 눌림(mouseLeftButtonDown), 오른쪽 버튼 눌림(mouseRightButtonDown) 프로퍼티가 추가되었습니다.
+   ``` javascript
+   console.log(Module.getControl().mouseLeftButtonDown);
+   console.log(Module.getControl().mouseRightButtonDown);
+   ```
 
-#### 2. 태양광 패널관련 JSSolarManager API 업데이트
- * 태양광 패널에 배치 정보를 API 레벨로 받을 수 있는 getLayerPannelInfo 추가됩니다. 
-    * 패널의 위치, 가로너비, 세로너비, 패널 두께, 방향각, 수직각 정보가 String Json 정보로 제공하며 아래 API로 재배치 가능합니다. 
- * 태양광 패널 정보를 바탕으로 직접 패널 배치하는 bool addPlannelObject 추가됩니다. 
-* 옥상 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_roof
-* 지상 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_terrain
-* 배란다 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_veranda
-* 벽면(BI) 패널 배치 시뮬레이션 : http://sandbox.dtwincloud.com/code/main.do?id=analysis_pannel_wall
+#### 2. Mobile Touch Rotate Event tilt 제한 기능을 수정하였습니다.
+ * JSCamera.setLimitTilt("입력값") 설정 후 모바일 touch rotate event시 제한이 안되는 문제를 수정하였습니다.
 
-#### 3. JSVector3Array - JSVector2Array 간 변환 API 추가
- * JSVector3Array - JSVector2Array 간 원활한 변환이 가능하도록 toJSVector3Array, toJSVector2Array API가 추가되었습니다.
- * JSVector2Array에서 JSVector3Array로 변환하는 경우 고도 값 입력이 필요합니다.
- * JSVector3Array에서 JSVector2Array로 변환하는 경우 고도 값은 소실됩니다.
-    ``` javascript
-    var array2D = new Module.JSVector2Array();
-    var array3D = new Module.JSVector3Array();
-    ...
-    console.log(array2D.toJSVector3Array(10.0));         // JSVector2Array에서 JSVector3Array로 변환
-    console.log(array3D.toJSVector2Array());   // JSVector3Array에서 JSVector2Array로 변환
-    ```
+#### 3. 측면 두께를 가진 Polygon 생성 기능을 추가 하였습니다. 
+ * 고도를 기준 축으로 측면으로 두께가 있는 JSColorPolygon 생성 기능을 추가하였습니다.
+ * API : JSColorPolygon.createbyJson(parameter);
+ * 샘플코드
+ ``` javascript
+var polygon = Module.createColorPolygon("GRADATION_POLYGON");
+let parameter = {
+    coordinates: {
+        coordinate: vertices,    // geometry 경위도좌표 목록
+        index: indices,              // geometry 가시화 인덱스 설정
+    },
+    color: colors,              // 정점 색상 설정
+    thickness: 0,               // 두께 설정(m 단위)
+};
+polygon.createbyJson(parameter);
+```
 
-#### 4. JSVector3Array, JSVector2Array에 getBoundary API 추가
- * JSVector3Array, JSVector2Array의 min, max 값이 반환 되는 getBoundary API가 각각 추가되었습니다. 
-    ``` javascript
-    var boundary = array2D.getBoundary());
-    console.log(boundary.min);
-    console.log(boundary.max);
-    ```
- * 리스트에 값이 없어 비어있는 경우 null을 반환합니다.
+#### 3. JSColorPolygon 경위도 좌표 반환 기능을 추가 하였습니다.
+ * JSColorPolygon을 구성하는 geometry 경위도 좌표 목록을 반환하는 기능
+ * API : JSColorPolygon.toLonlatArray();
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
