@@ -28,37 +28,9 @@
 
 ## 최근 업데이트
 
-### 1.52.1 Hotfix (2023/7/14)
+### 1.53.0 (2023/7/28)
 
-#### 1. 엔진 내 마우스 버튼 눌림 상태 프로퍼티가 추가되었습니다.
- * JSControl 내 마우스 왼쪽 버튼 눌림(mouseLeftButtonDown), 오른쪽 버튼 눌림(mouseRightButtonDown) 프로퍼티가 추가되었습니다.
-   ``` javascript
-   console.log(Module.getControl().mouseLeftButtonDown);
-   console.log(Module.getControl().mouseRightButtonDown);
-   ```
-
-#### 2. Mobile Touch Rotate Event tilt 제한 기능을 수정하였습니다.
- * JSCamera.setLimitTilt("입력값") 설정 후 모바일 touch rotate event시 제한이 안되는 문제를 수정하였습니다.
-
-#### 3. 측면 두께를 가진 Polygon 생성 기능을 추가 하였습니다. 
- * 고도를 기준 축으로 측면으로 두께가 있는 JSColorPolygon 생성 기능을 추가하였습니다.
- * API : JSColorPolygon.createbyJson(parameter);
- * 샘플코드
- ``` javascript
-var polygon = Module.createColorPolygon("GRADATION_POLYGON");
-let parameter = {
-    coordinates: {
-        coordinate: vertices,    // geometry 경위도좌표 목록
-        index: indices,              // geometry 가시화 인덱스 설정
-    },
-    color: colors,              // 정점 색상 설정
-    thickness: 0,               // 두께 설정(m 단위)
-};
-polygon.createbyJson(parameter);
-```
-
-#### 3. JSColorPolygon 경위도 좌표 반환 기능을 추가 하였습니다.
- * JSColorPolygon을 구성하는 geometry 경위도 좌표 목록을 반환하는 기능
- * API : JSColorPolygon.toLonlatArray();
+#### 1. 오브젝트 프로퍼티 반환 오류 [이슈 #316](https://github.com/EgisCorp/XDWorld/issues/316)
+ * 레이어로부터 오브젝트를 재반환 받았을 때 저장한 속성 값이 유지되도록 기능을 수정했습니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
