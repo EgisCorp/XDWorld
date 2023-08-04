@@ -25,12 +25,12 @@
 
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
-
 ## 최근 업데이트
 
-### 1.53.0 (2023/7/28)
+### 1.53.1 (2023/8/4)
 
-#### 1. 오브젝트 프로퍼티 반환 오류 [이슈 #316](https://github.com/EgisCorp/XDWorld/issues/316)
- * 레이어로부터 오브젝트를 재반환 받았을 때 저장한 속성 값이 유지되도록 기능을 수정했습니다.
+#### 1. 레이어 removeAll, delLayerAtName 함수 실행 시 HTML POI가 사라지는 오류 문의 [이슈 #317](https://github.com/EgisCorp/XDWorld/issues/317)
+
+-   레이어 또는 객체 삭제시 HTML Object 불가시화 현상을 수정하였습니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
