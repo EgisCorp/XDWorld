@@ -27,10 +27,39 @@
 
 ## 최근 업데이트
 
-### 1.53.1 (2023/8/4)
+### 1.53.2 (2023/9/12)
 
-#### 1. 레이어 removeAll, delLayerAtName 함수 실행 시 HTML POI가 사라지는 오류 문의 [이슈 #317](https://github.com/EgisCorp/XDWorld/issues/317)
+#### 1. 구 폴리곤 생성 API 추가 [이슈 #322](https://github.com/EgisCorp/XDWorld/issues/322)
+ * JSPolygon에 구체 폴리곤을 생성하는 API가 추가되었습니다.
+ * API : JSPolygon.setSphere(parameter);
+ * 샘플코드
+    ```javascript
+    var polygon = Module.createPolygon("GRADATION_POLYGON");
+    let parameter = {
+        position: new Module.JSVector3D(lon, lat, alt),    // 경도, 위도, 고도 좌표
+        color: new Module.JSColor(255, 0, 255, 0),          // 구 표현색상 default : JSColor(255, 0, 255, 0)
+        radius: 40,                                                             // 구 반지름 설정(m 단위)  default : 10
+        segment: 50,                                                         // 구 정밀도 설정   default : 30
+    };
+    polygon.setSphere(parameter);
+    ```
 
--   레이어 또는 객체 삭제시 HTML Object 불가시화 현상을 수정하였습니다.
+#### 2. 폴리곤 깊이 버퍼 on/off 프로퍼티 추가
+ * JSPolygon에 깊어 버퍼 테스트를 on/off 할 수 있도록 bool 타입 프로퍼티 'zBufferOff'가 추가되었습니다.
+ * 디폴트 값은 false 입니다.
+ * 샘플코드
+    ```javascript
+    polygon.zBufferOff = true;
+    ```
+    
+#### 3. PNG 타일맵 레이어 투명도 조절 기능 추가  [이슈 #321](https://github.com/EgisCorp/XDWorld/issues/321)
+ * JSLayer의 setAlpha API의 하이브리드 투명값 조절 기능이  추가되었습니다.
+ * API : JSLayer.setAlpha(parameter);
+ * 샘플코드
+    ```javascript
+    let layerList = new Module.JSLayerList(false);
+    var layer = layerList.nameAtLayer("layername");
+    layer.setAlpha(180);
+    ```
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
