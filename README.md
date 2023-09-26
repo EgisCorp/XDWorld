@@ -27,6 +27,9 @@
 
 ## 최근 업데이트
 
+### 1.53.3 (2023/9/12)
+ * [이슈 321](https://github.com/EgisCorp/XDWorld/issues/321) 오류 수정
+
 ### 1.53.2 (2023/9/12)
 
 #### 1. 구 폴리곤 생성 API 추가 [이슈 #322](https://github.com/EgisCorp/XDWorld/issues/322)
