@@ -59,17 +59,7 @@
 	layer.setAlpha(180);
     ```
 	
-#### 3. 하이브리드 투명도 편집 기능 추가
- * JSLayer에 투명값 조절 API가 수정되었습니다.
- * API : JSLayer.setAlpha(parameter);
- * 샘플코드
-    ```javascript
-    let layerList = new Module.JSLayerList(false);
-	var layer = layerList.nameAtLayer("layername");
-	layer.setAlpha(180);
-    ```
-	
-#### 4. WMTS 예외처리
+#### 3. WMTS 예외처리
  * 타일링에 따른 WMTS 예외처리가 추가되었습니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
