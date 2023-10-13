@@ -27,39 +27,22 @@
 
 ## 최근 업데이트
 
-### 1.54.0 (2023/9/26)
-
-#### 1. 대기 노을 효과
- * 지정한 일출, 일물 시간에 따라 대기 색상이 변경 되도록 API가 추가되었습니다.
- * API
-   * JSOption.setAtmosphericSunriseTime(시간, 분);
-   * JSOption.setAtmosphericSunsetTime(시간, 분);
-   * JSOption.setAtmosphericTime(시간, 분);
- * 샘플코드
-    ```javascript
-    // 일출 시간 설정
-    Module.getOption().setAtmosphericSunriseTime(6, 30);
+### 1.54.1 Hotfix (2023/10/13)
+#### 1. WMS, WMTS 이미지 투명도 설정 오류 수정
+ * 이미지 일부 영역에 투명 값이 정상적으로 설정되지 않는 부분을 수정하였습니다.
+#### 2. JSPolygon loadTexture API 콜백 프로퍼티 추가 ([이슈 #336](https://github.com/EgisCorp/XDWorld/issues/336))
+ * Fire_EventTextureLoadComplete 이벤트 처리 대신 loadTexture API에 이미지 로드 콜백을 받을 수 있도록 수정되었습니다.
+    ``` javascript
+    polygon.loadTexture("polygon_rtt_texture", {
+        url : "./data/polygon_rtt_texture", 
+        callback : function(e) {
+            console.log(e);
+        }
+    });
     ```
-    ```javascript
-    // 일몰 시간 설정
-    Module.getOption().setAtmosphericSunsetTime(19, 0);
+ * 기존 콜백 처리가 없는 loadTexture API도 혼용 가능합니다.
+    ``` javascript
+    polygon.loadTexture("polygon_rtt_texture", "./data/polygon_rtt_texture");
     ```
-    ```javascript
-    // 대기 시간 설정
-    Module.getOption().setAtmosphericTime(12, 0);
-    ```
-
-#### 2. 하이브리드 투명도 편집 기능 추가
- * JSLayer에 투명값 조절 API가 수정되었습니다.
- * API : JSLayer.setAlpha(parameter);
- * 샘플코드
-    ```javascript
-    let layerList = new Module.JSLayerList(false);
-	var layer = layerList.nameAtLayer("layername");
-	layer.setAlpha(180);
-    ```
-	
-#### 3. WMTS 예외처리
- * 타일링에 따른 WMTS 예외처리가 추가되었습니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
