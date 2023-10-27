@@ -26,23 +26,34 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ## 최근 업데이트
+### 1.55.0 (2023/10/27)
+#### 1. JSPolygon 내 픽셀 기반 텍스쳐 로드 기능이 추가되었습니다.
+ * 기존 URL로 데이터를 로드하는 loadTexture API에 픽셀 데이터를 바로 적용할 수 있도록 기능이 업데이트 되었습니다.
+ * 네트워크를 통해 데이터를 로드하지 않으므로 API 실행 후 바로 setFaceTexture API를 통해 텍스쳐를 적용할 수 있습니다.
+ ``` javascript
+ function setFaceTextureByPixelColors(_polygon, _faceIndex) {
 
-### 1.54.1 Hotfix (2023/10/13)
-#### 1. WMS, WMTS 이미지 투명도 설정 오류 수정
- * 이미지 일부 영역에 투명 값이 정상적으로 설정되지 않는 부분을 수정하였습니다.
-#### 2. JSPolygon loadTexture API 콜백 프로퍼티 추가 ([이슈 #336](https://github.com/EgisCorp/XDWorld/issues/336))
- * Fire_EventTextureLoadComplete 이벤트 처리 대신 loadTexture API에 이미지 로드 콜백을 받을 수 있도록 수정되었습니다.
-    ``` javascript
-    polygon.loadTexture("polygon_rtt_texture", {
-        url : "./data/polygon_rtt_texture", 
-        callback : function(e) {
-            console.log(e);
-        }
+     // 이미지를 그릴 캔버스 생성
+     var canvas = document.createElement("canvas");
+     canvas.width = 128;
+     canvas.height = 128;
+
+     var context = canvas .getContext("2d");
+
+     (... context를 활용하여 canvas 이미지 그리기...)
+
+     // canvas에 그려진 픽셀 데이터 반환
+     
+     // JSPolygon의 텍스쳐 리스트로 저장
+     _polygon.loadTexture("텍스쳐이름", {
+        width : canvas.width,
+        height : canvas.height,
+        pixels : context.getImageData(0, 0, canvas.width, canvas.height).data
     });
-    ```
- * 기존 콜백 처리가 없는 loadTexture API도 혼용 가능합니다.
-    ``` javascript
-    polygon.loadTexture("polygon_rtt_texture", "./data/polygon_rtt_texture");
-    ```
+    
+    // JSPolygon 첫번째 Face에 텍스쳐 지정
+    _polygon.setFaceTexture(0, "텍스쳐이름");
+ }
+```
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
