@@ -1,0 +1,23 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>XDWorldEM</title>
+	<style>
+		#map {
+			position: absolute;
+			width: calc(100%);
+			height: calc(100%);
+			left: 0px;
+			top: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+		var initScript = document.createElement('script');
+		initScript.src = "./js/init.js";
+		document.body.appendChild(initScript);
+	</script>
+</body>
+</html>
