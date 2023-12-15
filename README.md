@@ -26,6 +26,10 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ## 최근 업데이트
+### 1.56.1 (hotfix)
+#### 1. JSPolygon setHeight 설정 오류 수정 [#359 이슈](https://github.com/EgisCorp/XDWorld/issues/359)
+* setCircle로 생성된 오브젝트에 setHeight 적용 시 폴리곤 컬링 면이 반대로 생성되는 현상을 수정하였습니다.
+
 ### 1.56.0 (hotfix)
 #### 1. [#357 이슈](https://github.com/EgisCorp/XDWorld/issues/357) 해결
 
