@@ -27,19 +27,11 @@
 
 ## 최근 업데이트
 ### 1.56.2 (hotfix)
-#### 1. POI 가시화 모듈 수정 [#352 이슈](https://github.com/EgisCorp/XDWorld/issues/362)
+#### 1. POI 가시화 모듈 수정 [#362 이슈](https://github.com/EgisCorp/XDWorld/issues/362)
 
 ### 1.56.1 (hotfix)
 #### 1. JSPolygon setHeight 설정 오류 수정 [#359 이슈](https://github.com/EgisCorp/XDWorld/issues/359)
 * setCircle로 생성된 오브젝트에 setHeight 적용 시 폴리곤 컬링 면이 반대로 생성되는 현상을 수정하였습니다.
 
-### 1.56.0 (hotfix)
-#### 1. [#357 이슈](https://github.com/EgisCorp/XDWorld/issues/357) 해결
-
-### 1.55.2 (hotfix)
-#### 1. 조망보기 오류 수정
-
-### 1.55.1 (hotfix)
-#### 1. [#341 이슈](https://github.com/EgisCorp/XDWorld/issues/341) 해결
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
