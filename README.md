@@ -29,6 +29,11 @@
 ### 1.56.2 (hotfix)
 #### 1. POI 가시화 모듈 수정 [#362 이슈](https://github.com/EgisCorp/XDWorld/issues/362)
 
+#### 2. 1.49.0 버전 이후 투명 값을 가지는 객체의 렌더링 순서가 변경되어 발생 [#361 이슈](https://github.com/EgisCorp/XDWorld/issues/361)
+* CJSObject::setAlphaRender(_bSet) API를 이용해 알파 렌더링 할때 입력되지 않도록 고정 할 수 있음
+* true: 투명 값이 있을 시 알파 렌더링으로 입력 가능
+* false : 투명 값과 상관없이 알파 렌더링으로 입력 불가
+
 ### 1.56.1 (hotfix)
 #### 1. JSPolygon setHeight 설정 오류 수정 [#359 이슈](https://github.com/EgisCorp/XDWorld/issues/359)
 * setCircle로 생성된 오브젝트에 setHeight 적용 시 폴리곤 컬링 면이 반대로 생성되는 현상을 수정하였습니다.
