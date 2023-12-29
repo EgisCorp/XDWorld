@@ -26,7 +26,8 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 
 ## 최근 업데이트
-### 1.  최근 화면 갱신 시간 반환 프로퍼티 추가
+### 1.57.0 (2023/12/29)
+#### 1.  최근 화면 갱신 시간 반환 프로퍼티 추가
   * JSMap 프로퍼티를 통해 화면이 최근 갱신 된 시각을 년/월/일/시/초 단위로 반환하는 프로퍼티가 추가되었습니다.
     ``` javascript
     var time = Module.getMap().lastRenderTime;
@@ -34,7 +35,7 @@
     ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/757bf64f-6a5e-40c7-b230-a8a8add6de49)
 
 
-### 2. 2D 바 그래프 값 가시화 설정 프로퍼티가 추가 : [이슈 #365](https://github.com/EgisCorp/XDWorld/issues/365)
+#### 2. 2D 바 그래프 값 가시화 설정 프로퍼티가 추가 : [이슈 #365](https://github.com/EgisCorp/XDWorld/issues/365)
   * 2D 바 그래프 값(컬럼 단위, 총 단위) 가시화 설정 프로퍼티가 추가되었습니다.
   * 컬럼 단위 값 가시화 설정
     ``` javascript
@@ -45,7 +46,7 @@
     graph.totalColumnValueVisible = false;
     ```
 
-### 3. 1인칭 카메라 이동 시 가시범위 조정 : [이슈 #363](https://github.com/EgisCorp/XDWorld/issues/363)
+#### 3. 1인칭 카메라 이동 시 가시범위 조정 : [이슈 #363](https://github.com/EgisCorp/XDWorld/issues/363)
   * 1인칭 카메라 설정 시 오브젝트 최소 가시범위를 낮추어 카메라 앞 지형이 컬링되는 현상을 제거하였습니다.
 
 
