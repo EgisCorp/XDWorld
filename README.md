@@ -27,6 +27,41 @@
 
 ## 최근 업데이트
 
+### 1.57.2 (2024/1/19)
+#### 1. 고스트심볼 음영 처리 수정
+  * 고스트심볼 오브젝트 음영 처리가 적용되지 않는 부분을 수정하였습니다.
+#### 2. TM 좌표 기반 격자 폴리곤 생성 API 추가
+  *   bool JSPolygon::createTMCoordPlane( _options) API 추가되었습니다.
+  * 파라메터 : _options = { 
+    * llcorner : {
+        * coordCode : number,   // TM 좌표 코드 적용
+        * x : number,           // 좌하단 x 축 값
+        * y : number }          // 좌하단 y 축 값
+    * grid : {
+        * col : number,         // 격자 가로 총수
+        * row : number,         // 격자 세로 총수
+        * cellSize : number }   // 격자 가로,세로 크기 (미터)
+    * gab : number }            // 격자 생성 gab (cell 갯수 skip 갯수)
+  * 반환 bool : 생성 성공 여부 반환
+  * 샘플 코드
+``` javascript
+  // 폴리곤 생성
+  const polygon = Module.createPolygon('POLYGON_IMG_' + layer.getObjectCount());
+  polygon.createTMCoordPlane({
+      llcorner : {
+          coordCode : 20,
+          x : 491218.21,
+          y : 340251.12
+      },
+      grid : {
+          col : 640,
+          row : 1120,
+          cellSize : 5
+      },
+      gab : 20
+  });
+  ```
+
 ### 1.57.1 (2024/1/5)
 #### 1.  네트워크 통신 안정화
   * 데이터 요청 프로세스를 안정화하였습니다.
