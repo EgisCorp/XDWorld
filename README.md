@@ -26,69 +26,25 @@
 
 ## 최근 업데이트
 
-### 1.57.2 (2024/1/19)
-#### 1. 고스트심볼 음영 처리 수정
-  * 고스트심볼 오브젝트 음영 처리가 적용되지 않는 부분을 수정하였습니다.
-#### 2. TM 좌표 기반 격자 폴리곤 생성 API 추가
-  *   bool JSPolygon::createTMCoordPlane( _options) API 추가되었습니다.
-  * 파라메터 : _options = { 
-    * llcorner : {
-        * coordCode : number,   // TM 좌표 코드 적용
-        * x : number,           // 좌하단 x 축 값
-        * y : number }          // 좌하단 y 축 값
-    * grid : {
-        * col : number,         // 격자 가로 총수
-        * row : number,         // 격자 세로 총수
-        * cellSize : number }   // 격자 가로,세로 크기 (미터)
-    * gab : number }            // 격자 생성 gab (cell 갯수 skip 갯수)
-  * 반환 bool : 생성 성공 여부 반환
-  * 샘플 코드
-``` javascript
-  // 폴리곤 생성
-  const polygon = Module.createPolygon('POLYGON_IMG_' + layer.getObjectCount());
-  polygon.createTMCoordPlane({
-      llcorner : {
-          coordCode : 20,
-          x : 491218.21,
-          y : 340251.12
-      },
-      grid : {
-          col : 640,
-          row : 1120,
-          cellSize : 5
-      },
-      gab : 20
-  });
-  ```
+### 1.58.0 (2024/1/26)
 
-### 1.57.1 (2024/1/5)
-#### 1.  네트워크 통신 안정화
-  * 데이터 요청 프로세스를 안정화하였습니다.
-#### 2. 선택 오브젝트 렌더링 수정 ([이슈 #368](https://github.com/EgisCorp/XDWorld/issues/368))
-  * 지하 아래 오브젝트 선택 시 선택 오브젝트가 보이지 않는 현상을 수정하였습니다.
+#### 1.  JSProj 클래스 제공
+  * CRS(Projection)로 설정된 여러 좌표에 해당되는 위치값을 특정 CRS(Projection)로 변환 하는 기능을 추가 하였습니다.
+  * 상세 관련내용은 메뉴얼 [JSProj](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/etc/jsproj) 참조 부탁드립니다.
 
-### 1.57.0 (2023/12/29)
-#### 1.  최근 화면 갱신 시간 반환 프로퍼티 추가
-  * JSMap 프로퍼티를 통해 화면이 최근 갱신 된 시각을 년/월/일/시/초 단위로 반환하는 프로퍼티가 추가되었습니다.
-    ``` javascript
-    var time = Module.getMap().lastRenderTime;
-    ```
-    ![image](https://github.com/EgisCorp/XDWorld/assets/82925313/757bf64f-6a5e-40c7-b230-a8a8add6de49)
+#### 2. 월드 배경 색상 적용
+  * JSOption에 backgroundColor : { JSColor } 속성을 통한 월드 색상 변경 적용이 추가되었습니다.
 
+#### 3. 건물 카메라 확대 시 거리 조절 [이슈 #378](https://github.com/EgisCorp/XDWorld/issues/378)
+  * Class JSCamera 구성요소 추가
+    * 변수항목
+      * collision_type(type boolean) : 휠 이벤트에서 카메라와 선택지점 충돌 유무를 설정합니다.
+      * collision_distance(type number) : 휠 이벤트에서 카메라와 선택지점(마우스 이벤트 지점) 보간 거리를 설정합니다.
 
-#### 2. 2D 바 그래프 값 가시화 설정 프로퍼티가 추가 : [이슈 #365](https://github.com/EgisCorp/XDWorld/issues/365)
-  * 2D 바 그래프 값(컬럼 단위, 총 단위) 가시화 설정 프로퍼티가 추가되었습니다.
-  * 컬럼 단위 값 가시화 설정
-    ``` javascript
-    graph.columnValueVisible = false;
-    ```
-  * 총 단위 값 가시화 설정
-    ``` javascript
-    graph.totalColumnValueVisible = false;
-    ```
-
-#### 3. 1인칭 카메라 이동 시 가시범위 조정 : [이슈 #363](https://github.com/EgisCorp/XDWorld/issues/363)
-  * 1인칭 카메라 설정 시 오브젝트 최소 가시범위를 낮추어 카메라 앞 지형이 컬링되는 현상을 제거하였습니다.
-
+ ``` javascript
+var camera = Module.getViewCamera();
+camera.collision_type = true;
+camera.collision_distance = 20;
+```
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
