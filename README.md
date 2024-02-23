@@ -26,25 +26,37 @@
 
 ## 최근 업데이트
 
-### 1.58.0 (2024/1/26)
+### 1.59.0 (2024/2/23)
 
-#### 1.  JSProj 클래스 제공
-  * CRS(Projection)로 설정된 여러 좌표에 해당되는 위치값을 특정 CRS(Projection)로 변환 하는 기능을 추가 하였습니다.
-  * 상세 관련내용은 메뉴얼 [JSProj](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/etc/jsproj) 참조 부탁드립니다.
+#### 1. 초기 로딩시 지구본이 검게 표현되는 현상 수정
+  * 엔진 로드 직후 지형 이미지가 완전 수신 되지 않아 지구본이 검은색으로 표현 되는 현상을 수정하였습니다.
 
-#### 2. 월드 배경 색상 적용
-  * JSOption에 backgroundColor : { JSColor } 속성을 통한 월드 색상 변경 적용이 추가되었습니다.
+#### 2. 서버 기반 지형 고도 반환 함수 추가
+  * 현재 엔진에서 요청 중인 지형 서버로 DEM 고도 값을 수신하는 API가 추가되었습니다.
+  * 서버의 고도 값을 리턴하므로 엔진에 낮은 레벨 지형이 로드 된 상태인 경우, 현재 엔진 지형과 DEM 값이 다를 수 있습니다.
+  * 값은 비동기로 반환되므로 콜백 함수를 통해 값을 수신합니다.
+  * 입력한 경위도 및 지형 레벨에 대응되는 고도 값이 없거나 서버에 지형 데이터가 없는 경우 null을 반환합니다.
+  ``` javascript
+  Module.getTerrain().getServerAltitude({
+      level : 15,
+      positions : [
+          new Module.JSVector2D(127.055035334602, 37.48664424515323),
+          new Module.JSVector2D(127.05509237777562, 37.48664424515323),
+          new Module.JSVector2D(127.05509237777562, 37.48668970070035)
+      ]
+  }, function (result) {
+      console.log(result);
+  })
 
-#### 3. 건물 카메라 확대 시 거리 조절 [이슈 #378](https://github.com/EgisCorp/XDWorld/issues/378)
-  * Class JSCamera 구성요소 추가
-    * 변수항목
-      * collision_type(type boolean) : 휠 이벤트에서 카메라와 선택지점 충돌 유무를 설정합니다.
-      * collision_distance(type number) : 휠 이벤트에서 카메라와 선택지점(마우스 이벤트 지점) 보간 거리를 설정합니다.
+  // 반환 값
+  (3) [{…}, {…}, {…}]
+  > 0 : {longitude: 127.055035334602, latitude: 37.48664424515323, altitude: 9.70352554321289}
+  > 1 : {longitude: 127.05509237777562, latitude: 37.48664424515323, altitude: 9.70939826965332}
+  > 2 : {longitude: 127.05509237777562, latitude: 37.48668970070035, altitude: null}    // 고도 값이 없는 경우 null 반환
+     length : 3
+  ```
 
- ``` javascript
-var camera = Module.getViewCamera();
-camera.collision_type = true;
-camera.collision_distance = 20;
-```
+#### 3. 점선 라인 생성 오류 추가
+  * JSLineString 객체의 점선 속성이 적용되지 않는 현상을 수정하였습니다.
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
