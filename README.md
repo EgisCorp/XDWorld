@@ -34,14 +34,14 @@
 #### 2. JSFlowPolygon의 setHeight API 설정 오류 수정
   * setHeight API 설정 값에 오차가 발생하는 현상을 수정하였습니다.
 
-#### 3. ETLT_TILE_LOD_MODEL 타입의 레이어 LOD Max값 설정 API
-* JSLayer 클래스
-* setTileLODMaxLevel(_nMaxLevel) : LOAD Max 값 설정. -1이면 제한 없음. Default : -1
-* getTileLODMaxLevel() : LOAD Max 값 리턴
-``` javascript
-var layerList = new Module.JSLayerList(false);
-var layer = layerList.nameAtLayer("bldg_us_jsp");
-layer.setTileLODMaxLevel(3);
-```
+#### 3. ETLT_TILE_LOD_MODEL 레이어의 LOD Max값 관련 함수 추가
+  * JSLayer 클래스에 ETLT_TILE_LOD_MODEL 타입 레이어의 LOD Max 값을 설정/반환 하는 API가 추가되었습니다.
+  * setTileLODMaxLevel(_nMaxLevel) : LOAD Max 값을 설정합니다(`-1`일 경우, 제한 없음). 기본값은 `-1`입니다.
+  * getTileLODMaxLevel() : LOAD Max 값을 반환합니다.
+    ``` javascript
+    var layerList = new Module.JSLayerList(false);
+    var layer = layerList.nameAtLayer("bldg_us_jsp");
+    layer.setTileLODMaxLevel(3);
+    ```
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
