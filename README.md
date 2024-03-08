@@ -26,37 +26,22 @@
 
 ## 최근 업데이트
 
-### 1.59.0 (2024/2/23)
+### 1.59.1 (2024/3/08)
 
-#### 1. 초기 로딩시 지구본이 검게 표현되는 현상 수정
-  * 엔진 로드 직후 지형 이미지가 완전 수신 되지 않아 지구본이 검은색으로 표현 되는 현상을 수정하였습니다.
+#### 1. createShadow API 실행 시 마우스 모드 고정 현상 수정 
+  * JSAnlysis의 createShadow API 실행 시 마우스 모드가 일반 모드(1번)으로 고정되는 현상을 수정하였습니다. 
 
-#### 2. 서버 기반 지형 고도 반환 함수 추가
-  * 현재 엔진에서 요청 중인 지형 서버로 DEM 고도 값을 수신하는 API가 추가되었습니다.
-  * 서버의 고도 값을 리턴하므로 엔진에 낮은 레벨 지형이 로드 된 상태인 경우, 현재 엔진 지형과 DEM 값이 다를 수 있습니다.
-  * 값은 비동기로 반환되므로 콜백 함수를 통해 값을 수신합니다.
-  * 입력한 경위도 및 지형 레벨에 대응되는 고도 값이 없거나 서버에 지형 데이터가 없는 경우 null을 반환합니다.
-  ``` javascript
-  Module.getTerrain().getServerAltitude({
-      level : 15,
-      positions : [
-          new Module.JSVector2D(127.055035334602, 37.48664424515323),
-          new Module.JSVector2D(127.05509237777562, 37.48664424515323),
-          new Module.JSVector2D(127.05509237777562, 37.48668970070035)
-      ]
-  }, function (result) {
-      console.log(result);
-  })
+#### 2. JSFlowPolygon의 setHeight API 설정 오류 수정
+  * setHeight API 설정 값에 오차가 발생하는 현상을 수정하였습니다.
 
-  // 반환 값
-  (3) [{…}, {…}, {…}]
-  > 0 : {longitude: 127.055035334602, latitude: 37.48664424515323, altitude: 9.70352554321289}
-  > 1 : {longitude: 127.05509237777562, latitude: 37.48664424515323, altitude: 9.70939826965332}
-  > 2 : {longitude: 127.05509237777562, latitude: 37.48668970070035, altitude: null}    // 고도 값이 없는 경우 null 반환
-     length : 3
-  ```
-
-#### 3. 점선 라인 생성 오류 추가
-  * JSLineString 객체의 점선 속성이 적용되지 않는 현상을 수정하였습니다.
+#### 3. ETLT_TILE_LOD_MODEL 타입의 레이어 LOD Max값 설정 API
+* JSLayer 클래스
+* setTileLODMaxLevel(_nMaxLevel) : LOAD Max 값 설정. -1이면 제한 없음. Default : -1
+* getTileLODMaxLevel() : LOAD Max 값 리턴
+``` javascript
+var layerList = new Module.JSLayerList(false);
+var layer = layerList.nameAtLayer("bldg_us_jsp");
+layer.setTileLODMaxLevel(3);
+```
 
 ## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
