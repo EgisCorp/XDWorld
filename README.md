@@ -86,5 +86,56 @@ Module.getTerrain().getServerAltitude({
 #### 3. 점선 라인 생성 오류 추가
 * JSLineString 객체의 점선 속성이 적용되지 않는 현상을 수정하였습니다.
 
+<br>
+
+### 1.59.1 (2024/3/8)
+
+#### 1. Fixed an issue where mouse mode was locked when executing the createShadow API
+  * Fixed an issue where the mouse mode was locked to normal mode (1) when executing the JSAnalysis's createShadow API.
+
+#### 2. Fixed a setting error in JSFlowPolygon's setHeight API
+  * Corrected an issue where there was a discrepancy in the setHeight API setting value.
+
+#### 3. Added functions related to the LOD Max value of the ETLT_TILE_LOD_MODEL layer
+  * Added APIs in the JSLayer class to set/return the LOD Max value for the ETLT_TILE_LOD_MODEL type layer.
+  * setTileLODMaxLevel(_nMaxLevel): Sets the LOD Max value (-1 for no limit). The default is -1.
+  * getTileLODMaxLevel(): Returns the LOD Max value.
+    ``` javascript
+    var layerList = new Module.JSLayerList(false);
+    var layer = layerList.nameAtLayer("bldg_us_jsp");
+    layer.setTileLODMaxLevel(3);
+    ```
+### 1.59.0 (2024/2/23)
+#### 1. Fixed an issue where the globe appeared black during initial loading
+- Corrected an issue where the globe appeared black immediately after engine load due to incomplete reception of terrain images.
+
+#### 2. Added a function to return terrain elevation from the server
+- Added an API to receive DEM elevation values from the terrain server currently being requested by the engine.
+- Since it returns the elevation value from the server, the current engine terrain and DEM values may differ if low-level terrain is loaded in the engine.
+- The value is returned asynchronously, so it is received through a callback function.
+- If there is no elevation value corresponding to the input latitude, longitude, and terrain level, or if there is no terrain data on the server, null is returned.
+
+``` javascript
+Module.getTerrain().getServerAltitude({
+    level : 15,
+    positions : [
+        new Module.JSVector2D(127.055035334602, 37.48664424515323),
+        new Module.JSVector2D(127.05509237777562, 37.48664424515323),
+        new Module.JSVector2D(127.05509237777562, 37.48668970070035)
+    ]
+}, function (result) {
+    console.log(result);
+})
+
+// Return value
+(3) [{…}, {…}, {…}]
+> 0 : {longitude: 127.055035334602, latitude: 37.48664424515323, altitude: 9.70352554321289}
+> 1 : {longitude: 127.05509237777562, latitude: 37.48664424515323, altitude: 9.70939826965332}
+> 2 : {longitude: 127.05509237777562, latitude: 37.48668970070035, altitude: null}    // 고도 값이 없는 경우 null 반환
+   length : 3
+```
+#### 3. Fixed an issue with creating dashed lines
+* Corrected a problem where the dashed line attribute of the JSLineString object was not being applied.
+
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
