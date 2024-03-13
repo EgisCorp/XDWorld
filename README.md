@@ -87,4 +87,4 @@ Module.getTerrain().getServerAltitude({
 * JSLineString 객체의 점선 속성이 적용되지 않는 현상을 수정하였습니다.
 
 
-## [이전 버전 업데이트](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
+## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
