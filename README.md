@@ -34,7 +34,7 @@
 
 ## Update
 
-### 1.59.2 (2024/3/15)
+### 1.59.2 / beta 2.1.2 (2024/3/15)
 
 #### 1.  ETLT_TILE_LOD_MODEL 레이어 삭제시 오류 수정
   * 레이어 삭제 요청시, 해당 핸들이 남아있어 발생하는 오류를 수정하였습니다.
@@ -43,7 +43,7 @@
 #### 3.  https://github.com/EgisCorp/XDWorld/issues/391 이슈 수정
   * 선 두께가 1일때 점선이 그려지지 않은 현상을 수정하였습니다.
 
-### 1.59.1 (2024/3/8)
+### 1.59.1 / beta 2.1.1 (2024/3/8)
 
 #### 1. createShadow API 실행 시 마우스 모드 고정 현상 수정 
   * JSAnlysis의 createShadow API 실행 시 마우스 모드가 일반 모드(1번)으로 고정되는 현상을 수정하였습니다. 
@@ -60,7 +60,7 @@
     var layer = layerList.nameAtLayer("bldg_us_jsp");
     layer.setTileLODMaxLevel(3);
     ```
-### 1.59.0 (2024/2/23)
+### 1.59.0 / beta 2.1.0 (2024/2/23)
 #### 1. 초기 로딩시 지구본이 검게 표현되는 현상 수정
 - 엔진 로드 직후 지형 이미지가 완전 수신 되지 않아 지구본이 검은색으로 표현 되는 현상을 수정하였습니다.
 
@@ -97,7 +97,7 @@ Module.getTerrain().getServerAltitude({
 
 <br>
 
-### 1.59.2 (2024/3/15)
+### 1.59.2 / beta 2.1.2 (2024/3/15)
 
 #### 1. Fix error when deleting ETLT_TILE_LOD_MODEL layer
   * Fixed an error occurring due to lingering handles when deleting the layer.
@@ -106,7 +106,7 @@ Module.getTerrain().getServerAltitude({
 #### 3. Issue resolution for https://github.com/EgisCorp/XDWorld/issues/391
   * Corrected the phenomenon where dashed lines were not drawn when the line thickness was 1.
 
-### 1.59.1 (2024/3/8)
+### 1.59.1 / beta 2.1.1 (2024/3/8)
 
 #### 1. Fixed an issue where mouse mode was locked when executing the createShadow API
   * Fixed an issue where the mouse mode was locked to normal mode (1) when executing the JSAnalysis's createShadow API.
@@ -123,7 +123,7 @@ Module.getTerrain().getServerAltitude({
     var layer = layerList.nameAtLayer("bldg_us_jsp");
     layer.setTileLODMaxLevel(3);
     ```
-### 1.59.0 (2024/2/23)
+### 1.59.0 / beta 2.1.0 (2024/2/23)
 #### 1. Fixed an issue where the globe appeared black during initial loading
 - Corrected an issue where the globe appeared black immediately after engine load due to incomplete reception of terrain images.
 
