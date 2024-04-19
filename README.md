@@ -4,6 +4,7 @@
 ### Documentation - https://egiscorp.gitbook.io/xdworld-webgl-manual
 ### Demos & Sandbox - https://sandbox.egiscloud.com
 ### Demos & Sandbox (beta) : https://sandbox.egiscloud.com/code/main.do?id=start&engine=beta&worker=true
+### Demos & Sandbox (global) : https://sandbox-global.egiscloud.com/code/main.do?id=start&engine=2.2.1&worker=true
 
 # Introduction
 
