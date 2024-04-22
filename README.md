@@ -1,7 +1,9 @@
 [![EgisLogo](https://user-images.githubusercontent.com/82925313/160987075-ce7eada9-91ca-4b72-beb6-396e142f90a2.png)](http://www.egiskorea.com/)
 
 ### Developers - http://www.egiskorea.com/
-### Documentation - https://egiscorp.gitbook.io/xdworld-webgl-manual
+### Documentation
+  * [English] [https://egiscorp.gitbook.io/xdworld-webgl-manual](https://egiscorp.gitbook.io/xdworld_global_manual/)
+  * [Korean] https://egiscorp.gitbook.io/xdworld-webgl-manual
 ### Demos & Sandbox - https://sandbox.egiscloud.com
 ### Demos & Sandbox (beta) : https://sandbox.egiscloud.com/code/main.do?id=start&engine=beta&worker=true
 ### Demos & Sandbox (global) : https://sandbox-global.egiscloud.com/code/main.do?id=start&engine=2.2.1&worker=true
