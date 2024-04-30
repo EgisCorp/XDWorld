@@ -3,6 +3,7 @@
 ### Developers - http://www.egiskorea.com/
 ### Documentation
   * [Korean] https://egiscorp.gitbook.io/xdworld-webgl-manual
+  * [English] https://egiscorp.gitbook.io/xdworld_global_manual/
 ### Demos & Sandbox - https://sandbox.egiscloud.com
 ### Demos & Sandbox (beta) : https://sandbox.egiscloud.com/code/main.do?id=start&engine=beta&worker=true
 
