@@ -36,7 +36,7 @@
 
 ## Update
 
-### 2.2.2 (2024/5/3)
+### beta 2.2.2 (2024/5/3)
 
 #### 1. WMS 오류 해결
   * WMS 기능을 사용할 때, 깜박거리는 현상이 수정되었습니다.
@@ -86,7 +86,7 @@
       pMap.setEffectDistance(2000000);
     ```
 
-### 2.2.2 (2024/5/3)
+### beta 2.2.2 (2024/5/3)
 
 1. Resolve WMS Error
   * Fix blinking issue when using WMS functionality.
