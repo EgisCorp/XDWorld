@@ -36,6 +36,25 @@
 
 ## Update
 
+### beta 2.2.3 (2024/5/10)
+
+#### 1. POI 가시화 오류 수정
+  - 높은 고도에서, POI 데이터 지구 반대편 객체가 보이는 오류가 수정되었습니다.
+
+#### 2. 카메라 자동 이동시 폴리곤 오브젝트 깜박임 오류 수정
+  - 카메라 자동 이동 모드에서, 지형과 높이가 비슷한 폴리곤이 깜박이는 오류가 수정되었습니다.
+
+#### 3. 타일레이어에 하이브리드, WMS에 대한 최대레벨 이상 지형 렌더링에 상위 데이터를 참조하는 기능 추가
+  * 하이브리드 및 WMS에 대한 처리는 지형의 레벨과 동일한 구간만 화면에 오버레이 됩니다.
+  * 오버레이 레벨이 13레벨이 최대일때 14를 초과하는 지형레벨 구간에서 오버레이가 사라져서 세부 데이터 구축을 하지 않아도 13레벨의 오버레이 이미지를 활용하여 남은 14이후의 지형에 오버레이를 연장해주는 기능입니다.
+  *  `JSLayerList.createXDServerLayer(_option)`에 `_option` 구조에 `maxLevelOverlap : bool` 속성이 추가되었습니다. (선택적, 기본값 : false )
+  *  `bool JSLayer::setMaxLevelOverlap(bool _bOverlap)` API 추가되었습니다.
+    *   기본적으로 `maxLevelOverlap` 속성과 동일하며, 타일 레이어 구조 and ETLT_PNG_IMAGE, ETLT_WMS가 아니면 false를 반환합니다.
+
+#### 4. 커스텀타일 레이어에서 HTML 객체에 숨김 처리 오류 수정
+  - 커스텀타일 레이어에서 EOT_HTML (HTML 객체)에 대한 Culling 숨김 처리 오류가 수정되었습니다.
+  *   [이슈#398에 대한 수정]( https://github.com/EgisCorp/XDWorld/issues/398#issue-2274483934)
+
 ### beta 2.2.2 (2024/5/3)
 
 #### 1. WMS 오류 해결
@@ -85,6 +104,21 @@
       pMap.addHeatMapsEX(vList);
       pMap.setEffectDistance(2000000);
     ```
+
+### beta 2.2.3 (2024/5/10)
+#### 1. Correction of POI Visualization Error
+  - At high altitudes, the issue of POI data displaying objects on the opposite side of the Earth has been fixed.
+#### 2. Fix for Polygon Object Blinking During Camera Auto-Movement
+  - In automatic camera movement mode, an issue where polygons with similar terrain and height would blink has been resolved.
+#### 3. Addition of Feature to Reference Higher Data for Rendering Terrain Beyond Maximum Level for Hybrid and WMS Layers
+  - Processing for hybrid and WMS layers will now overlay only segments of the terrain equivalent to the level of the terrain.
+  - When the overlay level is at its maximum at level 13, the feature extends overlay to the terrain beyond level 14, utilizing the overlay images of level 13 without needing to construct detailed data for the terrain after level 14.
+  - The _option structure in JSLayerList.createXDServerLayer(_option) has added a maxLevelOverlap: bool attribute. (Optional, Default: false)
+  - An API bool JSLayer::setMaxLevelOverlap(bool _bOverlap) has been added.
+    - By default, it returns false if the layer structure is not a tile layer and ETLT_PNG_IMAGE, ETLT_WMS.
+#### 4. Correction of Hidden Treatment Error for HTML Objects in Custom Tile Layers
+  - An error in culling hidden treatment for EOT_HTML (HTML objects) in custom tile layers has been fixed.
+  *   [이슈#398에 대한 수정]( https://github.com/EgisCorp/XDWorld/issues/398#issue-2274483934)
 
 ### beta 2.2.2 (2024/5/3)
 
