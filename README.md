@@ -172,4 +172,5 @@
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
-## Running XDWorld with Vue.js : https://egiscloud.com/siteData/vue/index.html
+## Running XDWorld with Vue.js
+  * https://egiscloud.com/siteData/vue/index.html
