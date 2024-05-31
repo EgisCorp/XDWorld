@@ -35,6 +35,41 @@
 
 ## Update
 
+### 2.3.1 (2024/5/31)
+
+#### 1. (중요)glTF 최적화(WebWorker)
+  - glTF 포맷과 관련하여, WebWorker가 업데이트 되었습니다.
+  - 업데이트된 WebWorker 빌드 파일의 사용을 권장합니다.
+
+#### 2. JSColorGrid3D 오브젝트 속성 반환 함수 추가
+  * JSColorGrid3D 오브젝트의 속성 반환 함수가 추가되었습니다.
+  * [getCellBox] 인덱스에 해당하는 셀의 박스 좌표 정보를 반환합니다.
+    * 박스 좌표는 상단/하단, 좌/우, 위/아래로 구분되는 좌표 8개를 반환합니다.
+    * 반환 되는 박스의 좌표 속성 값의 순서는 아래와 같습니다.
+      * 0 : topLeftBack
+      * 1 : topRightBack
+      * 2 : topRightFront
+      * 3 : topLeftFront
+      * 4 : bottomLeftBack
+      * 5 : bottomRightBack
+      * 6 : bottomRightFront
+      * 7 : bottomLeftFront
+    ``` javascript
+    var cellBox = grid.getCellBox(20, 12);
+    ```
+  * [getCellHeight] 인덱스에 해당하는 셀의 높이 값을 반환합니다.
+    ``` javascript
+      var height= grid.getCellHeight(20, 12);
+    ```
+  * [getCellWidthCount] 그리드의 가로 셀 수를 반환합니다.
+    ``` javascript
+      var widthCellCount= grid.getCellWidthCount();
+    ```
+  * [getCellHeightCount] 그리드의 세로 셀 수를 반환합니다.
+    ``` javascript
+      var heightCellCount= grid.getCellHeightCount();
+    ```
+
 ### 2.3.0 (2024/5/24)
 
 #### 1. JSColorGrid 오브젝트 반환 기능 추가
@@ -49,6 +84,41 @@
 #### 4. JSPolygon으로 고스트 심볼 생성하는 기능 추가
   - 고스트 심볼을 생성할 때 외부에서 모델 파일을 입력해주는 대신, 미리 생성한 JSPolygon으로 정의가 가능하도록 `JSGhostSymbolMap.insert()`에 `polygon`인자를 추가하였습니다.
   - 자세한 사용법은 [샌드박스 - Ghostsymbol(Polygon)](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_to_ghost_symbol)을 참고해주시기 바랍니다.
+
+### 2.3.1 (2024/5/31)
+
+#### 1. (Important) glTF Optimization (WebWorker)
+  - The WebWorker related to the glTF format has been updated.
+  - It is recommended to use the updated WebWorker build file.
+
+#### 2. Added Property Retrieval Functions for JSColorGrid3D Object
+  * Property retrieval functions for the JSColorGrid3D object have been added.
+  * [getCellBox] Returns the box coordinates of the cell corresponding to the index.
+    * The box coordinates return 8 points corresponding to the top/bottom, left/right, and front/back of the box.
+    * The order of the box coordinate properties returned is as follows:
+      * 0 : topLeftBack
+      * 1 : topRightBack
+      * 2 : topRightFront
+      * 3 : topLeftFront
+      * 4 : bottomLeftBack
+      * 5 : bottomRightBack
+      * 6 : bottomRightFront
+      * 7 : bottomLeftFront
+    ``` javascript
+    var cellBox = grid.getCellBox(20, 12);
+    ```
+  * [getCellHeight] Returns the height of the cell corresponding to the index.
+    ``` javascript
+      var height= grid.getCellHeight(20, 12);
+    ```
+  * [getCellWidthCount] Returns the number of horizontal cells in the grid.
+    ``` javascript
+      var widthCellCount= grid.getCellWidthCount();
+    ```
+  * [getCellHeightCount] Returns the number of vertical cells in the grid.
+    ``` javascript
+      var heightCellCount= grid.getCellHeightCount();
+    ```
 
 ### 2.3.0 (2024/5/24)
 
