@@ -46,14 +46,14 @@
   * [getCellBox] 인덱스에 해당하는 셀의 박스 좌표 정보를 반환합니다.
     * 박스 좌표는 상단/하단, 좌/우, 위/아래로 구분되는 좌표 8개를 반환합니다.
     * 반환 되는 박스의 좌표 속성 값의 순서는 아래와 같습니다.
-      * 0 : topLeftBack
-      * 1 : topRightBack
-      * 2 : topRightFront
-      * 3 : topLeftFront
-      * 4 : bottomLeftBack
-      * 5 : bottomRightBack
-      * 6 : bottomRightFront
-      * 7 : bottomLeftFront
+      * 0 : upLeftTop
+      * 1 : upRightTop
+      * 2 : upRightBottom
+      * 3 : upLeftBottom
+      * 4 : downLeftTop
+      * 5 : downRightTop
+      * 6 : downRightBottom
+      * 7 : downLeftBottom
     ``` javascript
     var cellBox = grid.getCellBox(20, 12);
     ```
@@ -96,14 +96,14 @@
   * [getCellBox] Returns the box coordinates of the cell corresponding to the index.
     * The box coordinates return 8 points corresponding to the top/bottom, left/right, and front/back of the box.
     * The order of the box coordinate properties returned is as follows:
-      * 0 : topLeftBack
-      * 1 : topRightBack
-      * 2 : topRightFront
-      * 3 : topLeftFront
-      * 4 : bottomLeftBack
-      * 5 : bottomRightBack
-      * 6 : bottomRightFront
-      * 7 : bottomLeftFront
+      * 0 : upLeftTop
+      * 1 : upRightTop
+      * 2 : upRightBottom
+      * 3 : upLeftBottom
+      * 4 : downLeftTop
+      * 5 : downRightTop
+      * 6 : downRightBottom
+      * 7 : downLeftBottom
     ``` javascript
     var cellBox = grid.getCellBox(20, 12);
     ```
