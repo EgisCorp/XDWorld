@@ -35,105 +35,95 @@
 
 ## Update
 
-### 2.3.1 (2024/5/31)
+### 2.4.0 (2024/6/28)
 
-#### 1. (중요)glTF 최적화(WebWorker)
-  - glTF 포맷과 관련하여, WebWorker가 업데이트 되었습니다.
-  - 업데이트된 WebWorker 빌드 파일의 사용을 권장합니다.
+#### 1. 화면 분할 시 잔상이 남는 현상 수정
+  * 지형 투명도 조절과 함께 화면 분할 기능 사용 시 분할 화면에 잔상이 남는 현상을 수정하였습니다.
+  * 화면 분할 기능 사용 시 레이어 배치 방향이 반대로 보이는 점을 확인하여 수정하였습니다.
 
-#### 2. JSColorGrid3D 오브젝트 속성 반환 함수 추가
-  * JSColorGrid3D 오브젝트의 속성 반환 함수가 추가되었습니다.
-  * [getCellBox] 인덱스에 해당하는 셀의 박스 좌표 정보를 반환합니다.
-    * 박스 좌표는 상단/하단, 좌/우, 위/아래로 구분되는 좌표 8개를 반환합니다.
-    * 반환 되는 박스의 좌표 속성 값의 순서는 아래와 같습니다.
-      * 0 : upLeftTop
-      * 1 : upRightTop
-      * 2 : upRightBottom
-      * 3 : upLeftBottom
-      * 4 : downLeftTop
-      * 5 : downRightTop
-      * 6 : downRightBottom
-      * 7 : downLeftBottom
-    ``` javascript
-    var cellBox = grid.getCellBox(20, 12);
-    ```
-  * [getCellHeight] 인덱스에 해당하는 셀의 높이 값을 반환합니다.
-    ``` javascript
-      var height= grid.getCellHeight(20, 12);
-    ```
-  * [getCellWidthCount] 그리드의 가로 셀 수를 반환합니다.
-    ``` javascript
-      var widthCellCount= grid.getCellWidthCount();
-    ```
-  * [getCellHeightCount] 그리드의 세로 셀 수를 반환합니다.
-    ``` javascript
-      var heightCellCount= grid.getCellHeightCount();
-    ```
+#### 2. Camera Quake의 진동 오류 수정
+  * Camera Quake(카메라 흔들림)기능에서, 진동 주기가 초단위로 적용되는 오류를 수정하였습니다.
 
-### 2.3.0 (2024/5/24)
+#### 3. JSFlowPolygon 객체 색상 설정 오류 수정
+  * create API 실행 전 color 속성 설정 시 값이 정상적으로 반영되지 않는 현상을 수정하였습니다.
 
-#### 1. JSColorGrid 오브젝트 반환 기능 추가
-  * JSLayer의 오브젝트 반환 시 JSColorGrid 오브젝트도 반환 가능하도록 기능을 추가하였습니다.
+#### 4. 전광판, 비디오 객체 기능 개선 
+  * 사용자 편의성을 위해 객체 생성 이후의 기능들 엔진 내부에 삽입
+  * 사용법 변경
+  * 속도 개선 및 거리별 해상도 수정
+  * 기존 사용법은 8월 이후 삭제
 
-#### 2. 수인한도분석 진행률 반환 기능 추가
-  * CJSAnalysisGridShadow::prograss 분석 진행률을 반환하는 callback 함수를 추가하였습니다.
+#### 5. WMS 로딩 방식 선택
+  * 사용자의 통신 환경과 WMS 및 하이브리드 상태에 따라 선택 가능 하도록 하는 API 추가
+  ``` javascript
+  // Default : 0
+  //Module.getOption().setHybridRenderType(0);   // 기존과 동일
+  Module.getOption().setHybridRenderType(1);   // 변경된 순서에 따라 바로 반영
+  ```
 
-#### 3. 수인한도분석 배척격자 오류 수정
-  * 배척격자가 그림자를 생성하거나, 선택이 되지 않는 오류가 수정되었습니다.
+#### 6. 장해물 판별 기능 추가
+ * 카메라와 JSPoint, JSHTMLObject 객체 사이에 장해물(지형, 시설물) 존재 시 가시화 유무를 설정하는 변수를 추가 하였습니다.
+  ```javascript
+  Module.getOption().object_ahead = 0; 기존 방식(장해물 미판정)
+  Module.getOption().object_ahead = 1; 장해물에 따른 가시화 설정
+  ```
 
-#### 4. JSPolygon으로 고스트 심볼 생성하는 기능 추가
-  - 고스트 심볼을 생성할 때 외부에서 모델 파일을 입력해주는 대신, 미리 생성한 JSPolygon으로 정의가 가능하도록 `JSGhostSymbolMap.insert()`에 `polygon`인자를 추가하였습니다.
-  - 자세한 사용법은 [샌드박스 - Ghostsymbol(Polygon)](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_to_ghost_symbol)을 참고해주시기 바랍니다.
+#### 7. 카메라 좌/우 이동 API 추가
+  * 카메라 이동 함수 moveLeftRight가 추가되었습니다.
+  * 지정한 값 만큼 카메라가 좌/우 방향으로 이동합니다.
+  ``` javascript
+  Module.getViewCamera().moveLeftRight(0.01);
+  Module.getViewCamera().moveLeftRight(-0.01);
+  ```
 
-### 2.3.1 (2024/5/31)
+#### 8. 레이어 화면 분할 렌더링 기능 오류 수정
+  * 화면 분할 기능 사용 시 좌/우 방향이 반대로 적용되는 현상을 수정하였습니다.
+  * 화면 분할 후 특정 화면에서 화면의 잔상이 남는 현상을 수정하였습니다 [이슈 #401](https://github.com/EgisCorp/XDWorld/issues/401)
 
-#### 1. (Important) glTF Optimization (WebWorker)
-  - The WebWorker related to the glTF format has been updated.
-  - It is recommended to use the updated WebWorker build file.
+### 2.4.0 (2024/6/28)
 
-#### 2. Added Property Retrieval Functions for JSColorGrid3D Object
-  * Property retrieval functions for the JSColorGrid3D object have been added.
-  * [getCellBox] Returns the box coordinates of the cell corresponding to the index.
-    * The box coordinates return 8 points corresponding to the top/bottom, left/right, and front/back of the box.
-    * The order of the box coordinate properties returned is as follows:
-      * 0 : upLeftTop
-      * 1 : upRightTop
-      * 2 : upRightBottom
-      * 3 : upLeftBottom
-      * 4 : downLeftTop
-      * 5 : downRightTop
-      * 6 : downRightBottom
-      * 7 : downLeftBottom
-    ``` javascript
-    var cellBox = grid.getCellBox(20, 12);
-    ```
-  * [getCellHeight] Returns the height of the cell corresponding to the index.
-    ``` javascript
-      var height= grid.getCellHeight(20, 12);
-    ```
-  * [getCellWidthCount] Returns the number of horizontal cells in the grid.
-    ``` javascript
-      var widthCellCount= grid.getCellWidthCount();
-    ```
-  * [getCellHeightCount] Returns the number of vertical cells in the grid.
-    ``` javascript
-      var heightCellCount= grid.getCellHeightCount();
-    ```
+#### 1. Fixed Afterimage Issue When Splitting Screen
+  * Fixed the issue where afterimages appeared on split screens when adjusting terrain transparency.
+  * Corrected the reversed layer arrangement direction when using the screen split function.
 
-### 2.3.0 (2024/5/24)
+#### 2. Fixed Vibration Error in Camera Quake
+  * Corrected the error where the vibration period in the Camera Quake (camera shake) function was applied in seconds.
 
-#### 1. Added Functionality to Return JSColorGrid Object
-  - Added functionality to return JSColorGrid object when returning objects from JSLayer.
+#### 3. Fixed Color Setting Error for JSFlowPolygon Object
+  * Fixed the issue where the color property was not properly applied when set before executing the create API.
 
-#### 2. Added Functionality to Return Progress of Analysis Grid Shadow
-  - Added callback function CJSAnalysisGridShadow::progress to return the progress of analysis.
+#### 4. Improved Billboard and Video Object Functions
+  * Integrated functionalities within the engine for user convenience after object creation.
+  * Changed usage methods.
+  * Improved speed and modified resolution by distance.
+  * The existing usage methods will be deprecated after August.
 
-#### 3. Fixed Error in Analysis Grid Rejection
-  - Fixed an error where the rejection grid would generate shadows or not be selectable.
+#### 5. Added WMS Loading Method Selection
+  * Added an API to allow selection based on the user's communication environment and WMS and hybrid status.
+  ```javascript
+  // Default: 0
+  // Module.getOption().setHybridRenderType(0);   // Same as before
+  Module.getOption().setHybridRenderType(1);   // Immediately applied according to the new order
+  ```
 
-#### 4. Added Functionality to Generate Ghost Symbols with JSPolygon
-  - When generating ghost symbols, added the ability to define them using pre-created JSPolygon instead of inputting a model file from external sources, by adding a polygon argument to JSGhostSymbolMap.insert().
-  - For detailed usage, please refer to [Ghostsymbol(Polygon)](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_to_ghost_symbol).
+#### 6. Added Obstacle Detection Feature
+ * Added a variable to set the visibility based on the presence of obstacles (terrain, facilities) between the camera and JSPoint or JSHTMLObject objects.
+  ```javascript
+  Module.getOption().object_ahead = 0; // Existing method (no obstacle detection)
+  Module.getOption().object_ahead = 1; // Visibility setting based on obstacles
+  ```
+
+#### 7. Added Camera Left/Right Movement API
+  * Added the moveLeftRight function for camera movement.
+  * Moves the camera left or right by the specified value.
+  ```javascript
+  Module.getViewCamera().moveLeftRight(0.01);
+  Module.getViewCamera().moveLeftRight(-0.01);
+  ```
+
+#### 8. Fixed Layer Screen Split Rendering Issue
+  * Fixed the issue where the left/right direction was applied in reverse when using the screen split function.
+  * Fixed the issue where afterimages remained on specific screens after splitting the screen [Issue #401](https://github.com/EgisCorp/XDWorld/issues/401)
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
