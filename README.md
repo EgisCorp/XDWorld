@@ -92,10 +92,9 @@
   * Fixed the issue where the color property was not properly applied when set before executing the create API.
 
 #### 4. Improved Billboard and Video Object Functions
-  * Integrated functionalities within the engine for user convenience after object creation.
-  * Changed usage methods.
-  * Improved speed and modified resolution by distance.
-  * The existing usage methods will be deprecated after August.
+  * For user convenience, functionalities after object creation have been integrated into the engine for improved speed.
+  * Existing video texture-related features will be supported until 2024.
+  * Please refer to the [video texture](https://sandbox.egiscloud.com/code/main.do?id=object_video) for the new usage instructions.
 
 #### 5. Added WMS Loading Method Selection
   * Added an API to allow selection based on the user's communication environment and WMS and hybrid status.
