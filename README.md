@@ -53,7 +53,7 @@
   * 새로운 사용법은 [비디오텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=object_video)를 참고하시기 바랍니다.
 
 #### 5. WMS 로딩 방식 선택
-  * 사용자의 통신 환경과 WMS 및 하이브리드 상태에 따라 선택 가능 하도록 하는 API 추가
+  * 사용자의 통신 환경과 WMS 및 하이브리드 상태에 따라 선택 가능하도록 API가 추가되었습니다.
   ``` javascript
   // Default : 0
   //Module.getOption().setHybridRenderType(0);   // 기존과 동일
