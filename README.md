@@ -91,7 +91,7 @@
 #### 3. Fixed Color Setting Error for JSFlowPolygon Object
   * Fixed the issue where the color property was not properly applied when set before executing the create API.
 
-#### 4. Improved Billboard and Video Object Functions
+#### 4. Improved LedBoard and Video Object Functions
   * For user convenience, functionalities after object creation have been integrated into the engine for improved speed.
   * Existing video texture-related features will be supported until 2024.
   * Please refer to the [video texture](https://sandbox.egiscloud.com/code/main.do?id=object_video) for the new usage instructions.
