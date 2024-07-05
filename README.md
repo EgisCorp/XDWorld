@@ -35,93 +35,27 @@
 
 ## Update
 
-### 2.4.0 (2024/6/28)
+### 2.4.0 (2024/7/5)
 
-#### 1. 화면 분할 시 잔상이 남는 현상 수정
-  * 지형 투명도 조절과 함께 화면 분할 기능 사용 시 분할 화면에 잔상이 남는 현상을 수정하였습니다.
-  * 화면 분할 기능 사용 시 레이어 배치 방향이 반대로 보이는 점을 확인하여 수정하였습니다.
+#### 1. SKIRT 렌더링 오류 수정
+  * 지형 옵션에 따라 Skirt가 그려지지 않는 오류를 수정하였습니다.
 
-#### 2. Camera Quake의 진동 오류 수정
-  * Camera Quake(카메라 흔들림)기능에서, 진동 주기가 초단위로 적용되는 오류를 수정하였습니다.
+#### 2. 사용자 레이어 투명도 조절 기능 추가
+  * 사용자 레이어 모든 객체의 투명도를 일괄 조절할 수 있도록 기능이 변경되었습니다.
 
-#### 3. JSFlowPolygon 객체 색상 설정 오류 수정
-  * create API 실행 전 color 속성 설정 시 값이 정상적으로 반영되지 않는 현상을 수정하였습니다.
+#### 3. 커스텀 타일 레이어 렌더링 유지 기능 추가
+  * 커스텀 타일 레이어에 객체를 등록할 경우, 렌더링을 유지할 수 있도록 기능이 변경되었습니다.
 
-#### 4. 전광판, 비디오 객체 기능 개선 
-  * 사용자 편의성을 위해 객체 생성 이후의 기능들 엔진 내부에 삽입 및 속도개선되었습니다.
-  * 기존 비디오 텍스쳐 관련 기능은 2024년까지 지원합니다.
-  * 새로운 사용법은 [비디오텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=object_video)를 참고하시기 바랍니다.
+### 2.4.0 (2024/7/5)
 
-#### 5. WMS 로딩 방식 선택
-  * 사용자의 통신 환경과 WMS 및 하이브리드 상태에 따라 선택 가능하도록 API가 추가되었습니다.
-  ``` javascript
-  // Default : 0
-  //Module.getOption().setHybridRenderType(0);   // 기존과 동일
-  Module.getOption().setHybridRenderType(1);   // 변경된 순서에 따라 바로 반영
-  ```
+#### 1. Fixed SKIRT Rendering Issue
+  * Fixed an issue where the skirt was not being rendered according to the terrain options.
 
-#### 6. 장해물 판별 기능 추가
- * 카메라와 JSPoint, JSHTMLObject 객체 사이에 장해물(지형, 시설물) 존재 시 가시화 유무를 설정하는 변수를 추가 하였습니다.
-  ```javascript
-  Module.getOption().object_ahead = 0; 기존 방식(장해물 미판정)
-  Module.getOption().object_ahead = 1; 장해물에 따른 가시화 설정
-  ```
+#### 2. Added User Layer Transparency Adjustment Feature
+  * The feature has been changed to allow the transparency of all objects in the user layer to be adjusted uniformly.
 
-#### 7. 카메라 좌/우 이동 API 추가
-  * 카메라 이동 함수 moveLeftRight가 추가되었습니다.
-  * 지정한 값 만큼 카메라가 좌/우 방향으로 이동합니다.
-  ``` javascript
-  Module.getViewCamera().moveLeftRight(0.01);
-  Module.getViewCamera().moveLeftRight(-0.01);
-  ```
-
-#### 8. 레이어 화면 분할 렌더링 기능 오류 수정
-  * 화면 분할 기능 사용 시 좌/우 방향이 반대로 적용되는 현상을 수정하였습니다.
-  * 화면 분할 후 특정 화면에서 화면의 잔상이 남는 현상을 수정하였습니다 [이슈 #401](https://github.com/EgisCorp/XDWorld/issues/401)
-
-### 2.4.0 (2024/6/28)
-
-#### 1. Fixed Afterimage Issue When Splitting Screen
-  * Fixed the issue where afterimages appeared on split screens when adjusting terrain transparency.
-  * Corrected the reversed layer arrangement direction when using the screen split function.
-
-#### 2. Fixed Vibration Error in Camera Quake
-  * Corrected the error where the vibration period in the Camera Quake (camera shake) function was applied in seconds.
-
-#### 3. Fixed Color Setting Error for JSFlowPolygon Object
-  * Fixed the issue where the color property was not properly applied when set before executing the create API.
-
-#### 4. Improved LedBoard and Video Object Functions
-  * For user convenience, functionalities after object creation have been integrated into the engine for improved speed.
-  * Existing video texture-related features will be supported until 2024.
-  * Please refer to the [video texture](https://sandbox.egiscloud.com/code/main.do?id=object_video) for the new usage instructions.
-
-#### 5. Added WMS Loading Method Selection
-  * Added an API to allow selection based on the user's communication environment and WMS and hybrid status.
-  ```javascript
-  // Default: 0
-  // Module.getOption().setHybridRenderType(0);   // Same as before
-  Module.getOption().setHybridRenderType(1);   // Immediately applied according to the new order
-  ```
-
-#### 6. Added Obstacle Detection Feature
- * Added a variable to set the visibility based on the presence of obstacles (terrain, facilities) between the camera and JSPoint or JSHTMLObject objects.
-  ```javascript
-  Module.getOption().object_ahead = 0; // Existing method (no obstacle detection)
-  Module.getOption().object_ahead = 1; // Visibility setting based on obstacles
-  ```
-
-#### 7. Added Camera Left/Right Movement API
-  * Added the moveLeftRight function for camera movement.
-  * Moves the camera left or right by the specified value.
-  ```javascript
-  Module.getViewCamera().moveLeftRight(0.01);
-  Module.getViewCamera().moveLeftRight(-0.01);
-  ```
-
-#### 8. Fixed Layer Screen Split Rendering Issue
-  * Fixed the issue where the left/right direction was applied in reverse when using the screen split function.
-  * Fixed the issue where afterimages remained on specific screens after splitting the screen [Issue #401](https://github.com/EgisCorp/XDWorld/issues/401)
+#### 3. Added Custom Tile Layer Rendering Persistence Feature
+  * The feature has been changed to maintain rendering when objects are registered in the custom tile layer.
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
