@@ -35,7 +35,7 @@
 
 ## Update
 
-### 2.4.0 (2024/7/5)
+### 2.4.1 (2024/7/5)
 
 #### 1. SKIRT 렌더링 오류 수정
   * 지형 옵션에 따라 Skirt가 그려지지 않는 오류를 수정하였습니다.
@@ -46,7 +46,7 @@
 #### 3. 커스텀 타일 레이어 렌더링 유지 기능 추가
   * 커스텀 타일 레이어에 객체를 등록할 경우, 렌더링을 유지할 수 있도록 기능이 변경되었습니다.
 
-### 2.4.0 (2024/7/5)
+### 2.4.1 (2024/7/5)
 
 #### 1. Fixed SKIRT Rendering Issue
   * Fixed an issue where the skirt was not being rendered according to the terrain options.
