@@ -35,27 +35,73 @@
 
 ## Update
 
-### 2.4.1 (2024/7/5)
+### 2.4.2 (2024/7/19)
 
-#### 1. SKIRT 렌더링 오류 수정
-  * 지형 옵션에 따라 Skirt가 그려지지 않는 오류를 수정하였습니다.
+#### 1. 고스트심볼 화면 기반 크기 고정 기능 추가
+  * 고스트심볼 렌더링 시 화면의 픽셀을 기준으로 크기를 고정할 수 있는 기능이 추가되었습니다.
+  * 크기 고정 시 카메라와의 거리와 상관없이 고스트심볼의 크기가 항상 일정하게 유지됩니다.
+  * 크기를 설정하는 경우 JSGhostSymbol의 setScreenFixedSize API를 통해 값을 설정합니다. 
+    ``` javascript
+    ghostsymbolObject.setScreenFixedSize(50);
+    ```
+  * 크기를 해제하는 경우 JSGhostSymbol의 setScreenFixedSize API에 null을 설정하면 크기 고정 설정이 해제됩니다.
+    ``` javascript
+    ghostsymbolObject.setScreenFixedSize(null);
+    ```
+  * 크기는 3D 공간의 [x:1.0, y:1.0, z:1.0] 공간 당 1픽셀로 치환됩니다.
 
-#### 2. 사용자 레이어 투명도 조절 기능 추가
-  * 사용자 레이어 모든 객체의 투명도를 일괄 조절할 수 있도록 기능이 변경되었습니다.
+#### 2. 고스트심볼 맵 모델 삭제 및 참조 오브젝트 수 조회 기능 추가
+  * 고스트심볼 맵에 등록한 모델을 등록한 ID 기반으로 삭제하는 API가 추가되었습니다.
+    ``` javascript
+    var result = Module.getGhostSymbolMap().removeModel("sphere");
+    ```
+  * 모델을 참조하는 고스트심볼 오브젝트가 있는 경우 삭제되지 않고 false를 반환합니다.
+  * 성공적으로 삭제 되었을 경우 true를 반환합니다.
+  * 모델을 참조하는 오브젝트의 수는 JSGhostSymbolMap 클래스의 getReferenceCount API로 확인 가능합니다.
+    ``` javascript
+    var referenceCount = Module.getGhostSymbolMap().getReferenceCount("sphere"));
+    ```
 
-#### 3. 커스텀 타일 레이어 렌더링 유지 기능 추가
-  * 커스텀 타일 레이어에 객체를 등록할 경우, 렌더링을 유지할 수 있도록 기능이 변경되었습니다.
+#### 3. 레이어 상에서 화면 좌표 기반 영역에 포함되는 오브젝트 키 반환
+  * JSLayer에 소속된 오브젝트 중 화면 좌표 기반 사각 영역에 포함되는 오브젝트 목록을 반환하는 API가 추가되었습니다.
+    ``` javascript
+    var objectKeyList = layer.getObjectInScreenRect(386, 445, 674, 668);
+    ```
+  * JSPolygon, JSPoint, JSGhostSymbol, JSReal3D 오브젝트 타입 레이어에서 사용 가능합니다. (이 외 오브젝트 타입은 추후 업로드 예정입니다.)
 
-### 2.4.1 (2024/7/5)
+### 2.4.2 (2024/7/19)
 
-#### 1. Fixed SKIRT Rendering Issue
-  * Fixed an issue where the skirt was not being rendered according to the terrain options.
+#### 1. Addition of Screen-Based Size Fixing Feature for Ghost Symbols
+  * A feature has been added that allows the size of Ghost Symbols to be fixed based on the screen's pixels when rendering Ghost Symbols.
+  * When the size is fixed, the Ghost Symbol's size remains constant regardless of the distance from the camera.
+  * To set the size, use the setScreenFixedSize API of JSGhostSymbol as shown below:
+    ``` javascript
+    ghostsymbolObject.setScreenFixedSize(50);
+    ```
+  * To disable the fixed size, set null to the setScreenFixedSize API of JSGhostSymbol to release the fixed size setting.
+    ``` javascript
+    ghostsymbolObject.setScreenFixedSize(null);
+    ```
+  * The size is replaced as 1 pixel per [x:1.0, y:1.0, z:1.0] space in the 3D space.
 
-#### 2. Added User Layer Transparency Adjustment Feature
-  * The feature has been changed to allow the transparency of all objects in the user layer to be adjusted uniformly.
+#### 2. Addition of Functions to Delete Map Models and Check Reference Object Count for Ghost Symbols
+  * An API has been added to delete models registered in the Ghost Symbol map based on the registered ID.
+    ``` javascript
+    var result = Module.getGhostSymbolMap().removeModel("sphere");
+    ```
+  * If there are Ghost Symbol objects referencing the model, it will not be deleted and false will be returned.
+  * If successfully deleted, true will be returned.
+  * The number of objects referencing the model can be checked using the getReferenceCount API of the JSGhostSymbolMap class.
+    ``` javascript
+    var referenceCount = Module.getGhostSymbolMap().getReferenceCount("sphere");
+    ```
 
-#### 3. Added Custom Tile Layer Rendering Persistence Feature
-  * The feature has been changed to maintain rendering when objects are registered in the custom tile layer.
+#### 3. Return of Object Keys Included in Screen-Coordinate Based Area on Layer
+  * An API has been added to return the list of objects included in the rectangular area based on screen coordinates among the objects belonging to JSLayer.
+    ``` javascript
+    var objectKeyList = layer.getObjectInScreenRect(386, 445, 674, 668);
+    ```
+  * This can be used in layers with object types such as JSPolygon, JSPoint, JSGhostSymbol, and JSReal3D. (Other object types will be updated in the future.)
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
