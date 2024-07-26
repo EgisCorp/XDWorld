@@ -35,73 +35,58 @@
 
 ## Update
 
-### 2.4.2 (2024/7/19)
+### 2.5.0 (2024/7/26)
 
-#### 1. 고스트심볼 화면 기반 크기 고정 기능 추가
-  * 고스트심볼 렌더링 시 화면의 픽셀을 기준으로 크기를 고정할 수 있는 기능이 추가되었습니다.
-  * 크기 고정 시 카메라와의 거리와 상관없이 고스트심볼의 크기가 항상 일정하게 유지됩니다.
-  * 크기를 설정하는 경우 JSGhostSymbol의 setScreenFixedSize API를 통해 값을 설정합니다. 
+#### 1. 웹 워커 기능 개선
+  * 기능 개선 및 파일 용량을 감소하여 기능 개선하였습니다.
+#### 2. 도로 시설물 생성 기능 개선
+  * 도로 시설물 중 교량의 교각이 일정 높이 이하인 부분은 생성이 되지 않도록 예외처리 단계가 추가되었습니다.
+#### 3. 빌보드 수직선 옵션 추가
+  * 빌보드 중심을 기준으로, 지면까지의 수직선을 생성 및 수정하는 API가 추가되었습니다.
     ``` javascript
-    ghostsymbolObject.setScreenFixedSize(50);
+	parameter = {
+		visible: true,						// 가시화 여부(기본값: false)
+		width: 10.0,						// 수직선 두께(기본값: 1.0)
+		color: JSColor(255, 15, 100, 200),	// 수직선 색상(기본값: JSColor(255, 255, 255, 255))
+		altitude: 30.0						// 수직선 끝점 고도(기본값: 0)
+	}
+	billboard.setVerticalLine(parameter);
     ```
-  * 크기를 해제하는 경우 JSGhostSymbol의 setScreenFixedSize API에 null을 설정하면 크기 고정 설정이 해제됩니다.
-    ``` javascript
-    ghostsymbolObject.setScreenFixedSize(null);
-    ```
-  * 크기는 3D 공간의 [x:1.0, y:1.0, z:1.0] 공간 당 1픽셀로 치환됩니다.
+  * 성공적으로 생성/수정하였을 경우 true를 반환합니다.
+  * API의 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line)를 확인해주시기 바랍니다.
+#### 4. 지형의 0레벨 지구본 위성영상 자체 포함
+  * 0레벨에 대한 지구본 위성영상을 자체 포함하도록 적용 되었습니다.
+  * 지도 서버에 연결이 정상적이 않아도 지구본은 기본적으로 구성됩니다.
+  * 0 레벨 요청을 실패하여 반복적 네트워크 요청을 처리하지 않습니다.
+  * 엔진의 파일용량이 소폭 증가합니다.
 
-#### 2. 고스트심볼 맵 모델 삭제 및 참조 오브젝트 수 조회 기능 추가
-  * 고스트심볼 맵에 등록한 모델을 등록한 ID 기반으로 삭제하는 API가 추가되었습니다.
-    ``` javascript
-    var result = Module.getGhostSymbolMap().removeModel("sphere");
-    ```
-  * 모델을 참조하는 고스트심볼 오브젝트가 있는 경우 삭제되지 않고 false를 반환합니다.
-  * 성공적으로 삭제 되었을 경우 true를 반환합니다.
-  * 모델을 참조하는 오브젝트의 수는 JSGhostSymbolMap 클래스의 getReferenceCount API로 확인 가능합니다.
-    ``` javascript
-    var referenceCount = Module.getGhostSymbolMap().getReferenceCount("sphere"));
-    ```
+### 2.5.0 (2024/7/26)
 
-#### 3. 레이어 상에서 화면 좌표 기반 영역에 포함되는 오브젝트 키 반환
-  * JSLayer에 소속된 오브젝트 중 화면 좌표 기반 사각 영역에 포함되는 오브젝트 목록을 반환하는 API가 추가되었습니다.
-    ``` javascript
-    var objectKeyList = layer.getObjectInScreenRect(386, 445, 674, 668);
+#### 1. Improved Web Worker Functionality
+  * Enhanced functionality and reduced file size to improve performance.
+  
+#### 2. Improved Road Facility Generation
+  * Added an exception handling step to ensure that bridge piers below a certain height are not generated in road facilities.
+  
+#### 3. Added Vertical Line Option for Billboards
+  * Added an API to create and modify vertical lines from the center of a billboard to the ground.
+    ```javascript
+	parameter = {
+		visible: true,						// Visibility (default: false)
+		width: 10.0,						// Line width (default: 1.0)
+		color: JSColor(255, 15, 100, 200),	// Line color (default: JSColor(255, 255, 255, 255))
+		altitude: 30.0						// Line end altitude (default: 0)
+	}
+	billboard.setVerticalLine(parameter);
     ```
-  * JSPolygon, JSPoint, JSGhostSymbol, JSReal3D 오브젝트 타입 레이어에서 사용 가능합니다. (이 외 오브젝트 타입은 추후 업로드 예정입니다.)
+  * Returns true if the vertical line is successfully created or modified.
+  * For detailed usage of the API, please refer to the sandbox [link](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line).
 
-### 2.4.2 (2024/7/19)
-
-#### 1. Addition of Screen-Based Size Fixing Feature for Ghost Symbols
-  * A feature has been added that allows the size of Ghost Symbols to be fixed based on the screen's pixels when rendering Ghost Symbols.
-  * When the size is fixed, the Ghost Symbol's size remains constant regardless of the distance from the camera.
-  * To set the size, use the setScreenFixedSize API of JSGhostSymbol as shown below:
-    ``` javascript
-    ghostsymbolObject.setScreenFixedSize(50);
-    ```
-  * To disable the fixed size, set null to the setScreenFixedSize API of JSGhostSymbol to release the fixed size setting.
-    ``` javascript
-    ghostsymbolObject.setScreenFixedSize(null);
-    ```
-  * The size is replaced as 1 pixel per [x:1.0, y:1.0, z:1.0] space in the 3D space.
-
-#### 2. Addition of Functions to Delete Map Models and Check Reference Object Count for Ghost Symbols
-  * An API has been added to delete models registered in the Ghost Symbol map based on the registered ID.
-    ``` javascript
-    var result = Module.getGhostSymbolMap().removeModel("sphere");
-    ```
-  * If there are Ghost Symbol objects referencing the model, it will not be deleted and false will be returned.
-  * If successfully deleted, true will be returned.
-  * The number of objects referencing the model can be checked using the getReferenceCount API of the JSGhostSymbolMap class.
-    ``` javascript
-    var referenceCount = Module.getGhostSymbolMap().getReferenceCount("sphere");
-    ```
-
-#### 3. Return of Object Keys Included in Screen-Coordinate Based Area on Layer
-  * An API has been added to return the list of objects included in the rectangular area based on screen coordinates among the objects belonging to JSLayer.
-    ``` javascript
-    var objectKeyList = layer.getObjectInScreenRect(386, 445, 674, 668);
-    ```
-  * This can be used in layers with object types such as JSPolygon, JSPoint, JSGhostSymbol, and JSReal3D. (Other object types will be updated in the future.)
+#### 4. Integrated Zero-Level Globe Satellite Imagery for Terrain
+  * Applied zero-level globe satellite imagery to be self-contained.
+  * The globe is rendered by default even if the connection to the map server is not functioning properly.
+  * Repeated network requests for failed zero-level requests are not processed.
+  * The engine file size increases slightly.
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
