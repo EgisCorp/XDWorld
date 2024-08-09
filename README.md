@@ -35,58 +35,123 @@
 
 ## Update
 
-### 2.5.0 (2024/7/26)
+### 2.5.1 (2024/8/09)
 
-#### 1. 웹 워커 기능 개선
-  * 기능 개선 및 파일 용량을 감소하여 기능 개선하였습니다.
-#### 2. 도로 시설물 생성 기능 개선
-  * 도로 시설물 중 교량의 교각이 일정 높이 이하인 부분은 생성이 되지 않도록 예외처리 단계가 추가되었습니다.
-#### 3. 빌보드 수직선 옵션 추가
-  * 빌보드 중심을 기준으로, 지면까지의 수직선을 생성 및 수정하는 API가 추가되었습니다.
+#### 1. JSHTMLObject 이동 기능 추가
+  * JSHTMLObject 내부 변수 "position"을 통해 현재 위치와, 변경 위치 설정하는 변수가 추가되었습니다.
     ``` javascript
-	parameter = {
-		visible: true,						// 가시화 여부(기본값: false)
-		width: 10.0,						// 수직선 두께(기본값: 1.0)
-		color: JSColor(255, 15, 100, 200),	// 수직선 색상(기본값: JSColor(255, 255, 255, 255))
-		altitude: 30.0						// 수직선 끝점 고도(기본값: 0)
-	}
-	billboard.setVerticalLine(parameter);
+    // Get
+    let position = htmlObject.position;
+    // Set
+    let position = new Module.JSVector3D(lon, lat, alt);
+    htmlObject.position = position;    
     ```
-  * 성공적으로 생성/수정하였을 경우 true를 반환합니다.
-  * API의 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line)를 확인해주시기 바랍니다.
-#### 4. 지형의 0레벨 지구본 위성영상 자체 포함
-  * 0레벨에 대한 지구본 위성영상을 자체 포함하도록 적용 되었습니다.
-  * 지도 서버에 연결이 정상적이 않아도 지구본은 기본적으로 구성됩니다.
-  * 0 레벨 요청을 실패하여 반복적 네트워크 요청을 처리하지 않습니다.
-  * 엔진의 파일용량이 소폭 증가합니다.
+  * 입력, 출력은 경위도 값이 기준입니다.
 
-### 2.5.0 (2024/7/26)
-
-#### 1. Improved Web Worker Functionality
-  * Enhanced functionality and reduced file size to improve performance.
-  
-#### 2. Improved Road Facility Generation
-  * Added an exception handling step to ensure that bridge piers below a certain height are not generated in road facilities.
-  
-#### 3. Added Vertical Line Option for Billboards
-  * Added an API to create and modify vertical lines from the center of a billboard to the ground.
-    ```javascript
-	parameter = {
-		visible: true,						// Visibility (default: false)
-		width: 10.0,						// Line width (default: 1.0)
-		color: JSColor(255, 15, 100, 200),	// Line color (default: JSColor(255, 255, 255, 255))
-		altitude: 30.0						// Line end altitude (default: 0)
-	}
-	billboard.setVerticalLine(parameter);
+#### 2. POI 가시범위 API 기능 개선 확장
+  * JSPoint에 개선된 가시범위 설정 API가 추가되었습니다.
+    ``` javascript
+      // 가시 범위 설정 예시
+      poi.setRange(
+              {
+                  enable : true,      // 가시 범위 사용 여부 setVisibleRange의 bEnable 파라메터와 동일
+                  min : 1.0,          // 가시 범위 최소 범위 setVisibleRange의 dMin 파라메터와 동일
+                  max : 1000.0,       // 가시 범위 최대 범위 setVisibleRange의 dMax 파라메터와 동일
+                  textMin : 1.0,      // 가시 범위 텍스트 최소 범위 min 과 같거나 커야함
+                  textMax : 300.0     // 가시 범위 텍스트 최대 범위 max 과 같거나 작아야함
+              }
+          );
     ```
-  * Returns true if the vertical line is successfully created or modified.
-  * For detailed usage of the API, please refer to the sandbox [link](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line).
+  * 기존 POI 객체 표현범위 설정 (Icon 기준)에서 Text에 대한 추가 표현 범위를 설정합니다.
 
-#### 4. Integrated Zero-Level Globe Satellite Imagery for Terrain
-  * Applied zero-level globe satellite imagery to be self-contained.
-  * The globe is rendered by default even if the connection to the map server is not functioning properly.
-  * Repeated network requests for failed zero-level requests are not processed.
-  * The engine file size increases slightly.
+#### 3. JSPipe 흐름 화살표 기능 개선
+  * 평면 형태의 화살표를 3차원 입체 구조로 개선하였습니다.
+  * 일부 지역에서 화살표 생성 시 방향이 올바르게 정렬되지 않는 현상을 수정하였습니다.
+  * 파이프 지점 높낮이에 따라 화살표의 틸트 각도가 함께 적용되도록 수정하였습니다.
+
+#### 4. face 데이터로 JSPolygon을 생성하는 'JSPolygon.createWithFaces()' API 추가
+  * 사용자가 정의한 face 데이터를 기반으로 JSPolygon을 생성하는 기능이 추가되었습니다.
+  * 사용자는 형식에 맞춘 JSON 데이터를 파라메터로 전달함으로써, JSPolygon을 생성할 수 있습니다.
+  * 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_faces_to_polygon)를 참고하시기 바랍니다.
+  ``` javascript
+let parameter = {
+	upVector: /*업벡터 좌표축*/,
+	cullMode: /*버텍스 정의 방향*/,
+	position: /*모델 중심 위치*/,
+	moveOffset: /*위치 오프셋(세부 조정)*/,
+	faceInfo: [
+		{
+			vertex: /*버텍스 위치*/,
+			matrix: /*변환(4x4 행렬)*/,
+			indexVertex: /*버텍스 인덱스*/,
+			indexUV: /*텍스처 좌표 인덱스*/,
+			uv: /*실제 텍스처 좌표*/,
+			normal: /*노멀 벡터*/,
+			color: /*색상*/
+		}
+	]
+}
+polygon.createWithFaces(parameter);
+  ```
+
+### 2.5.1 (2024/8/09)
+
+#### 1. Added JSHTMLObject Movement Feature
+  * An internal variable "position" has been added to JSHTMLObject to set and get the current and new positions.
+    ``` javascript
+    // Get
+    let position = htmlObject.position;
+    // Set
+    let position = new Module.JSVector3D(lon, lat, alt);
+    htmlObject.position = position;    
+    ```
+  * Input and output are based on latitude and longitude values.
+
+#### 2. Expanded POI Visibility Range API
+  * An improved visibility range setting API has been added to JSPoint.
+    ``` javascript
+      // Example of setting visibility range
+        poi.setRange(
+                {
+                    enable : true,      // Whether to use visibility range, same as bEnable parameter of setVisibleRange
+                    min : 1.0,          // Minimum visibility range, same as dMin parameter of setVisibleRange
+                    max : 1000.0,       // Maximum visibility range, same as dMax parameter of setVisibleRange
+                    textMin : 1.0,      // Minimum text visibility range, must be equal to or greater than min
+                    textMax : 300.0     // Maximum text visibility range, must be equal to or less than max
+                }
+            );
+    ```
+  * Adds additional visibility range settings for text in the existing POI object representation (Icon-based).
+
+#### 3. Improved JSPipe Flow Arrow Feature
+  * The flat arrow has been upgraded to a 3D structure.
+  * Fixed an issue where arrows were not properly aligned in some areas.
+  * Adjusted the arrow's tilt angle according to the elevation of pipe points.
+
+#### 4. Added 'JSPolygon.createWithFaces()' API for Creating JSPolygon from Face Data
+  * Added functionality to create a JSPolygon based on user-defined face data.
+  * Users can generate a JSPolygon by providing JSON data in the correct format as a parameter.
+  * For detailed usage, please refer to the [sandbox sample](https://sandbox.egiscloud.com/code/main.do?id=object_faces_to_polygon).
+    ``` javascript
+      let parameter = {
+        upVector: /* Up vector coordinate axis */,
+        cullMode: /* Vertex definition direction */,
+        position: /* Model center position */,
+        moveOffset: /* Position offset (fine adjustment) */,
+        faceInfo: [
+          {
+            vertex: /* Vertex position */,
+            matrix: /* Transformation (4x4 matrix) */,
+            indexVertex: /* Vertex index */,
+            indexUV: /* Texture coordinate index */,
+            uv: /* Actual texture coordinates */,
+            normal: /* Normal vector */,
+            color: /* Color */
+          }
+        ]
+      }
+      polygon.createWithFaces(parameter);
+    ```
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
