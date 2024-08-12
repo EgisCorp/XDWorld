@@ -33,9 +33,21 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 (GIS, Urban Information Systems, Location-Based Services, Facility Management, Perspective Views, Site Analysis, Terrain Analysis, Urban Planning, Construction Site Management, and Agricultural Land Management.)
 
+## Notice
+
+### 비디오 텍스쳐 기능 개선
+* 사용자 편의성을 위해 객체 생성 이후의 기능들 엔진 내부에 삽입 및 속도개선되었습니다.
+* 기존 비디오 텍스쳐 관련 기능은 2024년까지 지원합니다.
+* 새로운 사용법은 [비디오텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard)를 참고하시기 바랍니다.
+
+### Improvements to video texture features
+* For user convenience, functions after object creation have been inserted into the engine and speed has been improved.
+* Existing video texture-related features will be supported until 2024.
+* New usage methods include [Video Texture](https://sandbox.egiscloud.com/code/main.do?id=object_video), [led board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard).
+
 ## Update
 
-### 2.5.1 (2024/8/09)
+### 2.5.1 (2024/08/09)
 
 #### 1. JSHTMLObject 이동 기능 추가
   * JSHTMLObject 내부 변수 "position"을 통해 현재 위치와, 변경 위치 설정하는 변수가 추가되었습니다.
@@ -94,7 +106,7 @@ let parameter = {
 polygon.createWithFaces(parameter);
   ```
 
-### 2.5.1 (2024/8/09)
+### 2.5.1 (2024/08/09)
 
 #### 1. Added JSHTMLObject Movement Feature
   * An internal variable "position" has been added to JSHTMLObject to set and get the current and new positions.
