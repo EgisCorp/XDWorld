@@ -35,7 +35,7 @@
 
 ## Update
 
-### 2.5.1 (2024/8/09)
+### 2.5.1 (2024/08/09)
 
 #### 1. JSHTMLObject 이동 기능 추가
   * JSHTMLObject 내부 변수 "position"을 통해 현재 위치와, 변경 위치 설정하는 변수가 추가되었습니다.
@@ -94,7 +94,7 @@ let parameter = {
 polygon.createWithFaces(parameter);
   ```
 
-### 2.5.1 (2024/8/09)
+### 2.5.1 (2024/08/09)
 
 #### 1. Added JSHTMLObject Movement Feature
   * An internal variable "position" has been added to JSHTMLObject to set and get the current and new positions.
