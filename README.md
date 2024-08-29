@@ -33,6 +33,13 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 (GIS, Urban Information Systems, Location-Based Services, Facility Management, Perspective Views, Site Analysis, Terrain Analysis, Urban Planning, Construction Site Management, and Agricultural Land Management.)
 
+## Notice
+
+### 비디오 텍스쳐 기능 개선
+* 사용자 편의성을 위해 객체 생성 이후의 기능들 엔진 내부에 삽입 및 속도개선되었습니다.
+* 기존 비디오 텍스쳐 관련 기능은 2024년까지 지원합니다.
+* 새로운 사용법은 [비디오텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=object_video)를 참고하시기 바랍니다.
+
 ## Update
 
 ### 2.5.1 (2024/08/09)
