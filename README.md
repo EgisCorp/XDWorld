@@ -47,123 +47,37 @@
 
 ## Update
 
-### 2.5.1 (2024/08/09)
+### 2.6.0 (2024/08/30)
 
-#### 1. JSHTMLObject 이동 기능 추가
-  * JSHTMLObject 내부 변수 "position"을 통해 현재 위치와, 변경 위치 설정하는 변수가 추가되었습니다.
-    ``` javascript
-    // Get
-    let position = htmlObject.position;
-    // Set
-    let position = new Module.JSVector3D(lon, lat, alt);
-    htmlObject.position = position;    
-    ```
-  * 입력, 출력은 경위도 값이 기준입니다.
+#### 1. 지형 쉐이더 컴파일 오류 처리 기능 추가
+  * 지형 쉐이더를 컴파일할 경우, 디바이스별로 쉐이더 컴파일 조건이 다르므로 실패하는 경우가 있습니다.
+  * 이를 방지하기 위해, 컴파일 실패시 조건 수정후 다시 컴파일하는 기능이 추가되었습니다.
+#### 2. 멀티뷰(화면 분할) 모드 오류 수정
+  * `멀티뷰 모드`에서 지형이 깜박이던 현상을 수정했습니다.
+#### 3. 멀티뷰(화면 분할) 모드 레이어 가시화 기능 추가
+  * `멀티뷰 모드`에서, `RTT/하이브리드` 레이어의 가시화를 제어할 수 있는 기능이 추가되었습니다.
+#### 4. POI 가시화 개선
+  * POI 레벨 범위(시작, 끝)에 따른 가시화 구조를 수정하였습니다.
+  * `ETLT_USER_LAYER`를 통해 생성한 POI에 대한 `object_ahead` 옵션 설정에 따른 가시화 기능을 수정하였습니다.
+#### 5. Base Map 기능에서, Bing Map(전체)/OSM(Terrain) 항목 서비스 종료
+  * Base Map에서, Bing Map과 Open Street Map(terrain)에 대한 서비스를 종료하였습니다.
+  * 자세한 사항은 [링크](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap)를 참고해주시기 바랍니다.
 
-#### 2. POI 가시범위 API 기능 개선 확장
-  * JSPoint에 개선된 가시범위 설정 API가 추가되었습니다.
-    ``` javascript
-      // 가시 범위 설정 예시
-      poi.setRange(
-              {
-                  enable : true,      // 가시 범위 사용 여부 setVisibleRange의 bEnable 파라메터와 동일
-                  min : 1.0,          // 가시 범위 최소 범위 setVisibleRange의 dMin 파라메터와 동일
-                  max : 1000.0,       // 가시 범위 최대 범위 setVisibleRange의 dMax 파라메터와 동일
-                  textMin : 1.0,      // 가시 범위 텍스트 최소 범위 min 과 같거나 커야함
-                  textMax : 300.0     // 가시 범위 텍스트 최대 범위 max 과 같거나 작아야함
-              }
-          );
-    ```
-  * 기존 POI 객체 표현범위 설정 (Icon 기준)에서 Text에 대한 추가 표현 범위를 설정합니다.
+### 2.6.0 (2024/08/30)
 
-#### 3. JSPipe 흐름 화살표 기능 개선
-  * 평면 형태의 화살표를 3차원 입체 구조로 개선하였습니다.
-  * 일부 지역에서 화살표 생성 시 방향이 올바르게 정렬되지 않는 현상을 수정하였습니다.
-  * 파이프 지점 높낮이에 따라 화살표의 틸트 각도가 함께 적용되도록 수정하였습니다.
-
-#### 4. face 데이터로 JSPolygon을 생성하는 'JSPolygon.createWithFaces()' API 추가
-  * 사용자가 정의한 face 데이터를 기반으로 JSPolygon을 생성하는 기능이 추가되었습니다.
-  * 사용자는 형식에 맞춘 JSON 데이터를 파라메터로 전달함으로써, JSPolygon을 생성할 수 있습니다.
-  * 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_faces_to_polygon)를 참고하시기 바랍니다.
-  ``` javascript
-let parameter = {
-	upVector: /*업벡터 좌표축*/,
-	cullMode: /*버텍스 정의 방향*/,
-	position: /*모델 중심 위치*/,
-	moveOffset: /*위치 오프셋(세부 조정)*/,
-	faceInfo: [
-		{
-			vertex: /*버텍스 위치*/,
-			matrix: /*변환(4x4 행렬)*/,
-			indexVertex: /*버텍스 인덱스*/,
-			indexUV: /*텍스처 좌표 인덱스*/,
-			uv: /*실제 텍스처 좌표*/,
-			normal: /*노멀 벡터*/,
-			color: /*색상*/
-		}
-	]
-}
-polygon.createWithFaces(parameter);
-  ```
-
-### 2.5.1 (2024/08/09)
-
-#### 1. Added JSHTMLObject Movement Feature
-  * An internal variable "position" has been added to JSHTMLObject to set and get the current and new positions.
-    ``` javascript
-    // Get
-    let position = htmlObject.position;
-    // Set
-    let position = new Module.JSVector3D(lon, lat, alt);
-    htmlObject.position = position;    
-    ```
-  * Input and output are based on latitude and longitude values.
-
-#### 2. Expanded POI Visibility Range API
-  * An improved visibility range setting API has been added to JSPoint.
-    ``` javascript
-      // Example of setting visibility range
-        poi.setRange(
-                {
-                    enable : true,      // Whether to use visibility range, same as bEnable parameter of setVisibleRange
-                    min : 1.0,          // Minimum visibility range, same as dMin parameter of setVisibleRange
-                    max : 1000.0,       // Maximum visibility range, same as dMax parameter of setVisibleRange
-                    textMin : 1.0,      // Minimum text visibility range, must be equal to or greater than min
-                    textMax : 300.0     // Maximum text visibility range, must be equal to or less than max
-                }
-            );
-    ```
-  * Adds additional visibility range settings for text in the existing POI object representation (Icon-based).
-
-#### 3. Improved JSPipe Flow Arrow Feature
-  * The flat arrow has been upgraded to a 3D structure.
-  * Fixed an issue where arrows were not properly aligned in some areas.
-  * Adjusted the arrow's tilt angle according to the elevation of pipe points.
-
-#### 4. Added 'JSPolygon.createWithFaces()' API for Creating JSPolygon from Face Data
-  * Added functionality to create a JSPolygon based on user-defined face data.
-  * Users can generate a JSPolygon by providing JSON data in the correct format as a parameter.
-  * For detailed usage, please refer to the [sandbox sample](https://sandbox.egiscloud.com/code/main.do?id=object_faces_to_polygon).
-    ``` javascript
-      let parameter = {
-        upVector: /* Up vector coordinate axis */,
-        cullMode: /* Vertex definition direction */,
-        position: /* Model center position */,
-        moveOffset: /* Position offset (fine adjustment) */,
-        faceInfo: [
-          {
-            vertex: /* Vertex position */,
-            matrix: /* Transformation (4x4 matrix) */,
-            indexVertex: /* Vertex index */,
-            indexUV: /* Texture coordinate index */,
-            uv: /* Actual texture coordinates */,
-            normal: /* Normal vector */,
-            color: /* Color */
-          }
-        ]
-      }
-      polygon.createWithFaces(parameter);
-    ```
+#### 1. Added Terrain Shader Compilation Error Handling
+  * When compiling terrain shaders, the compilation conditions vary by device, which can lead to failures.
+  * To prevent this, a feature has been added to modify the conditions and recompile in case of failure.
+#### 2. Fixed Multi-View (Split Screen) Mode Error
+  * Fixed an issue where the terrain would flicker in `Multi-View Mode`.
+#### 3. Added Layer Visibility Control in Multi-View (Split Screen) Mode
+  * A feature has been added to control the visibility of `RTT/Hybrid` layers in `Multi-View Mode`.
+#### 4. Improved POI Visualization
+  * The visualization structure has been adjusted based on the POI level range (start, end).
+  * The visualization feature has been modified according to the `object_ahead` option setting for POIs created through `ETLT_USER_LAYER`.
+#### 5. Discontinued Bing Map(All)/OSM(Terrain) Services in Base Map
+  * The services for Bing Map and Open Street Map (terrain) in the Base Map have been discontinued.
+  * For more details, please refer to this [link](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap).
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
