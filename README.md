@@ -47,10 +47,16 @@
 
 ## Update
 
-### 2.6.1 (2024/09/03)
+### 2.6.2 (2024/09/05)
 
-#### 1. 배경지도 오류 수정
-* 0레벨 로딩시 텍스쳐 깨지는 현상 발생하여 수정하였습니다.
+#### 1. glTF 모델 회전 오류 수정
+* glTF 모델의 회전에 제대로 동작하지 않는 오류를 수정하였습니다.
+
+#### 2. JSObject::setSelectable() 오류 수정
+* `JSObject`에서 `setSelectable()`이 제대로 적용되지 않는 오류를 수정하였습니다.
+
+#### 3. 카메라 이동 API 오류 수정
+* `JSCamera`에서 `setLocation()`가 제대로 동작하지 않는 오류를 수정하였습니다.
 
 ### 2.6.0 (2024/08/30)
 
@@ -67,6 +73,17 @@
 #### 5. Base Map 기능에서, Bing Map(전체)/OSM(Terrain) 항목 서비스 종료
   * Base Map에서, Bing Map과 Open Street Map(terrain)에 대한 서비스를 종료하였습니다.
   * 자세한 사항은 [링크](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap)를 참고해주시기 바랍니다.
+
+### 2.6.2 (2024/09/05)
+
+#### 1. Fixed glTF Model Rotation Issue
+* Fixed an issue where the rotation of glTF models was not functioning correctly.
+
+#### 2. Fixed JSObject::setSelectable() Issue
+* Fixed an issue where `setSelectable()` in `JSObject` was not applied properly.
+
+#### 3. Fixed Camera Movement API Issue
+* Fixed an issue where `setLocation()` in `JSCamera` was not functioning correctly.
 
 ### 2.6.0 (2024/08/30)
 
