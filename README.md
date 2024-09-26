@@ -47,59 +47,70 @@
 
 ## Update
 
-### 2.6.2 (2024/09/05)
+### 2.7.0 (2024/09/27)
 
-#### 1. glTF 모델 회전 오류 수정
-* glTF 모델의 회전에 제대로 동작하지 않는 오류를 수정하였습니다.
+#### 1. Off-screen indicator 위치 반환 API 추가
+  * 특정 좌표(경도, 위도, 고도)가 화면에 보이지 않는 경우 화면 엣지의 indicator 좌표를 반환하는 API가 추가되었습니다.
+  * object getScreenEdgeIndicator(JSVector3D position)
+    * JSMath로 호출합니다.
+    * 파라미터 정보
+        * position(JSVector3D) : Indicator를 반환하고자 하는 경위도, 고도 좌표
+    * 반환 정보
+        * 해당 지점이 시야 내에 있는 경우 : null 반환
+        * 해당 지점이 시야를 벗어나는 경우 : Indicator 위치를 나타내는 화면 가장자리 좌표(속성 x, y 로 구성된 오브젝트)
+    * 활용
+        ``` javascript
+        var position = layer.keyAtObject("TEST_OBJECT").getPosition();
+        var indicator = Module.getMath().getScreenEdgeIndicator(position);
+        ```
 
-#### 2. JSObject::setSelectable() 오류 수정
-* `JSObject`에서 `setSelectable()`이 제대로 적용되지 않는 오류를 수정하였습니다.
+#### 2. 화면분할 기능에서 POI 오류 수정
+  * 화면분할 기능에서 커스텀타일 레이어 기반으로 POI를 사용시 정상적으로 표현되지 않는 문제를 수정하였습니다.
 
-#### 3. 카메라 이동 API 오류 수정
-* `JSCamera`에서 `setLocation()`가 제대로 동작하지 않는 오류를 수정하였습니다.
+#### 3. 엔진 및 웹 워커 JPG 변환 관련 기능 수정(웹 워커 변경 필수)
+  * 엔진 및 웹 워커 환경에서, JPG 포맷 이미지의 확인 방법이 변경되었습니다.
 
-### 2.6.0 (2024/08/30)
+#### 4. 바람길 데이터 기능에서 gzip 포맷 압축 기능 추가
+  * `JSFlow.createFlow()`의 `url` 파라미터로 `gzip` 포맷도 사용 가능하도록 기능이 추가되었습니다.
+    * 이제부터 기존 데이터가 있을 경우, `gzip`으로 압축해서 바로 사용할 수 있습니다.
 
-#### 1. 지형 쉐이더 컴파일 오류 처리 기능 추가
-  * 지형 쉐이더를 컴파일할 경우, 디바이스별로 쉐이더 컴파일 조건이 다르므로 실패하는 경우가 있습니다.
-  * 이를 방지하기 위해, 컴파일 실패시 조건 수정후 다시 컴파일하는 기능이 추가되었습니다.
-#### 2. 멀티뷰(화면 분할) 모드 오류 수정
-  * `멀티뷰 모드`에서 지형이 깜박이던 현상을 수정했습니다.
-#### 3. 멀티뷰(화면 분할) 모드 레이어 가시화 기능 추가
-  * `멀티뷰 모드`에서, `RTT/하이브리드` 레이어의 가시화를 제어할 수 있는 기능이 추가되었습니다.
-#### 4. POI 가시화 개선
-  * POI 레벨 범위(시작, 끝)에 따른 가시화 구조를 수정하였습니다.
-  * `ETLT_USER_LAYER`를 통해 생성한 POI에 대한 `object_ahead` 옵션 설정에 따른 가시화 기능을 수정하였습니다.
-#### 5. Base Map 기능에서, Bing Map(전체)/OSM(Terrain) 항목 서비스 종료
-  * Base Map에서, Bing Map과 Open Street Map(terrain)에 대한 서비스를 종료하였습니다.
-  * 자세한 사항은 [링크](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap)를 참고해주시기 바랍니다.
+#### 5. 수인한도분석 선택 기능 오류 수정
+  * 수인한도분석 기능에서, 배척격자 선택시 선택이 제대로 되지 않는 오류를 수정하였습니다.
 
-### 2.6.2 (2024/09/05)
+#### 주의 사항
+  * 현재 [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d)에서 가시권을 나타내는 폴리곤이 제 위치에 출력되지 않는 오류가 있습니다. 사용에 주의 부탁드리며, 빠른 시일 내로 수정하겠습니다.
 
-#### 1. Fixed glTF Model Rotation Issue
-* Fixed an issue where the rotation of glTF models was not functioning correctly.
+### 2.7.0 (2024/09/27)
 
-#### 2. Fixed JSObject::setSelectable() Issue
-* Fixed an issue where `setSelectable()` in `JSObject` was not applied properly.
+#### 1. Addition of Off-screen Indicator Position API
+  * A new API has been added that returns the coordinates of the indicator at the edge of the screen when a specific point (longitude, latitude, altitude) is off-screen.
+  * object getScreenEdgeIndicator(JSVector3D position)
+    * You can call through `JSMath`
+    * Parameter
+        * position(`JSVector3D`) : The longitude, latitude, and altitude coordinates for which you want to return the indicator.
+    * Return
+        * If the point is within the visible area: returns null
+        * If the point is outside the visible area: returns the screen edge coordinates (an object with properties x and y representing the indicator's location).
+    * 활용
+        ``` javascript
+        var position = layer.keyAtObject("TEST_OBJECT").getPosition();
+        var indicator = Module.getMath().getScreenEdgeIndicator(position);
+        ```
 
-#### 3. Fixed Camera Movement API Issue
-* Fixed an issue where `setLocation()` in `JSCamera` was not functioning correctly.
+#### 2. Fixed POI Error in Split-screen Feature
+  * Fixed an issue where POIs based on custom tile layers were not displayed correctly in the split-screen feature.
 
-### 2.6.0 (2024/08/30)
+#### 3. Changes in JPG Conversion Features for Engine and Web Worker (Web Worker Update Required)
+  * The method for verifying JPG format images in the engine and web worker environments has been changed.
 
-#### 1. Added Terrain Shader Compilation Error Handling
-  * When compiling terrain shaders, the compilation conditions vary by device, which can lead to failures.
-  * To prevent this, a feature has been added to modify the conditions and recompile in case of failure.
-#### 2. Fixed Multi-View (Split Screen) Mode Error
-  * Fixed an issue where the terrain would flicker in `Multi-View Mode`.
-#### 3. Added Layer Visibility Control in Multi-View (Split Screen) Mode
-  * A feature has been added to control the visibility of `RTT/Hybrid` layers in `Multi-View Mode`.
-#### 4. Improved POI Visualization
-  * The visualization structure has been adjusted based on the POI level range (start, end).
-  * The visualization feature has been modified according to the `object_ahead` option setting for POIs created through `ETLT_USER_LAYER`.
-#### 5. Discontinued Bing Map(All)/OSM(Terrain) Services in Base Map
-  * The services for Bing Map and Open Street Map (terrain) in the Base Map have been discontinued.
-  * For more details, please refer to this [link](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap).
+#### 4. Added gzip Compression Support for Wind Path Data Feature
+  * The url parameter of `JSFlow.createFlow()` now supports `gzip` format
+    * Existing data can now be compressed into `gzip` format for direct use.
+#### 5. Fixed Error in Maximum Acceptance Limit Analysis Selection
+  * Fixed an issue where grid selection was not working properly in the maximum acceptance limit analysis feature.
+
+#### Notice
+  * There is currently an issue in [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d) where the polygon representing the viewshed is not displayed in the correct position. We will address this as soon as possible.
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
