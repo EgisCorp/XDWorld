@@ -47,6 +47,15 @@
 
 ## Update
 
+### 2.7.1 (2024/10/02)
+
+#### 모바일 환경 측정 및 객체 선택 기능 추가
+  * 모바일 환경에서도 거리/면적/고도 측정 및 객체 선택이 가능하도록, 터치 이벤트 처리 기능을 추가하였습니다.
+  * 이에 따라 지원하는 모드는 아래와 같습니다
+    * `MML_ANALYS_DISTANCE_STRAIGHT`, `MML_ANALYS_AREA_PLANE`, `Module.MML_ANALYS_ALTITUDE`, `MML_SELECT_POINT`
+  * `MML_ANALYS_DISTANCE_STRAIGHT`(거리 측정) 모드의 경우, 모바일 환경은 더블 클릭이 불가능하므로, `같은 위치를 1초 이상 터치할시`거리 측정 리스트를 생성하도록 인터페이스를 변경하였습니다.
+  * 이후 편리한 사용을 위한 인터페이스 개선이 진행될 예정입니다.
+
 ### 2.7.0 (2024/09/27)
 
 #### 1. Off-screen indicator 위치 반환 API 추가
@@ -79,6 +88,15 @@
 
 #### 주의 사항
   * 현재 [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d)에서 가시권을 나타내는 폴리곤이 제 위치에 출력되지 않는 오류가 있습니다. 사용에 주의 부탁드리며, 빠른 시일 내로 수정하겠습니다.
+
+### 2.7.1 (2024/10/02)
+
+#### Added Measurement and Object Selection Features for Mobile Environments
+  * Added touch event handling to enable distance, area, altitude measurement, and object selection in mobile environments.
+  * Supported modes are as follows:
+    * `MML_ANALYS_DISTANCE_STRAIGHT`, `MML_ANALYS_AREA_PLANE`, `Module.MML_ANALYS_ALTITUDE`, `MML_SELECT_POINT`
+  * In `MML_ANALYS_DISTANCE_STRAIGHT (distance measurement)` mode, since double-clicking is not possible in mobile environments, the interface has been changed so that a distance measurement list is generated when the user touches the same location for more than 1 second.
+  * Interface improvements for easier use are planned for future updates.
 
 ### 2.7.0 (2024/09/27)
 
