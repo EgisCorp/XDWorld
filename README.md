@@ -47,6 +47,24 @@
 
 ## Update
 
+### 2.7.2 (2024/10/17)
+
+#### 1. 가시권 분석(3D) 오류 수정
+  * 가시권 분석 기능에서, 가시권 폴리곤의 위치가 제대로 갱신되지 않는 오류를 수정하였습니다.
+
+#### 2. JSAnalysis::checkInsideArea() 기능 확장
+  * JSAnalysis::checkInsideArea() API가 분리된 여러 개의 영역에서도 폴리곤의 인접 여부를 확인할 수 있도록 수정하였습니다.
+  * 자세한 사용법은 빠른 시일 내로 문서에 업로드할 예정입니다.
+
+#### 3. glTF 애니메이션 기능 추가
+  * glTF 포맷의 애니메이션 데이터를 처리할 수 있도록 기능이 확장되었습니다.
+
+#### 4. JSPolygon::renderSelectObject 오류 수정
+  * JSPolygon에서 양면을 생성했을 때 뒷면이 보이지 않는 오류를 수정하였습니다.
+
+#### 5. 비디오 객체 오류 수정
+  * 비디오 객체에서, 특정 색상 편집 및 투명값일 경우 지형을 무시하는 현상을 수정하였습니다.
+
 ### 2.7.1 (2024/10/02)
 
 #### 모바일 환경 측정 및 객체 선택 기능 추가
@@ -86,8 +104,24 @@
 #### 5. 수인한도분석 선택 기능 오류 수정
   * 수인한도분석 기능에서, 배척격자 선택시 선택이 제대로 되지 않는 오류를 수정하였습니다.
 
-#### 주의 사항
-  * 현재 [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d)에서 가시권을 나타내는 폴리곤이 제 위치에 출력되지 않는 오류가 있습니다. 사용에 주의 부탁드리며, 빠른 시일 내로 수정하겠습니다.
+
+### 2.7.2 (2024/10/17)
+
+#### 1. Fixed visibility analysis(3D) error
+  * Fixed an issue where the visibility polygon's position was not properly updated in viewshed3D.
+
+#### 2. Expanded JSAnalysis::checkInsideArea() function
+  * The JSAnalysis::checkInsideArea() API has been updated to check the adjacency of polygons even across multiple separated areas.
+  * Detailed usage will be uploaded to the documentation shortly.
+
+#### 3. Added glTF animation functionality
+  * Extended functionality to process animation data in the glTF format.
+
+#### 4. Fixed JSPolygon::renderSelectObject error
+  * Fixed an issue where the backside was not visible when generating double-sided polygons in JSPolygon.
+
+#### 5. Fixed video object error
+  * Fixed an issue where the terrain was ignored when editing specific colors or transparency values in video objects.
 
 ### 2.7.1 (2024/10/02)
 
