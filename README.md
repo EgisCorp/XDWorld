@@ -54,7 +54,22 @@
 
 #### 2. JSAnalysis::checkInsideArea() 기능 확장
   * JSAnalysis::checkInsideArea() API가 분리된 여러 개의 영역에서도 폴리곤의 인접 여부를 확인할 수 있도록 수정하였습니다.
-  * 자세한 사용법은 빠른 시일 내로 문서에 업로드할 예정입니다.
+    ``` javascript
+    Module.getAnalysis().checkInsideArea(pointList, parts, object, checkType);
+    ```
+    * 매개변수
+      | Name      | Type             | Description                   |
+      | --------- | ---------------- | ----------------------------- |
+      | pointList | JSVec3Array      |  모든 영역을 나타내는 점들의 정보. |
+      | parts     | Collection(number 배열)       | pointList를 영역으로 구별하는 part 데이터. |
+      | object    | JSObject         | 포함 여부를 확인하는 오브젝트.                |
+      | checkType | Number          | 영역 체크 조건 확인.<br>1일 경우, 완전히 영역 안에 포함되어야만 판정됨.<br>0일 경우, 일부만 영역에 포함되어도 판정.                |
+      * ex) `pointList`의 점이 총 10개이고, 전체 영역이 점 4개와 6개로 이루어진 영역 두 개로 구성
+        *  영역을 정의하는 순서대로 점이 저장되어 있을 경우, `parts`는 [4, 6]으로 이루어진 Collection 데이터여야 한다.
+
+     * 반환
+       * 충돌할 경우, `parts`를 통해 정의된 도형중, 포함 판정한 도형의 인덱스를 배열로 반환(처음 도형의 인덱스: 0).
+       * 충돌하지 않을 경우, 빈 배열을 반환.
 
 #### 3. glTF 애니메이션 기능 추가
   * glTF 포맷의 애니메이션 데이터를 처리할 수 있도록 기능이 확장되었습니다.
@@ -109,7 +124,21 @@
 
 #### 2. Expanded JSAnalysis::checkInsideArea() function
   * The JSAnalysis::checkInsideArea() API has been updated to check the adjacency of polygons even across multiple separated areas.
-  * Detailed usage will be uploaded to the documentation shortly.
+    ``` javascript
+    Module.getAnalysis().checkInsideArea(pointList, parts, object, checkType);
+    ```
+    * Parameters
+      | Name      | Type             | Description                   |
+      | --------- | ---------------- | ----------------------------- |
+      | pointList | JSVec3Array      |  Information all points representing all areas. |
+      | parts     | Collection(number 배열)       | Data that distinguishes the areas in pointList. |
+      | object    | JSObject         | The object to check for inclusion within the area.                |
+      | checkType | Number          | The condition for checking the area.<br>If 1, the object must be completely inside the area.<br>If 0, partial inclusion is sufficient for the check.                |
+      * ex) If there are 10 points in pointList, and the entire area consists of two regions, one with 4 points and another with 6 points.
+
+     * Returns
+       * If there is a collision, it returns an array of indices of the shapes (as defined by parts) that contain the object. The index of the first shape is 0.
+       * If there is no collision, it returns an empty array.
 
 #### 3. Added glTF animation functionality
   * Extended functionality to process animation data in the glTF format.
