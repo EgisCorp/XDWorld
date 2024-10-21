@@ -52,10 +52,10 @@
 #### 1. 가시권 분석(3D) 오류 수정
   * 가시권 분석 기능에서, 가시권 폴리곤의 위치가 제대로 갱신되지 않는 오류를 수정하였습니다.
 
-#### 2. JSAnalysis::checkInsideArea() 기능 확장
-  * JSAnalysis::checkInsideArea() API가 분리된 여러 개의 영역에서도 폴리곤의 인접 여부를 확인할 수 있도록 수정하였습니다.
+#### 2. JSAnalysis::checkInsideAreas() API 추가
+  * 분리된 여러 개의 영역에서도 폴리곤의 인접 여부를 확인할 수 있도록, `JSAnalysis::checkInsideAreas()` API를 추가하였습니다.
     ``` javascript
-    Module.getAnalysis().checkInsideArea(pointList, parts, object, checkType);
+    Module.getAnalysis().checkInsideAreas(pointList, parts, object, checkType);
     ```
     * 매개변수
       | Name      | Type             | Description                   |
