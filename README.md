@@ -47,145 +47,53 @@
 
 ## Update
 
-### 2.7.2 (2024/10/17)
+### 2.8.0 (2024/10/25)
 
-#### 1. 가시권 분석(3D) 오류 수정
-  * 가시권 분석 기능에서, 가시권 폴리곤의 위치가 제대로 갱신되지 않는 오류를 수정하였습니다.
+#### 1. 지형과 알파 값이 있는 객체 간의 렌더링 순서 정리
+  * 지형과 알파(투명) 값이 존재하는 객체들과의 가시화가 어색하지 않도록, 렌더링 순서를 변경하였습니다.
 
-#### 2. JSAnalysis::checkInsideAreas() API 추가
-  * 분리된 여러 개의 영역에서도 폴리곤의 인접 여부를 확인할 수 있도록, `JSAnalysis::checkInsideAreas()` API를 추가하였습니다.
-    ``` javascript
-    Module.getAnalysis().checkInsideAreas(pointList, parts, object, checkType);
-    ```
-    * 매개변수
-      | Name      | Type             | Description                   |
-      | --------- | ---------------- | ----------------------------- |
-      | pointList | JSVec3Array      |  모든 영역을 나타내는 점들의 정보. |
-      | parts     | Collection(number 배열)       | pointList를 영역으로 구별하는 part 데이터. |
-      | object    | JSObject         | 포함 여부를 확인하는 오브젝트.                |
-      | checkType | Number          | 영역 체크 조건 확인.<br>1일 경우, 완전히 영역 안에 포함되어야만 판정됨.<br>0일 경우, 일부만 영역에 포함되어도 판정.                |
-      * ex) `pointList`의 점이 총 10개이고, 전체 영역이 점 4개와 6개로 이루어진 영역 두 개로 구성
-        *  영역을 정의하는 순서대로 점이 저장되어 있을 경우, `parts`는 [4, 6]으로 이루어진 Collection 데이터여야 한다.
+#### 2. 파이프 색상 변경 오류 수정
+  * 간소화 상태에서 파이프 색상 변경 시 색상 값이 정상적으로 적용되지 않는 현상을 수정하였습니다.
 
-     * 반환
-       * 충돌할 경우, `parts`를 통해 정의된 도형중, 포함 판정한 도형의 인덱스를 배열로 반환(처음 도형의 인덱스: 0).
-       * 충돌하지 않을 경우, 빈 배열을 반환.
+#### 3. 외부 폰트 기반 POI Text 이미지 생성시 발생하는 오류 수정
+  * Text 이미지 생성이 정상적으로 작동되지 않는 현상을 수정하였습니다.
 
-#### 3. glTF 애니메이션 기능 추가
-  * glTF 포맷의 애니메이션 데이터를 처리할 수 있도록 기능이 확장되었습니다.
+#### 4. 소형 시설물의 LOD Texture 미적용 오류 수정
+  * 카메라 거리에 따른 시설물 LOD 변경 기능이 동작되지 않는 현상을 수정하였습니다.
 
-#### 4. JSPolygon::renderSelectObject 오류 수정
-  * JSPolygon에서 양면을 랜더링하고 선택했을 때 한쪽면이 보이지 않는 오류를 수정하였습니다.
+#### 5. JSPolygon::createVerticalGrid() API 추가
+  * 수직 평면 그리드 객체를 생성하는 API가 추가되었습니다.
+  * 파라미터: 레이어명, 좌하단, 우상단, 새로 개수, 가로 개수
+  * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid)를 참고해주시기 바랍니다.
 
-### 2.7.1 (2024/10/02)
-
-#### 모바일 환경 측정 및 객체 선택 기능 추가
-  * 모바일 환경에서도 거리/면적/고도 측정 및 객체 선택이 가능하도록, 터치 이벤트 처리 기능을 추가하였습니다.
-  * 이에 따라 지원하는 모드는 아래와 같습니다
-    * `MML_ANALYS_DISTANCE_STRAIGHT`, `MML_ANALYS_AREA_PLANE`, `Module.MML_ANALYS_ALTITUDE`, `MML_SELECT_POINT`
-  * `MML_ANALYS_DISTANCE_STRAIGHT`(거리 측정) 모드의 경우, 모바일 환경은 더블 클릭이 불가능하므로, `같은 위치를 1초 이상 터치할시`거리 측정 리스트를 생성하도록 인터페이스를 변경하였습니다.
-  * 이후 편리한 사용을 위한 인터페이스 개선이 진행될 예정입니다.
-
-### 2.7.0 (2024/09/27)
-
-#### 1. Off-screen indicator 위치 반환 API 추가
-  * 특정 좌표(경도, 위도, 고도)가 화면에 보이지 않는 경우 화면 엣지의 indicator 좌표를 반환하는 API가 추가되었습니다.
-  * object getScreenEdgeIndicator(JSVector3D position)
-    * JSMath로 호출합니다.
-    * 파라미터 정보
-        * position(JSVector3D) : Indicator를 반환하고자 하는 경위도, 고도 좌표
-    * 반환 정보
-        * 해당 지점이 시야 내에 있는 경우 : null 반환
-        * 해당 지점이 시야를 벗어나는 경우 : Indicator 위치를 나타내는 화면 가장자리 좌표(속성 x, y 로 구성된 오브젝트)
-    * 활용
-        ``` javascript
-        var position = layer.keyAtObject("TEST_OBJECT").getPosition();
-        var indicator = Module.getMath().getScreenEdgeIndicator(position);
-        ```
-
-#### 2. 화면분할 기능에서 POI 오류 수정
-  * 화면분할 기능에서 커스텀타일 레이어 기반으로 POI를 사용시 정상적으로 표현되지 않는 문제를 수정하였습니다.
-
-#### 3. 엔진 및 웹 워커 JPG 변환 관련 기능 수정(웹 워커 변경 필수)
-  * 엔진 및 웹 워커 환경에서, JPG 포맷 이미지의 확인 방법이 변경되었습니다.
-
-#### 4. 바람길 데이터 기능에서 gzip 포맷 압축 기능 추가
-  * `JSFlow.createFlow()`의 `url` 파라미터로 `gzip` 포맷도 사용 가능하도록 기능이 추가되었습니다.
-    * 이제부터 기존 데이터가 있을 경우, `gzip`으로 압축해서 바로 사용할 수 있습니다.
-
-#### 5. 수인한도분석 선택 기능 오류 수정
-  * 수인한도분석 기능에서, 배척격자 선택시 선택이 제대로 되지 않는 오류를 수정하였습니다.
+#### 6. JSFigure::getRectInfo() API 추가
+  * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
+  * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
 
 
-### 2.7.2 (2024/10/17)
+### 2.8.0 (2024/10/25)
 
-#### 1. Fixed visibility analysis(3D) error
-  * Fixed an issue where the visibility polygon's position was not properly updated in viewshed3D.
+#### 1. Adjusting Rendering Order between Terrain and Objects with Alpha Values
+  * The rendering order has been adjusted to ensure that visualization between terrain and objects with alpha(transparency) values appears natural.
 
-#### 2. Expanded JSAnalysis::checkInsideArea() function
-  * The JSAnalysis::checkInsideArea() API has been updated to check the adjacency of polygons even across multiple separated areas.
-    ``` javascript
-    Module.getAnalysis().checkInsideArea(pointList, parts, object, checkType);
-    ```
-    * Parameters
-      | Name      | Type             | Description                   |
-      | --------- | ---------------- | ----------------------------- |
-      | pointList | JSVec3Array      |  Information all points representing all areas. |
-      | parts     | Collection(number 배열)       | Data that distinguishes the areas in pointList. |
-      | object    | JSObject         | The object to check for inclusion within the area.                |
-      | checkType | Number          | The condition for checking the area.<br>If 1, the object must be completely inside the area.<br>If 0, partial inclusion is sufficient for the check.                |
-      * ex) If there are 10 points in pointList, and the entire area consists of two regions, one with 4 points and another with 6 points.
+#### 2. Fixing Pipe Color Change Error
+  * Fixed an issue where color changes for pipes were not applied correctly in simplified mode.
 
-     * Returns
-       * If there is a collision, it returns an array of indices of the shapes (as defined by parts) that contain the object. The index of the first shape is 0.
-       * If there is no collision, it returns an empty array.
+#### 3. Fixing Error in Generating POI Text Images with External Fonts
+  * Resolved an issue where text images were not generated correctly.
 
-#### 3. Added glTF animation functionality
-  * Extended functionality to process animation data in the glTF format.
+#### 4. Fixing LOD Texture Application Error for Small Facilities
+  * Fixed an issue where the LOD change function for facilities based on camera distance was not functioning.
 
-#### 4. Fixed JSPolygon::renderSelectObject error
-  * Fixed an issue where the backside was not visible when generating double-sided polygons in JSPolygon.
+#### 5. Adding JSPolygon::createVerticalGrid() API
+  * Added an API to create a vertical grid object.
+  * Parameters: Layer name, bottom-left corner, top-right corner, number of vertical divisions, number of horizontal divisions.
+  * For detailed usage, please refer to [link](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid).
 
-#### 5. Fixed video object error
-  * Fixed an issue where the terrain was ignored when editing specific colors or transparency values in video objects.
+#### 6. Adding JSFigure::getRectInfo() API
+  * Returns the four vertices of a Figure object.
+  * For detailed usage, please refer to [link](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate).
 
-### 2.7.1 (2024/10/02)
-
-#### Added Measurement and Object Selection Features for Mobile Environments
-  * Added touch event handling to enable distance, area, altitude measurement, and object selection in mobile environments.
-  * Supported modes are as follows:
-    * `MML_ANALYS_DISTANCE_STRAIGHT`, `MML_ANALYS_AREA_PLANE`, `Module.MML_ANALYS_ALTITUDE`, `MML_SELECT_POINT`
-  * In `MML_ANALYS_DISTANCE_STRAIGHT (distance measurement)` mode, since double-clicking is not possible in mobile environments, the interface has been changed so that a distance measurement list is generated when the user touches the same location for more than 1 second.
-  * Interface improvements for easier use are planned for future updates.
-
-### 2.7.0 (2024/09/27)
-
-#### 1. Addition of Off-screen Indicator Position API
-  * A new API has been added that returns the coordinates of the indicator at the edge of the screen when a specific point (longitude, latitude, altitude) is off-screen.
-  * object getScreenEdgeIndicator(JSVector3D position)
-    * You can call through `JSMath`
-    * Parameter
-        * position(`JSVector3D`) : The longitude, latitude, and altitude coordinates for which you want to return the indicator.
-    * Return
-        * If the point is within the visible area: returns null
-        * If the point is outside the visible area: returns the screen edge coordinates (an object with properties x and y representing the indicator's location).
-    * 활용
-        ``` javascript
-        var position = layer.keyAtObject("TEST_OBJECT").getPosition();
-        var indicator = Module.getMath().getScreenEdgeIndicator(position);
-        ```
-
-#### 2. Fixed POI Error in Split-screen Feature
-  * Fixed an issue where POIs based on custom tile layers were not displayed correctly in the split-screen feature.
-
-#### 3. Changes in JPG Conversion Features for Engine and Web Worker (Web Worker Update Required)
-  * The method for verifying JPG format images in the engine and web worker environments has been changed.
-
-#### 4. Added gzip Compression Support for Wind Path Data Feature
-  * The url parameter of `JSFlow.createFlow()` now supports `gzip` format
-    * Existing data can now be compressed into `gzip` format for direct use.
-#### 5. Fixed Error in Maximum Acceptance Limit Analysis Selection
-  * Fixed an issue where grid selection was not working properly in the maximum acceptance limit analysis feature.
 
 #### Notice
   * There is currently an issue in [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d) where the polygon representing the viewshed is not displayed in the correct position. We will address this as soon as possible.
