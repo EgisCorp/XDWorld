@@ -47,6 +47,14 @@
 
 ## Update
 
+### 2.8.1 (2024/11/01)
+
+#### 1. JSTraceTarget의 glTF 애니메이션 포맷 지원
+  * JSTraceTarget에서 애니메이션이 포함된 glTF 포맷을 지원하도록 기능이 확장되었습니다.
+
+#### 2. Real3DPack의 객체 버전 확장 적용
+  * Real3DPack 레이어가 다양한 버전의 객체를 사용할 수 있도록 기능이 확장되었습니다.
+
 ### 2.8.0 (2024/10/25)
 
 #### 1. 지형과 알파 값이 있는 객체 간의 렌더링 순서 정리
@@ -70,6 +78,13 @@
   * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
   * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
 
+
+### 2.8.1 (2024/11/01)
+
+#### 1. glTF Animation Format Support in JSTraceTarget
+  * JSTraceTarget has been enhanced to support glTF format with animations included.
+#### 2. Expanded Object Version Compatibility in Real3DPack
+  * The Real3DPack layer has been expanded to accommodate various versions of objects.
 
 ### 2.8.0 (2024/10/25)
 
