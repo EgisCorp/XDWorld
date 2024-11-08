@@ -61,6 +61,8 @@
   - `object_ahead` 란?
     - (카메라 기준)지형 및 시설물(건물)이 3d point 오브젝트보다 가까이 있을 경우, 오브젝트가 가려지도록 하는 옵션
     - 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)를 참고해주시기 바랍니다.
+  - 주의 사항
+    - `JSLayer.object_ahead` 속성은 `ELT_3DPOINT` 레이어에만 적용됩니다. 다른 속성의 레이어에서는 `JSOption.object_ahead`을 사용해주시기 바랍니다.
 
 ### 2.8.1 (2024/11/01)
 
