@@ -110,6 +110,7 @@
   - What is `object_ahead`?
     - This option ensures that if terrain and facilities (buildings) are closer to the camera than the 3D point objects, the objects will be obscured.
     - For detailed instructions, please refer to the [link](https://sandbox.egiscloud.com/code/main.do?id=object_ahead).
+  - The `JSLayer.object_ahead` property applies only to the `ELT_3DPOINT` layer. For other layer properties, please use `JSOption.object_ahead`.
 
 ### 2.8.1 (2024/11/01)
 
