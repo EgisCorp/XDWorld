@@ -47,6 +47,21 @@
 
 ## Update
 
+### 2.8.2 (2024/11/08)
+
+#### 1. glTF 애니메이션 오류 수정
+  * 특정 glTF 모델의 애니메이션이 정상적으로 재생되지 않는 오류를 해결하였습니다.
+
+#### 2. `JSLayer`에 `object_ahead` 속성 추가
+  - 레이어 차원에서 `object_ahead` 옵션을 관리할 수 있도록, `JSLayer`의 속성이 추가되었습니다.
+  - 사용법
+    1. 먼저 해당 옵션을 사용하기 위해, `JSOption.object_ahead` 를 `true`로 설정하여야 합니다.
+    2.  `JSOption`와 `JSLayer`의 `object_ahead` 가 모두 `true`일 경우, 해당 레이어에 속한 3d point 오브젝트에 옵션이 적용됩니다.
+      - `JSOption`의 `object_ahead` 가 `true`여도 `JSLayer` 의 `object_ahead` 가 `false`이면 옵션이 적용되지 않습니다.
+  - `object_ahead` 란?
+    - (카메라 기준)지형 및 시설물(건물)이 3d point 오브젝트보다 가까이 있을 경우, 오브젝트가 가려지도록 하는 옵션
+    - 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)를 참고해주시기 바랍니다.
+
 ### 2.8.1 (2024/11/01)
 
 #### 1. JSTraceTarget의 glTF 애니메이션 포맷 지원
@@ -78,6 +93,21 @@
   * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
   * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
 
+
+### 2.8.2 (2024/11/08)
+
+#### 1. Fixed glTF Animation Error
+  * Resolved an issue where animations for certain glTF models were not playing correctly.
+
+#### 2. Added `object_ahead` Property to `JSLayer`
+  - Added an `object_ahead` property to `JSLayer` to allow managing the option at the layer level.
+  - How to use
+    1. To use this option, set `JSOption.object_ahead` to `true`.
+    2.  When both `JSOption` and `JSLayer`'s `object_ahead` properties are set to true, the option will be applied to the 3D point objects in that layer.
+      - If `JSOption.object_ahead` is true but `JSLayer`'s `object_ahead` is false, the option will not be applied.
+  - What is `object_ahead`?
+    - This option ensures that if terrain and facilities (buildings) are closer to the camera than the 3D point objects, the objects will be obscured.
+    - For detailed instructions, please refer to the [link](https://sandbox.egiscloud.com/code/main.do?id=object_ahead).
 
 ### 2.8.1 (2024/11/01)
 
