@@ -47,7 +47,7 @@
 
 ## Update
 
-### 2.8.2 (2024/11/08)
+### 2.8.2_hotfix (2024/11/08)
 
 #### 1. glTF 애니메이션 오류 수정
   * 특정 glTF 모델의 애니메이션이 정상적으로 재생되지 않는 오류를 해결하였습니다.
@@ -64,7 +64,7 @@
   - 주의 사항
     - `JSLayer.object_ahead` 속성은 `ELT_3DPOINT` 레이어에만 적용됩니다. 다른 속성의 레이어에서는 `JSOption.object_ahead`을 사용해주시기 바랍니다.
 
-### 2.8.1 (2024/11/01)
+### 2.8.1_hotfix (2024/11/01)
 
 #### 1. JSTraceTarget의 glTF 애니메이션 포맷 지원
   * JSTraceTarget에서 애니메이션이 포함된 glTF 포맷을 지원하도록 기능이 확장되었습니다.
@@ -96,7 +96,7 @@
   * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
 
 
-### 2.8.2 (2024/11/08)
+### 2.8.2_hotfix (2024/11/08)
 
 #### 1. Fixed glTF Animation Error
   * Resolved an issue where animations for certain glTF models were not playing correctly.
@@ -112,7 +112,7 @@
     - For detailed instructions, please refer to the [link](https://sandbox.egiscloud.com/code/main.do?id=object_ahead).
   - The `JSLayer.object_ahead` property applies only to the `ELT_3DPOINT` layer. For other layer properties, please use `JSOption.object_ahead`.
 
-### 2.8.1 (2024/11/01)
+### 2.8.1_hotfix (2024/11/01)
 
 #### 1. glTF Animation Format Support in JSTraceTarget
   * JSTraceTarget has been enhanced to support glTF format with animations included.
