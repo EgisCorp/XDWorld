@@ -47,6 +47,11 @@
 
 ## Update
 
+### 2.8.3_hotfix (2024/11/15)
+
+#### 1. JSPolygon.setWaterEffect() 오류 수정
+  - `JSPolygon`에서 setWaterEffect()를 호출시, 검은 배경이 나타나는 오류를 수정하였습니다.
+
 ### 2.8.2_hotfix (2024/11/08)
 
 #### 1. glTF 애니메이션 오류 수정
@@ -95,6 +100,10 @@
   * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
   * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
 
+### 2.8.3_hotfix (2024/11/15)
+
+#### 1. Fix for JSPolygon.setWaterEffect() Error
+  - Fixed an error where a black background appeared when calling setWaterEffect() in `JSPolygon`.
 
 ### 2.8.2_hotfix (2024/11/08)
 
