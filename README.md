@@ -47,6 +47,19 @@
 
 ## Update
 
+### 2.8.4_hotfix (2024/11/22)
+
+#### 1. 깜박임 오류 수정
+  - 특정한 상황에서, 지도가 제대로 그려지지 않고 깜박이는 오류를 수정하였습니다.
+
+#### 2. 건물 simple mode 옵션 추가
+  - 그라데이션 모드(아래에서부터 위로 점점 밝아지는 음영 효과)가 추가 되었습니다.
+  - Light 방향을 조절할 수 있는 옵션이 추가되었습니다.
+
+#### 3. HTMLObject의 element 속성 추가
+  - `HTMLObject.element` 프로퍼티가 추가되었습니다.
+  - 자세한 사용법은 [메뉴얼](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/object/jshtmlobject#properties)을 참고해주시기 바랍니다.
+
 ### 2.8.3_hotfix (2024/11/15)
 
 #### 1. JSPolygon.setWaterEffect() 오류 수정
@@ -99,6 +112,20 @@
 #### 6. JSFigure::getRectInfo() API 추가
   * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
   * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
+
+
+### 2.8.4_hotfix (2024/11/22)
+
+#### 1. Flickering Issue Fix
+  - Resolved an issue where the map would flicker and not render correctly under certain conditions.
+
+#### 2. Added Simple Mode Option for Buildings
+  - Gradient mode (a shading effect that becomes brighter from bottom to top) has been added.
+  - A new option to adjust the light direction has been implemented.
+
+#### 3. Added HTMLObject.element Property
+  - The `HTMLObject.element` property has been introduced.
+  - For detailed usage instructions, please refer to the [manual](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/object/jshtmlobject#properties).
 
 ### 2.8.3_hotfix (2024/11/15)
 
