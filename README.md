@@ -47,137 +47,17 @@
 
 ## Update
 
-### 2.8.4_hotfix (2024/11/22)
+### 2.9.0 (2024/11/29)
 
-#### 1. 깜박임 오류 수정
-  - 특정한 상황에서, 지도가 제대로 그려지지 않고 깜박이는 오류를 수정하였습니다.
+#### 1. Inspector 기능 항목 추가
+  * 기존 `Inspector` 기능에서, 지형 데이터(dem/image)를 요청하는 대기열의 크기를 확인할 수 있도록 수정하였습니다.
+  * 자세한 사용법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=option_inspector)을 참고해주시기 바랍니다.
 
-#### 2. 건물 simple mode 옵션 추가
-  - 그라데이션 모드(아래에서부터 위로 점점 밝아지는 음영 효과)가 추가 되었습니다.
-  - Light 방향을 조절할 수 있는 옵션이 추가되었습니다.
+### 2.9.0 (2024/11/29)
 
-#### 3. HTMLObject의 element 속성 추가
-  - `HTMLObject.element` 프로퍼티가 추가되었습니다.
-  - 자세한 사용법은 [메뉴얼](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/object/jshtmlobject#properties)을 참고해주시기 바랍니다.
-
-### 2.8.3_hotfix (2024/11/15)
-
-#### 1. JSPolygon.setWaterEffect() 오류 수정
-  - `JSPolygon`에서 setWaterEffect()를 호출시, 검은 배경이 나타나는 오류를 수정하였습니다.
-
-### 2.8.2_hotfix (2024/11/08)
-
-#### 1. glTF 애니메이션 오류 수정
-  * 특정 glTF 모델의 애니메이션이 정상적으로 재생되지 않는 오류를 해결하였습니다.
-
-#### 2. `JSLayer`에 `object_ahead` 속성 추가
-  - 레이어 차원에서 `object_ahead` 옵션을 관리할 수 있도록, `JSLayer`의 속성이 추가되었습니다.
-  - 사용법
-    1. 먼저 해당 옵션을 사용하기 위해, `JSOption.object_ahead` 를 `true`로 설정하여야 합니다.
-    2.  `JSOption`와 `JSLayer`의 `object_ahead` 가 모두 `true`일 경우, 해당 레이어에 속한 3d point 오브젝트에 옵션이 적용됩니다.
-      - `JSOption`의 `object_ahead` 가 `true`여도 `JSLayer` 의 `object_ahead` 가 `false`이면 옵션이 적용되지 않습니다.
-  - `object_ahead` 란?
-    - (카메라 기준)지형 및 시설물(건물)이 3d point 오브젝트보다 가까이 있을 경우, 오브젝트가 가려지도록 하는 옵션
-    - 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)를 참고해주시기 바랍니다.
-  - 주의 사항
-    - `JSLayer.object_ahead` 속성은 `ELT_3DPOINT` 레이어에만 적용됩니다. 다른 속성의 레이어에서는 `JSOption.object_ahead`을 사용해주시기 바랍니다.
-
-### 2.8.1_hotfix (2024/11/01)
-
-#### 1. JSTraceTarget의 glTF 애니메이션 포맷 지원
-  * JSTraceTarget에서 애니메이션이 포함된 glTF 포맷을 지원하도록 기능이 확장되었습니다.
-
-#### 2. Real3DPack의 객체 버전 확장 적용
-  * Real3DPack 레이어가 다양한 버전의 객체를 사용할 수 있도록 기능이 확장되었습니다.
-
-### 2.8.0 (2024/10/25)
-
-#### 1. 지형과 알파 값이 있는 객체 간의 렌더링 순서 정리
-  * 지형과 알파(투명) 값이 존재하는 객체들과의 가시화가 어색하지 않도록, 렌더링 순서를 변경하였습니다.
-
-#### 2. 파이프 색상 변경 오류 수정
-  * 간소화 상태에서 파이프 색상 변경 시 색상 값이 정상적으로 적용되지 않는 현상을 수정하였습니다.
-
-#### 3. 외부 폰트 기반 POI Text 이미지 생성시 발생하는 오류 수정
-  * Text 이미지 생성이 정상적으로 작동되지 않는 현상을 수정하였습니다.
-
-#### 4. 소형 시설물의 LOD Texture 미적용 오류 수정
-  * 카메라 거리에 따른 시설물 LOD 변경 기능이 동작되지 않는 현상을 수정하였습니다.
-
-#### 5. JSPolygon::createVerticalGrid() API 추가
-  * 수직 평면 그리드 객체를 생성하는 API가 추가되었습니다.
-  * 파라미터: 레이어명, 좌하단, 우상단, 새로 개수, 가로 개수
-  * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid)를 참고해주시기 바랍니다.
-
-#### 6. JSFigure::getRectInfo() API 추가
-  * 생성된 `Figure` 객체에서 4개의 꼭지점을 반환합니다.
-  * 자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)를 참고해주시기 바랍니다.
-
-
-### 2.8.4_hotfix (2024/11/22)
-
-#### 1. Flickering Issue Fix
-  - Resolved an issue where the map would flicker and not render correctly under certain conditions.
-
-#### 2. Added Simple Mode Option for Buildings
-  - Gradient mode (a shading effect that becomes brighter from bottom to top) has been added.
-  - A new option to adjust the light direction has been implemented.
-
-#### 3. Added HTMLObject.element Property
-  - The `HTMLObject.element` property has been introduced.
-  - For detailed usage instructions, please refer to the [manual](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/object/jshtmlobject#properties).
-
-### 2.8.3_hotfix (2024/11/15)
-
-#### 1. Fix for JSPolygon.setWaterEffect() Error
-  - Fixed an error where a black background appeared when calling setWaterEffect() in `JSPolygon`.
-
-### 2.8.2_hotfix (2024/11/08)
-
-#### 1. Fixed glTF Animation Error
-  * Resolved an issue where animations for certain glTF models were not playing correctly.
-
-#### 2. Added `object_ahead` Property to `JSLayer`
-  - Added an `object_ahead` property to `JSLayer` to allow managing the option at the layer level.
-  - How to use
-    1. To use this option, set `JSOption.object_ahead` to `true`.
-    2.  When both `JSOption` and `JSLayer`'s `object_ahead` properties are set to true, the option will be applied to the 3D point objects in that layer.
-      - If `JSOption.object_ahead` is true but `JSLayer`'s `object_ahead` is false, the option will not be applied.
-  - What is `object_ahead`?
-    - This option ensures that if terrain and facilities (buildings) are closer to the camera than the 3D point objects, the objects will be obscured.
-    - For detailed instructions, please refer to the [link](https://sandbox.egiscloud.com/code/main.do?id=object_ahead).
-  - The `JSLayer.object_ahead` property applies only to the `ELT_3DPOINT` layer. For other layer properties, please use `JSOption.object_ahead`.
-
-### 2.8.1_hotfix (2024/11/01)
-
-#### 1. glTF Animation Format Support in JSTraceTarget
-  * JSTraceTarget has been enhanced to support glTF format with animations included.
-#### 2. Expanded Object Version Compatibility in Real3DPack
-  * The Real3DPack layer has been expanded to accommodate various versions of objects.
-
-### 2.8.0 (2024/10/25)
-
-#### 1. Adjusting Rendering Order between Terrain and Objects with Alpha Values
-  * The rendering order has been adjusted to ensure that visualization between terrain and objects with alpha(transparency) values appears natural.
-
-#### 2. Fixing Pipe Color Change Error
-  * Fixed an issue where color changes for pipes were not applied correctly in simplified mode.
-
-#### 3. Fixing Error in Generating POI Text Images with External Fonts
-  * Resolved an issue where text images were not generated correctly.
-
-#### 4. Fixing LOD Texture Application Error for Small Facilities
-  * Fixed an issue where the LOD change function for facilities based on camera distance was not functioning.
-
-#### 5. Adding JSPolygon::createVerticalGrid() API
-  * Added an API to create a vertical grid object.
-  * Parameters: Layer name, bottom-left corner, top-right corner, number of vertical divisions, number of horizontal divisions.
-  * For detailed usage, please refer to [link](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid).
-
-#### 6. Adding JSFigure::getRectInfo() API
-  * Returns the four vertices of a Figure object.
-  * For detailed usage, please refer to [link](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate).
-
+#### 1. Added Inspector Feature
+  * The existing Inspector feature has been updated to allow checking the size of the queue for terrain data (DEM/Image) requests.
+  * For detailed instructions, please refer to [sample](https://sandbox.egiscloud.com/code/main.do?id=option_inspector).
 
 #### Notice
   * There is currently an issue in [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d) where the polygon representing the viewshed is not displayed in the correct position. We will address this as soon as possible.
