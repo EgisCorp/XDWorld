@@ -47,11 +47,114 @@
 
 ## Update
 
+### 2.9.1 (2024/12/06)
+
+#### 1. glTF 모델의 회전 및 크기 조절 기능 추가
+  * glTF 모델을 유연하게 사용할 수 있도록, 회전과 크기 조절 기능이 추가되었습니다.
+  * 회전의 경우 XYZ축을 기준으로 회전 각도를 조절할 수 있습니다.
+    ```javascript
+    var polygon = Module.createGLTF("GLTF_Object");
+      polygon.loadFile({
+        url : url,
+        type : "glb",
+        position : pos,
+        rotate : [ 0, 90, 0], // XYZ 축 방향 회적 각도(Degree)
+                    scale : [ 1.0, 10.0, 1.0], // XYZ축 방향 스케일 변경. (1.0= 원래 크기)
+        rebuild : true,
+      });
+    ```
+
+#### 2. split view 하이브리드 가시화 기능 추가
+  * 하이브리드 모드가 `split view`에서도 정상적으로 보일 수 있도록 기능을 추가하였습니다.
+
+#### 3. stereo view/split view 모드 오브젝트 렌더링 오류 수정
+  - `stereo view/split view` 모드에서, 반투명한 상태의 오브젝트 출력이 제대로 되지 않는 오류를 수정하였습니다.
+
+#### 4. JSPolygon::setHeightByType() API 추가
+  - `type`에 따라 평면 폴리곤의 윗면을 생성하는 API를 추가하였습니다.
+
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | heightOrAltitude | number | <p>버텍스에 적용할 높이 혹은 고도.</p><p>0일 경우: 높이로 사용.</p><p>1일 경우: 고도로 사용.</p> |
+    | type | number | <p>윗면 생성 방식 설정.</p><p>0일 경우: 각 밑면 버텍스에서 height만큼 높인 윗면 생성.</p><p>1일 경우: 균일한 고도의 평평한 윗면 생성.</p> |
+    ```javascript
+    var polygon = Module.createPolygon("POLYGON");
+    var vertex = new Module.JSVec3Array();
+    var part = new Module.Collection();
+
+    for (var i = 0; i < _vertex.length; i++) {
+      for (var j = 0; j < _vertex[i].length; j++) {
+        vertex.push(_vertex[i][j]);
+      }
+      part.add(_vertex[i].length);
+    }
+    polygon.setPartCoordinates(vertex, part);
+
+    // Set as a polyhedron polygon with height
+    // type == 0
+    //polygon.setHeightByType(80, 0);
+    // type == 1
+    polygon.setHeightByType(120, 1);
+
+      //...
+    ```
+
 ### 2.9.0 (2024/11/29)
 
 #### 1. Inspector 기능 항목 추가
   * 기존 `Inspector` 기능에서, 지형 데이터(dem/image)를 요청하는 대기열의 크기를 확인할 수 있도록 수정하였습니다.
   * 자세한 사용법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=option_inspector)을 참고해주시기 바랍니다.
+
+### 2.9.1 (2024/12/06)
+
+#### 1. Added Rotation and Scaling Features for glTF Models
+  * Rotation and scaling functionalities have been added to make glTF models more versatile.
+  * For rotation, the angle can be adjusted based on the XYZ axes.
+    ```javascript
+    var polygon = Module.createGLTF("GLTF_Object");
+      polygon.loadFile({
+        url : url,
+        type : "glb",
+        position : pos,
+        rotate : [ 0, 90, 0], // Rotation angles in degrees for the XYZ axes
+                    scale : [ 1.0, 10.0, 1.0], // Scaling factors for the XYZ axes (1.0 = original size)
+        rebuild : true,
+      });
+    ```
+
+#### 2. Added Hybrid Visualization Functionality in Split View
+  * A feature has been added to ensure hybrid mode is properly displayed in `split view`.
+
+#### 3. Fixed Object Rendering Issues in Stereo View/Split View Modes
+  - Fixed an issue where translucent objects were not rendered correctly in `stereo view` or `split view mode`.
+
+#### 4. Added JSPolygon::setHeightByType() API
+  - Introduced an API to generate the top face of a planar polygon based on the `type` parameter.
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | heightOrAltitude | number | <p>The height or altitude to apply to vertices.</p><p>If 0: used as height.</p><p>If 1: used as altitude.</p> |
+    | type | number | <p>Determines the method for creating the top face.</p><p>If 0: Top face is elevated based on individual vertex heights.</p><p>If 1: Creates a flat top face at uniform altitude.</p> |
+    ```javascript
+    var polygon = Module.createPolygon("POLYGON");
+    var vertex = new Module.JSVec3Array();
+    var part = new Module.Collection();
+
+    for (var i = 0; i < _vertex.length; i++) {
+      for (var j = 0; j < _vertex[i].length; j++) {
+        vertex.push(_vertex[i][j]);
+      }
+      part.add(_vertex[i].length);
+    }
+    polygon.setPartCoordinates(vertex, part);
+
+    // Set as a polyhedron polygon with height
+    // type == 0
+    //polygon.setHeightByType(80, 0);
+    // type == 1
+    polygon.setHeightByType(120, 1);
+
+      //...
+    ```
 
 ### 2.9.0 (2024/11/29)
 
