@@ -47,6 +47,29 @@
 
 ## Update
 
+### 2.9.2 (2024/12/16)
+
+#### 1. `Real3D` 텍스처 요청 개수 제한 API 추가
+  - `Real3D`에서 최대 텍스처 요청 개수를 제한할 수 있도록, `JSOption::setMaxRequestTextureQueueSize()` API가 추가되었습니다.
+
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | maxTextureSize | number | <p>텍스처를 요청하는 최대 개수(1~20개).</p> |
+
+    ```javascript
+    Module.getOption().setMaxRequestTextureQueueSize(20); // 20개의 텍스쳐 요청
+    ```
+
+#### 2. `Real3D` 텍스처 레벨 고정 API 추가
+  - `Real3D`에서 요청하는 텍스처 레벨을 고정할 수 있도록, `JSMap::fixedTextureLevel()` API가 추가되었습니다.
+
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | level | number | <p>텍스처 요청하는 레벨(0~5).</p> |
+    ``` javascript
+    Module.getMap().fixedTextureLevel(0);   // 고정레벨 지정
+    ``` 
+
 ### 2.9.1 (2024/12/06)
 
 #### 1. glTF 모델의 회전 및 크기 조절 기능 추가
@@ -104,6 +127,29 @@
 #### 1. Inspector 기능 항목 추가
   * 기존 `Inspector` 기능에서, 지형 데이터(dem/image)를 요청하는 대기열의 크기를 확인할 수 있도록 수정하였습니다.
   * 자세한 사용법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=option_inspector)을 참고해주시기 바랍니다.
+
+### 2.9.2 (2024/12/16)
+
+#### 1. Added API to Limit the Number of Texture Requests in `Real3D`
+  - `JSOption::setMaxRequestTextureQueueSize()` has been introduced to limit the maximum number of texture requests in `Real3D`.
+
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | maxTextureSize | number | <p>The maximum number of texture requests (1–20).</p> |
+
+    ```javascript
+    Module.getOption().setMaxRequestTextureQueueSize(20); // Request up to 20 textures
+    ```
+
+#### 2. Added API to Fix Texture Level in `Real3D`
+  - `JSMap::fixedTextureLevel()` has been introduced to fix the texture level requested in `Real3D`.
+
+    | Name  | Type    | Description                               |
+    | ----- | ------- | ----------------------------------------- |
+    | level | number | <p>The texture level to request (0–5).</p> |
+    ``` javascript
+    Module.getMap().fixedTextureLevel(0);   // Set a fixed texture level
+    ``` 
 
 ### 2.9.1 (2024/12/06)
 
