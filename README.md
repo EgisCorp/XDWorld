@@ -47,6 +47,31 @@
 
 ## Update
 
+### 2.9.3 (2024/12/20)
+
+#### 1. `Real3D` 텍스처 요청 우선 순위 변경
+  - 가까운 오브젝트보다 큰 오브젝트의 텍스처를 먼저 불러오도록, 우선 순위가 변경되었습니다.
+
+#### 2. 텍스쳐 큐 관리 프로세스 변경
+  - 카메라에 벗어나는 객체 즉시 제거
+  - 요청 큐 갯수 증가 API. 로딩 속도 향상
+
+#### 3. 고정 텍스처 레벨의 최대값 지정 API 추가
+  - 요청할 텍스처 레벨을 고정시킬 경우, 고정 레벨의 최대값을 지정하는 API가 추가되었습니다.
+  - 자세한 사용법은 아래의 코드를 참고해주시기 바랍니다.
+    ```javascript
+    // 0 ~ nMaxDrawLevel 까지의 구간을 nTextureLevel 이미지로 보여주는 코드
+    // nMaxDrawLevel이 0에 가까운 양수이거나,  nMaxDrawLevel 이 증가할수록 사용 메모리 용량이 늘어납니다.
+
+    Module.getMap().fixedTextureLevel(nTextureLevel);
+    // nTextureLevel 범위: -1 ~ 5
+    // -1: 사용하지 않음(기본값).
+    // 0 ~ 5: 텍스쳐 레벨.
+
+    Module.getMap().setFixedTextureByLevel(nMaxDrawLevel);
+    // nMaxDrawLevel 범위: 0 ~ 2(기본값 0).
+    ```
+
 ### 2.9.2 (2024/12/16)
 
 #### 1. `Real3D` 텍스처 요청 개수 제한 API 추가
@@ -127,6 +152,36 @@
 #### 1. Inspector 기능 항목 추가
   * 기존 `Inspector` 기능에서, 지형 데이터(dem/image)를 요청하는 대기열의 크기를 확인할 수 있도록 수정하였습니다.
   * 자세한 사용법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=option_inspector)을 참고해주시기 바랍니다.
+
+
+### 2.9.3 (2024/12/20)
+
+#### 1. `Real3D` Texture Request Priority Update
+
+- The priority has been adjusted to load the textures of larger objects before those of closer objects.
+
+#### 2. Texture Queue Management Process Update
+
+- Immediate removal of objects that go out of the camera's view.
+- Added an API to increase the number of request queues, improving loading speed.
+
+#### 3. Added API to Specify the Maximum Value of Fixed Texture Levels
+
+- An API has been added to specify the maximum value of fixed texture levels when fixing the texture level to be requested.
+- Please refer to the code below for detailed usage.
+
+  ```javascript
+  // Code to display the range from 0 to nMaxDrawLevel with nTextureLevel images
+  // The closer nMaxDrawLevel is to 0, or the more nMaxDrawLevel increases, the higher the memory usage.
+
+  Module.getMap().fixedTextureLevel(nTextureLevel);
+  // nTextureLevel range: -1 ~ 5
+  // -1: Not used (default).
+  // 0 ~ 5: Texture levels.
+
+  Module.getMap().setFixedTextureByLevel(nMaxDrawLevel);
+  // nMaxDrawLevel range: 0 ~ 2 (default: 0).
+  ```
 
 ### 2.9.2 (2024/12/16)
 
