@@ -57,9 +57,6 @@
 #### 1. Fixed Local Layer Error in `Stereo View` Mode
   * Resolved an issue in `Stereo View` mode where POIs (Points of Interest) were displayed only on the left screen when using local layers.
 
-#### Notice
-  * There is currently an issue in [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d) where the polygon representing the viewshed is not displayed in the correct position. We will address this as soon as possible.
-
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
 ## Running XDWorld with Vue.js
