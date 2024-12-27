@@ -52,6 +52,9 @@
 #### 1. `Stereo View` 모드의 로컬 레이어 오류 수정
   * `Stereo View` 모드에서 로컬 레이어를 사용할 경우, POI가 왼쪽 화면에만 그려지는 오류를 수정하였습니다.
 
+#### 주의 사항
+  * 현재 [Viewshed(3D)](https://sandbox.egiscloud.com/code/main.do?id=analysis_viewshed_3d)에서 가시권을 나타내는 폴리곤이 제 위치에 출력되지 않는 오류가 있습니다. 사용에 주의 부탁드리며, 빠른 시일 내로 수정하겠습니다.
+
 ### 2.10.0 (2024/12/27)
 
 #### 1. Fixed Local Layer Error in `Stereo View` Mode
