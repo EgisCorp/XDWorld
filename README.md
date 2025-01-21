@@ -33,19 +33,29 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 (GIS, Urban Information Systems, Location-Based Services, Facility Management, Perspective Views, Site Analysis, Terrain Analysis, Urban Planning, Construction Site Management, and Agricultural Land Management.)
 
-## Notice
-
-### 비디오 텍스쳐 기능 개선
-* 사용자 편의성을 위해 객체 생성 이후의 기능들 엔진 내부에 삽입 및 속도개선되었습니다.
-* 기존 비디오 텍스쳐 관련 기능은 2024년까지 지원합니다.
-* 새로운 사용법은 [비디오 텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture), [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
-
-### Improvements to video texture function
-* For user convenience, functions after object creation have been inserted into the engine and speed has been improved.
-* Existing video texture-related features will be supported until 2024.
-* New usage methods include [Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture), [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [led board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
-
 ## Update
+
+### 2.10.2 (2025/01/21)
+
+1. `3DTiles` 포맷 처리 기능 안정화
+   - `3DTiles` 파일 처리 속도를 개선하였습니다.
+   - 로딩한 모델이 깜박이는 오류를 수정하였습니다.
+
+2. 성절토 바닥 타일링 텍스처 설정 API 추가
+   - 성절토 바닥 텍스쳐 설정 시 텍스쳐 반복 출력(타일링)이 가능하도록 API가 추가되었습니다.
+   - API 설정 시 1.0보다 큰 값을 n값을 입력하면 설정한 텍스쳐가 n번 반복 출력됩니다.
+   - API 호출 이후 생성되는 성절토 객체에 해당 값이 적용됩니다.
+   - bool setBottomTextureTilingScale(float u, float v)
+     - class : JSEditTerrain
+     - parameter
+      - u : 가로 반복 u 좌표
+      - v : 세로 반복 v 좌표
+    ```javascript
+      Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
+    ```
+
+3. `JSPolygon` 텍스처 오류 수정
+   - `JSpolygon` 객체에 반투명한 텍스처가 제대로 적용되지 않는 오류를 수정하였습니다.
 
 ### 2.10.1 (2025/01/03)
 
@@ -92,6 +102,28 @@
 
 #### 1. `Stereo View` 모드의 로컬 레이어 오류 수정
   * `Stereo View` 모드에서 로컬 레이어를 사용할 경우, POI가 왼쪽 화면에만 그려지는 오류를 수정하였습니다.
+
+### 2.10.2 (2025/01/21)
+
+1. Stabilization of `3DTiles` Format Processing
+   - Improved the processing speed for `3DTiles` files.
+   - Fixed an issue where loaded models would flicker.
+
+2. Added API for Tiling Texture Configuration on Seongjeolto Ground
+   - An API has been added to enable texture tiling (repeated output) for the Seongjeolto ground texture configuration.
+   - When specifying a value \(n > 1.0\), the texture will be repeated \(n\) times.
+   - The specified value will apply to Seongjeolto objects created after the API call.
+   - **bool setBottomTextureTilingScale(float u, float v)**
+     - **Class**: JSEditTerrain
+     - **Parameters**:
+       - **u**: Horizontal tiling scale (u-coordinate)
+       - **v**: Vertical tiling scale (v-coordinate)
+     ```javascript
+     Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
+     ```
+
+3. Fixed Texture Issue with `JSPolygon`
+   - Resolved an issue where semi-transparent textures were not properly applied to `JSPolygon` objects.
 
 ### 2.10.1 (2025/01/03)
 
