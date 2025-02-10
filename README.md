@@ -35,146 +35,127 @@
 
 ## Update
 
-### 2.10.2 (2025/01/21)
+### 2.11.0 (2025/02/10)
 
-1. `3DTiles` 포맷 처리 기능 안정화
-   - `3DTiles` 파일 처리 속도를 개선하였습니다.
-   - 로딩한 모델이 깜박이는 오류를 수정하였습니다.
+1. `3DTiles` 높이 오프셋 옵션 추가
+     - `import3DTiles()`에 높이 오프셋(단위 m)를 설정할 수 있는 옵션 `offsetZ`가 추가되었습니다.
+     - 자세한 사용법은 아래 예시를 확인해주시기 바랍니다.
+       ```javascript
+       var pLayerList = new Module.JSLayerList(true);
+       if(pLayerList==null) return;
 
-2. 성절토 바닥 타일링 텍스처 설정 API 추가
-   - 성절토 바닥 텍스쳐 설정 시 텍스쳐 반복 출력(타일링)이 가능하도록 API가 추가되었습니다.
-   - API 설정 시 1.0보다 큰 값을 n값을 입력하면 설정한 텍스쳐가 n번 반복 출력됩니다.
-   - API 호출 이후 생성되는 성절토 객체에 해당 값이 적용됩니다.
-   - bool setBottomTextureTilingScale(float u, float v)
-     - class : JSEditTerrain
-     - parameter
-      - u : 가로 반복 u 좌표
-      - v : 세로 반복 v 좌표
-    ```javascript
-      Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
-    ```
-
-3. `JSPolygon` 텍스처 오류 수정
-   - `JSpolygon` 객체에 반투명한 텍스처가 제대로 적용되지 않는 오류를 수정하였습니다.
-
-### 2.10.1 (2025/01/03)
-
-1. `createTMCoordPlane()` 기능 개선
-   - `createTMCoordPlane()` API의 매개변수 정의 방식이 수정되었습니다. 자세한 사항은 아래 문서를 확인하여 주시기 바랍니다.
-     - 변경된 양식
-        ```Javascript
-        JSPolygon.createTMCoordPlane({
-            llcorner : {
-              coordCode : [좌표계코드, 필수],
-              x : [좌하단 X 좌표, 필수],
-              y : [좌하단 Y 좌표, 필수]
-            },
-            grid : {
-              col : [그리드 가로 총수, 필수],
-              row : [그리드 세로 총수, 필수],
-              cellSize : [그리드 셀의 가로 세로 크기, 필수],
-              ratioMode : [New 배율모드 사용 여부 0 - 기존 gab방식, 1 - 배율모드사용, 선택],
-              xSplit : [ New 가로 분할 배율, ratioMode  1일때 필수],
-              ySplit : [ New 세로 분할 배율, ratioMode  1일때 필수]
-            }
-          });
-        ```
-     - 사용 예시
-        ```Javascript
-        polygon.createTMCoordPlane({
-          llcorner : {
-            coordCode : 20,
-            x : 216701.99445382116 ,
-            y : 220328.8122727003
-          },
-          grid : {
-            col : 644,
-            row : 585,
-            cellSize : 10,
-            ratioMode : 1,
-            xSplit : 10,
-            ySplit : 10
-          }
-        });
-        ```
-
-### 2.10.0 (2024/12/27)
-
-#### 1. `Stereo View` 모드의 로컬 레이어 오류 수정
-  * `Stereo View` 모드에서 로컬 레이어를 사용할 경우, POI가 왼쪽 화면에만 그려지는 오류를 수정하였습니다.
-
-### 2.10.2 (2025/01/21)
-
-1. Stabilization of `3DTiles` Format Processing
-   - Improved the processing speed for `3DTiles` files.
-   - Fixed an issue where loaded models would flicker.
-
-2. Added API for Tiling Texture Configuration on Seongjeolto Ground
-   - An API has been added to enable texture tiling (repeated output) for the Seongjeolto ground texture configuration.
-   - When specifying a value \(n > 1.0\), the texture will be repeated \(n\) times.
-   - The specified value will apply to Seongjeolto objects created after the API call.
-   - **bool setBottomTextureTilingScale(float u, float v)**
-     - **Class**: JSEditTerrain
-     - **Parameters**:
-       - **u**: Horizontal tiling scale (u-coordinate)
-       - **v**: Vertical tiling scale (v-coordinate)
-     ```javascript
-     Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
-     ```
-
-3. Fixed Texture Issue with `JSPolygon`
-   - Resolved an issue where semi-transparent textures were not properly applied to `JSPolygon` objects.
-
-### 2.10.1 (2025/01/03)
-
-1. Improvement to `createTMCoordPlane()` function
-
-   - The parameter definition method for the `createTMCoordPlane()` API has been revised. Please refer to the document below for detailed information.
-
-     - Updated format
-
-       ```Javascript
-       JSPolygon.createTMCoordPlane({
-           llcorner : {
-             coordCode : [Coordinate system code, required],
-             x : [Lower-left X coordinate, required],
-             y : [Lower-left Y coordinate, required]
-           },
-           grid : {
-             col : [Total number of grid columns, required],
-             row : [Total number of grid rows, required],
-             cellSize : [Width and height of grid cells, required],
-             ratioMode : [Use of new scale mode, 0 - Existing gap method, 1 - Use scale mode, optional],
-             xSplit : [New horizontal split ratio, required if ratioMode is 1],
-             ySplit : [New vertical split ratio, required if ratioMode is 1]
-           }
-         });
-       ```
-
-     - Example usage
-
-       ```Javascript
-       polygon.createTMCoordPlane({
-         llcorner : {
-           coordCode : 20,
-           x : 216701.99445382116 ,
-           y : 220328.8122727003
-         },
-         grid : {
-           col : 644,
-           row : 585,
-           cellSize : 10,
-           ratioMode : 1,
-           xSplit : 10,
-           ySplit : 10
-         }
+       var pLayer = pLayerList.nameAtLayer("Layer3DTiles");
+       if(pLayer==null)
+       {
+         pLayer = pLayerList.createLayer("Layer3DTiles", Module.ELT_3DTILES);
+       }
+       pLayer.import3DTiles({
+         url : _strURL,
+         autoMove : true,
+         offsetZ : _fOffsetZ,  // 높이 오프셋. 단위 m
        });
        ```
 
-### 2.10.0 (2024/12/27)
+2. 성절토 바닥/옆면 타일링 텍스쳐 설정 API 추가
+     * 성절토 바닥 텍스쳐 설정 시 텍스쳐 반복 출력(타일링)이 가능하도록 API가 추가되었습니다.
+     * API 설정 시 1.0보다 큰 값을 n값을 입력하면 설정한 텍스쳐가 n번 반복 출력됩니다.
+     * API 호출 이후 생성되는 성절토 객체에 해당 값이 적용됩니다.
+     * 성절토 바닥면 텍스쳐 설정
+       * bool setBottomTextureTilingScale(float u, float v)
+         * class : JSEditTerrain
+         * parameter
+           * u : 가로 반복 u 좌표
+           * v : 세로 반복 v 좌표 
+      * 성절토 옆면 텍스쳐 설정
+        * bool setSlopeTextureTilingScale(float u, float v)
+          * class : JSEditTerrain
+          * parameter
+            * u : 가로 반복 u 좌표
+            * v : 세로 반복 v 좌표 
+     ``` javascript
+     Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
+     Module.getEditTerrain().setSlopeTextureTilingScale(10.0, 10.0);
+     ```
 
-#### 1. Fixed Local Layer Error in `Stereo View` Mode
-  * Resolved an issue in `Stereo View` mode where POIs (Points of Interest) were displayed only on the left screen when using local layers.
+3. 비디오 객체 오류 수정
+    * 초기화 시 계속적으로 Hls 네트워크 요청하는 오류가 수정되었습니다.
+    * 뒷배경 on/off 기능이 추가되었습니다. [비디오 객체](https://sandbox-test.egiscloud.com/code/main.do?engine=latest_test&id=object_video_placement)
+
+4. `JSLayer::setObjectVisibleWithBoundary()` API 추가
+   - 매개변수로 전달한 좌표를 벗어날 경우, 오브젝트를 그리지 않도록 설정하는 함수를 추가하였습니다.
+   - 함수 정보
+     - boolean setObjectVisibleWithBoundary(number minLon, number maxLon, number minLat, number maxLat)
+     - class : JSLayer
+     - parameter
+       - minLon: 최소 경도
+       - maxLon: 최대 경도
+       - minLat : 최소 위도
+       - maxLat : 최대 위도
+     ```javascript
+      // 레이어 및 오브젝트 생성
+      sampleLayer.setObjectVisibleWithBoundary(129.5, 130, 35.16, 35.19);
+     ```
+
+### 2.11.0 (2025/02/10)
+
+1. Added `3DTiles` Height Offset Option
+     - The `import3DTiles()` function now includes an `offsetZ` option that allows setting a height offset (unit: meters).
+     - Please refer to the example below for detailed usage.
+       ```javascript
+       var pLayerList = new Module.JSLayerList(true);
+       if(pLayerList==null) return;
+
+       var pLayer = pLayerList.nameAtLayer("Layer3DTiles");
+       if(pLayer==null)
+       {
+         pLayer = pLayerList.createLayer("Layer3DTiles", Module.ELT_3DTILES);
+       }
+       pLayer.import3DTiles({
+         url : _strURL,
+         autoMove : true,
+         offsetZ : _fOffsetZ,  // Height offset (unit: meters)
+       });
+       ```
+
+2. Added API for Tiling Texture Settings on the Bottom/Side of Cut Terrain
+     * A new API has been added to allow texture tiling (repeating output) when setting the bottom texture of cut terrain.
+     * When setting the API, entering a value greater than 1.0 as n will repeat the assigned texture n times.
+     * This value will apply to cut terrain objects created after the API call.
+     * Setting the Bottom Texture of Cut Terrain
+       * bool setBottomTextureTilingScale(float u, float v)
+         * class : JSEditTerrain
+         * parameter
+           * u : Horizontal tiling (U coordinate)
+           * v : Vertical tiling (V coordinate)
+      * Setting the Side Texture of Cut Terrain
+        * bool setSlopeTextureTilingScale(float u, float v)
+          * class : JSEditTerrain
+          * parameter
+            * u : Horizontal tiling (U coordinate)
+            * v : Vertical tiling (V coordinate)
+     ``` javascript
+     Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
+     Module.getEditTerrain().setSlopeTextureTilingScale(10.0, 10.0);
+     ```
+
+3. Fixed Video Object Issues
+    * Fixed an issue where HLS network requests were continuously made during initialization.
+    * Added an on/off feature for the background. [Video Object](https://sandbox-test.egiscloud.com/code/main.do?engine=latest_test&id=object_video_placement)
+
+4. Added `JSLayer::setObjectVisibleWithBoundary()` API
+   - Added a function that prevents objects from rendering when they are outside the specified coordinate boundaries.
+   - Function Details
+     - boolean setObjectVisibleWithBoundary(number minLon, number maxLon, number minLat, number maxLat)
+     - class : JSLayer
+     - parameter
+       - minLon: Minimum longitude
+       - maxLon: Maximum longitude
+       - minLat : Minimum latitude
+       - maxLat : Maximum latitude
+     ```javascript
+      // Create layer and set object visibility within boundaries
+      sampleLayer.setObjectVisibleWithBoundary(129.5, 130, 35.16, 35.19);
+     ```
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
