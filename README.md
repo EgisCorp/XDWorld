@@ -79,7 +79,7 @@
 
 3. 비디오 객체 오류 수정
     * 초기화 시 계속적으로 Hls 네트워크 요청하는 오류가 수정되었습니다.
-    * 뒷배경 on/off 기능이 추가되었습니다. [비디오 객체](https://sandbox-test.egiscloud.com/code/main.do?engine=latest&id=object_video_placement)
+    * 뒷배경 on/off 기능이 추가되었습니다. [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video_placement)
 
 4. `JSLayer::setObjectVisibleWithBoundary()` API 추가
    - 매개변수로 전달한 좌표를 벗어날 경우, 오브젝트를 그리지 않도록 설정하는 함수를 추가하였습니다.
