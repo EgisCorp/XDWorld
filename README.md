@@ -38,6 +38,14 @@
 - 다음 배포 일정: **2025년 3월 10일(월)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.11.2 (2025/02/24)
+
+- 3DTiles B3DM 피킹이 제대로 되지 않던 오류를 수정하였습니다.
+
+### 2.11.1 (2025/02/17)
+
+- 다울지도 네트워크 요청시 발생하는 오류가 수정되었습니다.
+
 ### 2.11.0 (2025/02/10)
 
 1. `3DTiles` 높이 오프셋 옵션 추가
@@ -98,6 +106,14 @@
       // 레이어 및 오브젝트 생성
       sampleLayer.setObjectVisibleWithBoundary(129.5, 130, 35.16, 35.19);
      ```
+
+### 2.11.2 (2025/02/24)
+
+- Fixed an error where 3DTiles B3DM picking was not working properly.
+
+### 2.11.1 (2025/02/17)
+
+- Fixed an error that occurred when making network requests to Dauljido.
 
 ### 2.11.0 (2025/02/10)
 
