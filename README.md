@@ -55,6 +55,26 @@
   - [x] videoIsplayer ------------------> isPlayer
   * 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
 
+- Discontinuation of First-Person Camera Video Texture Feature
+  * The existing [First-Person Camera Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture) feature will be supported until 2025.
+  * JSCamera class removal API ---------> Replacement API in JSVideoObject class
+  - [x] setVideoInfo ---------> createVideo
+  - [x] clearVideo -----------> clearTexture
+  * JSCamera class removal properties ---------> Replacement properties in JSVideoObject class
+  - [x] videoStreaming ---------------> videoStreaming
+  - [x] videoFar -----------------------> far
+  - [x] videoFovX ---------------------> fovX
+  - [x] videoFovY ---------------------> fovY
+  - [x] videoAlpha --------------------> alpha
+  - [x] videoAxisX --------------------> axisX
+  - [x] videoAxisY --------------------> axisY
+  - [x] videoZoom --------------------> zoom
+  - [x] videoFarPlane -----------------> background
+  - [x] videoResolution ---------------> resolution
+  - [x] videoObjectMapping ---------> objectMapping
+  - [x] videoIsplayer ------------------> isPlayer
+  * Please refer to [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [LED Board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), and [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
+
 ## Update
 
 - 다음 배포 일정: **2025년 4월 07일(월)**
