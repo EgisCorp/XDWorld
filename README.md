@@ -36,49 +36,60 @@
 $\huge{\rm{\color{red}Important\ note}}$
 
 $\rm{\color{red}●\ 1인칭\ 카메라\ 비디오\ 텍스쳐\ 기능\ 지원\ 중단}$
-  * 기존 [1인칭 카메라 비디오 텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)  기능은 2025년까지 지원합니다. 
+  * 기존 1인칭 카메라 비디오 텍스쳐 기능은 2025년까지 지원합니다. 
   * JSCamera 클래스의 삭제 API ---------> JSVideoObject 클래스의 대체 API 
-  - [x] setVideoInfo ---------> createVideo
-  - [x] clearVideo -----------> clearTexture
-  * JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property
-  - [x] videoStreaming ---------------> videoStreaming
-  - [x] videoFar -----------------------> far
-  - [x] videoFovX ---------------------> fovX
-  - [x] videoFovY ---------------------> fovY
-  - [x] videoAlpha --------------------> alpha
-  - [x] videoAxisX --------------------> axisX
-  - [x] videoAxisY --------------------> axisY
-  - [x] videoZoom --------------------> zoom
-  - [x] videoFarPlane -----------------> background
-  - [x] videoResolution ---------------> resolution
-  - [x] videoObjectMapping ---------> objectMapping
-  - [x] videoIsplayer ------------------> isPlayer
+    - [x] setVideoInfo ---------> createVideo
+    - [x] clearVideo -----------> clearTexture
+    <details>
+     <summary>JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property</summary>
+     
+     - [x] videoStreaming ---------------> videoStreaming
+     - [x] videoFar -----------------------> far
+     - [x] videoFovX ---------------------> fovX
+     - [x] videoFovY ---------------------> fovY
+     - [x] videoAlpha --------------------> alpha
+     - [x] videoAxisX --------------------> axisX
+     - [x] videoAxisY --------------------> axisY
+     - [x] videoZoom --------------------> zoom
+     - [x] videoFarPlane -----------------> background
+     - [x] videoResolution ---------------> resolution
+     - [x] videoObjectMapping ---------> objectMapping
+     - [x] videoIsplayer ------------------> isPlayer
+   </details>
+
   * 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
 
 $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ Feature}$
-  * The existing [First-Person Camera Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture) feature will be supported until 2025.
+  * The existing First-Person Camera Video Texture feature will be supported until 2025.
   * JSCamera class removal API ---------> Replacement API in JSVideoObject class
-  - [x] setVideoInfo ---------> createVideo
-  - [x] clearVideo -----------> clearTexture
-  * JSCamera class removal properties ---------> Replacement properties in JSVideoObject class
-  - [x] videoStreaming ---------------> videoStreaming
-  - [x] videoFar -----------------------> far
-  - [x] videoFovX ---------------------> fovX
-  - [x] videoFovY ---------------------> fovY
-  - [x] videoAlpha --------------------> alpha
-  - [x] videoAxisX --------------------> axisX
-  - [x] videoAxisY --------------------> axisY
-  - [x] videoZoom --------------------> zoom
-  - [x] videoFarPlane -----------------> background
-  - [x] videoResolution ---------------> resolution
-  - [x] videoObjectMapping ---------> objectMapping
-  - [x] videoIsplayer ------------------> isPlayer
+    - [x] setVideoInfo ---------> createVideo
+    - [x] clearVideo -----------> clearTexture
+    <details>
+     <summary>JSCamera class removal properties ---------> Replacement properties in JSVideoObject class</summary>
+     
+     - [x] videoStreaming ---------------> videoStreaming
+     - [x] videoFar -----------------------> far
+     - [x] videoFovX ---------------------> fovX
+     - [x] videoFovY ---------------------> fovY
+     - [x] videoAlpha --------------------> alpha
+     - [x] videoAxisX --------------------> axisX
+     - [x] videoAxisY --------------------> axisY
+     - [x] videoZoom --------------------> zoom
+     - [x] videoFarPlane -----------------> background
+     - [x] videoResolution ---------------> resolution
+     - [x] videoObjectMapping ---------> objectMapping
+     - [x] videoIsplayer ------------------> isPlayer
+   </details>
+
   * Please refer to [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [LED Board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), and [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
 
 ## Update
 
 - 다음 배포 일정: **2025년 04월 07일(월)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
+
+### 2.12.1 (2025/03/11)
+- 이미지 레이어가 가시화되지 않는 오류를 수정하였습니다.
 
 ### 2.12.0 (2025/03/10)
 
@@ -136,6 +147,9 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
           layer.boundaryLimit = true;   // 옵션 활성화
         ```
        - 자세한 사용 방법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)을 확인해주시기 바랍니다.
+
+### 2.12.1 (2025/03/11)
+- Fixed the issue where image layers were not being rendered.
 
 ### 2.12.0 (2025/03/10)
 
