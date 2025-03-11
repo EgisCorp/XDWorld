@@ -33,9 +33,9 @@
 -   GIS, UIS, LBS, 시설물관리, 조감도, 입지분석, 지형분석, 도시계획, 건축현장관리, 농지관리 등
 (GIS, Urban Information Systems, Location-Based Services, Facility Management, Perspective Views, Site Analysis, Terrain Analysis, Urban Planning, Construction Site Management, and Agricultural Land Management.)
 
-## Important note
+$\huge{\rm{\color{red}Important\ note}}$
 
-- 1인칭 카메라 비디오 텍스쳐 기능 지원 중단
+$\rm{\color{red}●\ 1인칭\ 카메라\ 비디오\ 텍스쳐\ 기능\ 지원\ 중단}$
   * 기존 [1인칭 카메라 비디오 텍스쳐](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)  기능은 2025년까지 지원합니다. 
   * JSCamera 클래스의 삭제 API ---------> JSVideoObject 클래스의 대체 API 
   - [x] setVideoInfo ---------> createVideo
@@ -55,7 +55,7 @@
   - [x] videoIsplayer ------------------> isPlayer
   * 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
 
-- Discontinuation of First-Person Camera Video Texture Feature
+$\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ Feature}$
   * The existing [First-Person Camera Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture) feature will be supported until 2025.
   * JSCamera class removal API ---------> Replacement API in JSVideoObject class
   - [x] setVideoInfo ---------> createVideo
