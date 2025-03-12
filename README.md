@@ -90,7 +90,7 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 ### 2.12.2 (2025/03/12)
 - JSOption::setMaxRequestQueueSize() API 추가
-  - 데이터 요청 큐의 크기(기본값은 20)를 조절하는 setMaxRequestQueueSize()가 추가되었습니다.
+  - 데이터 요청 큐의 크기(기본값은 5)를 조절하는 setMaxRequestQueueSize()가 추가되었습니다.
     ```javascript
     Module.getOption().setMaxRequestQueueSize(20);
     ```
