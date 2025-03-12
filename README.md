@@ -158,7 +158,7 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 ### 2.12.2 (2025/03/12)
 - Added `JSOption::setMaxRequestQueueSize()` API
-  - The `setMaxRequestQueueSize()` function has been added to adjust the size of the data request queue (default value: 20).
+  - The `setMaxRequestQueueSize()` function has been added to adjust the size of the data request queue (default value: 5).
     ```javascript
     Module.getOption().setMaxRequestQueueSize(20);
     ```
