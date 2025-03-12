@@ -88,6 +88,14 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 - 다음 배포 일정: **2025년 04월 07일(월)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.12.2 (2025/03/12)
+- JSOption::setMaxRequestQueueSize() API 추가
+  - 데이터 요청 큐의 크기(기본값은 20)를 조절하는 setMaxRequestQueueSize()가 추가되었습니다.
+    ```javascript
+    Module.getOption().setMaxRequestQueueSize(20);
+    ```
+    - 매개변수: 변경할 요청 큐의 크기(number)
+
 ### 2.12.1 (2025/03/11)
 - 이미지 레이어가 가시화되지 않는 오류를 수정하였습니다.
 
@@ -147,6 +155,14 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
           layer.boundaryLimit = true;   // 옵션 활성화
         ```
        - 자세한 사용 방법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)을 확인해주시기 바랍니다.
+
+### 2.12.2 (2025/03/12)
+- Added `JSOption::setMaxRequestQueueSize()` API
+  - The `setMaxRequestQueueSize()` function has been added to adjust the size of the data request queue (default value: 20).
+    ```javascript
+    Module.getOption().setMaxRequestQueueSize(20);
+    ```
+    - Parameter: The new size of the request queue (number)
 
 ### 2.12.1 (2025/03/11)
 - Fixed the issue where image layers were not being rendered.
