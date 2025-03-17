@@ -88,6 +88,10 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 - 다음 배포 일정: **2025년 04월 07일(월)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.12.3 (2025/03/17)
+- XDServer의 POI 레이어 서비스에서 데이터 처리중 발생하는 오류를 수정하였습니다.
+  - 이슈 : https://github.com/EgisCorp/XDWorld/issues/475
+
 ### 2.12.2 (2025/03/12) - $\normalsize{\rm{\color{red}latest}}$
 - JSOption::setMaxRequestQueueSize() API 추가
   - 데이터 요청 큐의 크기(기본값은 5)를 조절하는 setMaxRequestQueueSize()가 추가되었습니다.
@@ -156,6 +160,10 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
           layer.boundaryLimit = true;   // 옵션 활성화
         ```
        - 자세한 사용 방법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)을 확인해주시기 바랍니다.
+
+### 2.12.3 (2025/03/17)
+- Fixed an error occurring during data processing in the POI layer service of XDServer.  
+  - Issue: [https://github.com/EgisCorp/XDWorld/issues/475](https://github.com/EgisCorp/XDWorld/issues/475)
 
 ### 2.12.2 (2025/03/12) - $\normalsize{\rm{\color{red}latest}}$
 - Added `JSOption::setMaxRequestQueueSize()` API
