@@ -92,11 +92,11 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 1. 비디오 객체 매핑 오류 수정
      * 기존 JSColorPipe 뿐만 아니라 JSFlowPolygon, JSPolygon, JSReal3d(건물) 오브젝트도 원형 터파기 영역에 보이도록 기능을 추가하였습니다.
-     ```javascript
-     var videoObj = Module.createVideoObject("objectKey");
-	
+     ``` javascript
+	var videoObj = Module.createVideoObject("objectKey");
+		
 	let json = {
-		url: url,
+	url: url,
 		position: position,
 		pan: pan,
 		tilt: tilt,
@@ -114,10 +114,9 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 		yaxis : yaxis,
 		objectmapping: true,
 		alpha : alpha
-	};	
-	
+	};		
 	var result = videoObj.createVideo(json);		
-	    ```
+	```
      
 ### 2.13.0 (2025/04/07)
 
