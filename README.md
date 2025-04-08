@@ -88,6 +88,37 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 - 다음 배포 일정: **2025년 05월 06일(화)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.13.1 (2025/04/08)
+
+1. 비디오 객체 매핑 오류 수정
+     * 기존 JSColorPipe 뿐만 아니라 JSFlowPolygon, JSPolygon, JSReal3d(건물) 오브젝트도 원형 터파기 영역에 보이도록 기능을 추가하였습니다.
+     ```javascript
+     var videoObj = Module.createVideoObject("objectKey");
+	
+	let json = {
+		url: url,
+		position: position,
+		pan: pan,
+		tilt: tilt,
+		bank : bank,
+		fov: {
+			width: fov_x, 
+			height: fov_y
+		},
+		far: distance,
+		streaming: streaming,		
+		precision : precision,
+		background : background,
+		frustum : frustum,
+		xaxis : xaxis,
+		yaxis : yaxis,
+		objectmapping: true,
+		alpha : alpha
+	};	
+	
+	var result = videoObj.createVideo(json);		
+	    ```
+     
 ### 2.13.0 (2025/04/07)
 
 1. 터파기 가시화 오브젝트 추가(https://github.com/EgisCorp/XDWorld/issues/476)
