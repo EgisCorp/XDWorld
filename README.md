@@ -91,8 +91,8 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ### 2.13.2 (2025/04/15)
 
 1. camera의 limit Tilt 기능 추가
-  - camera에서 tilt 각도에 제한을 둘 수 있는 기능이 추가되었습니다.
-  - 자세한 사용법은 [카메라 제한](https://sandbox.egiscloud.com/code/main.do?id=camera_limit) 샌드박스 확인 부탁드립니다.
+    - camera에서 tilt 각도에 제한을 둘 수 있는 기능이 추가되었습니다.
+    - 자세한 사용법은 [카메라 제한](https://sandbox.egiscloud.com/code/main.do?id=camera_limit) 샌드박스 확인 부탁드립니다.
 ```javascript
 var limit = {
 	tilt : {
