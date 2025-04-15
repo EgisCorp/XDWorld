@@ -88,6 +88,38 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 - 다음 배포 일정: **2025년 05월 06일(화)**
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.13.2 (2025/04/15)
+
+1. camera의 limit Tilt 기능 추가
+  - camera에서 tilt 각도에 제한을 둘 수 있는 기능이 추가되었습니다.
+  - 자세한 사용법은 [카메라 제한](https://sandbox.egiscloud.com/code/main.do?id=camera_limit) 샌드박스 확인 부탁드립니다.
+```javascript
+var limit = {
+	tilt : {
+		max : 20,
+		min : 10
+	},
+	altitude : {
+		max : 20000,
+		min : 1000,
+		enable : true
+	},
+	bound : {
+		max : {
+			lon : 126.930938,
+			lat : 37.525979
+		},
+		min : {
+			lon : 126.920355,
+			lat : 37.520472
+		},
+		enable : true
+	}
+};
+
+Module.getViewCamera().limit = limit;
+```
+
 ### 2.13.1 (2025/04/08)
 
 1. 비디오 객체 매핑 오류 수정
@@ -209,6 +241,68 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
        ```javascript
        var zoomButton = JSControl.getMouseControlEvent("zoom");
        ```
+
+### 2.13.2 (2025/04/15)
+
+1. Added Camera Limit Tilt Feature
+     - A feature to restrict the tilt angle of the camera has been added.
+     - For detailed usage instructions, please refer to the [Camera Limit](https://sandbox.egiscloud.com/code/main.do?id=camera_limit) sandbox example.
+```javascript
+var limit = {
+	tilt: {
+		max: 20,
+		min: 10
+	},
+	altitude: {
+		max: 20000,
+		min: 1000,
+		enable: true
+	},
+	bound: {
+		max: {
+			lon: 126.930938,
+			lat: 37.525979
+		},
+		min: {
+			lon: 126.920355,
+			lat: 37.520472
+		},
+		enable: true
+	}
+};
+
+Module.getViewCamera().limit = limit;
+```
+
+### 2.13.1 (2025/04/08)
+
+1. Fixed Video Object Mapping Bug
+   * In addition to JSColorPipe, JSFlowPolygon, JSPolygon, and JSReal3d (building) objects are now also visible within the circular excavation area.
+```javascript
+var videoObj = Module.createVideoObject("objectKey");
+
+let json = {
+	url: url,
+	position: position,
+	pan: pan,
+	tilt: tilt,
+	bank: bank,
+	fov: {
+		width: fov_x,
+		height: fov_y
+	},
+	far: distance,
+	streaming: streaming,
+	precision: precision,
+	background: background,
+	frustum: frustum,
+	xaxis: xaxis,
+	yaxis: yaxis,
+	objectmapping: true,
+	alpha: alpha
+};
+var result = videoObj.createVideo(json);
+```
 
 ### 2.13.0 (2025/04/07)
 
