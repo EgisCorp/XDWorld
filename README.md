@@ -95,6 +95,8 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
   * 경사향 가시화 결과가 갱신되지 않는 현상을 수정하였습니다.
 #### 3. 태풍 위험반경 표시 오류 수정
   * RTT 기반 태풍 위험반경이 표시되지 않는 현상을 수정하였습니다.
+#### 4. JSHTMLObject 스테레오뷰 오류 수정 ([issue #491](https://github.com/EgisCorp/XDWorld/issues/491))
+  * JSHTMLObject 스테레오뷰 실행시 위치 오류를 수정하였습니다.
 
 ### 2.14.0 (2025/05/12)
 #### 1. Removed movement threshold in JSCamera.moveOvalDist ([issue #488](https://github.com/EgisCorp/XDWorld/issues/488))
@@ -105,6 +107,11 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 #### 3. Fixed typhoon risk radius display issue
   * Resolved an issue where the RTT-based typhoon risk radius was not being displayed.
+    
+#### 4. Fixed stereo view position error in JSHTMLObject ([issue #491](https://github.com/EgisCorp/XDWorld/issues/491))
+  * Fixed a position error that occurred when executing stereo view in JSHTMLObject.
+
+
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
