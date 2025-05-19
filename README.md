@@ -87,6 +87,27 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.14.1 (2025/05/19)
+
+#### 1. JSLayer에 setAlpha API의 동작 방식 변경
+  * 기존 Object의 속성을 일괄적 조회후 수정 방식에서 실시간 적용 방식으로 변경
+  * 슬라이드 방식으로 투명도 처리 가능
+
+#### 2. JSEditTerrain 개별 삭제 기능 추가 ([issue #492](https://github.com/EgisCorp/XDWorld/issues/492))
+  * 성절토 List index로 삭제할 수 있는 기능 추가
+
+#### 3. 좌표변환 추가 ([issue #494](https://github.com/EgisCorp/XDWorld/issues/494))
+  * 기존 WMS의 지원 좌표계는 5개(4326, 5174, 5179, 5180, 5186)
+  * EPSG:3765 좌표변환 추가
+  * 다른 EPSG 좌표계 지원할 수 있도록 추가
+
+#### 4. moveLonLatBoundarybyJson API 오류 수정 ([issue #495](https://github.com/EgisCorp/XDWorld/issues/495))
+  * 이동 후 똑같은 위치로 다시 이동시 오류 발생하여 예외처리
+
+#### 5. 이미지 오버레이 기능 오류 수정 ([issue #496](https://github.com/EgisCorp/XDWorld/issues/496))
+  * 이미지 오버레이시 지형 결합되지 않는 오류 수정
+
+
 ### 2.14.0 (2025/05/12)
 
 #### 1. JSCamera의 moveOvalDist 이동 기준 해제 ([issue #488](https://github.com/EgisCorp/XDWorld/issues/488))
@@ -97,6 +118,28 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
   * RTT 기반 태풍 위험반경이 표시되지 않는 현상을 수정하였습니다.
 #### 4. JSHTMLObject 스테레오뷰 오류 수정 ([issue #491](https://github.com/EgisCorp/XDWorld/issues/491))
   * JSHTMLObject 스테레오뷰 실행시 위치 오류를 수정하였습니다.
+
+
+### 2.14.1 (2025/05/19)
+
+#### 1. Changed the behavior of the setAlpha API in JSLayer
+  * Changed the method of batch-reviewing and then modifying the properties of existing objects to real-time application
+  * Transparency can be processed in slide mode
+
+#### 2. Added individual delete function to JSEditTerrain ([issue #492](https://github.com/EgisCorp/XDWorld/issues/492))
+  * Added the ability to delete by cutting and fill List index
+
+#### 3. Add coordinate conversion ([issue #494](https://github.com/EgisCorp/XDWorld/issues/494))
+  * The existing WMS supports 5 coordinate systems (4326, 5174, 5179, 5180, 5186)
+  * Added EPSG:3765 coordinate transformation
+  * Added support for other EPSG coordinate systems
+
+#### 4. moveLonLatBoundarybyJson API error correction ([issue #495](https://github.com/EgisCorp/XDWorld/issues/495))
+  * An error occurs when moving to the same location again after moving, so an exception is handled
+
+#### 5. Image overlay function error correction ([issue #496](https://github.com/EgisCorp/XDWorld/issues/496))
+  * Fixed terrain not combining when overlaying images
+
 
 ### 2.14.0 (2025/05/12)
 #### 1. Removed movement threshold in JSCamera.moveOvalDist ([issue #488](https://github.com/EgisCorp/XDWorld/issues/488))
