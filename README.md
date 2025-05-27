@@ -87,6 +87,45 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.14.2 (2025/05/27)
+
+#### 1. 고스트심볼에 조망보기, 가시권분석3D 개선
+  * 고스트심볼에서 조망보기, 가시권분석(3D) 성능을 향상하였습니다.
+
+#### 2. 카메라 이동 오류 수정 ([issue #495](https://github.com/EgisCorp/XDWorld/issues/495))
+  * 같은 위치로 이동할 경우 오류가 발생하여 예외처리를 추가하였습니다.
+
+#### 3. 객체가 지형 밑인지 위인지 사용자가 설정하는 함수
+  * 객체가 지형 위, 아래인지에 따라서 투명값 렌더링 순서에 영향이 있어 애매한 객체는 사용자가 직접 지정 가능합니다.(ex : 지하도)
+  * JSPolygon::setUnderground(boolean _bUnderground) : 지형 위 아래 설정
+  * JSPolygon::getUnderground() : 지정 상태 반환
+   ```javascript
+        var LayerList = new Module.JSLayerList(true);
+        var layer = LayerList.nameAtLayer("Layer");
+        if(layer!=null)
+        {
+                var pObject = layer.keyAtObject("Object");
+                if(pObject==null) return;
+                       pObject.setUnderground(true);
+        }
+   ```
+
+#### 4. 거리측정 기능 개선
+  * 거리 측정 시 라인 지형결합 on/off 설정 API 추가하였습니다.
+     * void setMeasureDistancePointUnionTerrain(bool _set);
+       * 이후에 입력되는 라인의 지형결합 적용 여부를 설정할 수 있습니다.
+       * Class : JSOption
+       * Parameter
+         * _set : 지형결합 적용 여부(true/false)
+       * 예시
+          ``` javascript
+          Module.getOption().setMeasureDistancePointUnionTerrain(false);
+          ```
+
+#### 5. POI에 가까이 다가가는 경우 사라지는 현상 개선
+  * JSLayer의 minDistance 값보다 큰 거리에서 POI가 사라지는 현상을 수정하였습니다.
+
+
 ### 2.14.1 (2025/05/19)
 
 #### 1. JSLayer에 setAlpha API의 동작 방식 변경
@@ -118,6 +157,45 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
   * RTT 기반 태풍 위험반경이 표시되지 않는 현상을 수정하였습니다.
 #### 4. JSHTMLObject 스테레오뷰 오류 수정 ([issue #491](https://github.com/EgisCorp/XDWorld/issues/491))
   * JSHTMLObject 스테레오뷰 실행시 위치 오류를 수정하였습니다.
+
+
+### 2.14.2 (2025/05/27)
+
+#### 1. Improved visibility and visibility analysis 3D in Ghost Symbol
+  * Improved performance of viewing and visibility analysis (3D) in Ghost Symbol.
+
+#### 2. Fixed camera movement error ([issue #495](https://github.com/EgisCorp/XDWorld/issues/495))
+  * An exception handling was added to prevent an error from occurring when moving to the same location.
+
+#### 3. A function that allows the user to set whether an object is under or over the terrain
+  * Since the order of rendering transparency values ​​is affected depending on whether the object is above or below the terrain, users can directly specify ambiguous objects (ex: underpasses).
+  * JSPolygon::setUnderground(boolean _bUnderground) : Terrain top and bottom settings
+  * JSPolygon::getUnderground() : Returns specified status
+   ```javascript
+        var LayerList = new Module.JSLayerList(true);
+        var layer = LayerList.nameAtLayer("Layer");
+        if(layer!=null)
+        {
+                var pObject = layer.keyAtObject("Object");
+                if(pObject==null) return;
+                       pObject.setUnderground(true);
+        }
+   ```
+
+#### 4. Improved distance measurement function
+  * Added API to turn on/off line terrain combination when measuring distance
+     * void setMeasureDistancePointUnionTerrain(bool _set);
+       * You can set whether to apply terrain combination to lines entered later.
+       * Class : JSOption
+       * Parameter
+         * _set : Whether to apply terrain combination(true/false)
+       * 예시
+          ``` javascript
+          Module.getOption().setMeasureDistancePointUnionTerrain(false);
+          ```
+
+#### 5. Improved the phenomenon of disappearing when approaching a POI
+  * Fixed an issue where POIs would disappear at distances greater than JSLayer's minDistance value.
 
 
 ### 2.14.1 (2025/05/19)
