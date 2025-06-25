@@ -87,10 +87,19 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.15.1 (2025/06/25)
+#### 1. 바람 효과 표현중 2D 표현이 되지 않는 오류 수정
+  * [관련 샌드박스](https://sandbox.egiscloud.com/code/main.do?id=effect_wind) 에서 Wind 2D 생성되지 않는 오류 수정 
+
 ### 2.15.0 (2025/06/02)
 
 #### 1. 거리 측정 기능 오류 수정
   * 거리측정 데이터 삭제 후 재측정 시 라인이 생성되지 않는 현상을 수정하였습니다.
+---
+### 2.15.1 (2025/06/25)
+
+#### 1. Fixed an issue where 2D wind effects were not rendered
+  * Resolved an issue where 2D wind effects failed to appear in [related sandbox](https://sandbox.egiscloud.com/code/main.do?id=effect_wind)
 
 ### 2.15.0 (2025/06/02)
 #### 1. Bug Fix for Distance Measurement Feature
