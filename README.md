@@ -87,23 +87,42 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
-### 2.15.1 (2025/06/25)
-#### 1. 바람 효과 표현중 2D 표현이 되지 않는 오류 수정
-  * [관련 샌드박스](https://sandbox.egiscloud.com/code/main.do?id=effect_wind) 에서 Wind 2D 생성되지 않는 오류 수정 
+### 2.16.0 (2025/07/07)
+#### 1. Camera 이동 관련 API 오류 수정
+  * [카메라 이동](https://sandbox.egiscloud.com/code/main.do?id=camera_set_viewrect)
+  * 카메라 이동시 설정된 위치가 아닌 다른 위치로 이동되는 오류가 있어 수정되었습니다.
 
-### 2.15.0 (2025/06/02)
+#### 2. POI ahead 옵션 오류 수정
+  * [Object ahead](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)
+  * POI ahead 옵션이 동작하지 않아 수정되었습니다.
 
-#### 1. 거리 측정 기능 오류 수정
-  * 거리측정 데이터 삭제 후 재측정 시 라인이 생성되지 않는 현상을 수정하였습니다.
----
-### 2.15.1 (2025/06/25)
+#### 3. Tile Layer 요청 제한 기능 개선
+  * [Request Limit](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)
+  * 모든 객체가 load 된 이후에 요청 제한 기능이 실행되어 즉각적으로 반영되도록 기능 개선하였습니다.
 
-#### 1. Fixed an issue where 2D wind effects were not rendered
-  * Resolved an issue where 2D wind effects failed to appear in [related sandbox](https://sandbox.egiscloud.com/code/main.do?id=effect_wind)
+#### 4. JSPolygon.createTMCoordPlane API 오류 수정
+  * 특정 유형 데이터에서 격자 밀림현상이 수정되었습니다.
 
-### 2.15.0 (2025/06/02)
-#### 1. Bug Fix for Distance Measurement Feature
-  * Fixed an issue where the line would not be created when remeasuring after deleting distance measurement data.
+### 2.16.0 (2025/07/07)
+#### 1. Camera Movement API Bug Fix
+
+* [Camera Movement](https://sandbox.egiscloud.com/code/main.do?id=camera_set_viewrect)
+* Fixed an issue where the camera was moving to an incorrect location instead of the specified position.
+
+#### 2. POI Ahead Option Bug Fix
+
+* [Object Ahead](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)
+* Fixed an issue where the POI ahead option was not functioning properly.
+
+#### 3. Tile Layer Request Limitation Feature Improvement
+
+* [Request Limit](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)
+* Improved the feature so that the request limitation is applied immediately after all objects are loaded.
+
+#### 4. JSPolygon.createTMCoordPlane API Bug Fix
+
+* Fixed a grid displacement issue that occurred with certain types of data.
+
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
