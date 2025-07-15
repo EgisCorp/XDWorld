@@ -87,6 +87,73 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.16.1 (2025/07/15)
+#### 1. 고용량 3DS 로딩 최적화 기능이 추가되었습니다.
+
+```javascript
+var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
+	polygon.loadFile({
+		url : _strURL,
+		align : "center",
+		position : pos,
+		rotate :  fAngle,
+		rebuild : true,
+		discardVertexData : true,   // 추가 : 좌표 GPU 업데이트 후 삭제
+		compressObject : false,     // 추가 : Import 후 압축 vertex 압축 안함.
+	});
+```
+#### 2. 건물 높이 기준 횡단면 선분 추출 기능 추가
+   * 지정한 건물의 높이기준 외곽선분 추출 기능이 추가되었습니다.
+   * object JSReal3D::getFloorSliceEdge(double _height) 
+   * 반환값 예시
+ ``` {
+ {
+    "header": {
+        // 데이터 바운더리 최소, 최대 경위도
+        "minLon": 126.927487351387,    
+        "minLat": 37.52418520251252,
+        "maxLon": 126.92795509699533,
+        "maxLat": 37.52453873807533,
+        // 설정한 단면 분석 높이
+        "cutHeight": 12.5,
+        // 설정한 건물의 중심점
+        "location": {
+            "lon": 126.92774196141701,
+            "lat": 37.52434050186833,
+            "alt": 39.250494956970215
+        },
+        // 건물의 최소, 최대 높이 (해발고도)
+        "elevation": {
+            "min": 12.125300407409668,
+            "max": 66.37568950653076
+        }
+    },
+    // 단면 선분 정보 [A점(경도,위도,높이)B점(경도,위도,높이)] [...] 
+    "edge": [
+        [
+            126.9277111803299,
+            37.52448908205179,
+            22.275913742370903,
+            126.927487351387,
+            37.52435413856168,
+            22.275933586061
+        ],
+        [
+            126.9277111803299,
+            37.52448908206028,
+            22.27591446880251,
+            126.92779354446381,
+            37.524538738067506,
+            22.27593025751412
+        ],
+       [ 
+           ...
+        ]
+    ]
+}
+```
+
+
 ### 2.16.0 (2025/07/07)
 #### 1. Camera 이동 관련 API 오류 수정
   * [카메라 이동](https://sandbox.egiscloud.com/code/main.do?id=camera_set_viewrect)
@@ -102,6 +169,81 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 #### 4. JSPolygon.createTMCoordPlane API 오류 수정
   * 특정 유형 데이터에서 격자 밀림현상이 수정되었습니다.
+
+Sure! Here's the English translation of the release notes:
+
+---
+
+### 2.16.1 (2025/07/15)
+
+#### 1. High-Capacity 3DS Loading Optimization Feature Added
+
+```javascript
+var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
+	polygon.loadFile({
+		url : _strURL,
+		align : "center",
+		position : pos,
+		rotate :  fAngle,
+		rebuild : true,
+		discardVertexData : true,   // NEW: Discards vertex data after GPU upload
+		compressObject : false,     // NEW: Do not compress vertex data after import
+	});
+```
+
+#### 2. Cross-Section Edge Extraction Based on Building Height Added
+
+* A function has been added to extract outer edge segments based on a specified building height.
+* `object JSReal3D::getFloorSliceEdge(double _height)`
+* Example return value:
+
+```json
+{
+  "header": {
+    // Minimum and maximum longitude/latitude of the data boundary
+    "minLon": 126.927487351387,
+    "minLat": 37.52418520251252,
+    "maxLon": 126.92795509699533,
+    "maxLat": 37.52453873807533,
+    // Height at which the cross-section analysis is performed
+    "cutHeight": 12.5,
+    // Center point of the specified building
+    "location": {
+      "lon": 126.92774196141701,
+      "lat": 37.52434050186833,
+      "alt": 39.250494956970215
+    },
+    // Minimum and maximum elevation (altitude) of the building
+    "elevation": {
+      "min": 12.125300407409668,
+      "max": 66.37568950653076
+    }
+  },
+  // Cross-section edge data [Point A (lon, lat, alt) to Point B (lon, lat, alt)] [...] 
+  "edge": [
+    [
+      126.9277111803299,
+      37.52448908205179,
+      22.275913742370903,
+      126.927487351387,
+      37.52435413856168,
+      22.275933586061
+    ],
+    [
+      126.9277111803299,
+      37.52448908206028,
+      22.27591446880251,
+      126.92779354446381,
+      37.524538738067506,
+      22.27593025751412
+    ],
+    [ 
+      ...
+    ]
+  ]
+}
+```
+
 
 ### 2.16.0 (2025/07/07)
 #### 1. Camera Movement API Bug Fix
