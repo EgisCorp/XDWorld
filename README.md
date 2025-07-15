@@ -88,7 +88,8 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
 ### 2.16.1 (2025/07/15)
-#### 1. 고용량 3DS 로딩 최적화 기능이 추가되었습니다.
+#### 1. 고용량 3DS 로딩 최적화 추가.
+   * 고용량 3DS 로딩 최적화 기능이 추가되었습니다.
 
 ```javascript
 var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
@@ -197,7 +198,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 * `object JSReal3D::getFloorSliceEdge(double _height)`
 * Example return value:
 
-```json
+```
 {
   "header": {
     // Minimum and maximum longitude/latitude of the data boundary
