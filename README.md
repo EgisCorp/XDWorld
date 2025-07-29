@@ -86,6 +86,7 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
+- 다음 버전(2.17.0) 정기 배포 날짜가 **8월 11일(월)** 로 변경되었습니다.
 
 ### 2.16.1 (2025/07/15)
 #### 1. 고용량 3DS 로딩 최적화 추가.
@@ -170,8 +171,6 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
 #### 4. JSPolygon.createTMCoordPlane API 오류 수정
   * 특정 유형 데이터에서 격자 밀림현상이 수정되었습니다.
-
-Sure! Here's the English translation of the release notes:
 
 ---
 
