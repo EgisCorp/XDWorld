@@ -141,7 +141,7 @@ fig.moveUI = false;
 
 * If Chrome's "Hardware Acceleration" or "Graphics Acceleration" is disabled, display a notice.
 
- <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
+  <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
 
 ### 3. Indicator feature improvements
 
