@@ -105,11 +105,13 @@ fig.moveUI = false;
 
 ### 2. 하드웨어 가속 옵션 안내
   - Chrome 브라우저가 아닐 경우 Chrome 브라우저 권장 안내
-<img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
+    
+    <img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
 
 
   - Chrome 브라우저의 "하드웨어 가속" or "그래픽 가속" 을 사용하지 않을 경우 안내
-<img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
+    
+    <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
 
 
 #### 3. Indicator 기능 개선
