@@ -108,7 +108,8 @@ fig.moveUI = false;
 <img width="436" height="124" alt="Image" src="https://github.com/user-attachments/assets/2d4a0bed-d675-41bc-a1e4-d2bea7334b61" />
 
   - Chrome 브라우저의 "하드웨어 가속" or "그래픽 가속" 을 사용하지 않을 경우 안내
-<img width="497" height="283" alt="Image" src="https://github.com/user-attachments/assets/532ebb80-576c-4d07-8414-f2488bf8278f" />
+<img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
+
 
 #### 3. Indicator 기능 개선
  * 타겟이 카메라 뒤에 있는 경우 Indicator가 정상적으로 계산되지 않는 현상을 수정하였습니다.
