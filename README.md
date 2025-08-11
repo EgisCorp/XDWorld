@@ -86,184 +86,70 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
-- 다음 버전(2.17.0) 정기 배포 날짜가 **8월 11일(월)** 로 변경되었습니다.
 
-### 2.16.1 (2025/07/15)
-#### 1. 고용량 3DS 로딩 최적화 추가.
-   * 고용량 3DS 로딩 최적화 기능이 추가되었습니다.
+### 2.17.0 (2025/08/11)
+### 1. Figure 객체 편집 UI 제어 API 추가
+  - scaleLock, rotateLock, moveLock
+```javascript
+let fig = Module.createFigure("figs");
+
+// 크기 UI 삭제
+fig.scaleUI = false;
+
+// 회전 UI 삭제
+fig.rotateUI = false;
+
+// 이동 UI 삭제
+fig.moveUI = false;
+```
+
+### 2. 하드웨어 가속 옵션 안내
+  - Chrome 브라우저가 아닐 경우 Chrome 브라우저 권장 안내
+<img width="436" height="124" alt="Image" src="https://github.com/user-attachments/assets/2d4a0bed-d675-41bc-a1e4-d2bea7334b61" />
+
+  - Chrome 브라우저의 "하드웨어 가속" or "그래픽 가속" 을 사용하지 않을 경우 안내
+<img width="497" height="283" alt="Image" src="https://github.com/user-attachments/assets/532ebb80-576c-4d07-8414-f2488bf8278f" />
+
+#### 3. Indicator 기능 개선
+ * 타겟이 카메라 뒤에 있는 경우 Indicator가 정상적으로 계산되지 않는 현상을 수정하였습니다.
+
+### 2.17.0 (2025/08/11)
+### 1. Added API to control Figure object editing UI
+
+* `scaleLock`, `rotateLock`, `moveLock`
 
 ```javascript
-var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
-	polygon.loadFile({
-		url : _strURL,
-		align : "center",
-		position : pos,
-		rotate :  fAngle,
-		rebuild : true,
-		discardVertexData : true,   // 추가 : 좌표 GPU 업데이트 후 삭제
-		compressObject : false,     // 추가 : Import 후 압축 vertex 압축 안함.
-	});
-```
-#### 2. 건물 높이 기준 횡단면 선분 추출 기능 추가
-   * 지정한 건물의 높이기준 외곽선분 추출 기능이 추가되었습니다.
-   * object JSReal3D::getFloorSliceEdge(double _height) 
-   * 반환값 예시
- ``` {
- {
-    "header": {
-        // 데이터 바운더리 최소, 최대 경위도
-        "minLon": 126.927487351387,    
-        "minLat": 37.52418520251252,
-        "maxLon": 126.92795509699533,
-        "maxLat": 37.52453873807533,
-        // 설정한 단면 분석 높이
-        "cutHeight": 12.5,
-        // 설정한 건물의 중심점
-        "location": {
-            "lon": 126.92774196141701,
-            "lat": 37.52434050186833,
-            "alt": 39.250494956970215
-        },
-        // 건물의 최소, 최대 높이 (해발고도)
-        "elevation": {
-            "min": 12.125300407409668,
-            "max": 66.37568950653076
-        }
-    },
-    // 단면 선분 정보 [A점(경도,위도,높이)B점(경도,위도,높이)] [...] 
-    "edge": [
-        [
-            126.9277111803299,
-            37.52448908205179,
-            22.275913742370903,
-            126.927487351387,
-            37.52435413856168,
-            22.275933586061
-        ],
-        [
-            126.9277111803299,
-            37.52448908206028,
-            22.27591446880251,
-            126.92779354446381,
-            37.524538738067506,
-            22.27593025751412
-        ],
-       [ 
-           ...
-        ]
-    ]
-}
+let fig = Module.createFigure("figs");
+
+// Remove scale UI
+fig.scaleUI = false;
+
+// Remove rotation UI
+fig.rotateUI = false;
+
+// Remove movement UI
+fig.moveUI = false;
 ```
 
+### 2. Hardware acceleration guidance
 
-### 2.16.0 (2025/07/07)
-#### 1. Camera 이동 관련 API 오류 수정
-  * [카메라 이동](https://sandbox.egiscloud.com/code/main.do?id=camera_set_viewrect)
-  * 카메라 이동시 설정된 위치가 아닌 다른 위치로 이동되는 오류가 있어 수정되었습니다.
+* If the browser is not Chrome, display a recommendation to use Chrome.
 
-#### 2. POI ahead 옵션 오류 수정
-  * [Object ahead](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)
-  * POI ahead 옵션이 동작하지 않아 수정되었습니다.
+  <img width="436" height="124" alt="Image" src="https://github.com/user-attachments/assets/2d4a0bed-d675-41bc-a1e4-d2bea7334b61" />
 
-#### 3. Tile Layer 요청 제한 기능 개선
-  * [Request Limit](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)
-  * 모든 객체가 load 된 이후에 요청 제한 기능이 실행되어 즉각적으로 반영되도록 기능 개선하였습니다.
+* If Chrome's "Hardware Acceleration" or "Graphics Acceleration" is disabled, display a notice.
 
-#### 4. JSPolygon.createTMCoordPlane API 오류 수정
-  * 특정 유형 데이터에서 격자 밀림현상이 수정되었습니다.
+  <img width="497" height="283" alt="Image" src="https://github.com/user-attachments/assets/532ebb80-576c-4d07-8414-f2488bf8278f" />
+
+### 3. Indicator feature improvements
+
+* Fixed an issue where the indicator was not calculated correctly when the target was behind the camera.
 
 ---
 
-### 2.16.1 (2025/07/15)
-
-#### 1. High-Capacity 3DS Loading Optimization Feature Added
-
-```javascript
-var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
-	polygon.loadFile({
-		url : _strURL,
-		align : "center",
-		position : pos,
-		rotate :  fAngle,
-		rebuild : true,
-		discardVertexData : true,   // NEW: Discards vertex data after GPU upload
-		compressObject : false,     // NEW: Do not compress vertex data after import
-	});
-```
-
-#### 2. Cross-Section Edge Extraction Based on Building Height Added
-
-* A function has been added to extract outer edge segments based on a specified building height.
-* `object JSReal3D::getFloorSliceEdge(double _height)`
-* Example return value:
-
-```
-{
-  "header": {
-    // Minimum and maximum longitude/latitude of the data boundary
-    "minLon": 126.927487351387,
-    "minLat": 37.52418520251252,
-    "maxLon": 126.92795509699533,
-    "maxLat": 37.52453873807533,
-    // Height at which the cross-section analysis is performed
-    "cutHeight": 12.5,
-    // Center point of the specified building
-    "location": {
-      "lon": 126.92774196141701,
-      "lat": 37.52434050186833,
-      "alt": 39.250494956970215
-    },
-    // Minimum and maximum elevation (altitude) of the building
-    "elevation": {
-      "min": 12.125300407409668,
-      "max": 66.37568950653076
-    }
-  },
-  // Cross-section edge data [Point A (lon, lat, alt) to Point B (lon, lat, alt)] [...] 
-  "edge": [
-    [
-      126.9277111803299,
-      37.52448908205179,
-      22.275913742370903,
-      126.927487351387,
-      37.52435413856168,
-      22.275933586061
-    ],
-    [
-      126.9277111803299,
-      37.52448908206028,
-      22.27591446880251,
-      126.92779354446381,
-      37.524538738067506,
-      22.27593025751412
-    ],
-    [ 
-      ...
-    ]
-  ]
-}
-```
+Do you want me to also make this sound more polished for release notes? That would make it read like official product update documentation.
 
 
-### 2.16.0 (2025/07/07)
-#### 1. Camera Movement API Bug Fix
-
-* [Camera Movement](https://sandbox.egiscloud.com/code/main.do?id=camera_set_viewrect)
-* Fixed an issue where the camera was moving to an incorrect location instead of the specified position.
-
-#### 2. POI Ahead Option Bug Fix
-
-* [Object Ahead](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)
-* Fixed an issue where the POI ahead option was not functioning properly.
-
-#### 3. Tile Layer Request Limitation Feature Improvement
-
-* [Request Limit](https://sandbox.egiscloud.com/code/main.do?id=layer_request_boundary)
-* Improved the feature so that the request limitation is applied immediately after all objects are loaded.
-
-#### 4. JSPolygon.createTMCoordPlane API Bug Fix
-
-* Fixed a grid displacement issue that occurred with certain types of data.
 
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
