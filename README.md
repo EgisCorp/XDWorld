@@ -105,7 +105,8 @@ fig.moveUI = false;
 
 ### 2. 하드웨어 가속 옵션 안내
   - Chrome 브라우저가 아닐 경우 Chrome 브라우저 권장 안내
-<img width="436" height="124" alt="Image" src="https://github.com/user-attachments/assets/2d4a0bed-d675-41bc-a1e4-d2bea7334b61" />
+<img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
+
 
   - Chrome 브라우저의 "하드웨어 가속" or "그래픽 가속" 을 사용하지 않을 경우 안내
 <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
@@ -136,11 +137,11 @@ fig.moveUI = false;
 
 * If the browser is not Chrome, display a recommendation to use Chrome.
 
-  <img width="436" height="124" alt="Image" src="https://github.com/user-attachments/assets/2d4a0bed-d675-41bc-a1e4-d2bea7334b61" />
+  <img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
 
 * If Chrome's "Hardware Acceleration" or "Graphics Acceleration" is disabled, display a notice.
 
-  <img width="497" height="283" alt="Image" src="https://github.com/user-attachments/assets/532ebb80-576c-4d07-8414-f2488bf8278f" />
+ <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
 
 ### 3. Indicator feature improvements
 
