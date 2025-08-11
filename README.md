@@ -151,8 +151,6 @@ fig.moveUI = false;
 
 ---
 
-Do you want me to also make this sound more polished for release notes? That would make it read like official product update documentation.
-
 
 
 
