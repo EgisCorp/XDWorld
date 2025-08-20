@@ -87,6 +87,10 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.17.1 (2025/08/20)
+### 1. 하드웨어 가속 옵션 안내 변경
+  - console 창에 하드웨어 가속 옵션 여부 및 설정 방법 안내
+
 ### 2.17.0 (2025/08/11)
 ### 1. Figure 객체 편집 UI 제어 API 추가
   - scaleLock, rotateLock, moveLock
@@ -117,6 +121,13 @@ fig.moveUI = false;
 #### 3. Indicator 기능 개선
  * 타겟이 카메라 뒤에 있는 경우 Indicator가 정상적으로 계산되지 않는 현상을 수정하였습니다.
 
+Sure! Here's the English translation of the release notes:
+---
+
+### 2.17.1 (2025/08/20)
+### 1. Changes to hardware acceleration options guidance
+  - Guide to enabling and setting hardware acceleration options in the console window
+    
 ### 2.17.0 (2025/08/11)
 ### 1. Added API to control Figure object editing UI
 
