@@ -89,6 +89,7 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ### 2.17.1 (2025/08/21)
 ### 1. 이미지 기반 오버레이 기능 구현 [(이슈 502)](https://github.com/EgisCorp/XDWorld/issues/502)
   * 기존 색상으로만 표현되던 오버레이 기능을 이미지 기반으로도 적용할 수 있도록 기능이 업데이트 되었습니다.
+  * https://sandbox.egiscloud.com/code/main.do?id=effect_overlay_image
     ``` javascript
     var polygon = Module.createOverlayObject("POLYGON");		
     var color = new Module.JSColor(255, 255, 0);		
@@ -198,6 +199,7 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ### 1. Image-Based Overlay Feature Implementation [(Issue 502)](https://github.com/EgisCorp/XDWorld/issues/502)
 
 * The overlay feature, which previously only supported color-based rendering, has been updated to support image-based overlays as well.
+* https://sandbox.egiscloud.com/code/main.do?id=effect_overlay_image
 
   ```javascript
   var polygon = Module.createOverlayObject("POLYGON");		
