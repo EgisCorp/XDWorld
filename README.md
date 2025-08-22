@@ -91,12 +91,10 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
   * 기존 색상으로만 표현되던 오버레이 기능을 이미지 기반으로도 적용할 수 있도록 기능이 업데이트 되었습니다.
   * https://sandbox.egiscloud.com/code/main.do?id=effect_overlay_image
     ``` javascript
-    var polygon = Module.createOverlayObject("POLYGON");		
-    var color = new Module.JSColor(255, 255, 0);		
+    var polygon = Module.createOverlayObject("POLYGON");
     polygon.setOverlayObject({
   	  style : "polygon",
   	  coordinate : vertex,
-	  color : color,
 	  image : {
 		width : img.width,
 		height : img.height,
@@ -203,11 +201,9 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
   ```javascript
   var polygon = Module.createOverlayObject("POLYGON");		
-  var color = new Module.JSColor(255, 255, 0);		
   polygon.setOverlayObject({
   	style : "polygon",
   	coordinate : vertex,
-    color : color,
     image : {
       width : img.width,
       height : img.height,
