@@ -86,231 +86,48 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
-### 2.17.1 (2025/08/21)
-### 1. 이미지 기반 오버레이 기능 구현 [(이슈 502)](https://github.com/EgisCorp/XDWorld/issues/502)
-  * 기존 색상으로만 표현되던 오버레이 기능을 이미지 기반으로도 적용할 수 있도록 기능이 업데이트 되었습니다.
-  * https://sandbox.egiscloud.com/code/main.do?id=effect_overlay_image
+### 2.18.0 (2025/09/01)
+#### 1. 오브젝트 선택 시 외곽선 렌더링
+  * JSReal3D, JSGhostSymbol, JSPolygon 오브젝트 선택 시 아래 이미지와 같이 외곽선이 함께 출력됩니다.
+    <img width="1424" height="649" alt="Image" src="https://github.com/user-attachments/assets/f30d6dc7-bdaf-4eb2-aa36-839d289ba876" />
+  * JSOption의 setRenderSelectSilhouette API를 활용하여 외곽선을 끄고 켤 수 있습니다.
     ``` javascript
-    var polygon = Module.createOverlayObject("POLYGON");
-    polygon.setOverlayObject({
-  	  style : "polygon",
-  	  coordinate : vertex,
-	  image : {
-		width : img.width,
-		height : img.height,
-		data : ctx.getImageData(0, 0, img.width, img.height).data,
-	  }
-    });
+    Module.getOption().setRenderSelectSilhouette(true);   // on
+    Module.getOption().setRenderSelectSilhouette(false);  // off
     ```
 
-### 2. 수인한도분석 결과값 추가
-  * 각 격자에 시간대별 일조량 추가
-    ```javascript
-    [결과값]
-    0 : {
-    	analysisList: {
-    		0 : {sunrise: true, time: 10},	// sunrise(일조인지 아닌지), time(일조 시간, 입력한 분석텀)
-    		1 : {sunrise: true, time: 10},
-    		.
-    		.
-    		.
-    	}, 
-    	color: {
-    		A : 120,
-    		R : 166,
-    		G : 166,
-    		B : 166
-    	}, 
-    	continuevalue: 50, 
-    	id: 'grid_0', 
-    	isanalysis: true,
-    	position : {
-    		alt: 3.981043982319534,
-    		lat: 35.1712107372302,
-    		lon: 129.13061351968938
-    	},
-    	totalvalue : 500
-    }
-    .
-    .
-    .
-    ```
+#### 2. DEM 단독 렌더링
+  * 지형 영상 없이 DEM 단독으로 렌더링이 가능하도록 개선되었습니다.
 
-### 3. 하드웨어 가속 옵션 삭제
-  * 하드웨어 가속 옵션 UI 삭제 및 console 경고 안내
-
-### 4. AABB 추가
-  * ECEF 좌표계에서의 AABB 좌표를 반환하는 기능이 추가되었습니다.
+#### 3. 화면 중심 기반 마우스 틸트, 회전 옵션 [(이슈 509)](https://github.com/EgisCorp/XDWorld/issues/509)
+  * 마우스로 화면 틸트, 회전 시 화면 중앙점을 중심으로 움직이도록 옵션이 추가되었습니다.
     ``` javascript
-    var box = _polygon.getBoundary();
-    // AABB Coordinates to Spherical Coordinates
-    // bottom(4), top(4)
-    var boxArray = box.getBox();
-    
-    const corners = {
-    	bottom: [
-    		[boxArray.get(0).longitude, boxArray.get(0).latitude, boxArray.get(0).altitude],
-    		[boxArray.get(1).longitude, boxArray.get(1).latitude, boxArray.get(1).altitude],
-    		[boxArray.get(2).longitude, boxArray.get(2).latitude, boxArray.get(2).altitude],
-    		[boxArray.get(3).longitude, boxArray.get(3).latitude, boxArray.get(3).altitude],
-    	],
-    	top: [
-    		[boxArray.get(4).longitude, boxArray.get(4).latitude, boxArray.get(4).altitude],
-    		[boxArray.get(5).longitude, boxArray.get(5).latitude, boxArray.get(5).altitude],
-    		[boxArray.get(6).longitude, boxArray.get(6).latitude, boxArray.get(6).altitude],
-    		[boxArray.get(7).longitude, boxArray.get(7).latitude, boxArray.get(7).altitude],
-    	]
-    };
+    Module.getControl().setMouseClickCenterMode(true);
     ```
 
-### 2.17.0 (2025/08/11)
-### 1. Figure 객체 편집 UI 제어 API 추가
-  - scaleLock, rotateLock, moveLock
-    ```javascript
-    let fig = Module.createFigure("figs");
-    
-    // 크기 UI 삭제
-    fig.scaleUI = false;
-    
-    // 회전 UI 삭제
-    fig.rotateUI = false;
-    
-    // 이동 UI 삭제
-    fig.moveUI = false;
-    ```
+### 2.18.0 (2025/09/01)
+#### 1. Outline Rendering on Object Selection
 
-### 2. 하드웨어 가속 옵션 안내
-  - Chrome 브라우저가 아닐 경우 Chrome 브라우저 권장 안내
-    
-    <img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
+* When selecting **JSReal3D**, **JSGhostSymbol**, or **JSPolygon** objects, an outline is displayed as shown in the image below. <img width="1424" height="649" alt="Image" src="https://github.com/user-attachments/assets/f30d6dc7-bdaf-4eb2-aa36-839d289ba876" />
 
-
-  - Chrome 브라우저의 "하드웨어 가속" or "그래픽 가속" 을 사용하지 않을 경우 안내
-    
-    <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
-
-
-### 3. Indicator 기능 개선
- * 타겟이 카메라 뒤에 있는 경우 Indicator가 정상적으로 계산되지 않는 현상을 수정하였습니다.
-
-### 2.17.1 (2025/08/21)
-### 1. Image-Based Overlay Feature Implementation [(Issue 502)](https://github.com/EgisCorp/XDWorld/issues/502)
-
-* The overlay feature, which previously only supported color-based rendering, has been updated to support image-based overlays as well.
-* https://sandbox.egiscloud.com/code/main.do?id=effect_overlay_image
+* You can toggle the outline on and off using the `setRenderSelectSilhouette` API in **JSOption**.
 
   ```javascript
-  var polygon = Module.createOverlayObject("POLYGON");		
-  polygon.setOverlayObject({
-  	style : "polygon",
-  	coordinate : vertex,
-    image : {
-      width : img.width,
-      height : img.height,
-      data : ctx.getImageData(0, 0, img.width, img.height).data,
-    }
-  });
+  Module.getOption().setRenderSelectSilhouette(true);   // on
+  Module.getOption().setRenderSelectSilhouette(false);  // off
   ```
 
-### 2. Addition of Sunshine Duration Analysis Results
+#### 2. DEM-Only Rendering
 
-* Added time-based sunlight exposure data for each grid.
+* Improved to allow rendering of DEM without terrain imagery.
+
+#### 3. Mouse Tilt & Rotation Based on Screen Center [(Issue 509)](https://github.com/EgisCorp/XDWorld/issues/509)
+
+* Added an option to make mouse tilt and rotation operations move around the screen center point.
 
   ```javascript
-  [Result]
-  0 : {
-  	analysisList: {
-  		0 : {sunrise: true, time: 10},	// sunrise (whether it’s exposed to sunlight), time (sunlight duration, based on input interval)
-  		1 : {sunrise: true, time: 10},
-  		.
-  		.
-  		.
-  	}, 
-  	color: {
-  		A : 120,
-  		R : 166,
-  		G : 166,
-  		B : 166
-  	}, 
-  	continuevalue: 50, 
-  	id: 'grid_0', 
-  	isanalysis: true,
-  	position : {
-  		alt: 3.981043982319534,
-  		lat: 35.1712107372302,
-  		lon: 129.13061351968938
-  	},
-  	totalvalue : 500
-  }
-  .
-  .
-  .
+  Module.getControl().setMouseClickCenterMode(true);
   ```
-
-### 3. Removal of Hardware Acceleration Option
-
-* The hardware acceleration option UI has been removed, and a console warning is now provided instead.
-
-### 4. Addition of AABB (Axis-Aligned Bounding Box)
-
-* A new feature has been added to return AABB coordinates in the ECEF coordinate system.
-
-  ```javascript
-  var box = _polygon.getBoundary();
-  // AABB Coordinates to Spherical Coordinates
-  // bottom(4), top(4)
-  var boxArray = box.getBox();
-
-  const corners = {
-  	bottom: [
-  		[boxArray.get(0).longitude, boxArray.get(0).latitude, boxArray.get(0).altitude],
-  		[boxArray.get(1).longitude, boxArray.get(1).latitude, boxArray.get(1).altitude],
-  		[boxArray.get(2).longitude, boxArray.get(2).latitude, boxArray.get(2).altitude],
-  		[boxArray.get(3).longitude, boxArray.get(3).latitude, boxArray.get(3).altitude],
-  	],
-  	top: [
-  		[boxArray.get(4).longitude, boxArray.get(4).latitude, boxArray.get(4).altitude],
-  		[boxArray.get(5).longitude, boxArray.get(5).latitude, boxArray.get(5).altitude],
-  		[boxArray.get(6).longitude, boxArray.get(6).latitude, boxArray.get(6).altitude],
-  		[boxArray.get(7).longitude, boxArray.get(7).latitude, boxArray.get(7).altitude],
-  	]
-  };
-  ```
-
-### 2.17.0 (2025/08/11)
-### 1. Added API to control Figure object editing UI
-
-* `scaleLock`, `rotateLock`, `moveLock`
-
-  ```javascript
-  let fig = Module.createFigure("figs");
-  
-  // Remove scale UI
-  fig.scaleUI = false;
-  
-  // Remove rotation UI
-  fig.rotateUI = false;
-  
-  // Remove movement UI
-  fig.moveUI = false;
-  ```
-
-### 2. Hardware acceleration guidance
-
-* If the browser is not Chrome, display a recommendation to use Chrome.
-
-  <img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
-
-* If Chrome's "Hardware Acceleration" or "Graphics Acceleration" is disabled, display a notice.
-
-  <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
-
-### 3. Indicator feature improvements
-
-* Fixed an issue where the indicator was not calculated correctly when the target was behind the camera.
-
----
-
 
 
 
