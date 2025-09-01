@@ -89,7 +89,8 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ### 2.18.0 (2025/09/01)
 #### 1. 오브젝트 선택 시 외곽선 렌더링
   * JSReal3D, JSGhostSymbol, JSPolygon 오브젝트 선택 시 아래 이미지와 같이 외곽선이 함께 출력됩니다.
-    <img width="1424" height="649" alt="Image" src="https://github.com/user-attachments/assets/f30d6dc7-bdaf-4eb2-aa36-839d289ba876" />
+    <img width="1424" height="649" alt="image" src="https://github.com/user-attachments/assets/c9c2aec6-b6d5-4a9b-9da4-5517201b9c43" />
+
   * JSOption의 setRenderSelectSilhouette API를 활용하여 외곽선을 끄고 켤 수 있습니다.
     ``` javascript
     Module.getOption().setRenderSelectSilhouette(true);   // on
@@ -108,7 +109,9 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ### 2.18.0 (2025/09/01)
 #### 1. Outline Rendering on Object Selection
 
-* When selecting **JSReal3D**, **JSGhostSymbol**, or **JSPolygon** objects, an outline is displayed as shown in the image below. <img width="1424" height="649" alt="Image" src="https://github.com/user-attachments/assets/f30d6dc7-bdaf-4eb2-aa36-839d289ba876" />
+* When selecting **JSReal3D**, **JSGhostSymbol**, or **JSPolygon** objects, an outline is displayed as shown in the image below.
+  <img width="1424" height="649" alt="image" src="https://github.com/user-attachments/assets/4eeb14bd-5da9-433e-bfc8-a4ff2cbc6e01" />
+
 
 * You can toggle the outline on and off using the `setRenderSelectSilhouette` API in **JSOption**.
 
