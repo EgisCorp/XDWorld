@@ -86,6 +86,8 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
+- $\rm{\color{red}●\ 2.19.0\ 버전\ 업로드는\ 추석\ 연휴로\ 인해\ 둘째\ 주\ 월요일(10/13)에\ 배포\ 예정입니다.}$
+- $\rm{\color{red}●\ Due\ to\ the\ Chuseok\ holiday,\ the\ 2.19.0\ release\ is\ scheduled\ for\ deployment\ on\ Monday,\ October\ 13\ (second\ week).}$
 ### 2.18.0 (2025/09/01)
 #### 1. 오브젝트 선택 시 외곽선 렌더링
   * JSReal3D, JSGhostSymbol, JSPolygon 오브젝트 선택 시 아래 이미지와 같이 외곽선이 함께 출력됩니다.
