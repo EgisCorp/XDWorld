@@ -170,8 +170,6 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 #### 4. JSPolygon.createTMCoordPlane API 오류 수정
   * 특정 유형 데이터에서 격자 밀림현상이 수정되었습니다.
 
-Sure! Here's the English translation of the release notes:
-
 ---
 
 ### 2.16.1 (2025/07/15)
