@@ -197,7 +197,7 @@ let endpoint = getAxisEndpoint(axis, length);
     ```
 
 ### 2.19.0 (2025/10/13)
-### 1. Overlay Function Bug Fix [(Issue #513)](https://github.com/EgisCorp/XDWorld/issues/513)
+#### 1. Overlay Function Bug Fix [(Issue #513)](https://github.com/EgisCorp/XDWorld/issues/513)
 
 * Fixed an issue where a black image was occasionally overlaid.
 * Added an option for overlay image transparency.
@@ -216,12 +216,12 @@ polygon.setOverlayObject({
   `Module.SetSimpleModeLineRender(false);`
 <img width="969" height="690" alt="image" src="https://github.com/user-attachments/assets/1698f5ff-6e9a-41a4-9379-ffc96a83951a" />
 
-### 2. Improved Line Object GLOW Effect
+#### 2. Improved Line Object GLOW Effect
 
 * The existing GLOW effect has been enhanced.
 <img width="645" height="619" alt="image" src="https://github.com/user-attachments/assets/c332909c-dd91-4c26-8dd4-c3cb1a3aa26c" />
 
-### 3. Added JSPolygon Editing API
+#### 3. Added JSPolygon Editing API
 
 * Supports move, rotate, and scale operations.
 * [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
@@ -239,7 +239,7 @@ polygon.setRotation(x, y, z);
 polygon.setScale(x, y, z);
 ```
 
-### 4. Added API for Returning JSObject3D Axis Endpoints
+#### 4. Added API for Returning JSObject3D Axis Endpoints
 
 * Added an API that returns the endpoints of axes for visual confirmation during rotation and scaling.
 * You can create lines between the center and each endpoint.
@@ -250,15 +250,15 @@ polygon.setScale(x, y, z);
 let endpoint = getAxisEndpoint(axis, length);
 ```
 
-### 5. Camera Movement Bug Fix [(Issue #514)](https://github.com/EgisCorp/XDWorld/issues/514)
+#### 5. Camera Movement Bug Fix [(Issue #514)](https://github.com/EgisCorp/XDWorld/issues/514)
 
 * Fixed an issue where the camera direction was occasionally misaligned after movement.
 
-### 6. HSV Option in Simple Mode Buildings [(Issue #512)](https://github.com/EgisCorp/XDWorld/issues/512)
+#### 6. HSV Option in Simple Mode Buildings [(Issue #512)](https://github.com/EgisCorp/XDWorld/issues/512)
 
 * Fixed an issue where the HSV option did not function properly when the building layer was in simple mode.
 
-### 7. Polygon-Based Request Area for Tile Layers
+#### 7. Polygon-Based Request Area for Tile Layers
 
 * The `setLimitBoundary` API of `JSLayer` now supports polygon areas in addition to rectangular ones.
 * Building data is loaded when the building’s center point is within the polygon area.
@@ -283,7 +283,7 @@ Module.getTileLayerList().createXDServerLayer({
 });
 ```
 
-### 8. Added Terrain Image Shading Mask Feature
+#### 8. Added Terrain Image Shading Mask Feature
 
 * Added an API option to shade areas of the terrain image outside a specified coordinate range.
 
@@ -298,7 +298,7 @@ Module.getTerrain().setImageMask({
 });
 ```
 
-### 9. Added Option to Enable/Disable Built-In Terrain Base Image
+#### 9. Added Option to Enable/Disable Built-In Terrain Base Image
 
 * Added a new option in `Module.initialize` to enable or disable the engine’s built-in level 0 globe image.
 * When set to `true`, the built-in image is used; when set to `false`, the level 0 image is requested from the specified image server.
