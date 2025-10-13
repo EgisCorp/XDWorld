@@ -86,55 +86,245 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
-- $\rm{\color{red}●\ 2.19.0\ 버전\ 업로드는\ 추석\ 연휴로\ 인해\ 둘째\ 주\ 월요일(10/13)에\ 배포\ 예정입니다.}$
-- $\rm{\color{red}●\ Due\ to\ the\ Chuseok\ holiday,\ the\ 2.19.0\ release\ is\ scheduled\ for\ deployment\ on\ Monday,\ October\ 13\ (second\ week).}$
-### 2.18.0 (2025/09/01)
-#### 1. 오브젝트 선택 시 외곽선 렌더링
-  * JSReal3D, JSGhostSymbol, JSPolygon 오브젝트 선택 시 아래 이미지와 같이 외곽선이 함께 출력됩니다.
-    <img width="1424" height="649" alt="image" src="https://github.com/user-attachments/assets/c9c2aec6-b6d5-4a9b-9da4-5517201b9c43" />
 
-  * JSOption의 setRenderSelectSilhouette API를 활용하여 외곽선을 끄고 켤 수 있습니다.
+### 2.19.0 (2025/10/13)
+#### 1. 오버레이 기능 오류 수정 [(이슈 #513)](https://github.com/EgisCorp/XDWorld/issues/513)
+ * 간헐적으로 검은색 이미지가 오버레이 되는 현상이 수정되었습니다.
+ * 이미지 오버레이 투명값 옵션이 추가되었습니다.
+ ```javascript
+polygon.setOverlayObject({
+	style : "polygon",
+	coordinate : vertex,
+	alpha : 0.6,           // 추가된 옵션
+	image : _image
+});
+ ```
+ * 건물 심플모드에 오버레이 적용되지 않는 현상 수정
+건물 외곽선 렌더링을 원하지 않을 경우 : Module.SetSimpleModeLineRender(false);
+<img width="969" height="690" alt="image" src="https://github.com/user-attachments/assets/d4d0761e-c7b2-437e-a3d5-6eedbf4965bf" />
+
+#### 2. 라인객체 GLOW 효과 개선
+ * 기존 GLOW 효과를 개선하였습니다.
+<img width="645" height="619" alt="image" src="https://github.com/user-attachments/assets/c4dde99b-8e5d-48d9-a5d9-19758722d2f3" />
+
+#### 3. JSPolygon 편집 API 추가
+  * 이동, 회전, 스케일
+  * [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+```javascript
+let polygon = Module.createPolygon("POLYGON");
+
+// 이동
+polygon.move(longitude, latitude, alttitude);
+
+// 회전
+polygon.setRotation(x, y, z);
+
+// 스케일
+polygon.setScale(x, y, z);
+```
+
+#### 4. JSObject3D 축의 끝점 좌표 반환 API 추가
+  * 회전, 스케일 시 축을 생성하여 직관적으로 확인할 수 있도록 축의 끝점 좌표를 반환하는 API가 추가되었습니다.
+  * 중심과 끝점으로 라인을 생성합니다.
+  * [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+```javascript
+// axis (x: 0, y: 1, z: 2)
+let endpoint = getAxisEndpoint(axis, length);
+```
+#### 5. 카메라 이동 오류 수정 [(이슈 #514)](https://github.com/EgisCorp/XDWorld/issues/514)
+ - 카메라 이동 후 간헐적으로 카메라 방향이 틀어지는 현상이 있어 수정되었습니다.
+#### 6. 심플모드 건물에서 Hsv 옵션 [(이슈 #512)](https://github.com/EgisCorp/XDWorld/issues/512)
+  * 건물 레이어가 심플모드인 경우에도 Hsv 옵션이 정상 동작하도록 수정되었습니다.
+
+#### 7. 타일 레이어의 폴리곤 기반 요청 영역 지정
+  * JSLayer의 setLimitBoundary API가 기존 사각 영역을 포함하여 폴리곤 영역도 수용하도록 변경되었습니다.
+  * 건물의 중점이 폴리곤 영역에 포함되면 데이터를 로드합니다.
+  * createXDServerLayer API에 boundaryLimit 옵션으로도 설정할 수 있습니다.
     ``` javascript
-    Module.getOption().setRenderSelectSilhouette(true);   // on
-    Module.getOption().setRenderSelectSilhouette(false);  // off
+    Module.getTileLayerList().createXDServerLayer({
+	  url : "https://xdworld.server.url",
+	  servername : "XDServer",
+	  name : "layer_name",
+	  type : 9,
+	  minLevel : 0,
+	  maxLevel : 15,
+	  boundaryLimit : [
+		[126.93005255915998, 37.529214172573376, 0.0],
+		[126.94102835336719, 37.52029412432422, 0.0],
+		[126.93891529125652, 37.51798498831805, 0.0],
+		[126.92841620055285, 37.516978366894115, 0.0],
+		[126.92514862234246, 37.51770012779483, 0.0],
+		[126.91756299430655, 37.521708873949606, 0.0],
+	  ]
+    });
     ```
 
-#### 2. DEM 단독 렌더링
-  * 지형 영상 없이 DEM 단독으로 렌더링이 가능하도록 개선되었습니다.
-
-#### 3. 화면 중심 기반 마우스 틸트, 회전 옵션 [(이슈 509)](https://github.com/EgisCorp/XDWorld/issues/509)
-  * 마우스로 화면 틸트, 회전 시 화면 중앙점을 중심으로 움직이도록 옵션이 추가되었습니다.
+#### 8. 지형 이미지 음영 마스킹 기능 추가
+  * 경위도 최소, 최대 좌표로 지정한 영역 외 지형 이미지를 음영처리하는 옵션 API가 추가되었습니다. 
     ``` javascript
-    Module.getControl().setMouseClickCenterMode(true);
+    Module.getTerrain().setImageMask({
+        active : true,
+        range : {
+            min : [126.917562, 37.516978],
+            max : [126.941028, 37.529214],
+        },
+        color : {a : 200, r : 0, g : 0, b : 0}
+    });
     ```
 
-### 2.18.0 (2025/09/01)
-#### 1. Outline Rendering on Object Selection
+#### 9. 지형 내장 이미지 사용 여부 설정 API 추가
+  * 엔진 내 내장된 0레벨 지구본 이미지 사용 여부를 설정하는 옵션이 Module.initialize API에 추가되었습니다.
+  * true로 설정하는 경우 내장된 이미지를 사용하며, false로 설정하는 경우 지정한 이미지 서버로 0레벨 이미지를 요청합니다.
+  * 디폴트 값은 true 입니다.
+    ``` javascript
+    Module.initialize({
+        container: document.getElementById("map"),
+        terrain : {
+            dem : {
+                url : "...",
+                name : "dem",
+                servername : "XDServer",
+            },
+            image : {
+                url : "...",
+                name : "tile",
+                servername : "XDServer",
+                useBuiltInZeroImage : false    // false로 설정 시 지정한 서버로부터 0레벨 이미지 수신
+            },						
+        },
+        ....
+    }
+    ```
 
-* When selecting **JSReal3D**, **JSGhostSymbol**, or **JSPolygon** objects, an outline is displayed as shown in the image below.
-  <img width="1424" height="649" alt="image" src="https://github.com/user-attachments/assets/4eeb14bd-5da9-433e-bfc8-a4ff2cbc6e01" />
+### 2.19.0 (2025/10/13)
+### 1. Overlay Function Bug Fix [(Issue #513)](https://github.com/EgisCorp/XDWorld/issues/513)
 
+* Fixed an issue where a black image was occasionally overlaid.
+* Added an option for overlay image transparency.
 
-* You can toggle the outline on and off using the `setRenderSelectSilhouette` API in **JSOption**.
+```javascript
+polygon.setOverlayObject({
+	style : "polygon",
+	coordinate : vertex,
+	alpha : 0.6,           // newly added option
+	image : _image
+});
+```
 
-  ```javascript
-  Module.getOption().setRenderSelectSilhouette(true);   // on
-  Module.getOption().setRenderSelectSilhouette(false);  // off
-  ```
+* Fixed an issue where overlays were not applied in building simple mode.
+  If you don’t want to render building outlines:
+  `Module.SetSimpleModeLineRender(false);`
+<img width="969" height="690" alt="image" src="https://github.com/user-attachments/assets/1698f5ff-6e9a-41a4-9379-ffc96a83951a" />
 
-#### 2. DEM-Only Rendering
+### 2. Improved Line Object GLOW Effect
 
-* Improved to allow rendering of DEM without terrain imagery.
+* The existing GLOW effect has been enhanced.
+<img width="645" height="619" alt="image" src="https://github.com/user-attachments/assets/c332909c-dd91-4c26-8dd4-c3cb1a3aa26c" />
 
-#### 3. Mouse Tilt & Rotation Based on Screen Center [(Issue 509)](https://github.com/EgisCorp/XDWorld/issues/509)
+### 3. Added JSPolygon Editing API
 
-* Added an option to make mouse tilt and rotation operations move around the screen center point.
+* Supports move, rotate, and scale operations.
+* [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
 
-  ```javascript
-  Module.getControl().setMouseClickCenterMode(true);
-  ```
+```javascript
+let polygon = Module.createPolygon("POLYGON");
 
+// Move
+polygon.move(longitude, latitude, altitude);
 
+// Rotate
+polygon.setRotation(x, y, z);
+
+// Scale
+polygon.setScale(x, y, z);
+```
+
+### 4. Added API for Returning JSObject3D Axis Endpoints
+
+* Added an API that returns the endpoints of axes for visual confirmation during rotation and scaling.
+* You can create lines between the center and each endpoint.
+* [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+
+```javascript
+// axis (x: 0, y: 1, z: 2)
+let endpoint = getAxisEndpoint(axis, length);
+```
+
+### 5. Camera Movement Bug Fix [(Issue #514)](https://github.com/EgisCorp/XDWorld/issues/514)
+
+* Fixed an issue where the camera direction was occasionally misaligned after movement.
+
+### 6. HSV Option in Simple Mode Buildings [(Issue #512)](https://github.com/EgisCorp/XDWorld/issues/512)
+
+* Fixed an issue where the HSV option did not function properly when the building layer was in simple mode.
+
+### 7. Polygon-Based Request Area for Tile Layers
+
+* The `setLimitBoundary` API of `JSLayer` now supports polygon areas in addition to rectangular ones.
+* Building data is loaded when the building’s center point is within the polygon area.
+* You can also configure this using the `boundaryLimit` option in the `createXDServerLayer` API.
+
+```javascript
+Module.getTileLayerList().createXDServerLayer({
+	url : "https://xdworld.server.url",
+	servername : "XDServer",
+	name : "layer_name",
+	type : 9,
+	minLevel : 0,
+	maxLevel : 15,
+	boundaryLimit : [
+		[126.93005255915998, 37.529214172573376, 0.0],
+		[126.94102835336719, 37.52029412432422, 0.0],
+		[126.93891529125652, 37.51798498831805, 0.0],
+		[126.92841620055285, 37.516978366894115, 0.0],
+		[126.92514862234246, 37.51770012779483, 0.0],
+		[126.91756299430655, 37.521708873949606, 0.0],
+	]
+});
+```
+
+### 8. Added Terrain Image Shading Mask Feature
+
+* Added an API option to shade areas of the terrain image outside a specified coordinate range.
+
+```javascript
+Module.getTerrain().setImageMask({
+	active : true,
+	range : {
+		min : [126.917562, 37.516978],
+		max : [126.941028, 37.529214],
+	},
+	color : {a : 200, r : 0, g : 0, b : 0}
+});
+```
+
+### 9. Added Option to Enable/Disable Built-In Terrain Base Image
+
+* Added a new option in `Module.initialize` to enable or disable the engine’s built-in level 0 globe image.
+* When set to `true`, the built-in image is used; when set to `false`, the level 0 image is requested from the specified image server.
+* Default value: `true`.
+
+```javascript
+Module.initialize({
+	container: document.getElementById("map"),
+	terrain : {
+		dem : {
+			url : "...",
+			name : "dem",
+			servername : "XDServer",
+		},
+		image : {
+			url : "...",
+			name : "tile",
+			servername : "XDServer",
+			useBuiltInZeroImage : false    // When false, fetch level 0 image from the specified server
+		},						
+	},
+	....
+});
+```
+
+---
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
