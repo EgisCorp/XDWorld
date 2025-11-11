@@ -87,11 +87,34 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
-### 2.20.0 (2025/11/03)
-#### 1. 성능 개선 및 내부 안정화 작업을 수행하였습니다.
+### 2.21.0 (2025/11/11)
+> **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**  
+#### 1. JSFlowPolygon 인덱스 기반 생성 기능 추가
+  - JSFlowPolygon 생성 시 버텍스 및 삼각분할 된 인덱스 기반으로 생성할 수 있도록 API 기능이 추가되었습니다.
+    ``` javascript
+    var polygon = Module.createFlowPolygon("FLOW_POLYGON");
+    ...
+    var result = polygon.create({
+        vertex: geometry,                       // Polygon shape
+        index : indices,                          // Triangulated index
+        normaltexture: GLOBAL_FLOW_NOISE_TEXTURE,       // River flow noise texture
+    });
+    ```
 
-### 2.20.0 (2025/11/03)
-#### 1. Performance improvements and internal stability enhancements.
+### 2.21.0 (2025/11/11)
+> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
+#### 1. Added index-based creation for `JSFlowPolygon`
+  - When creating a `JSFlowPolygon`, you can now construct it using vertices and triangulated indices via the new API.
+    ``` javascript
+    var polygon = Module.createFlowPolygon("FLOW_POLYGON");
+    ...
+    var result = polygon.create({
+        vertex: geometry,                       // Polygon shape
+        index : indices,                          // Triangulated index
+        normaltexture: GLOBAL_FLOW_NOISE_TEXTURE,       // River flow noise texture
+    });
+    ```
+
 
 ---
 
