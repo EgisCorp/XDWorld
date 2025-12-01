@@ -164,7 +164,7 @@ console.log(objects.id);
  -   일부 기기에서 POI 객체 선택시 오류 수정
 
 #### 10. 선택된 객체 리스트 반환
-- [선택된 객체 리스트 반환](https://sandbox.egiscloud.com/code/main.do?engine=latest_test&id=object_select_info)
+- [선택된 객체 리스트 반환](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_select_info)
 
 #### 11. 빌보드 객체 지형 아래 랜더링 오류 수정
 - 빌보드 객체가 지형 아래로 내려가거나 걸칠경우 랜더링 되지 않는 현상 수정
@@ -263,7 +263,7 @@ console.log(objects.id);
 
 #### 10. Added API for Retrieving Selected Object List
 
-* [Get Select Object](https://sandbox-test.egiscloud.com/code/main.do?engine=latest_test&id=object_select_info)
+* [Get Select Object](https://sandbox-test.egiscloud.com/code/main.do?engine=latest&id=object_select_info)
 
 #### 11. Fixed Billboard Rendering Issue Below Terrain
 
