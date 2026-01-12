@@ -83,193 +83,233 @@ $\rm{\color{red}●\ Discontinuation\ of\ First-Person\ Camera\ Video\ Texture\ 
 
   * Please refer to [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [LED Board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), and [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
 
+
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
-- $\rm{\color{red}2.22.0\ 버전\ 배포는\ 1월\ 12일에\ 진행될\ 예정입니다.\ 참고\ 부탁드립니다.}$
 
 
-### 2.21.0 (2025/12/01)
-#### 1. 카메라 타겟 좌표 반환 API 추가
-- 카메라 이동 애니메이션이 적용된 상태에서 카메라의 최종 목적지 좌표를 반환하는 API가 추가되었습니다.
+### 2.22.0 (2026/01/12)
+#### 1. 시곡면 분석 정확도 향상
+  - [시곡면 분석](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) 정확도 향상 및 0~360도 범위 확장
+<img width="916" height="690" alt="image" src="https://github.com/user-attachments/assets/f091e9f7-1fd9-4a67-8dd6-f2d738cdfd96" />
+
+#### 2. 1인칭 카메라 비디오 텍스쳐 기능 지원 중단
+  - 기존 1인칭 카메라 비디오 텍스쳐 기능은 2025년까지 지원합니다. 
+  - JSCamera 클래스의 삭제 API ---------> JSVideoObject 클래스의 대체 API 
+    - [x] setVideoInfo ---------> createVideo
+    - [x] clearVideo -----------> clearTexture
+    <details>
+     <summary>JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property</summary>
+     
+     - [x] videoStreaming ---------------> videoStreaming
+     - [x] videoFar -----------------------> far
+     - [x] videoFovX ---------------------> fovX
+     - [x] videoFovY ---------------------> fovY
+     - [x] videoAlpha --------------------> alpha
+     - [x] videoAxisX --------------------> axisX
+     - [x] videoAxisY --------------------> axisY
+     - [x] videoZoom --------------------> zoom
+     - [x] videoFarPlane -----------------> background
+     - [x] videoResolution ---------------> resolution
+     - [x] videoObjectMapping ---------> objectMapping
+     - [x] videoIsplayer ------------------> isPlayer
+   </details>
+
+  - 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
+
+#### 3. 건물 레이어 limit boundary 옵션 추가
+  * 건물 레이어 boundaryLimit에 mode: "exclude" 옵션을 추가해 경계 내부를 제외하고 외부 오브젝트만 로드할 수 있도록 개선했습니다.
+  * 아래와 같이 설정하는 경우 바운더리 외 건물이 로드됩니다.
+    ``` javascript
+    const boundary = [
+          [126.93005255915998, 37.529214172573376],
+          [126.94102835336719, 37.52029412432422],
+          [126.93891529125652, 37.51798498831805],
+          [126.92841620055285, 37.516978366894115],
+          [126.92514862234246, 37.51770012779483],
+          [126.91756299430655, 37.521708873949606],
+    ];
+
+    Module.getTileLayerList().createXDServerLayer({
+          ...
+          boundaryLimit: {
+            mode: "exclude",
+            rings: boundary
+          }
+    });
+    ```
+  * 아래와 같이 설정하는 경우 바운더리 내부 건물만 로드됩니다. (기존 방식과 동일)
+    ``` javascript
+    const boundary = [
+          [126.93005255915998, 37.529214172573376],
+          [126.94102835336719, 37.52029412432422],
+          [126.93891529125652, 37.51798498831805],
+          [126.92841620055285, 37.516978366894115],
+          [126.92514862234246, 37.51770012779483],
+          [126.91756299430655, 37.521708873949606],
+    ];
+
+    Module.getTileLayerList().createXDServerLayer({
+          ...
+          boundaryLimit: {
+            mode: "include",
+            rings: boundary
+          }
+    });
+    ```
+* exclude/include 옵션이 없는 경우 include 타입으로 자동 지정되어 바운더리 내부 건물만 로드됩니다.
+
+#### 4. 엔진 상태 체크 옵션 추가
 ```javascript
-var pos = Module.getViewCamera().getTargetLocation();
+Module.initialize({
+	.
+	.
+	.
+	ping: enginePing
+});
+
+function enginePing(e) {
+	console.log(e);
+}
 ```
 
-#### 2. 카메라 플레이어 모드 추가
-- 1인칭 카메라에 플레이어 모드(물리 기반)가 추가되었습니다.
-- 이 모드에서는 점프 및 중력 낙하 효과가 자연스럽게 적용됩니다.
+#### 5. 수평 이동 위치 반환 API 추가
+* 전후좌우 방향으로 특정 거리만큼 수평 이동한 좌표를 반환하는 API가 추가되었습니다.
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.getPanMoveLocation(moveType, distance);
+  // moveType : 0(front), 1(back), 2(left), 3(right)
+  ```
+
+#### 6. 1인칭 카메라 모드 높이 설정 API 추가
+* 1인칭 카메라 모드에서 카메라의 높이를 설정하는 API가 추가되었습니다.
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.setPersonHeight(1.5);
+  ```
+
+#### 7. 플레이어 모드 천장 설정 API 추가
+* 플레이어 모드에서 천장 고도를 설정하여 점프 시 천장에 부딪히도록 하는 API가 추가되었습니다.
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.setCeiling() // 천장 설정 해제
+  camera.setCeiling(10.0); // 천장 고도 설정
+  ```
+
+### 2.22.0 (2026/01/12)
+#### 1. Improved Accuracy of Sky View (View-Shed) Analysis
+  - Improved accuracy of the [Sky View Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) and expanded the angle range to 0–360 degrees.
+<img width="916" height="690" alt="image" src="https://github.com/user-attachments/assets/f091e9f7-1fd9-4a67-8dd6-f2d738cdfd96" />
+
+#### 2. Deprecation of First-Person Camera Video Texture
+  * The existing First-Person Camera Video Texture feature will be supported until 2025.
+  * JSCamera class removal API ---------> Replacement API in JSVideoObject class
+    - [x] setVideoInfo ---------> createVideo
+    - [x] clearVideo -----------> clearTexture
+    <details>
+     <summary>JSCamera class removal properties ---------> Replacement properties in JSVideoObject class</summary>
+     
+     - [x] videoStreaming ---------------> videoStreaming
+     - [x] videoFar -----------------------> far
+     - [x] videoFovX ---------------------> fovX
+     - [x] videoFovY ---------------------> fovY
+     - [x] videoAlpha --------------------> alpha
+     - [x] videoAxisX --------------------> axisX
+     - [x] videoAxisY --------------------> axisY
+     - [x] videoZoom --------------------> zoom
+     - [x] videoFarPlane -----------------> background
+     - [x] videoResolution ---------------> resolution
+     - [x] videoObjectMapping ---------> objectMapping
+     - [x] videoIsplayer ------------------> isPlayer
+   </details>
+
+  * Please refer to [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [LED Board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), and [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
+
+#### 3. Added limit boundary Option for Building Layers
+  * A new `mode: "exclude"` option has been added to `boundaryLimit`, allowing only objects outside the boundary to be loaded.
+  * With the following setting, buildings outside the boundary will be loaded.
+    ```javascript
+    const boundary = [
+          [126.93005255915998, 37.529214172573376],
+          [126.94102835336719, 37.52029412432422],
+          [126.93891529125652, 37.51798498831805],
+          [126.92841620055285, 37.516978366894115],
+          [126.92514862234246, 37.51770012779483],
+          [126.91756299430655, 37.521708873949606],
+    ];
+
+    Module.getTileLayerList().createXDServerLayer({
+          ...
+          boundaryLimit: {
+            mode: "exclude",
+            rings: boundary
+          }
+    });
+    ```
+  * With the following setting, only buildings inside the boundary will be loaded (same as the existing behavior).
+    ```javascript
+    const boundary = [
+          [126.93005255915998, 37.529214172573376],
+          [126.94102835336719, 37.52029412432422],
+          [126.93891529125652, 37.51798498831805],
+          [126.92841620055285, 37.516978366894115],
+          [126.92514862234246, 37.51770012779483],
+          [126.91756299430655, 37.521708873949606],
+    ];
+
+    Module.getTileLayerList().createXDServerLayer({
+          ...
+          boundaryLimit: {
+            mode: "include",
+            rings: boundary
+          }
+    });
+    ```
+* If no `exclude/include` option is specified, it defaults to `include` and only buildings inside the boundary will be loaded.
+
+#### 4. Added Engine Status Check Option
 ```javascript
-var camera = Module.getViewCamera();
-camera.setPlayerMode(true); // 플레이어 모드 활성화
-camera.setPlayerMode(false); // 플레이어 모드 비활성화
+Module.initialize({
+	.
+	.
+	.
+	ping: enginePing
+});
+
+function enginePing(e) {
+	console.log(e);
+}
 ```
 
-#### 3. 카메라 점프 기능 API 추가
-- 플레이어 모드에서 카메라가 점프 동작을 수행할 수 있는 API가 추가되었습니다.
-- 점프 세기(jumpForce), 중력(gravity), 시간 간격(timeStep)을 조절할 수 있습니다.
-- [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=camera_jump_outdoor)
-```javascript
-var camera = Module.getViewCamera();
-camera.setJumpForce(30.0); // 기본값 10.0
-camera.setGravity(9.8); // 기본값 9.8
-camera.setTimeStep(0.06); // 기본값 0.05
-camera.jump();
-```
+#### 5. Added Horizontal Movement Position API
 
-#### 4. 카메라 지면 감지 API 추가
-- 1인칭 카메라가 현재 지면에 닿아 있는지 여부를 확인할 수 있는 API가 추가되었습니다.
-- isGround()가 true일 때만 점프 기능이 동작합니다.
-```javascript
-var camera = Module.getViewCamera();
-camera.isGround();
-```
+* An API has been added that returns the coordinates after moving a certain distance horizontally (front, back, left, or right).
 
-#### 5. 착지 고도 설정 API 추가
-- 플레이어 모드에서 카메라의 착지 고도를 직접 지정할 수 있는 기능이 추가되었습니다.
-- 특정 고도를 수동으로 설정하거나, 현재 위치의 지형 고도를 자동으로 적용할 수 있습니다.
-```javascript
-var camera = Module.getViewCamera();
-camera.setLandingElevation(50.0); // 특정 고도를 착지 고도로 설정
-camera.setLandingElevationToTerrain(); // 지형 고도를 착지 고도로 설정
-```
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.getPanMoveLocation(moveType, distance);
+  // moveType : 0(front), 1(back), 2(left), 3(right)
+  ```
 
-#### 6. 카메라 범위 외 레이어 피킹 API 추가
-- 기존에는 카메라 시야 영역 내 객체만 피킹이 가능했지만, 시야 영역에 관계없이 피킹이 가능한 API가 추가되었습니다.
-```javascript
-let buildingLayer = Module.getTileLayerList().nameAtLayer("facility_build");
-pickPosition = buildingLayer.getPickInfoAtView(_from, _to); // 기존: 카메라 영역 내부만 피킹
-pickPosition = buildingLayer.getPickInfo(_from, _to); // 추가: 카메라 영역 상관 없이 피킹
-```
+#### 6. Added First-Person Camera Height API
 
-#### 7. 영역 내부의 건물 오브젝트 아이디 반환 API 추가
-- 영역 내부의 건물 오브젝트 아이디를 반환하는 API가 추가되었습니다.
-```javascript
-var boundary = [
-  [126.93790903169547, 37.522875202560655, 0.0],
-  [126.92841620055285, 37.516978366894115, 0.0],
-  [126.91894402430914, 37.52022975707285, 0.0]
-] // 고도값 유무 상관 없음
+* An API has been added to set the camera height in first-person camera mode.
 
-var objects = Module.getTileLayerList().nameAtLayer("facility_build").getObjectsInBoundary(boundary);
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.setPersonHeight(1.5);
+  ```
 
-console.log(objects.id);
-```
+#### 7. Added Player Mode Ceiling API
 
-#### 8. 3DTiles 요청 및 렌더링 최적화
-- 3DTiles 요청시 SSE 기준 요청으로 변경
-- 요청 순서 최적화
-- 요청 수 관리로 브라우저 안정화
+* An API has been added to set the ceiling altitude in player mode so the player collides with the ceiling when jumping.
 
-#### 9. 모바일 서비스 안정화
-
- -   일부 기기에서 POI 객체 선택시 오류 수정
-
-#### 10. 선택된 객체 리스트 반환
-- [선택된 객체 리스트 반환](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_select_info)
-
-#### 11. 빌보드 객체 지형 아래 랜더링 오류 수정
-- 빌보드 객체가 지형 아래로 내려가거나 걸칠경우 랜더링 되지 않는 현상 수정
-
-### 2.21.0 (2025/11/03)
-#### 1. Added API for Returning Camera Target Coordinates
-
-* An API has been added to retrieve the final destination coordinates of the camera when a camera movement animation is in progress.
-
-```javascript
-var pos = Module.getViewCamera().getTargetLocation();
-```
-
-#### 2. Added Camera Player Mode
-
-* A player mode (physics-based) has been added to the first-person camera.
-* In this mode, natural jump and gravity effects are applied.
-
-```javascript
-var camera = Module.getViewCamera();
-camera.setPlayerMode(true); // Enable player mode
-camera.setPlayerMode(false); // Disable player mode
-```
-
-#### 3. Added Camera Jump API
-
-* An API has been added that allows the camera to perform a jump action in player mode.
-* You can adjust the jump force, gravity, and time step.
-* [Sandbox sample](https://sandbox.egiscloud.com/code/main.do?id=camera_jump_outdoor)
-
-```javascript
-var camera = Module.getViewCamera();
-camera.setJumpForce(30.0); // Default: 10.0
-camera.setGravity(9.8); // Default: 9.8
-camera.setTimeStep(0.06); // Default: 0.05
-camera.jump();
-```
-
-#### 4. Added Camera Ground Detection API
-
-* You can now check whether the first-person camera is currently touching the ground.
-* The jump action works only when `isGround()` returns true.
-
-```javascript
-var camera = Module.getViewCamera();
-camera.isGround();
-```
-
-#### 5. Added Landing Elevation API
-
-* In player mode, you can manually set the camera’s landing elevation.
-* You can set a specific elevation or automatically apply the terrain elevation at the current position.
-
-```javascript
-var camera = Module.getViewCamera();
-camera.setLandingElevation(50.0); // Set a specific landing elevation
-camera.setLandingElevationToTerrain(); // Apply terrain elevation as landing elevation
-```
-
-#### 6. Added Layer Picking API Outside Camera Range
-
-* Previously, picking was only possible for objects within the camera’s view range.
-  Now, an API allows picking regardless of camera visibility.
-
-```javascript
-let buildingLayer = Module.getTileLayerList().nameAtLayer("facility_build");
-pickPosition = buildingLayer.getPickInfoAtView(_from, _to); // Previous: only within camera view
-pickPosition = buildingLayer.getPickInfo(_from, _to); // New: pick regardless of camera range
-```
-
-#### 7. Added API for Returning Object IDs Inside a Boundary
-
-* An API has been added to return the IDs of building objects located within a defined area.
-
-```javascript
-var boundary = [
-  [126.93790903169547, 37.522875202560655, 0.0],
-  [126.92841620055285, 37.516978366894115, 0.0],
-  [126.91894402430914, 37.52022975707285, 0.0]
-]; // Elevation is optional
-
-var objects = Module.getTileLayerList().nameAtLayer("facility_build").getObjectsInBoundary(boundary);
-
-console.log(objects.id);
-```
-
-#### 8. 3DTiles Request & Rendering Optimization
-
-* Switched to SSE-based request handling for 3DTiles
-* Optimized request order
-* Stabilized browser performance through request count management
-
-#### 9. Mobile Service Stabilization
-
-* Fixed an issue where selecting POI objects on certain devices caused errors
-
-#### 10. Added API for Retrieving Selected Object List
-
-* [Get Select Object](https://sandbox-test.egiscloud.com/code/main.do?engine=latest&id=object_select_info)
-
-#### 11. Fixed Billboard Rendering Issue Below Terrain
-
-* Resolved an issue where billboard objects were not rendered when positioned below or intersecting with terrain
+  ```javascript
+  var camera = Module.getViewCamera();
+  camera.setCeiling();      // Disable ceiling
+  camera.setCeiling(10.0);  // Set ceiling height
+  ```
 
 ---
 
