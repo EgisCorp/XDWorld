@@ -38,227 +38,153 @@
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
 
-### 2.22.0 (2026/01/12)
-#### 1. 시곡면 분석 정확도 향상
-  - [시곡면 분석](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) 정확도 향상 및 0~360도 범위 확장
-<img width="916" height="690" alt="image" src="https://github.com/user-attachments/assets/f091e9f7-1fd9-4a67-8dd6-f2d738cdfd96" />
+### 2.23.0 (2026/02/02)
+#### 1. JSPolygon `loadFile` projectioncode 타입 변경
+  * projectioncode  : "EPSG:5186"
+  * 기존 숫자코드는 가독성이 떨어져 EPSG 코드를 입력할 수 있도록 변경하였습니다.
 
-#### 2. 1인칭 카메라 비디오 텍스쳐 기능 지원 중단
-  - 기존 1인칭 카메라 비디오 텍스쳐 기능은 2025년까지 지원합니다. 
-  - JSCamera 클래스의 삭제 API ---------> JSVideoObject 클래스의 대체 API 
-    - [x] setVideoInfo ---------> createVideo
-    - [x] clearVideo -----------> clearTexture
-    <details>
-     <summary>JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property</summary>
-     
-     - [x] videoStreaming ---------------> videoStreaming
-     - [x] videoFar -----------------------> far
-     - [x] videoFovX ---------------------> fovX
-     - [x] videoFovY ---------------------> fovY
-     - [x] videoAlpha --------------------> alpha
-     - [x] videoAxisX --------------------> axisX
-     - [x] videoAxisY --------------------> axisY
-     - [x] videoZoom --------------------> zoom
-     - [x] videoFarPlane -----------------> background
-     - [x] videoResolution ---------------> resolution
-     - [x] videoObjectMapping ---------> objectMapping
-     - [x] videoIsplayer ------------------> isPlayer
-   </details>
-
-  - 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
-
-#### 3. 건물 레이어 limit boundary 옵션 추가
-  * 건물 레이어 boundaryLimit에 mode: "exclude" 옵션을 추가해 경계 내부를 제외하고 외부 오브젝트만 로드할 수 있도록 개선했습니다.
-  * 아래와 같이 설정하는 경우 바운더리 외 건물이 로드됩니다.
-    ``` javascript
-    const boundary = [
-          [126.93005255915998, 37.529214172573376],
-          [126.94102835336719, 37.52029412432422],
-          [126.93891529125652, 37.51798498831805],
-          [126.92841620055285, 37.516978366894115],
-          [126.92514862234246, 37.51770012779483],
-          [126.91756299430655, 37.521708873949606],
-    ];
-
-    Module.getTileLayerList().createXDServerLayer({
-          ...
-          boundaryLimit: {
-            mode: "exclude",
-            rings: boundary
-          }
-    });
-    ```
-  * 아래와 같이 설정하는 경우 바운더리 내부 건물만 로드됩니다. (기존 방식과 동일)
-    ``` javascript
-    const boundary = [
-          [126.93005255915998, 37.529214172573376],
-          [126.94102835336719, 37.52029412432422],
-          [126.93891529125652, 37.51798498831805],
-          [126.92841620055285, 37.516978366894115],
-          [126.92514862234246, 37.51770012779483],
-          [126.91756299430655, 37.521708873949606],
-    ];
-
-    Module.getTileLayerList().createXDServerLayer({
-          ...
-          boundaryLimit: {
-            mode: "include",
-            rings: boundary
-          }
-    });
-    ```
-* exclude/include 옵션이 없는 경우 include 타입으로 자동 지정되어 바운더리 내부 건물만 로드됩니다.
-
-#### 4. 엔진 상태 체크 옵션 추가
-```javascript
-Module.initialize({
-	.
-	.
-	.
-	ping: enginePing
-});
-
-function enginePing(e) {
-	console.log(e);
-}
+#### 2. 오브젝트레이어 POI 원근 스타일 설정 추가 
+   - JSLayerList::createObjectLayer로 생성한 레이어 한정
+   - JSLayer : setLayerStyle({object}) 추가
+   - POI가 카메라와 표출 거리에 따른 크기 및 투명도 설정
+  ```
+ let option = {
+         "poi" : {
+            "scaleable" : {             // 거리별 가변 크기 적용
+                "activate" : true,      // 동작 설정
+                "range" : {
+                    "min" : 1000,       // 최소 구간 (보다 가까우면 원본 POI 표현)
+                    "max" : 3000        // 최대 구간 (보다 멀면 최소 픽셀 POI 표현)
+                }, 
+                "minPixel" : {          // 아이콘 최소 픽셀 크기 설정 (아이콘 크기에서 x,y중 작은쪽 크기가 최소 크기보다 작으면 해당 크기로 고정)
+                    "x" : 4,         
+                    "y" : 16
+                },
+                "tiltRange" : {             // 각도에 따른 크기 왜곡 추가
+                    "activate" : true,      // 왜곡 사용
+                    "minAngle" : 60,        // 최소 왜곡 각도 (이하 각도에서는 기존 배율적용)
+                    "maxAngle" : 80         // 최대 왜곡 각도 (이상 각도에서는 원본 크기로 표현)
+                }
+            },
+            "fadeable" : {              // 거리별 투명도 적용
+                "activate" : true,      // 동작 설정
+                "range" : {
+                    "min" : 3000,       // 최소 구간 (보다 가까우면 불투명)
+                    "max" : 5000        // 최대 구간 (보다 멀면 최소 알파값 적용)
+                },
+                "minAlpha" : 0.2,        // 최소 투명도값 1>minAlpha>0 ( 이보다 더 투명해지지 않음 )
+                "tiltRange" : {             // 각도에 따른 투명도 왜곡 추가
+                    "activate" : true,      // 왜곡 사용
+                    "minAngle" : 60,        // 최소 왜곡 각도 (이하 각도에서는 기존 배율적용)
+                    "maxAngle" : 80         // 최대 왜곡 각도 (이상 각도에서는 원본 크기로 표현)
+                }
+            }
+        }
+    };
 ```
 
-#### 5. 수평 이동 위치 반환 API 추가
-* 전후좌우 방향으로 특정 거리만큼 수평 이동한 좌표를 반환하는 API가 추가되었습니다.
+#### 기본형태 
+<img width="674" height="754" alt="image" src="https://github.com/user-attachments/assets/c768699e-3dd0-4547-8476-3d1114b5e81c" />
+
+#### 크기 가변형태
+<img width="840" height="638" alt="image" src="https://github.com/user-attachments/assets/2f2b4cd4-e7b5-4e97-b37e-41bf2785fbf1" />
+
+#### 투명도 가변형태
+<img width="801" height="789" alt="image" src="https://github.com/user-attachments/assets/4e8216a8-659c-4766-b304-7c55708381f4" />
+
+#### 혼합사용 형태
+<img width="1027" height="786" alt="image" src="https://github.com/user-attachments/assets/2a38301f-bf2d-4c00-803a-e8ba61d0a00d" />
+
+#### 각도 왜곡 미적용 (Tilt와 관계 없이 거리별 크기 적용)
+<img width="776" height="810" alt="image" src="https://github.com/user-attachments/assets/cc4a999d-cb1a-4070-a3e4-d5f3a5467295" />
+
+#### 각도 왜곡 적용 (지정된 Tilt각 이상에서는 원본 크기로 적용 왜곡)
+<img width="677" height="914" alt="image" src="https://github.com/user-attachments/assets/ae0edb6f-0e41-4c44-9c42-138cd6519061" />
+
+#### 3. JSPoint POI 자동 높이 조절 기능 property 추가
   ```javascript
-  var camera = Module.getViewCamera();
-  camera.getPanMoveLocation(moveType, distance);
-  // moveType : 0(front), 1(back), 2(left), 3(right)
+  var point = Module.createPoint("POI");
+  point.autoHeight  = true;
   ```
 
-#### 6. 1인칭 카메라 모드 높이 설정 API 추가
-* 1인칭 카메라 모드에서 카메라의 높이를 설정하는 API가 추가되었습니다.
-  ```javascript
-  var camera = Module.getViewCamera();
-  camera.setPersonHeight(1.5);
-  ```
+### 2.23.0 (2026/02/02)
+#### 1. Change JSPolygon `loadFile` projection code type
 
-#### 7. 플레이어 모드 천장 설정 API 추가
-* 플레이어 모드에서 천장 고도를 설정하여 점프 시 천장에 부딪히도록 하는 API가 추가되었습니다.
-  ```javascript
-  var camera = Module.getViewCamera();
-  camera.setCeiling() // 천장 설정 해제
-  camera.setCeiling(10.0); // 천장 고도 설정
-  ```
+* `projectioncode` : `"EPSG:5186"`
+* The existing numeric code was hard to read, so it has been changed to allow EPSG codes to be entered directly.
 
-### 2.22.0 (2026/01/12)
-#### 1. Improved Accuracy of Sky View (View-Shed) Analysis
-  - Improved accuracy of the [Sky View Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) and expanded the angle range to 0–360 degrees.
-<img width="916" height="690" alt="image" src="https://github.com/user-attachments/assets/f091e9f7-1fd9-4a67-8dd6-f2d738cdfd96" />
+#### 2. Add perspective-based POI style settings for Object Layers
 
-#### 2. Deprecation of First-Person Camera Video Texture
-  * The existing First-Person Camera Video Texture feature will be supported until 2025.
-  * JSCamera class removal API ---------> Replacement API in JSVideoObject class
-    - [x] setVideoInfo ---------> createVideo
-    - [x] clearVideo -----------> clearTexture
-    <details>
-     <summary>JSCamera class removal properties ---------> Replacement properties in JSVideoObject class</summary>
-     
-     - [x] videoStreaming ---------------> videoStreaming
-     - [x] videoFar -----------------------> far
-     - [x] videoFovX ---------------------> fovX
-     - [x] videoFovY ---------------------> fovY
-     - [x] videoAlpha --------------------> alpha
-     - [x] videoAxisX --------------------> axisX
-     - [x] videoAxisY --------------------> axisY
-     - [x] videoZoom --------------------> zoom
-     - [x] videoFarPlane -----------------> background
-     - [x] videoResolution ---------------> resolution
-     - [x] videoObjectMapping ---------> objectMapping
-     - [x] videoIsplayer ------------------> isPlayer
-   </details>
+* Applies only to layers created via `JSLayerList::createObjectLayer`
+* Add `JSLayer : setLayerStyle({object})`
+* Configure POI size and transparency based on camera distance and view angle
 
-  * Please refer to [Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video), [LED Board](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), and [RTT Video](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture).
-
-#### 3. Added limit boundary Option for Building Layers
-  * A new `mode: "exclude"` option has been added to `boundaryLimit`, allowing only objects outside the boundary to be loaded.
-  * With the following setting, buildings outside the boundary will be loaded.
-    ```javascript
-    const boundary = [
-          [126.93005255915998, 37.529214172573376],
-          [126.94102835336719, 37.52029412432422],
-          [126.93891529125652, 37.51798498831805],
-          [126.92841620055285, 37.516978366894115],
-          [126.92514862234246, 37.51770012779483],
-          [126.91756299430655, 37.521708873949606],
-    ];
-
-    Module.getTileLayerList().createXDServerLayer({
-          ...
-          boundaryLimit: {
-            mode: "exclude",
-            rings: boundary
-          }
-    });
-    ```
-  * With the following setting, only buildings inside the boundary will be loaded (same as the existing behavior).
-    ```javascript
-    const boundary = [
-          [126.93005255915998, 37.529214172573376],
-          [126.94102835336719, 37.52029412432422],
-          [126.93891529125652, 37.51798498831805],
-          [126.92841620055285, 37.516978366894115],
-          [126.92514862234246, 37.51770012779483],
-          [126.91756299430655, 37.521708873949606],
-    ];
-
-    Module.getTileLayerList().createXDServerLayer({
-          ...
-          boundaryLimit: {
-            mode: "include",
-            rings: boundary
-          }
-    });
-    ```
-* If no `exclude/include` option is specified, it defaults to `include` and only buildings inside the boundary will be loaded.
-
-#### 4. Added Engine Status Check Option
 ```javascript
-Module.initialize({
-	.
-	.
-	.
-	ping: enginePing
-});
-
-function enginePing(e) {
-	console.log(e);
-}
+let option = {
+    "poi": {
+        "scaleable": {                 // Distance-based scalable size
+            "activate": true,          // Enable/disable
+            "range": {
+                "min": 1000,           // Minimum range (closer than this → original POI size)
+                "max": 3000            // Maximum range (farther than this → minimum pixel POI size)
+            },
+            "minPixel": {              // Minimum icon pixel size
+                                       // (If the smaller of x or y is less than this, it is fixed to this size)
+                "x": 4,
+                "y": 16
+            },
+            "tiltRange": {             // Additional size distortion based on camera tilt
+                "activate": true,      // Enable distortion
+                "minAngle": 60,        // Minimum distortion angle
+                                       // (Below this angle, normal scaling is applied)
+                "maxAngle": 80         // Maximum distortion angle
+                                       // (Above this angle, original size is used)
+            }
+        },
+        "fadeable": {                  // Distance-based transparency
+            "activate": true,          // Enable/disable
+            "range": {
+                "min": 3000,           // Minimum range (closer than this → fully opaque)
+                "max": 5000            // Maximum range (farther than this → minimum alpha applied)
+            },
+            "minAlpha": 0.2,           // Minimum alpha value (1 > minAlpha > 0)
+                                       // (Will not become more transparent than this)
+            "tiltRange": {             // Additional transparency distortion based on camera tilt
+                "activate": true,      // Enable distortion
+                "minAngle": 60,        // Minimum distortion angle
+                                       // (Below this angle, normal alpha is applied)
+                "maxAngle": 80         // Maximum distortion angle
+                                       // (Above this angle, original alpha is used)
+            }
+        }
+    }
+};
 ```
 
-#### 5. Added Horizontal Movement Position API
+#### Default appearance
+<img width="674" height="754" alt="image" src="https://github.com/user-attachments/assets/c2bb0d0c-f4cd-422e-b77e-8462baaa0544" />
 
-* An API has been added that returns the coordinates after moving a certain distance horizontally (front, back, left, or right).
+#### Scalable size appearance
+<img width="840" height="638" alt="image" src="https://github.com/user-attachments/assets/6616162b-3454-4fc2-82c4-ebfba2d4c056" />
 
-  ```javascript
-  var camera = Module.getViewCamera();
-  camera.getPanMoveLocation(moveType, distance);
-  // moveType : 0(front), 1(back), 2(left), 3(right)
-  ```
+#### Variable transparency appearance
+<img width="801" height="789" alt="image" src="https://github.com/user-attachments/assets/ffffbc72-a7ba-4da1-918d-0b1c90cef97c" />
 
-#### 6. Added First-Person Camera Height API
+#### Combined usage (size + transparency)
+<img width="1027" height="786" alt="image" src="https://github.com/user-attachments/assets/0b64b779-a4b9-45ba-a8e9-f8b7cbe66708" />
 
-* An API has been added to set the camera height in first-person camera mode.
+#### Tilt distortion disabled (Size varies only by distance, regardless of tilt angle)
+<img width="776" height="810" alt="image" src="https://github.com/user-attachments/assets/18f29dd1-bf22-4814-bed1-e56e5c2ce957" />
 
-  ```javascript
-  var camera = Module.getViewCamera();
-  camera.setPersonHeight(1.5);
-  ```
+#### Tilt distortion enabled (Above the specified tilt angle, POIs are rendered at their original size)
+<img width="677" height="914" alt="image" src="https://github.com/user-attachments/assets/1535d43c-6994-4d27-a13e-cde04e6a2db3" />
 
-#### 7. Added Player Mode Ceiling API
+#### 3. Add automatic height adjustment property for JSPoint POIs
 
-* An API has been added to set the ceiling altitude in player mode so the player collides with the ceiling when jumping.
-
-  ```javascript
-  var camera = Module.getViewCamera();
-  camera.setCeiling();      // Disable ceiling
-  camera.setCeiling(10.0);  // Set ceiling height
-  ```
+```javascript
+var point = Module.createPoint("POI");
+point.autoHeight = true;
+```
 
 ---
 
