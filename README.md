@@ -107,6 +107,9 @@
   point.autoHeight  = true;
   ```
 
+#### 4. JSPolygon 정렬 유지되도록 API 수정
+* JSPolygon의 setScale, move API 실행 시 윗정렬, 바닥정렬이 유지되도록 기능이 개선되었습니다.
+
 ### 2.23.0 (2026/02/02)
 #### 1. Change JSPolygon `loadFile` projection code type
 
@@ -187,6 +190,8 @@ point.autoHeight = true;
 ```
 
 ---
+#### 4. Keep JSPolygon alignment when updating transform APIs
+* The JSPolygon **setScale** and **move** APIs have been improved so that **top alignment** and **bottom (ground) alignment** are preserved when they are executed.
 
 ## [Previous Version Update](https://egiscorp.gitbook.io/xdworld-webgl-manual/release)
 
