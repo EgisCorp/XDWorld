@@ -54,8 +54,7 @@
   * setCoordinates(), setPartCoordinates() 함수에서 좌표의 순서가 반대로 들어온 경우에도 정상적으로 컬링이 되도록 수정하였습니다.
 
 #### 4. 객체 선택 효과 변경
-  * 기존 빨간색 반투명 효과를 홀로그램 효과로 변경하였습니다.<br>
-https://github.com/user-attachments/assets/6686355e-3896-4f2f-ac1f-5c72e66f8ed4
+  * 기존 빨간색 반투명 효과를 홀로그램 효과로 변경하였습니다. ([홀로그램 효과](https://github-production-user-asset-6210df.s3.amazonaws.com/70614782/557318669-6686355e-3896-4f2f-ac1f-5c72e66f8ed4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260309T005116Z&X-Amz-Expires=300&X-Amz-Signature=9f1471e892e52b7ba41f4b37ae61842f98bd6ee3105c1d970e8cc0145a676d22&X-Amz-SignedHeaders=host))
 
 ### 2.24.0 (2026/03/09)
 #### 1. Added `setRadius` API to JSPipe
@@ -73,8 +72,7 @@ https://github.com/user-attachments/assets/6686355e-3896-4f2f-ac1f-5c72e66f8ed4
 * Fixed an issue where culling did not work correctly when coordinates were provided in reverse order in the setCoordinates() and setPartCoordinates() functions.
 
 #### 4. Changed object selection effect
-* The previous red translucent effect has been replaced with a hologram effect.<br>
-https://github.com/user-attachments/assets/6686355e-3896-4f2f-ac1f-5c72e66f8ed4
+* The previous red translucent effect has been replaced with a hologram effect. ([Hologram Effect](https://github-production-user-asset-6210df.s3.amazonaws.com/70614782/557318669-6686355e-3896-4f2f-ac1f-5c72e66f8ed4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260309T005116Z&X-Amz-Expires=300&X-Amz-Signature=9f1471e892e52b7ba41f4b37ae61842f98bd6ee3105c1d970e8cc0145a676d22&X-Amz-SignedHeaders=host))
 
 ---
 
