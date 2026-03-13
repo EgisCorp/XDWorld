@@ -37,6 +37,40 @@
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.24.1 (2026/03/13)
+> **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
+
+#### 1. JSSolarManager API 추가
+- 판넬의 옵션을 레이어 전체로 변경하는 API 추가
+  ```javascript
+   var dModuleWidth 	= 1.48;
+   var dModuleHeight      = 1.0;
+   var dModuleThick	= 0.1;
+   var dModuleAngle	= 45.0;
+   
+   var solar = Module.GetSolarManager();
+
+   // updateModuleOptionByLayer("레이어 명칭", 판넬 가로 크기, 판넬 세로 크기, 판넬 두께, 판넬 각도);
+   solar .updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
+  ```
+
+### 2.24.1 (2026/03/13)
+> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
+
+#### 1. Add JSSolarManager API
+* Added an API to change panel options for the entire layer.
+  ```javascript
+  var dModuleWidth  = 1.48;
+  var dModuleHeight = 1.0;
+  var dModuleThick  = 0.1;
+  var dModuleAngle  = 45.0;
+
+  var solar = Module.GetSolarManager();
+
+  // updateModuleOptionByLayer("Layer name", panel width, panel height, panel thickness, panel angle);
+  solar.updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
+  ```
+
 
 ### 2.24.0 (2026/03/09)
 #### 1. JSPipe `setRadius` API 추가
