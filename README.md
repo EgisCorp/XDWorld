@@ -54,24 +54,6 @@
    solar .updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
   ```
 
-### 2.24.1 (2026/03/13)
-> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
-
-#### 1. Add JSSolarManager API
-* Added an API to change panel options for the entire layer.
-  ```javascript
-  var dModuleWidth  = 1.48;
-  var dModuleHeight = 1.0;
-  var dModuleThick  = 0.1;
-  var dModuleAngle  = 45.0;
-
-  var solar = Module.GetSolarManager();
-
-  // updateModuleOptionByLayer("Layer name", panel width, panel height, panel thickness, panel angle);
-  solar.updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
-  ```
-
-
 ### 2.24.0 (2026/03/09)
 #### 1. JSPipe `setRadius` API 추가
 - 파이프의 반경을 변경하는 API가 추가되었습니다.
@@ -89,6 +71,23 @@
 
 #### 4. 객체 선택 효과 변경
   * 기존 빨간색 반투명 효과를 홀로그램 효과로 변경하였습니다. ([홀로그램 효과](https://github-production-user-asset-6210df.s3.amazonaws.com/70614782/557318669-6686355e-3896-4f2f-ac1f-5c72e66f8ed4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260309T005116Z&X-Amz-Expires=300&X-Amz-Signature=9f1471e892e52b7ba41f4b37ae61842f98bd6ee3105c1d970e8cc0145a676d22&X-Amz-SignedHeaders=host))
+
+### 2.24.1 (2026/03/13)
+> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
+
+#### 1. Add JSSolarManager API
+* Added an API to change panel options for the entire layer.
+  ```javascript
+  var dModuleWidth  = 1.48;
+  var dModuleHeight = 1.0;
+  var dModuleThick  = 0.1;
+  var dModuleAngle  = 45.0;
+
+  var solar = Module.GetSolarManager();
+
+  // updateModuleOptionByLayer("Layer name", panel width, panel height, panel thickness, panel angle);
+  solar.updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
+  ```
 
 ### 2.24.0 (2026/03/09)
 #### 1. Added `setRadius` API to JSPipe
