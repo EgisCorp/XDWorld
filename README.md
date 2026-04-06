@@ -37,75 +37,26 @@
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
-### 2.24.1 (2026/03/13)
-> **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
+### 2.25.0 (2026/04/06)
+#### 1. 기즈모 마우스 모드 추가
+* 기즈모 UI를 통해 객체를 편집할 수 있는 마우스 모드가 추가되었습니다. [(샌드박스 샘플)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
+```javascript
+Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
 
-#### 1. JSSolarManager API 추가
-- 판넬의 옵션을 레이어 전체로 변경하는 API 추가
-  ```javascript
-   var dModuleWidth 	= 1.48;
-   var dModuleHeight      = 1.0;
-   var dModuleThick	= 0.1;
-   var dModuleAngle	= 45.0;
-   
-   var solar = Module.GetSolarManager();
+Module.setGizmoMode(0); // Translate (default)
+Module.setGizmoMode(1); // Rotate
+```
 
-   // updateModuleOptionByLayer("레이어 명칭", 판넬 가로 크기, 판넬 세로 크기, 판넬 두께, 판넬 각도);
-   solar .updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
-  ```
 
-### 2.24.0 (2026/03/09)
-#### 1. JSPipe `setRadius` API 추가
-- 파이프의 반경을 변경하는 API가 추가되었습니다.
-  ```javascript
-  var pipe = Module.createPipe("MY_PIPE");
-  // pipe.create(...);
-  pipe.setRadius(10.0);
-  ```
-  
-#### 2. Module.getDataVisualizer API 생성 시 오류 수정
-  * Module.getDataVisualizer를 통해 객체 생성 중 회전 각도가 잘못 적용되는 현상을 수정하였습니다. ([이슈 #547](https://github.com/EgisCorp/XDWorld/issues/547))
+### 2.25.0 (2026/04/06)
+#### 1. Added Gizmo Mouse Mode
+* A mouse mode has been added that allows objects to be edited through the Gizmo UI. [(Sandbox sample)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
+```javascript
+Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
 
-#### 3. JSPolygon 좌표 순서에 따른 컬링 오류 수정
-  * setCoordinates(), setPartCoordinates() 함수에서 좌표의 순서가 반대로 들어온 경우에도 정상적으로 컬링이 되도록 수정하였습니다.
-
-#### 4. 객체 선택 효과 변경
-  * 기존 빨간색 반투명 효과를 홀로그램 효과로 변경하였습니다. ([홀로그램 효과](https://github-production-user-asset-6210df.s3.amazonaws.com/70614782/557318669-6686355e-3896-4f2f-ac1f-5c72e66f8ed4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260309T005116Z&X-Amz-Expires=300&X-Amz-Signature=9f1471e892e52b7ba41f4b37ae61842f98bd6ee3105c1d970e8cc0145a676d22&X-Amz-SignedHeaders=host))
-
-### 2.24.1 (2026/03/13)
-> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
-
-#### 1. Add JSSolarManager API
-* Added an API to change panel options for the entire layer.
-  ```javascript
-  var dModuleWidth  = 1.48;
-  var dModuleHeight = 1.0;
-  var dModuleThick  = 0.1;
-  var dModuleAngle  = 45.0;
-
-  var solar = Module.GetSolarManager();
-
-  // updateModuleOptionByLayer("Layer name", panel width, panel height, panel thickness, panel angle);
-  solar.updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
-  ```
-
-### 2.24.0 (2026/03/09)
-#### 1. Added `setRadius` API to JSPipe
-* An API has been added to change the radius of a pipe.
-  ```javascript
-  var pipe = Module.createPipe("MY_PIPE");
-  // pipe.create(...);
-  pipe.setRadius(10.0);
-  ```
-
-#### 2. Fixed error when creating objects with Module.getDataVisualizer
-* Fixed an issue where rotation angles were applied incorrectly when creating objects through Module.getDataVisualizer. ([Issue #547](https://github.com/EgisCorp/XDWorld/issues/547))
-
-#### 3. Fixed culling error caused by JSPolygon coordinate order
-* Fixed an issue where culling did not work correctly when coordinates were provided in reverse order in the setCoordinates() and setPartCoordinates() functions.
-
-#### 4. Changed object selection effect
-* The previous red translucent effect has been replaced with a hologram effect. ([Hologram Effect](https://github-production-user-asset-6210df.s3.amazonaws.com/70614782/557318669-6686355e-3896-4f2f-ac1f-5c72e66f8ed4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260309T005116Z&X-Amz-Expires=300&X-Amz-Signature=9f1471e892e52b7ba41f4b37ae61842f98bd6ee3105c1d970e8cc0145a676d22&X-Amz-SignedHeaders=host))
+Module.setGizmoMode(0); // Translate (default)
+Module.setGizmoMode(1); // Rotate
+```
 
 ---
 
