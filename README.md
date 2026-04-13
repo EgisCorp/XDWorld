@@ -37,6 +37,20 @@
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
+### 2.25.1 (2026/04/13)
+> **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
+
+#### 1. glb 텍스쳐 리사이즈 적용
+  - 허용 범위를 초과하는 텍스처가 포함된 GLB 파일에 대해, 텍스처를 최대 허용 크기 이하로 자동 리사이즈하는 처리가 추가되었습니다.
+  - 해당 기능은 웹워커를 통해 처리되므로, **XDWorldWorker.js / XDWorldWorker.wasm** 파일 교체 부탁드립니다.
+
+#### 2. 고스트 심볼 기즈모 추가
+  * 고스트 심볼 객체도 기즈모를 통해 편집할 수 있도록 개선하였습니다.
+
+#### 3. 피규어 객체 오류 수정 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+  * 알파값이 적용된 객체의 크기 조절 시 객체가 투명해지는 문제를 수정하였습니다.
+  * JSFigure::createOverlapRTT(option) 함수의 변경 사항이 즉시 반영되도록 개선하였습니다.
+
 ### 2.25.0 (2026/04/06)
 #### 1. 기즈모 마우스 모드 추가
 * 기즈모 UI를 통해 객체를 편집할 수 있는 마우스 모드가 추가되었습니다. [(샌드박스 샘플)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
@@ -46,6 +60,20 @@ Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
 Module.setGizmoMode(0); // Translate (default)
 Module.setGizmoMode(1); // Rotate
 ```
+
+### 2.25.1 (2026/04/13)
+> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
+
+#### 1. GLB Texture Resize Applied
+* Added automatic resizing for textures in GLB files that exceed the allowed size limit, ensuring they are reduced to the maximum permitted dimensions.
+* This feature is processed via a web worker, so please replace the **XDWorldWorker.js / XDWorldWorker.wasm** files.
+
+#### 2. Ghost Symbol Gizmo Added
+* Improved so that ghost symbol objects can now be edited using a gizmo.
+
+#### 3. Figure Object Bug Fix ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+* Fixed an issue where objects with alpha values became transparent when resizing.
+* Improved so that changes in the `JSFigure::createOverlapRTT(option)` function are applied immediately.
 
 
 ### 2.25.0 (2026/04/06)
