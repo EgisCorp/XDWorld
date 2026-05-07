@@ -36,9 +36,13 @@
 ## Update
 
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
+- 다음 2.26.0 정기 업데이트는 5월 11일에 진행될 예정입니다.
+
 > [!CAUTION]
 > $\color{red}{\text{2.25.1 버전에서 워커 파일이 업데이트되었습니다.}}$
 > $\color{red}{\text{이전 버전을 사용 중인 경우, XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 최신 버전으로 교체해 주시기 바랍니다.}}$
+> $\color{red}{\text{The worker files have been updated in version 2.25.1.}}$
+> $\color{red}{\text{If you are using a previous version, please replace XDWorldWorker.js and XDWorldWorker.wasm with the latest versions.}}$
 
 ### 2.25.1 (2026/04/13)
 > **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
@@ -63,10 +67,6 @@ Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
 Module.setGizmoMode(0); // Translate (default)
 Module.setGizmoMode(1); // Rotate
 ```
-
-> [!CAUTION]
-> $\color{red}{\text{The worker files have been updated in version 2.25.1.}}$
-> $\color{red}{\text{If you are using a previous version, please replace XDWorldWorker.js and XDWorldWorker.wasm with the latest versions.}}$
 
 ### 2.25.1 (2026/04/13)
 > **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
