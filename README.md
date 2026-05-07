@@ -34,9 +34,7 @@
 (GIS, Urban Information Systems, Location-Based Services, Facility Management, Perspective Views, Site Analysis, Terrain Analysis, Urban Planning, Construction Site Management, and Agricultural Land Management.)
 
 ## Update
-
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
-- 다음 2.26.0 정기 업데이트는 5월 11일에 진행될 예정입니다.
 
 > [!CAUTION]
 > $\color{red}{\text{2.25.1 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
@@ -53,27 +51,27 @@
   * 새로 로드된 하위 타일에 편집 내용이 적용되도록 개선하였습니다.
 
 #### 2. 고스트 심볼 기능 업데이트 ([샌드박스 샘플](https://sandboxt.egiscloud.com/code/main.do?engine=latest_test&id=object_ghostsymbol_rotate_pyrl))
-  - 심볼 모델포맷 GLB 추가 
+  - 심볼 모델포맷 GLB 추가
       - JSGhostSymbolMap::addGhostSymbolByGLB( _key, _homeDir, _fileName)
       - addGhostSymbolBy3DS와 동일한 파라메터 속성 (_filename에 확장자 .glb는 제외)
-  - 고스트심볼 객체에 Pitch, Yaw, Roll 회전을 설정 및 반환 기능 추가
+  - 고스트심볼 객체에 Pitch, Yaw, Roll 회전을 설정 및 반환하는 기능이 추가되었습니다.
       - JSGhostSymbol::getPitch(), getYaw(), getRoll() 로 각각 반환
       - JSGhostSymbol::setRotationPYR(_pitch, _yaw, _roll)로 설정
 
 
 #### 3. 3D Line of Sight 커버리지 분석 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest_test&id=analysis_lineofsightl))
   - 3D 방사형 LoS를 통한 가시/비가시 부분 분석 처리
-  - JSON 옵션에 따른 분석방법 및 시각화 처리에 대한 조절가능
+  - JSON 옵션에 따른 분석방법 및 시각화 처리에 대한 조절이 가능합니다.
 
 #### 4. voxel 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=effect_voxel))
-  - voxel 기능을 추가하여 3D texture로 다양한 효과 적용 가능
+  - voxel 기능을 추가하여 3D texture로 다양한 효과를 적용 가능합니다.
 
 #### 5. datavisualizer 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer_child), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_datavisualizer), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_symbol_datavisualizer))
   - Point, Line Type의 data 가시화
   - Child, Multi로 단계별 가시화 지원
 
 #### 6. createOverlapRTT API 수정 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
-  - Figure객체 createOverlapRTT시 지형 업데이트 되지 않는 현상 수정
+  - Figure 객체 createOverlapRTT 시 지형이 업데이트 되지 않는 현상을 수정하였습니다.
 
 ### 2.26.0 (2026/05/08)
 #### 1. Fixed Terrain Cut/Fill Editing Rendering Issue ([issue #557](https://github.com/EgisCorp/XDWorld/issues/557))
