@@ -39,10 +39,13 @@
 - 다음 2.26.0 정기 업데이트는 5월 11일에 진행될 예정입니다.
 
 > [!CAUTION]
-> $\color{red}{\text{2.25.1 버전에서 워커 파일이 업데이트되었습니다.}}$
-> $\color{red}{\text{이전 버전을 사용 중인 경우, XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 최신 버전으로 교체해 주시기 바랍니다.}}$
-> $\color{red}{\text{The worker files have been updated in version 2.25.1.}}$
-> $\color{red}{\text{If you are using a previous version, please replace XDWorldWorker.js and XDWorldWorker.wasm with the latest versions.}}$
+> $\color{red}{\text{2.25.1 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
+> $\color{red}{\text{해당 버전 이상으로 업데이트 시 worker 업데이트가 필요합니다.}}$<br>
+> $\color{red}{\text{XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 엔진과 같이 배포된 파일로 교체해 주시기 바랍니다.}}$
+> 
+> $\color{red}{\text{The worker files have been updated in version 2.25.1.}}$<br>
+> $\color{red}{\text{When updating to version 2.25.1 or later, a worker file update is required.}}$<br>
+> $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
 ### 2.25.1 (2026/04/13)
 > **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
