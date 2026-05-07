@@ -47,54 +47,61 @@
 > $\color{red}{\text{When updating to version 2.25.1 or later, a worker file update is required.}}$<br>
 > $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
-### 2.25.1 (2026/04/13)
-> **⚠ 이 버전은 테스트를 거치지 않은 핫픽스 버전입니다. 적용하실 때 주의 부탁드립니다.**
+### 2.26.0 (2026/05/08)
+#### 1. 성절토 편집 렌더링 오류 수정 ([issue #557](https://github.com/EgisCorp/XDWorld/issues/557))
+  * 성절토 편집 후 하위 타일들의 영상을 가져오지 않는 문제를 수정하였습니다.
+  * 새로 로드된 하위 타일에 편집 내용이 적용되도록 개선하였습니다.
 
-#### 1. glb 텍스쳐 리사이즈 적용
-  - 허용 범위를 초과하는 텍스처가 포함된 GLB 파일에 대해, 텍스처를 최대 허용 크기 이하로 자동 리사이즈하는 처리가 추가되었습니다.
-  - 해당 기능은 웹워커를 통해 처리되므로, **XDWorldWorker.js / XDWorldWorker.wasm** 파일 교체 부탁드립니다.
-
-#### 2. 고스트 심볼 기즈모 추가
-  * 고스트 심볼 객체도 기즈모를 통해 편집할 수 있도록 개선하였습니다.
-
-#### 3. 피규어 객체 오류 수정 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
-  * 알파값이 적용된 객체의 크기 조절 시 객체가 투명해지는 문제를 수정하였습니다.
-  * JSFigure::createOverlapRTT(option) 함수의 변경 사항이 즉시 반영되도록 개선하였습니다.
-
-### 2.25.0 (2026/04/06)
-#### 1. 기즈모 마우스 모드 추가
-* 기즈모 UI를 통해 객체를 편집할 수 있는 마우스 모드가 추가되었습니다. [(샌드박스 샘플)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
-```javascript
-Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
-
-Module.setGizmoMode(0); // Translate (default)
-Module.setGizmoMode(1); // Rotate
-```
-
-### 2.25.1 (2026/04/13)
-> **⚠ This version is a hotfix that has not been fully tested. Please use it with caution.**
-
-#### 1. GLB Texture Resize Applied
-* Added automatic resizing for textures in GLB files that exceed the allowed size limit, ensuring they are reduced to the maximum permitted dimensions.
-* This feature is processed via a web worker, so please replace the **XDWorldWorker.js / XDWorldWorker.wasm** files.
-
-#### 2. Ghost Symbol Gizmo Added
-* Improved so that ghost symbol objects can now be edited using a gizmo.
-
-#### 3. Figure Object Bug Fix ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
-* Fixed an issue where objects with alpha values became transparent when resizing.
-* Improved so that changes in the `JSFigure::createOverlapRTT(option)` function are applied immediately.
+#### 2. 고스트 심볼 기능 업데이트 ([샌드박스 샘플](https://sandboxt.egiscloud.com/code/main.do?engine=latest_test&id=object_ghostsymbol_rotate_pyrl))
+  - 심볼 모델포맷 GLB 추가 
+      - JSGhostSymbolMap::addGhostSymbolByGLB( _key, _homeDir, _fileName)
+      - addGhostSymbolBy3DS와 동일한 파라메터 속성 (_filename에 확장자 .glb는 제외)
+  - 고스트심볼 객체에 Pitch, Yaw, Roll 회전을 설정 및 반환 기능 추가
+      - JSGhostSymbol::getPitch(), getYaw(), getRoll() 로 각각 반환
+      - JSGhostSymbol::setRotationPYR(_pitch, _yaw, _roll)로 설정
 
 
-### 2.25.0 (2026/04/06)
-#### 1. Added Gizmo Mouse Mode
-* A mouse mode has been added that allows objects to be edited through the Gizmo UI. [(Sandbox sample)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
-```javascript
-Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
+#### 3. 3D Line of Sight 커버리지 분석 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest_test&id=analysis_lineofsightl))
+  - 3D 방사형 LoS를 통한 가시/비가시 부분 분석 처리
+  - JSON 옵션에 따른 분석방법 및 시각화 처리에 대한 조절가능
 
-Module.setGizmoMode(0); // Translate (default)
-Module.setGizmoMode(1); // Rotate
-```
+#### 4. voxel 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=effect_voxel))
+  - voxel 기능을 추가하여 3D texture로 다양한 효과 적용 가능
+
+#### 5. datavisualizer 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer_child), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_datavisualizer), [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_symbol_datavisualizer))
+  - Point, Line Type의 data 가시화
+  - Child, Multi로 단계별 가시화 지원
+
+#### 6. createOverlapRTT API 수정 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+  - Figure객체 createOverlapRTT시 지형 업데이트 되지 않는 현상 수정
+
+### 2.26.0 (2026/05/08)
+#### 1. Fixed Terrain Cut/Fill Editing Rendering Issue ([issue #557](https://github.com/EgisCorp/XDWorld/issues/557))
+* Fixed an issue where child tiles failed to load edited imagery after terrain cut/fill editing.
+* Improved the system so that newly loaded child tiles correctly reflect the edited results.
+
+#### 2. Ghost Symbol Feature Update ([Sandbox Sample](https://sandboxt.egiscloud.com/code/main.do?engine=latest_test&id=object_ghostsymbol_rotate_pyrl))
+* Added support for the GLB model format for symbol models
+  * `JSGhostSymbolMap::addGhostSymbolByGLB(_key, _homeDir, _fileName)`
+  * Uses the same parameter properties as `addGhostSymbolBy3DS` (`_fileName` should exclude the `.glb` extension)
+* Added Pitch, Yaw, and Roll rotation control and retrieval functions for ghost symbol objects
+  * `JSGhostSymbol::getPitch()`, `getYaw()`, `getRoll()` return each rotation value
+  * `JSGhostSymbol::setRotationPYR(_pitch, _yaw, _roll)` sets rotation values
+
+#### 3. Added 3D Line of Sight Coverage Analysis Feature ([Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest_test&id=analysis_lineofsightl))
+* Supports visible/non-visible area analysis using 3D radial LoS analysis
+* Analysis methods and visualization options can be customized through JSON settings
+
+#### 4. Added Voxel Feature ([Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=effect_voxel))
+* Added voxel functionality to enable various effects using 3D textures
+
+#### 5. Added DataVisualizer Feature ([Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer), [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_point_datavisualizer_child), [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_datavisualizer), [Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=object_line_symbol_datavisualizer))
+* Supports visualization of Point and Line type data
+* Supports hierarchical visualization through Child and Multi structures
+
+#### 6. Updated `createOverlapRTT` API ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+* Fixed an issue where terrain updates were not reflected when calling `createOverlapRTT` on Figure objects
+
 
 ---
 
