@@ -45,6 +45,28 @@
 > $\color{red}{\text{When updating to version 2.25.1 or later, a worker file update is required.}}$<br>
 > $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
+### 2.27.1 (2026/06/08)
+#### 1. skin 데이터 없는 glTF 애니메이션 지원
+* skin 데이터가 포함되지 않은 glb/gltf 파일에서도 애니메이션이 정상적으로 재생되도록 수정하였습니다.
+
+#### 2. glTF 애니메이션 속도 조절 API 추가
+* 기존 프레임 기반으로 동작하던 애니메이션을 시간 기반으로 동작하도록 개선하였습니다.
+* 애니메이션의 재생 속도를 제어할 수 있는 API를 추가하였습니다.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationSpeed(1.5); // default: 1.0
+```
+
+#### 3. CJSFigure::createPlane() uv 매핑 수정 ([Issue 555](https://github.com/EgisCorp/XDWorld/issues/555))
+* CJSFigure::createPlane() 함수로 생성한 객체의 텍스처가 회전된 상태로 적용되는 문제를 수정하였습니다.
+
+#### 4. glTF 다중 애니메이션 설정 API 추가
+* 2개 이상의 애니메이션을 설정할 수 있는 API를 추가하였습니다.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationsByID([0, 1]);
+```
+
 ### 2.27.0 (2026/06/01)
 #### 1. voxel 인스턴싱 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=analysis_wildfire_spread))
   - voxel 인스턴싱으로 여러개의 voxel 생성에도 성능이 유지됩니다.
@@ -68,8 +90,8 @@ fig.undoEditTerrain();
 * MML_ANALYS_DISTANCE_STRAIGHT 마우스 모드에서 라인이 제대로 그려지지 않는 문제를 수정하였습니다.
 
 #### 5. gltf, glb 텍스쳐 로드 콜백 ([issue #552](https://github.com/EgisCorp/XDWorld/issues/552))
-  * loadFile API를 통해 로드한 gltf, glb의 텍스쳐가 로딩 완료되었을 경우 콜백 함수가 호출되도록 기능을 추가하였습니다.
-  * 콜백 파라미터를 통해 텍스쳐 명칭(textureName) 및 전체 텍스쳐 수(textureTotalCount), 로드 된 텍스쳐 인덱스(textureIndex)를 조회하실 수 있습니다.
+* loadFile API를 통해 로드한 gltf, glb의 텍스쳐가 로딩 완료되었을 경우 콜백 함수가 호출되도록 기능을 추가하였습니다.
+* 콜백 파라미터를 통해 텍스쳐 명칭(textureName) 및 전체 텍스쳐 수(textureTotalCount), 로드 된 텍스쳐 인덱스(textureIndex)를 조회하실 수 있습니다.
 ```javascript
 polygon.loadFile({
   url : url,
@@ -84,14 +106,36 @@ polygon.loadFile({
 ```
 
 #### 6. 타일레이어 기반 유저생성 폴리곤에 대한 그림자 렌더링 지원 ([issue #560](https://github.com/EgisCorp/XDWorld/issues/560))
-  * 유저생성 폴리곤 객체에서도 그림자 분석 처리가 가능하도록 수정하였습니다.
+* 유저생성 폴리곤 객체에서도 그림자 분석 처리가 가능하도록 수정하였습니다.
 
 #### 7. 마우스 이벤트 처리 수정
-  * 마우스 드래그 상태로 지도 밖에 나간 후 버튼을 해제한 후에 다시 지도로 들어올 때 버튼을 놓아도 드래그로 인식한 문제를 수정하였습니다.
+* 마우스 드래그 상태로 지도 밖에 나간 후 버튼을 해제한 후에 다시 지도로 들어올 때 버튼을 놓아도 드래그로 인식한 문제를 수정하였습니다.
  
 #### 8. 고스트심볼 Pitch, Yaw, Roll 회전 수정
-  * Yaw -> Pitch -> Roll 방식으로 회전축 변화에 맞게 수정하였습니다.
+* Yaw -> Pitch -> Roll 방식으로 회전축 변화에 맞게 수정하였습니다.
 
+### 2.27.1 (2026/06/08)
+#### 1. Support for glTF Animations Without Skin Data
+* Fixed an issue where animations would not play correctly for GLB/glTF files that do not contain skin data.
+* Animations can now be played properly even when skin data is absent.
+
+#### 2. Added glTF Animation Speed Control API
+* Improved the animation system to operate based on elapsed time rather than frame count.
+* Added an API for controlling animation playback speed.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationSpeed(1.5); // default: 1.0
+```
+
+#### 3. Fixed UV Mapping in `CJSFigure::createPlane()` ([Issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+* Fixed an issue where textures applied to objects created with `CJSFigure::createPlane()` appeared rotated.
+
+#### 4. Added API for Multiple glTF Animations
+* Added an API that allows multiple animations to be assigned simultaneously.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationsByID([0, 1]);
+```
 
 ### 2.27.0 (2026/06/01)
 ### 1. Added Voxel Instancing Feature ([Sandbox Sample](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=analysis_wildfire_spread))
