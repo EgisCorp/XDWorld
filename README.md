@@ -45,6 +45,15 @@
 > $\color{red}{\text{When updating to version 2.25.1 or later, a worker file update is required.}}$<br>
 > $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
+> [!IMPORTANT]
+> CDN 버전 정책이 변경되었습니다.
+>
+> 기존 `latest`(안정화 버전)는 `stable`로 대체되었습니다.
+> 
+> * `stable` : 안정화된 정기 배포 버전
+> * `latest` : 최신 배포 버전 (핫픽스 포함)
+
+
 ### 2.27.1 (2026/06/08)
 #### 1. skin 데이터 없는 glTF 애니메이션 지원
 * skin 데이터가 포함되지 않은 glb/gltf 파일에서도 애니메이션이 정상적으로 재생되도록 수정하였습니다.
