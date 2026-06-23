@@ -53,6 +53,19 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.27.2 (2026/06/23)
+#### 1. JSPolygon의 loadFile에서 glb/gltf 파일 로드 시 회전/이동 기능 추가 ([이슈 #565](https://github.com/EgisCorp/XDWorld/issues/565))
+  * glb/gltf 파일을 로드 loadFile API를 통해 로드 한 후 JSPolygon의 move, setRotation 함수가 정상 동작하도록 기능이 추가되었습니다.
+
+#### 2. Gizmo 오류 수정 ([이슈 #563](https://github.com/EgisCorp/XDWorld/issues/563))
+  * 마우스 모드가 MML_EDIT_GIZMO가 아닌 경우에는 Gizmo가 표시되지 않도록 수정하였습니다.
+  * setSelectObject로 객체를 선택한 경우에도 Gizmo가 정상적으로 표시되도록 수정하였습니다.
+
+#### 3. addObject 중복 키 추가 방지 ([이슈 #564](https://github.com/EgisCorp/XDWorld/issues/564))
+  * addObject 함수를 사용하여 같은 키의 객체를 추가하는 경우 레이어에 추가되지 않도록 수정하였습니다.
+
+#### 4. 이미지 텍스처 회전 오류 수정([이슈 #568](https://github.com/EgisCorp/XDWorld/issues/568))
+  * 이미지 텍스처가 회전되어 표출되는 문제를 수정하였습니다.
 
 ### 2.27.1 (2026/06/08)
 #### 1. skin 데이터 없는 glTF 애니메이션 지원
@@ -122,6 +135,20 @@ polygon.loadFile({
  
 #### 8. 고스트심볼 Pitch, Yaw, Roll 회전 수정
 * Yaw -> Pitch -> Roll 방식으로 회전축 변화에 맞게 수정하였습니다.
+
+### 2.27.2 (2026/06/23)
+#### 1. Added Rotation and Movement Support for glb/gltf Files Loaded via JSPolygon.loadFile ([Issue #565](https://github.com/EgisCorp/XDWorld/issues/565))
+* Added support so that the `move` and `setRotation` functions of `JSPolygon` work properly after loading glb/gltf files using the `loadFile` API.
+
+#### 2. Fixed Gizmo Issues ([Issue #563](https://github.com/EgisCorp/XDWorld/issues/563))
+* Fixed an issue where the Gizmo was displayed even when the mouse mode was not `MML_EDIT_GIZMO`.
+* Fixed an issue where the Gizmo was not displayed correctly when an object was selected using `setSelectObject`.
+
+#### 3. Prevented Duplicate Keys in addObject ([Issue #564](https://github.com/EgisCorp/XDWorld/issues/564))
+* Modified the `addObject` function so that objects with duplicate keys are no longer added to the layer.
+
+#### 4. Fixed Image Texture Rotation Issue ([Issue #568](https://github.com/EgisCorp/XDWorld/issues/568))
+* Fixed an issue where image textures were displayed with incorrect rotation.
 
 ### 2.27.1 (2026/06/08)
 #### 1. Support for glTF Animations Without Skin Data
