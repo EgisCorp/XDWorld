@@ -53,6 +53,9 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.28.1 (2026/07/07)
+#### 1. 3DTiles 안정화 작업을 수행하였습니다.
+
 ### 2.28.0 (2026/07/06)
 #### 1. JSPolygon getCoordinates API 기능 개선([이슈 #569](https://github.com/EgisCorp/XDWorld/issues/569))
   - JSPolygon의 `move`, `moveAltitude`, `setRotate`, `setScale` API를 통해 좌표가 변경된 경우 getCoordinates로 반환되는 좌표 값이 갱신되도록 기능을 개선하였습니다.
@@ -88,6 +91,9 @@ var catmullrom = Module.getMath().convertCatmullRom(parameters);
 var catmullrom.position // 좌표
 var catmullrom.times    // 누적 거리
 ```
+
+### 2.28.1 (2026/07/07)
+#### 1. Improved the stability of 3D Tiles.
 
 ### 2.28.0 (2026/07/06)
 #### 1. Improved `JSPolygon.getCoordinates` API ([Issue #569](https://github.com/EgisCorp/XDWorld/issues/569))
