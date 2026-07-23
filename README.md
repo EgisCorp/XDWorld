@@ -53,6 +53,10 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.28.3 (2026/07/23)
+#### 1. 지구본에서 RTT 렌더링시 간헐적 희게 번지는 현상을 수정하였습니다.
+#### 2. POI 중첩표현시 객체 선택 및 선택 순서 오류를 수정하였습니다.
+
 ### 2.28.2 (2026/07/08)
 #### 1. 3DTiles의 높이값을 변경하는 API 오류를 수정하였습니다.
 
@@ -96,6 +100,12 @@ var catmullrom = Module.getMath().convertCatmullRom(parameters);
 var catmullrom.position // 좌표
 var catmullrom.times    // 누적 거리
 ```
+
+### 2.28.3 (2026/07/23)
+#### 1. Fixed an intermittent rendering issue that caused RTT rendering on the globe to appear washed out.
+
+#### 2. Fixed issues with object selection and selection priority when POIs overlap.
+
 
 ### 2.28.2 (2026/07/08)
 #### 1. Fixed an API issue related to updating the height value of 3D Tiles.
