@@ -55,7 +55,14 @@
 
 ### 2.28.3 (2026/07/23)
 #### 1. 지구본에서 RTT 렌더링시 간헐적 희게 번지는 현상을 수정하였습니다.
+
 #### 2. POI 중첩표현시 객체 선택 및 선택 순서 오류를 수정하였습니다.
+
+#### 3. Figure 객체 이미지 회전 문제 수정 ([이슈 #573](https://github.com/EgisCorp/XDWorld/issues/573))
+* Figure 객체를 스케일 UI를 통해 크기를 변경하는 경우 오버랩 된 이미지가 회전되는 문제를 수정하였습니다.
+
+#### 4. 지형 로딩 전 지형 편집 시 편집 내용 미적용 문제 수정 ([이슈 #575](https://github.com/EgisCorp/XDWorld/issues/575)) 
+* 지형이 로딩되기 전에 편집을 진행하더라도, 지형 로딩이 완료되면 편집 내용이 정상적으로 적용되도록 수정하였습니다.
 
 ### 2.28.2 (2026/07/08)
 #### 1. 3DTiles의 높이값을 변경하는 API 오류를 수정하였습니다.
@@ -105,6 +112,12 @@ var catmullrom.times    // 누적 거리
 #### 1. Fixed an intermittent rendering issue that caused RTT rendering on the globe to appear washed out.
 
 #### 2. Fixed issues with object selection and selection priority when POIs overlap.
+
+#### 3. Fixed an issue where Figure object images were rotated ([Issue #573](https://github.com/EgisCorp/XDWorld/issues/573))
+* Fixed an issue where overlapped images were rotated when a Figure object's size was changed using the Scale UI.
+
+#### 4. Fixed terrain edits not being applied when performed before terrain loading ([Issue #575](https://github.com/EgisCorp/XDWorld/issues/575))
+* Fixed an issue where terrain edits performed before the terrain finished loading were not applied. Terrain edits are now correctly applied once terrain loading is complete.
 
 
 ### 2.28.2 (2026/07/08)
