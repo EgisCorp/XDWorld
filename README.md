@@ -53,117 +53,79 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
-### 2.28.3 (2026/07/23)
-#### 1. 지구본에서 RTT 렌더링시 간헐적 희게 번지는 현상을 수정하였습니다.
+### 2.29.0 (2026/08/03)
+#### 1. POI 텍스트 라벨링 및 아이콘 이미지 선명도 개선
 
-#### 2. POI 중첩표현시 객체 선택 및 선택 순서 오류를 수정하였습니다.
+#### 2. JSPolygon blob 방식 처리 추가 
+   - JSPolygon::loadFile API에 data  속성을 통한 blob 처리 추가
 
-#### 3. Figure 객체 이미지 회전 문제 수정 ([이슈 #573](https://github.com/EgisCorp/XDWorld/issues/573))
-* Figure 객체를 스케일 UI를 통해 크기를 변경하는 경우 오버랩 된 이미지가 회전되는 문제를 수정하였습니다.
+```
+async function load3DSa(_url, _position) {
+    const response = await fetch(_url);
+    if(response.ok == false) {
+       throw new Error(
+            `HTTP 오류: ${response.status} ${response.statusText}`
+        );
+    }
+   const arrayBuffer = await response.arrayBuffer();
+   let blob = new Uint8Array(arrayBuffer);
+   // Create polygon layer
+   var layerList = new Module.JSLayerList(true);
+   var layer = layerList.createLayer("POLYGON_3DS_LAYER", Module.ELT_POLYHEDRON);
+   var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
-#### 4. 지형 로딩 전 지형 편집 시 편집 내용 미적용 문제 수정 ([이슈 #575](https://github.com/EgisCorp/XDWorld/issues/575)) 
-* 지형이 로딩되기 전에 편집을 진행하더라도, 지형 로딩이 완료되면 편집 내용이 정상적으로 적용되도록 수정하였습니다.
-
-### 2.28.2 (2026/07/08)
-#### 1. 3DTiles의 높이값을 변경하는 API 오류를 수정하였습니다.
-
-#### 2. 3DTiles 네트워크 안정화 작업을 수행하였습니다.
-
-### 2.28.1 (2026/07/07)
-#### 1. 3DTiles 안정화 작업을 수행하였습니다.
-
-### 2.28.0 (2026/07/06)
-#### 1. JSPolygon getCoordinates API 기능 개선([이슈 #569](https://github.com/EgisCorp/XDWorld/issues/569))
-  - JSPolygon의 `move`, `moveAltitude`, `setRotate`, `setScale` API를 통해 좌표가 변경된 경우 getCoordinates로 반환되는 좌표 값이 갱신되도록 기능을 개선하였습니다.
-
-#### 2. Catmull-Rom 곡선 생성 API 추가
-* 모든 입력 좌표를 지나는 부드러운 곡선을 생성할 수 있는 API가 추가되었습니다.
-  * 기존 베지어 곡선 생성 API는 시작점과 끝점을 제외한 나머지 점들은 곡선이 지나지 않습니다. 
-* 내비게이션 및 카메라 이동 경로 생성에 적합합니다.
-
-```javascript
-var coord = [
-  [lon, lat, alt],
-  [lon, lat, alt],
-  // ...
-  [lon, lat, alt]
-];
-
-var parameters = {
-  coordinates : {
-    coordinate : coord,
-    style : "XYZ"
-  },
-  alpha: 0.5,     // default: 0.0 (0~1, 곡선의 안정성. 0.5일 때 가장 안정적)
-  tension: 0.5,   // default: 0.0 (0~1, 값이 클수록 직선에 가까워짐)
-  samples: 10,    // default: 20 (구간당 생성할 샘플 좌표 수)
-  simplify: true, // default: false (근접 좌표 단순화 적용 여부)
-  epsilon: 0.5,   // default: 0.5 (simplify 적용 시 단순화 거리 임계값)
-  union: true,    // default: false (지형 결합 여부)
-  height: 1.5     // default: 0.0 (지형 결합 시 지형으로부터의 높이)
+   polygon.loadFile({
+	type : "3ds",     // 3ds 포맷 명시
+	position : _position,
+	data : blob,      // fetch로 가져온 Uint8Array 버퍼
+	align : "bottom",
+	callback : function() {
+		// Texture 로딩이 필요하면 기존방식 추가 처리 
+		layer.addObject(polygon, 0);
+	}
+    });
+    return polygon;
 }
-
-var catmullrom = Module.getMath().convertCatmullRom(parameters);
-var catmullrom.position // 좌표
-var catmullrom.times    // 누적 거리
 ```
 
-### 2.28.3 (2026/07/23)
-#### 1. Fixed an intermittent rendering issue that caused RTT rendering on the globe to appear washed out.
+### 2.29.0 (2026/08/03)
+#### 1. Improved Sharpness of POI Text Labels and Icon Images
 
-#### 2. Fixed issues with object selection and selection priority when POIs overlap.
+#### 2. Added Blob Support for `JSPolygon`
 
-#### 3. Fixed an issue where Figure object images were rotated ([Issue #573](https://github.com/EgisCorp/XDWorld/issues/573))
-* Fixed an issue where overlapped images were rotated when a Figure object's size was changed using the Scale UI.
-
-#### 4. Fixed terrain edits not being applied when performed before terrain loading ([Issue #575](https://github.com/EgisCorp/XDWorld/issues/575))
-* Fixed an issue where terrain edits performed before the terrain finished loading were not applied. Terrain edits are now correctly applied once terrain loading is complete.
-
-
-### 2.28.2 (2026/07/08)
-#### 1. Fixed an API issue related to updating the height value of 3D Tiles.
-
-#### 2. Improved the network stability of 3D Tiles.
-
-### 2.28.1 (2026/07/07)
-#### 1. Improved the stability of 3D Tiles.
-
-### 2.28.0 (2026/07/06)
-#### 1. Improved `JSPolygon.getCoordinates` API ([Issue #569](https://github.com/EgisCorp/XDWorld/issues/569))
-* Improved the `JSPolygon.getCoordinates` API so that it now returns updated coordinate values after the polygon has been modified using the `move`, `moveAltitude`, `setRotate`, or `setScale` APIs.
-
-#### 2. Added Catmull-Rom Curve Generation API
-* Added a new API for generating smooth Catmull-Rom curves that pass through all input coordinates.
-  * Unlike the existing Bézier curve generation API, which only guarantees that the curve passes through the start and end points, the Catmull-Rom curve passes through every input point.
-* This API is well suited for navigation routes and camera path generation.
+* Added support for loading polygon data from a blob via the `data` property in the `JSPolygon::loadFile` API.
 
 ```javascript
-var coord = [
-  [lon, lat, alt],
-  [lon, lat, alt],
-  // ...
-  [lon, lat, alt]
-];
+async function load3DSa(_url, _position) {
+    const response = await fetch(_url);
+    if(response.ok == false) {
+       throw new Error(
+            `HTTP Error: ${response.status} ${response.statusText}`
+        );
+    }
 
-var parameters = {
-  coordinates: {
-    coordinate: coord,
-    style: "XYZ"
-  },
-  alpha: 0.5,     // default: 0.0 (range: 0–1, controls curve stability; 0.5 provides the most stable result)
-  tension: 0.5,   // default: 0.0 (range: 0–1, higher values produce a straighter curve)
-  samples: 10,    // default: 20 (number of sample points generated per segment)
-  simplify: true, // default: false (whether to simplify nearby coordinates)
-  epsilon: 0.5,   // default: 0.5 (distance threshold used when simplification is enabled)
-  union: true,    // default: false (whether to clamp the curve to the terrain)
-  height: 1.5     // default: 0.0 (height above the terrain when terrain clamping is enabled)
-};
+    const arrayBuffer = await response.arrayBuffer();
+    let blob = new Uint8Array(arrayBuffer);
 
-var catmullrom = Module.getMath().convertCatmullRom(parameters);
-var catmullrom.position; // Generated coordinates
-var catmullrom.times;    // Cumulative distances
+    // Create polygon layer
+    var layerList = new Module.JSLayerList(true);
+    var layer = layerList.createLayer("POLYGON_3DS_LAYER", Module.ELT_POLYHEDRON);
+    var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
+
+    polygon.loadFile({
+        type: "3ds",          // Specify the 3DS format
+        position: _position,
+        data: blob,           // Uint8Array buffer fetched via fetch()
+        align: "bottom",
+        callback: function() {
+            // Add existing texture loading logic here if needed
+            layer.addObject(polygon, 0);
+        }
+    });
+
+    return polygon;
+}
 ```
-
 
 ---
 
