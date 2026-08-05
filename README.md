@@ -53,6 +53,14 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.29.1 (2026/08/05)
+#### 1. 사용자 레이어 객체 시점 이동 기능 개선
+* 사용자 레이어 객체로 시점 이동이 간헐적으로 동작하지 않는 문제를 수정하였습니다.
+* 사용자 레이어 객체로 시점 이동 시 바라보는 방향이 올바르게 설정되지 않는 문제를 수정하였습니다.
+
+#### 2. 면적 측정 기능 개선
+* `MML_ANALYS_AREA` 마우스 모드에서 면적 측정 시 폴리곤 및 외곽선이 지형에 결합되지 않는 문제를 수정하였습니다.
+
 ### 2.29.0 (2026/08/03)
 #### 1. POI 텍스트 라벨링 및 아이콘 이미지 선명도 개선
 
@@ -87,6 +95,16 @@ async function load3DSa(_url, _position) {
     return polygon;
 }
 ```
+
+### 2.29.1 (2026/08/05)
+#### 1. Improved Viewpoint Navigation for User Layer Objects
+
+* Fixed an issue where viewpoint navigation to user layer objects would intermittently fail.
+* Fixed an issue where the viewing direction was not set correctly when navigating to a user layer object.
+
+#### 2. Improved Area Measurement
+
+* Fixed an issue where the polygon and outline were not clamped to the terrain when performing area measurements in `MML_ANALYS_AREA` mouse mode.
 
 ### 2.29.0 (2026/08/03)
 #### 1. Improved Sharpness of POI Text Labels and Icon Images
