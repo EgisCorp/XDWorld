@@ -53,6 +53,22 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.29.2 (2026/08/11)
+#### 1. GLTF 모델 이동 위치 정보 갱신 개선 ([이슈 #580](https://github.com/EgisCorp/XDWorld/issues/580))
+* GLTF 모델을 Trace Target으로 설정하여 이동할 때 내부 Bounding Box 위치가 갱신되지 않는 문제를 수정하였습니다.
+* 이로 인해 model.position 및 model.getCenter()에서 실제 모델의 이동 위치가 정상적으로 반환되지 않는 문제를 수정하였습니다.
+
+#### 2. 2D 가시권 분석 결과 갱신 API 추가 ([이슈 #581](https://github.com/EgisCorp/XDWorld/issues/581))
+* 레이어의 가시성 변경 후 기존 2D 가시권 분석 결과를 현재 레이어 상태를 기준으로 다시 계산할 수 있는 updateViewshed() API를 추가하였습니다.
+```javascript
+buildingLayer.setVisible(false); // 레이어 가시성 변경
+Module.getAnalysis().updateViewshed(); // 현재 레이어 상태 기준으로 가시권 재계산
+```
+
+#### 3. 3D 가시권 생성 동작 개선 ([이슈 #584](https://github.com/EgisCorp/XDWorld/issues/584))
+* `setVFCreateClickMode(true)` 사용 시 드래그 동작에서 가시권이 생성되는 문제를 수정하였습니다.
+* 단순 클릭 시에만 가시권이 생성되도록 동작을 개선하였습니다.
+
 ### 2.29.1 (2026/08/05)
 #### 1. 사용자 레이어 객체 시점 이동 기능 개선
 * 사용자 레이어 객체로 시점 이동이 간헐적으로 동작하지 않는 문제를 수정하였습니다.
@@ -95,6 +111,23 @@ async function load3DSa(_url, _position) {
     return polygon;
 }
 ```
+
+### 2.29.2 (2026/08/11)
+#### 1. Improved GLTF Model Position Updates ([Issue #580](https://github.com/EgisCorp/XDWorld/issues/580))
+* Fixed an issue where the internal Bounding Box position was not updated when moving a GLTF model set as the Trace Target.
+* Fixed an issue where `model.position` and `model.getCenter()` did not return the actual position of the moved model.
+
+#### 2. Added API for Updating 2D Viewshed Analysis Results ([Issue #581](https://github.com/EgisCorp/XDWorld/issues/581))
+* Added the `updateViewshed()` API to recalculate existing 2D viewshed analysis results based on the current layer visibility state after changing layer visibility.
+
+```javascript
+buildingLayer.setVisible(false); // Change layer visibility
+Module.getAnalysis().updateViewshed(); // Recalculate viewshed based on the current layer state
+```
+
+#### 3. Improved 3D Viewshed Creation Behavior ([Issue #584](https://github.com/EgisCorp/XDWorld/issues/584))
+* Fixed an issue where a viewshed was created during a drag operation when using `setVFCreateClickMode(true)`.
+* Improved the behavior so that a viewshed is created only when the user performs a simple click.
 
 ### 2.29.1 (2026/08/05)
 #### 1. Improved Viewpoint Navigation for User Layer Objects
