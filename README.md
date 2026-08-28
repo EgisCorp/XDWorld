@@ -112,7 +112,7 @@ if (Module.gpuInfoReady) {
   - 물판과 지형의 z-fighting 현상을 개선하였습니다.
   - 카메라 확대 시 물판이 사라지는 문제를 수정하였습니다.
 
-####9. Impostor Rendering
+#### 9. Impostor Rendering
   - 멀리 있는 3D 건물은 실제 3D 모델을 직접 렌더링하는 대신 Impostor로 대체하여 화면에 표현합니다. 이를 통해 복잡한 건물의 버텍스를 직접 렌더링하는 비용을 줄이고 전체적인 렌더링 성능을 향상시킬 수 있습니다.
   - Impostor 적용 조건은 다음과 같습니다.
     - 카메라 시점이 지면 기준 45° 이하로 낮게 눕혀진 경우
@@ -121,26 +121,26 @@ if (Module.gpuInfoReady) {
   - 즉, 작게 보이면서 복잡한 3D 객체를 대상으로 실제 모델 대신 Impostor를 사용합니다.
   - 참고 : https://218.235.89.19:8443/tutorials/impostor/
 
-### 10. 레이어 타입에 상관없이 순서 변경 가능 [이슈 #587](https://github.com/EgisCorp/XDWorld/issues/587)
+#### 10. 레이어 타입에 상관없이 순서 변경 가능 [이슈 #587](https://github.com/EgisCorp/XDWorld/issues/587)
   - 기존에는 사용자 레이어끼리만 순서 변경이 가능하고 서비스 레이어끼리만 순서 변경이 가능
   - 레이어 타입에 상관없이 모든 레이어에 대해서 순서 변경 가능하도록 수정
    
-### 11. 수인한도분석 비동기 처리 [이슈 #589](https://github.com/EgisCorp/XDWorld/issues/589)
+#### 11. 수인한도분석 비동기 처리 [이슈 #589](https://github.com/EgisCorp/XDWorld/issues/589)
   - 기존에는 동기처리되어 분석 실행시 브라우저가 멈추는 현상 발생
   - 비동기 처리로 변경하여 분석 실행시 브라우저 멈추는 현상 없음
 
-### 12. 태양광 패널 배치 오류 수정 [이슈 #590](https://github.com/EgisCorp/XDWorld/issues/590)
+#### 12. 태양광 패널 배치 오류 수정 [이슈 #590](https://github.com/EgisCorp/XDWorld/issues/590)
   - 기존에는 건물타입 객체에만 생성 가능
   - 고스트심볼, GLTF, 3DS 등 다른 객체 타입에도 생성 가능하도록 수정
 
-### 13. Datavisualizer 데이터 오류 예외처리 [이슈 #594](https://github.com/EgisCorp/XDWorld/issues/594)
+#### 13. Datavisualizer 데이터 오류 예외처리 [이슈 #594](https://github.com/EgisCorp/XDWorld/issues/594)
   - 기존에는 잘못된 데이터 좌표가 들어와도 수용하여 전체 객체에 영향을 미침
   - 잘못된 좌표가 들어와도 인스턴스 객체 중점 방식을 보완하여 다른 객체에 영향을 못 끼치도록 수정
 
-### 14. 객체 외곽선 랜더링 오류 수정 [이슈 #596](https://github.com/EgisCorp/XDWorld/issues/596)
+#### 14. 객체 외곽선 랜더링 오류 수정 [이슈 #596](https://github.com/EgisCorp/XDWorld/issues/596)
   - 외곽선 생성 로직 누락되어 추가
 
-### 15. 서버기반 경사도,경사향,고도 분석 [이슈 #600](https://github.com/EgisCorp/XDWorld/issues/600)
+#### 15. 서버기반 경사도,경사향,고도 분석 [이슈 #600](https://github.com/EgisCorp/XDWorld/issues/600)
   - 기존에는 화면에 로딩된 지형레벨에 대해서만 분석 가능
   - 로딩되지 않아도 분석 원하는 지형레벨에 대해서 분석 실행
   - 멀리서 또는 화면에 안보이는 지역에 대해서도 분석 가능
@@ -278,26 +278,26 @@ if (Module.gpuInfoReady) {
 * In other words, Impostors are used for complex 3D objects that appear small on the screen.
 * Reference: https://218.235.89.19:8443/tutorials/impostor/
 
-### 10. Layer Reordering Across Layer Types ([Issue #587](https://github.com/EgisCorp/XDWorld/issues/587))
+#### 10. Layer Reordering Across Layer Types ([Issue #587](https://github.com/EgisCorp/XDWorld/issues/587))
 * Previously, layer order could only be changed among user layers or among service layers.
 * Updated to allow layer reordering regardless of layer type.
 
-### 11. Asynchronous Processing for Carrying Capacity Analysis ([Issue #589](https://github.com/EgisCorp/XDWorld/issues/589))
+#### 11. Asynchronous Processing for Carrying Capacity Analysis ([Issue #589](https://github.com/EgisCorp/XDWorld/issues/589))
 * Previously, the analysis was processed synchronously, causing the browser to become unresponsive during execution.
 * Changed to asynchronous processing to prevent the browser from becoming unresponsive during analysis.
 
-### 12. Solar Panel Placement Error Fix ([Issue #590](https://github.com/EgisCorp/XDWorld/issues/590))
+#### 12. Solar Panel Placement Error Fix ([Issue #590](https://github.com/EgisCorp/XDWorld/issues/590))
 * Previously, solar panels could only be created on building-type objects.
 * Updated to support creation on other object types, including Ghost Symbols, GLTF, and 3DS objects.
 
-### 13. DataVisualizer Data Error Handling ([Issue #594](https://github.com/EgisCorp/XDWorld/issues/594))
+#### 13. DataVisualizer Data Error Handling ([Issue #594](https://github.com/EgisCorp/XDWorld/issues/594))
 * Previously, invalid coordinate data was accepted and could affect the entire set of objects.
 * Improved the instance object center-point handling so that invalid coordinates do not affect other objects.
 
-### 14. Object Outline Rendering Error Fix ([Issue #596](https://github.com/EgisCorp/XDWorld/issues/596))
+#### 14. Object Outline Rendering Error Fix ([Issue #596](https://github.com/EgisCorp/XDWorld/issues/596))
 * Added the missing outline generation logic.
 
-### 15. Server-Based Slope, Aspect, and Elevation Analysis ([Issue #600](https://github.com/EgisCorp/XDWorld/issues/600))
+#### 15. Server-Based Slope, Aspect, and Elevation Analysis ([Issue #600](https://github.com/EgisCorp/XDWorld/issues/600))
 * Previously, analysis could only be performed on terrain levels currently loaded on the screen.
 * Updated to allow analysis at the desired terrain level even when the terrain is not currently loaded.
 * Analysis can now be performed on areas that are far away or not currently visible on the screen.
