@@ -37,7 +37,7 @@
 - 정기 배포 날짜는 **매월 첫째 주 월요일**입니다. 배포 일정이 변경될 경우, 현재 섹션에서 변동 사항을 확인하실 수 있습니다.
 
 > [!CAUTION]
-> $\color{red}{\text{2.25.1 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
+> $\color{red}{\text{2.29.3 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
 > $\color{red}{\text{해당 버전 이상으로 업데이트 시 worker 업데이트가 필요합니다.}}$<br>
 > $\color{red}{\text{XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 엔진과 같이 배포된 파일로 교체해 주시기 바랍니다.}}$
 > 
@@ -52,6 +52,104 @@
 > 
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
+
+### 2.29.3 (2026/08/28)
+#### 1. GPU 외장, 내장 판단
+  - True 반환 조건
+    - 내장 GPU 사용중이고 외장 GPU가 있을 경우
+
+  - False 반환 조건
+    - 외장 GPU 사용중일 경우
+    - GPU가 1개일 경우
+    - 판별이 안될 경우
+
+  - 기본적으로 True일 경우 console 창에 경고 로그 출력
+  - `Module.isDiscreteGPUUnused();` API 사용하여 확인 가능
+  - Engine Load 후 WebCode에서 메시지 창 띄우기 가능
+ ```javascript
+if (Module.gpuInfoReady) {
+	Module.gpuInfoReady.then(function (info) {
+		if (!info.needNotice) return;
+		var head = (info.noticeLevel === "certain")
+			? "이 PC에는 외장 그래픽카드가 있지만 현재 내장 그래픽(" + info.renderer + ")으로\n지도를 렌더링하고 있습니다."
+			: "현재 내장 그래픽(" + info.renderer + ")으로 지도를 렌더링하고 있습니다.\n외장 그래픽카드가 있다면 아래 설정으로 성능을 높일 수 있습니다.";
+		// 메시지창 띄우기
+		alert(head + "\n\n" +
+			"Windows 설정 > 시스템 > 디스플레이 > 그래픽 > 브라우저 추가 > 옵션 > '고성능'\n" +
+			"선택 후 브라우저를 완전히 종료했다가 다시 실행해 주세요.");
+	});
+}
+```
+
+#### 2. Voxel 성능 향상
+  -  사용방법은 샌드박스 샘플 참고
+    - [Voxel](https://sandbox.egiscloud.com/code/main.do?id=effect_voxel)
+    - [WildfireSpread](https://sandbox.egiscloud.com/code/main.do?id=analysis_wildfire_spread)
+    - [typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typhoon)
+
+#### 3. DataVisualizer Line 객체의 offset 설정 ([이슈 #586](https://github.com/EgisCorp/XDWorld/issues/586))
+  - 동일한 위치로 겹치는 라인 간 z-fight 방지를 위하여 객체 간 offset 순서 설정
+
+#### 4. Gaussian Splater
+   - Gaussian Splatting 기능 추가
+   - [Gaussian Splat](https://sandbox.egiscloud.com/code/main.do?&id=object_gaussian_splats)
+
+#### 5. PlanerImage
+   - 행성 이미지 적용 (달, 화성, 목성 등등)
+   - [Planet Image](https://sandbox.egiscloud.com/code/main.do?&id=terrain_planet_image)
+
+#### 6. 렌더링 후처리 기능 추가
+   - 화면에 최종적으로 표출되는 씬이미지에 후처리를 통한 효과를 추가
+   - JSPostProcess API 클래스 추가
+   - 피사계심도 (DoF, Depth of Field) / Bloom / Sharpen 효과 추가
+   - 주요 사용법은 [메뉴얼](https://github.com/avamk2/XDWorld_WebGL/issues/355#issue-5209387230) 및 [샌드박스 참고](https://sandbox.egiscloud.com/code/main.do?&id=postprocess_render_effect) 
+
+#### 7. 투명도 (알파블랜딩) 개편
+   - 기존 투명기능에서 투명객체의 정렬 문제로 표현되거나 사라지는 팝인 현상에 대한 개편
+   - 사용법은 [샌드박스 참고](https://sandbox.egiscloud.com/code/main.do?&id=option_alphablend_mode)
+
+#### 8. JSFlood z-fighting 현상 개선
+  - 물판과 지형의 z-fighting 현상을 개선하였습니다.
+  - 카메라 확대 시 물판이 사라지는 문제를 수정하였습니다.
+
+####9. Impostor Rendering
+  - 멀리 있는 3D 건물은 실제 3D 모델을 직접 렌더링하는 대신 Impostor로 대체하여 화면에 표현합니다. 이를 통해 복잡한 건물의 버텍스를 직접 렌더링하는 비용을 줄이고 전체적인 렌더링 성능을 향상시킬 수 있습니다.
+  - Impostor 적용 조건은 다음과 같습니다.
+    - 카메라 시점이 지면 기준 45° 이하로 낮게 눕혀진 경우
+    - 해당 객체의 화면상 렌더링 크기가 64px 이하
+    - 객체의 정점(Vertex) 수가 100pt 이상
+  - 즉, 작게 보이면서 복잡한 3D 객체를 대상으로 실제 모델 대신 Impostor를 사용합니다.
+  - 참고 : https://218.235.89.19:8443/tutorials/impostor/
+
+### 10. 레이어 타입에 상관없이 순서 변경 가능 [이슈 #587](https://github.com/EgisCorp/XDWorld/issues/587)
+  - 기존에는 사용자 레이어끼리만 순서 변경이 가능하고 서비스 레이어끼리만 순서 변경이 가능
+  - 레이어 타입에 상관없이 모든 레이어에 대해서 순서 변경 가능하도록 수정
+   
+### 11. 수인한도분석 비동기 처리 [이슈 #589](https://github.com/EgisCorp/XDWorld/issues/589)
+  - 기존에는 동기처리되어 분석 실행시 브라우저가 멈추는 현상 발생
+  - 비동기 처리로 변경하여 분석 실행시 브라우저 멈추는 현상 없음
+
+### 12. 태양광 패널 배치 오류 수정 [이슈 #590](https://github.com/EgisCorp/XDWorld/issues/590)
+  - 기존에는 건물타입 객체에만 생성 가능
+  - 고스트심볼, GLTF, 3DS 등 다른 객체 타입에도 생성 가능하도록 수정
+
+### 13. Datavisualizer 데이터 오류 예외처리 [이슈 #594](https://github.com/EgisCorp/XDWorld/issues/594)
+  - 기존에는 잘못된 데이터 좌표가 들어와도 수용하여 전체 객체에 영향을 미침
+  - 잘못된 좌표가 들어와도 인스턴스 객체 중점 방식을 보완하여 다른 객체에 영향을 못 끼치도록 수정
+
+### 14. 객체 외곽선 랜더링 오류 수정 [이슈 #596](https://github.com/EgisCorp/XDWorld/issues/596)
+  - 외곽선 생성 로직 누락되어 추가
+
+### 15. 서버기반 경사도,경사향,고도 분석 [이슈 #600](https://github.com/EgisCorp/XDWorld/issues/600)
+  - 기존에는 화면에 로딩된 지형레벨에 대해서만 분석 가능
+  - 로딩되지 않아도 분석 원하는 지형레벨에 대해서 분석 실행
+  - 멀리서 또는 화면에 안보이는 지역에 대해서도 분석 가능
+
+#### 16. 지형 편집 오류 수정 ([이슈 #593](https://github.com/EgisCorp/XDWorld/issues/593), [이슈 #599](https://github.com/EgisCorp/XDWorld/issues/599))
+  - 서버 dem 레벨을 초과하는 지형에 대해 실시간 지형 편집 및 원복이 동작하지 않는 문제를 수정하였습니다.
+  - 성토 시 사면이 생성되지 않는 오류를 수정하였습니다.
+  - 바닥면이 주변 지형의 중간 높이로 설정되었을 때, 성절토가 동시에 적용될 수 있도록 개선하였습니다.
+
 
 ### 2.29.2 (2026/08/11)
 #### 1. GLTF 모델 이동 위치 정보 갱신 개선 ([이슈 #580](https://github.com/EgisCorp/XDWorld/issues/580))
@@ -111,6 +209,103 @@ async function load3DSa(_url, _position) {
     return polygon;
 }
 ```
+
+### 2.29.3 (2026/08/28)
+
+#### 1. Discrete / Integrated GPU Detection
+* Returns `true` under the following condition:
+  * An integrated GPU is currently being used while a discrete GPU is available.
+* Returns `false` under the following conditions:
+  * A discrete GPU is currently being used.
+  * Only one GPU is available.
+  * GPU detection fails.
+* By default, a warning message is printed to the console when the result is `true`.
+* The GPU status can be checked using the `Module.isDiscreteGPUUnused();` API.
+* A message dialog can be displayed in WebCode after the engine is loaded.
+
+```javascript
+if (Module.gpuInfoReady) {
+	Module.gpuInfoReady.then(function (info) {
+		if (!info.needNotice) return;
+		var head = (info.noticeLevel === "certain")
+			? "이 PC에는 외장 그래픽카드가 있지만 현재 내장 그래픽(" + info.renderer + ")으로\n지도를 렌더링하고 있습니다."
+			: "현재 내장 그래픽(" + info.renderer + ")으로 지도를 렌더링하고 있습니다.\n외장 그래픽카드가 있다면 아래 설정으로 성능을 높일 수 있습니다.";
+		// 메시지창 띄우기
+		alert(head + "\n\n" +
+			"Windows 설정 > 시스템 > 디스플레이 > 그래픽 > 브라우저 추가 > 옵션 > '고성능'\n" +
+			"선택 후 브라우저를 완전히 종료했다가 다시 실행해 주세요.");
+	});
+}
+```
+
+#### 2. Voxel Performance Improvements
+* Refer to the following Sandbox samples for usage:
+  * [Voxel](https://sandbox.egiscloud.com/code/main.do?id=effect_voxel)
+  * [WildfireSpread](https://sandbox.egiscloud.com/code/main.do?id=analysis_wildfire_spread)
+  * [Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typhoon)
+
+#### 3. Offset Setting for DataVisualizer Line Objects ([Issue #586](https://github.com/EgisCorp/XDWorld/issues/586))
+* Added support for setting the offset order between overlapping line objects to prevent z-fighting.
+
+#### 4. Gaussian Splatting
+* Added Gaussian Splatting functionality.
+* [Gaussian Splat](https://sandbox.egiscloud.com/code/main.do?&id=object_gaussian_splats)
+
+#### 5. Planet Image
+* Added support for applying planetary images, such as the Moon, Mars, and Jupiter.
+* [Planet Image](https://sandbox.egiscloud.com/code/main.do?&id=terrain_planet_image)
+
+#### 6. Post-Processing Effects
+* Added post-processing effects to the final scene image displayed on the screen.
+* Added the `JSPostProcess` API class.
+* Added Depth of Field (DoF), Bloom, and Sharpen effects.
+* For usage details, refer to the [Manual](https://github.com/avamk2/XDWorld_WebGL/issues/355#issue-5209387230) and [Sandbox sample](https://sandbox.egiscloud.com/code/main.do?&id=postprocess_render_effect).
+
+#### 7. Alpha Blending Improvements
+* Improved the existing transparency system to address pop-in issues where transparent objects could appear or disappear due to sorting problems.
+* Refer to the [Sandbox sample](https://sandbox.egiscloud.com/code/main.do?&id=option_alphablend_mode) for usage details.
+
+#### 8. JSFlood Z-Fighting Improvements
+* Improved z-fighting issues between the water plane and terrain.
+* Fixed an issue where the water plane disappeared when zooming in.
+
+#### 9. Impostor Rendering
+* Distant 3D buildings are rendered using Impostors instead of their original 3D models. This reduces the cost of rendering vertices from complex buildings and improves overall rendering performance.
+* Impostors are applied under the following conditions:
+  * The camera angle is 45° or lower relative to the ground.
+  * The object's on-screen rendering size is 64 px or less.
+  * The object has 100 or more vertices.
+* In other words, Impostors are used for complex 3D objects that appear small on the screen.
+* Reference: https://218.235.89.19:8443/tutorials/impostor/
+
+### 10. Layer Reordering Across Layer Types ([Issue #587](https://github.com/EgisCorp/XDWorld/issues/587))
+* Previously, layer order could only be changed among user layers or among service layers.
+* Updated to allow layer reordering regardless of layer type.
+
+### 11. Asynchronous Processing for Carrying Capacity Analysis ([Issue #589](https://github.com/EgisCorp/XDWorld/issues/589))
+* Previously, the analysis was processed synchronously, causing the browser to become unresponsive during execution.
+* Changed to asynchronous processing to prevent the browser from becoming unresponsive during analysis.
+
+### 12. Solar Panel Placement Error Fix ([Issue #590](https://github.com/EgisCorp/XDWorld/issues/590))
+* Previously, solar panels could only be created on building-type objects.
+* Updated to support creation on other object types, including Ghost Symbols, GLTF, and 3DS objects.
+
+### 13. DataVisualizer Data Error Handling ([Issue #594](https://github.com/EgisCorp/XDWorld/issues/594))
+* Previously, invalid coordinate data was accepted and could affect the entire set of objects.
+* Improved the instance object center-point handling so that invalid coordinates do not affect other objects.
+
+### 14. Object Outline Rendering Error Fix ([Issue #596](https://github.com/EgisCorp/XDWorld/issues/596))
+* Added the missing outline generation logic.
+
+### 15. Server-Based Slope, Aspect, and Elevation Analysis ([Issue #600](https://github.com/EgisCorp/XDWorld/issues/600))
+* Previously, analysis could only be performed on terrain levels currently loaded on the screen.
+* Updated to allow analysis at the desired terrain level even when the terrain is not currently loaded.
+* Analysis can now be performed on areas that are far away or not currently visible on the screen.
+
+#### 16. Terrain Editing Error Fixes ([Issue #593](https://github.com/EgisCorp/XDWorld/issues/593), [Issue #599](https://github.com/EgisCorp/XDWorld/issues/599))
+* Fixed an issue where real-time terrain editing and restoration did not work for terrain beyond the server DEM level.
+* Fixed an issue where slopes were not generated during terrain filling.
+* Improved terrain editing to allow cut and fill operations to be applied simultaneously when the bottom surface is set to the intermediate elevation of the surrounding terrain.
 
 ### 2.29.2 (2026/08/11)
 #### 1. Improved GLTF Model Position Updates ([Issue #580](https://github.com/EgisCorp/XDWorld/issues/580))
