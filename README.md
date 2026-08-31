@@ -41,8 +41,8 @@
 > $\color{red}{\text{해당 버전 이상으로 업데이트 시 worker 업데이트가 필요합니다.}}$<br>
 > $\color{red}{\text{XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 엔진과 같이 배포된 파일로 교체해 주시기 바랍니다.}}$
 > 
-> $\color{red}{\text{The worker files have been updated in version 2.25.1.}}$<br>
-> $\color{red}{\text{When updating to version 2.25.1 or later, a worker file update is required.}}$<br>
+> $\color{red}{\text{The worker files have been updated in version 2.29.3.}}$<br>
+> $\color{red}{\text{When updating to version 2.29.3 or later, a worker file update is required.}}$<br>
 > $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
 > [!IMPORTANT]
