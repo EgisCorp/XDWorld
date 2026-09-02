@@ -53,20 +53,6 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
-### 2.29.4 (2026/09/02)
-#### 1. 수인한도분석 오류 수정
-  - 영역 입력 후 균일하게 격자 생성할 경우 간헐적으로 격자 깨지는 현상 및 분석 오류 수정
-
-#### 2. 가시권 분석 가시 판정 수정
-- 가시권 분석 시 메인 카메라가 아닌 분석 시야를 기준으로 가시 여부를 판정하도록 수정하였습니다.
-
-#### 3. CJSTraceTarget::setAutoRotate API 추가
-- Trace Target을 설정한 객체가 카메라 뷰 방향을 따라 회전하는 기능을 해제할 수 있도록 하는 API를 추가하였습니다.
-```javascript
-var traceTarget = Module.createTraceTarget(model.getId());
-traceTarget.setAutoRotate(false); // 자동 회전 해제
-```
-
 ### 2.29.3 (2026/08/28)
 #### 1. GPU 외장, 내장 판단
   - True 반환 조건
@@ -223,21 +209,6 @@ async function load3DSa(_url, _position) {
     return polygon;
 }
 ```
-
-### 2.29.4 (2026/09/02)
-#### 1. Heat Stress Analysis Error Fix
-* Fixed an issue where the grid was occasionally corrupted and the analysis failed when generating a uniform grid after entering an area.
-
-#### 2. Visibility Analysis Visibility Determination Update
-* Updated visibility determination in visibility analysis to use the **analysis view** instead of the main camera.
-
-#### 3. Added `CJSTraceTarget::setAutoRotate` API
-* Added an API to disable the automatic rotation of an object configured as a Trace Target to follow the camera view direction.
-```javascript
-var traceTarget = Module.createTraceTarget(model.getId());
-traceTarget.setAutoRotate(false); // Disable automatic rotation
-```
-
 
 ### 2.29.3 (2026/08/28)
 
