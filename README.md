@@ -67,6 +67,9 @@ var traceTarget = Module.createTraceTarget(model.getId());
 traceTarget.setAutoRotate(false); // 자동 회전 해제
 ```
 
+#### 4. 서버 기반 DEM 고도 기능 업데이트 ([이슈 #607](https://github.com/EgisCorp/XDWorld/issues/607))
+  * 압축된 DEM 서비스에 대하여 고도 값이 반환되도록 기능이 추가되었습니다.
+
 ### 2.29.3 (2026/08/28)
 #### 1. GPU 외장, 내장 판단
   - True 반환 조건
@@ -237,6 +240,9 @@ async function load3DSa(_url, _position) {
 var traceTarget = Module.createTraceTarget(model.getId());
 traceTarget.setAutoRotate(false); // Disable automatic rotation
 ```
+
+#### 4. Server-Based DEM Elevation Feature Update ([Issue #607](https://github.com/EgisCorp/XDWorld/issues/607))
+* Added support for returning elevation values from compressed DEM services.
 
 
 ### 2.29.3 (2026/08/28)
