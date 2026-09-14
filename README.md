@@ -53,6 +53,37 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.30.1 (2026/09/14)
+#### 1. 파티클 투명처리 오류 수정
+  - 파티클 이미지의 투명 처리 추가
+  - 처음 하나의 입자에만 크기, 속도 등 옵션 적용되던 현상 수정
+
+#### 2. 불꽃 효과 추가
+  - 불꽃축제 효과 추가
+  - 불꽃 가시율 분석 추가
+
+#### 3. 시곡면 분석 예외처리
+  - 처음 분석 실행 후 같은 위치에 분석 실행 시 깜빡이는 현상 수정
+
+#### 4. DataVisualizer 화면 고정 크기 모드 오류 수정 ([이슈 #614](https://github.com/EgisCorp/XDWorld/issues/614))
+* 화면 고정 크기 모드 적용 시 뷰포트 사이즈에 따라 마커의 크기가 변하는 오류를 수정하였습니다.
+
+#### 5. 폴리곤 객체 Clipping Box 기능 추가
+* 폴리곤 객체를 잘라서 특정 부분만 렌더링 하는 기능을 추가하였습니다.
+* MML_EDIT_CLIPPINGBOX 마우스 모드로 Clipping Box를 조작할 수 있습니다.
+```javascript
+Module.setClippingBoxPosition(new Module.JSVector3D(longitude, latitude, altitude));
+
+Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
+Module.setClippingBoxMode(0); // translate
+// Module.setClippingBoxMode(2); // scale
+
+var polygon = Module.createPolygon();
+// ...
+polygon.setClipping(true);
+polygon.setClippingAlpha(0.3);
+```
+
 ### 2.30.0 (2026/09/07)
 #### 1. 그림자 효과 개선
   - 경계부분이 각져보이는 현상을 개선하였습니다.
@@ -63,6 +94,38 @@
 
 #### 3. 지형 편집 사면 RTT 영역 개선
   - 지형 편집의 사면에 대한 RTT 영역이 보다 정확하게 칠해지도록 개선하였습니다.
+
+### 2.30.1 (2026/09/14)
+#### 1. Particle Transparency Error Fix
+* Added transparency support for particle images.
+* Fixed an issue where options such as size and speed were applied only to the first particle.
+
+#### 2. Firework Effect Added
+* Added a fireworks effect.
+* Added firework visibility analysis.
+
+#### 3. Viewshed Analysis Exception Handling
+* Fixed a flickering issue that occurred when running the analysis again at the same location after the initial analysis.
+
+#### 4. DataVisualizer Screen-Fixed Size Mode Error Fix ([Issue #614](https://github.com/EgisCorp/XDWorld/issues/614))
+* Fixed an issue where the marker size changed depending on the viewport size when Screen-Fixed Size Mode was applied.
+
+#### 5. Clipping Box for Polygon Objects
+* Added a feature to clip polygon objects and render only specific portions.
+* The Clipping Box can be manipulated using the `MML_EDIT_CLIPPINGBOX` mouse mode.
+
+```javascript
+Module.setClippingBoxPosition(new Module.JSVector3D(longitude, latitude, altitude));
+
+Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
+Module.setClippingBoxMode(0); // translate
+// Module.setClippingBoxMode(2); // scale
+
+var polygon = Module.createPolygon();
+// ...
+polygon.setClipping(true);
+polygon.setClippingAlpha(0.3);
+```
 
 ### 2.30.0 (2026/09/07)
 #### 1. Shadow Effect Improvements
