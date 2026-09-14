@@ -61,6 +61,7 @@
 #### 2. 불꽃 효과 추가
   - 불꽃축제 효과 추가
   - 불꽃 가시율 분석 추가
+  - (샌드박스 샘플)[https://sandbox.egiscloud.com/code/main.do?id=effect_fireworks]
 
 #### 3. 시곡면 분석 예외처리
   - 처음 분석 실행 후 같은 위치에 분석 실행 시 깜빡이는 현상 수정
