@@ -56,6 +56,12 @@
 ### 2.30.2 (2026/09/22)
 #### 1. 3D Tiles 관련 안정화 작업을 진행하였습니다.
 
+#### 2. JSFlood 부동소수점 오차 개선
+  - JSFlood 처리 과정에서 발생하는 부동소수점 오차를 개선하였습니다.
+
+#### 3. 레이어 순서 관련 렌더링 오류 수정
+  - 레이어 순서가 타입에 관계 없이 뒤섞여 렌더링되는 경우, 지형 편집과 같은 RTT 관련 기능에서 렌더링이 정상적으로 처리되지 않는 문제를 수정하였습니다.
+
 ### 2.30.1 (2026/09/14)
 #### 1. 파티클 투명처리 오류 수정
   - 파티클 이미지의 투명 처리 추가
@@ -101,6 +107,13 @@ polygon.setClippingAlpha(0.3);
 
 ### 2.30.2 (2026/09/22)
 #### 1. Improved the stability of 3D Tiles.
+
+#### 2. JSFlood Floating-Point Precision Improvement
+* Improved floating-point precision in JSFlood processing.
+
+#### 3. Fixed Layer Order Rendering Issue
+* Fixed an issue where RTT-related features, such as terrain editing, could fail to render correctly when layer order was mixed regardless of layer type.
+
 
 ### 2.30.1 (2026/09/14)
 #### 1. Particle Transparency Error Fix
