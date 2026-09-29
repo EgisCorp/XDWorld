@@ -38,7 +38,7 @@
 - 2.31.0 버전 정기 배포는 10월 6일에 진행될 예정입니다.
 
 > [!CAUTION]
-> $\color{red}{\text{2.29.3 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
+> $\color{red}{\text{2.30.2 버전에서 worker 파일이 업데이트되었습니다.}}$<br>
 > $\color{red}{\text{해당 버전 이상으로 업데이트 시 worker 업데이트가 필요합니다.}}$<br>
 > $\color{red}{\text{XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 엔진과 같이 배포된 파일로 교체해 주시기 바랍니다.}}$
 > 
