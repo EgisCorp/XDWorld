@@ -107,7 +107,7 @@ var ms = Module.XDEGetMemoryClearInterval();
 Module.XDESetMemoryClearInterval(0);
 ```
 
-### 7. 라벨 POI 아틀라스를 지원합니다.
+#### 7. 라벨 POI 아틀라스를 지원합니다.
 - XDECreateLabelAtlas(data, width, height) → number
   - 라벨 여러 개를 담은 이미지 한 장을 GPU 텍스처로 올리고 아틀라스 ID를 돌려줍니다. 이후 `JSPoint.setImageAtlas()`로 각 포인트가 이 텍스처의 한 칸만 참조하므로, 라벨마다 텍스처를 만들고 업로드하던 비용이 사라집니다.
 - XDEReleaseLabelAtlas(atlasId) → boolean
@@ -115,7 +115,7 @@ Module.XDESetMemoryClearInterval(0);
 - JSPoint.setImageAtlas(atlasId, x, y, width, height) → boolean
   - 아틀라스의 한 칸을 이 포인트의 심볼로 지정합니다. 픽셀 좌표는 아틀라스 이미지 기준입니다. 텍스처를 새로 만들지 않고 기존 아틀라스 텍스처를 참조만 하므로, 포인트가 늘어나도 텍스처 개수와 업로드 횟수는 그대로입니다.
 
-### 8. 팔레트 256컬러 라벨을 지원합니다.
+#### 8. 팔레트 256컬러 라벨을 지원합니다.
 - XDESetPoiTexture8Bit(on) / XDEGetPoiTexture8Bit() → boolean 
   - POI 라벨 텍스처를 8비트 팔레트(PAL8)로 저장합니다. 픽셀당 1바이트 인덱스 + 공용 팔레트 아틀라스 행 구조라, 라벨 텍스처 메모리가 절반 이하로 줄어듭니다(실측 라벨당 7,893B → 3,947B). **기본 꺼짐**입니다.
 
@@ -182,7 +182,7 @@ var ms = Module.XDEGetMemoryClearInterval();
 Module.XDESetMemoryClearInterval(0);
 ```
 
-### 7. Added Support for Label POI Atlases
+#### 7. Added Support for Label POI Atlases
 * `XDECreateLabelAtlas(data, width, height)` → `number`
   * Uploads an image containing multiple labels as a single GPU texture and returns the atlas ID.
   * Each point can then reference a specific region of this texture using `JSPoint.setImageAtlas()`, eliminating the cost of creating and uploading a separate texture for each label.
@@ -196,7 +196,7 @@ Module.XDESetMemoryClearInterval(0);
   * Pixel coordinates are based on the atlas image.
   * Since the point references the existing atlas texture without creating a new texture, the number of textures and texture uploads remains unchanged even as the number of points increases.
 
-### 8. Added Support for 256-Color Palette Labels
+#### 8. Added Support for 256-Color Palette Labels
 
 * `XDESetPoiTexture8Bit(on)` / `XDEGetPoiTexture8Bit()` → `boolean`
   * Stores POI label textures using an 8-bit palette (PAL8).
