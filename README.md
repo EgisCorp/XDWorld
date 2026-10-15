@@ -144,6 +144,9 @@ Module.getGhostSymbolMap().clearModelTexture({ id: "{id}" });                   
 - 지하 지층의 고도 및 심도를 확인할 수 있는 가이드를 추가하였습니다.
 - 심도 관련 샌드박스 샘플: [샌드박스 1](https://sandbox.egiscloud.com/code/main.do?id=strata_depth), [샌드박스 2](https://sandbox.egiscloud.com/code/main.do?id=wind_underground)
 
+#### 10. 압축 텍스처(DDS) 하이브리드 레이어의 최대 레벨 초과 표출 지원 ([이슈 #621](https://github.com/EgisCorp/XDWorld/issues/621))
+* DXT 등 압축 포맷(DDS)의 하이브리드 레이어에서 `maxLevelOverlap: true` 사용 시, `maxLevel`을 초과하는 레벨에서 하이브리드가 사라지던 현상을 수정했습니다. 
+
 ### 2.31.0 (2026/10/06)
 #### 1. 기즈모 Scale 모드 추가
 - 스케일을 조절하는 기즈모 모드가 추가되었습니다.
@@ -302,6 +305,9 @@ Module.getGhostSymbolMap().clearModelTexture({ id: "{id}" });                   
 
 #### 9. Added Elevation and Depth Guides for Underground Geological Layers
 - Depth-related samples: [Sandbox 1](https://sandbox.egiscloud.com/code/main.do?id=strata_depth), [Sandbox 2](https://sandbox.egiscloud.com/code/main.do?id=wind_underground)
+
+#### 10. Support for displaying compressed-texture (DDS) hybrid layers beyond the maximum level ([Issue #621](https://github.com/EgisCorp/XDWorld/issues/621))
+* Fixed an issue where, for hybrid layers using a compressed format such as DXT (DDS) with `maxLevelOverlap: true`, the hybrid layer disappeared at levels above `maxLevel`.
 
 ### 2.31.0 (2026/10/06)
 #### 1. Added Gizmo Scale Mode
