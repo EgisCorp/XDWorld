@@ -42,7 +42,7 @@
 > $\color{red}{\text{XDWorldWorker.js 및 XDWorldWorker.wasm 파일을 엔진과 같이 배포된 파일로 교체해 주시기 바랍니다.}}$
 > 
 > $\color{red}{\text{The worker files have been updated in version 2.32.0.}}$<br>
-> $\color{red}{\text{When updating to version 2.29.3 or later, a worker file update is required.}}$<br>
+> $\color{red}{\text{When updating to version 2.32.0 or later, a worker file update is required.}}$<br>
 > $\color{red}{\text{Please replace XDWorldWorker.js and XDWorldWorker.wasm with the files distributed with the engine.}}$
 
 > [!IMPORTANT]
@@ -85,8 +85,8 @@
     <th>지형 가림 해제 켬</th>
   </tr>
   <tr>
-    <td><img src="https://github.com/avamk2/XDWorld_WebGL/releases/download/pr-assets/terrain-mask-before.png" width="100%"></td>
-    <td><img src="https://github.com/avamk2/XDWorld_WebGL/releases/download/pr-assets/terrain-mask-after.png" width="100%"></td>
+    <td><img width="1920" height="889" alt="image" src="https://github.com/user-attachments/assets/ac87908c-a21c-4424-8c80-34cac090cb67" /></td>
+    <td><img width="1920" height="889" alt="image" src="https://github.com/user-attachments/assets/cc41d711-1d3c-41f3-97d6-29b57b47b142" /></td>
   </tr>
 </table>
 
@@ -100,7 +100,7 @@
 - SSAO 옵션 추가
 - Screen Space Fog 옵션
 
-#### 11. 장면기반 환경효과 추가 - (https://sandbox.egiscloud.com/code/main.do?id=postprocess_render_effect)
+#### 11. 장면기반 환경효과 추가 - (https://sandbox.egiscloud.com/code/main.do?id=effect_environment)
  - 시간대별 밤,낮,일조,일몰 환경표현 및 3D모델 그림자 연동
  - 맑음, 흐림, 비, 눈, 뇌우 기반 환경효과 적용
 
