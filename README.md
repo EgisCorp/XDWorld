@@ -53,6 +53,19 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.32.1 (2026/11/03)
+#### 1. 점광원 기능 추가
+  * 가로등, 조명 등 점광원을 지형과 건물에 비추는 기능이 추가되었습니다.
+  * `Module.getPointLightManager()`로 사용합니다. `setEnable(true)`로 켜고 `add`, `remove`, `setPosition`, `setColor`, `setIntensity`, `setRadius`로 광원을 관리합니다.
+  * `setAmbient`로 장면의 기본 밝기를 지정하며 야간 장면 연출에 사용할 수 있습니다.
+  * 한 프레임에 적용하는 광원 수는 `setMaxCount`(최대 64, 기본 32)로 조절하며, 카메라에서 가까운 순으로 선택됩니다. `setRange`로 지정한 거리보다 먼 광원은 제외됩니다.
+
+#### 2. 스포트라이트(방향성 광원) 기능 추가
+  * 점광원에 방향과 원뿔 각도를 지정해 특정 방향으로만 비추는 스포트라이트 기능이 추가되었습니다.
+  * `setDirection(key, yaw, pitch)`로 방위각(북쪽 0도, 시계 방향)과 기울기(위쪽 +, 아래쪽 -)를 지정합니다.
+  * `setCone(key, inner, outer)`로 원뿔 전체 각도를 지정합니다. 안쪽 각도까지는 최대 밝기를 유지하고 바깥 각도 쪽으로 갈수록 줄어듭니다.
+
+
 ### 2.32.0 (2026/11/02)
 #### 1. Clipping Box 회전 기능 추가
 - `Module.setGizmoMode(1);` 을 통해 Clipping Box를 회전할 수 있도록 기능을 추가하였습니다.
@@ -103,6 +116,19 @@
 #### 11. 장면기반 환경효과 추가 - (https://sandbox.egiscloud.com/code/main.do?id=effect_environment)
  - 시간대별 밤,낮,일조,일몰 환경표현 및 3D모델 그림자 연동
  - 맑음, 흐림, 비, 눈, 뇌우 기반 환경효과 적용
+
+
+### 2.32.1 (2026/11/03)
+#### 1. Added Point Light Feature
+  * Added a feature to illuminate terrain and buildings using point lights such as streetlights and light fixtures.
+  * Access the feature using `Module.getPointLightManager()`. Enable it via `setEnable(true)` and manage lights using `add`, `remove`, `setPosition`, `setColor`, `setIntensity`, and `setRadius`.
+  * Specify the base scene brightness using `setAmbient`, which can be used to render night scenes.
+  * Adjust the number of light sources applied per frame using `setMaxCount` (maximum 64, default 32); lights are prioritized by proximity to the camera. Lights farther than the distance specified by `setRange` are excluded.
+
+#### 2. Added Spotlight (Directional Light) Feature
+  * Added a spotlight feature that shines light in a specific direction by setting a direction and cone angle for point lights.
+  * Specify the azimuth (0 degrees north, clockwise) and tilt (positive upward, negative downward) using `setDirection(key, yaw, pitch)`.
+  * Specify the total cone angles using `setCone(key, inner, outer)`. Maximum intensity is maintained up to the inner angle and decreases toward the outer angle.
 
 
 ### 2.32.0 (2026/11/02)
