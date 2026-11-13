@@ -53,6 +53,15 @@
 > * `stable` : 안정화된 정기 배포 버전
 > * `latest` : 최신 배포 버전 (핫픽스 포함)
 
+### 2.32.2 (2026/11/13)
+#### 1. 곡률 평면 텍스처 밝기 오류 ([이슈 #626](https://github.com/EgisCorp/XDWorld/issues/626))
+  * `setCurvatureRect`로 생성한 평면에 텍스처를 올릴 때 색이 과하게 밝아져 하얗게 표출되던 문제를 수정했습니다.
+
+#### 2. 배경지도 성능 개선
+  - 엔진 구조와 다른 타일구조의 배경지도를 서비스할 경우 요청수가 많아지고 요청 레벨이 한 단계 높아져 글자가 잘안보이는 현상 발생.
+  - 요청수 9.23배 절약, 현재 레벨에 맞는 영상 요청으로 글자 해상도 개선.
+
+
 ### 2.32.1 (2026/11/03)
 #### 1. 점광원 기능 추가
   * 가로등, 조명 등 점광원을 지형과 건물에 비추는 기능이 추가되었습니다.
@@ -116,6 +125,15 @@
 #### 11. 장면기반 환경효과 추가 - (https://sandbox.egiscloud.com/code/main.do?id=effect_environment)
  - 시간대별 밤,낮,일조,일몰 환경표현 및 3D모델 그림자 연동
  - 맑음, 흐림, 비, 눈, 뇌우 기반 환경효과 적용
+
+
+### 2.32.2 (2026/11/13)
+#### 1. Fixed Curvature Plane Texture Brightness Error ([Issue #626](https://github.com/EgisCorp/XDWorld/issues/626))
+  * Fixed an issue where textures applied to planes created with `setCurvatureRect` appeared excessively bright or washed out.
+
+#### 2. Improved Base Map Performance
+  - Resolved an issue where using base maps with a tile structure different from the engine's internal structure resulted in excessive requests and lower text legibility due to incorrect level selection.
+  - Reduced the number of requests by a factor of 9.23 and improved text resolution by requesting imagery at the appropriate zoom level.
 
 
 ### 2.32.1 (2026/11/03)
